@@ -1,11 +1,14 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <!-- Change this to router link -->
-      <a id="navLogo" class="pull-left" href="#">
+      <a id="navLogo" class="pull-left" routerLink="">
         <img src="assets/redhat.svg">
       </a>
       <span id="navLogoTitle" class="pull-left">Red Hat Release Pipeline</span>
     </div>
   </div>
 </nav>
+
+<div class="container-fluid">
+  <router-outlet></router-outlet>
+</div>
