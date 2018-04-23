@@ -1,0 +1,33 @@
+#navLogo {
+  margin-top: 0.25rem;
+}
+
+#navLogo img {
+    height: 42.5px;
+}
+
+#navLogoTitle {
+  font-size: 2rem;
+  color: white;
+  margin-left: 1.5rem;
+  margin-top: 0.7rem;
+}
+
+@media (min-width: 992px) {
+    nav.navbar {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    #navLogo {
+        margin-top: 0rem;
+    }
+
+    #navLogo img {
+        height: 50px;
+    }
+
+    #navLogoTitle {
+        font-size: 2.25rem;
+    }
+}
