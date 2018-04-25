@@ -1,3 +1,4 @@
-<p>
-  story works!
-</p>
+<div id="diagram" *ngIf="story">
+  <app-storyrow [nodeType]="resources[0]" [nodes]="resources.slice(1)" *ngFor="let resources of story">
+  </app-storyrow>
+</div>

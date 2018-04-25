@@ -8,11 +8,11 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class StoryService {
 
-  readonly apiUrl: string = environment.api;
+  readonly apiUrl: String = environment.api;
 
   constructor(private http: HttpClient) { }
 
-  getStory(resource: string, uid: string): Observable<any> {
+  getStory(resource: String, uid: String): Observable<any> {
     const url = `${this.apiUrl}story/${resource}/${uid}`;
     return this.http.get(url);
   }

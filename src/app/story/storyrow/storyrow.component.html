@@ -1,0 +1,6 @@
+<div class="diagramRow {{ nodeShape + 'Row' }}">
+  <ng-container *ngFor='let node of nodes; let i = index'>
+    <img [appPlumbConnect]="prevNodeIDs" *ngIf="nodeShape === 'circle'" id="{{ nodeType + i }}" class="item" src="assets/checkmark.svg"/>
+    <div [appPlumbConnect]="prevNodeIDs" *ngIf="nodeShape !== 'circle'" id="{{ nodeType + i }}" class="item"></div>
+  </ng-container>
+</div>

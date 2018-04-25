@@ -23,9 +23,12 @@
         "../node_modules/patternfly/dist/css/patternfly.min.css",
         "../node_modules/patternfly/dist/css/patternfly-additions.min.css",
         "../node_modules/patternfly-ng/dist/css/patternfly-ng.min.css",
+        "../node_modules/jsplumb/dist/css/jsplumbtoolkit-defaults.css",
         "styles.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/jsplumb/dist/js/jsplumb.min.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
