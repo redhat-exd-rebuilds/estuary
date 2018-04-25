@@ -3,6 +3,7 @@
 }
 
 #navLogo img {
+    /* Make the logo smaller */
     height: 42.5px;
 }
 
@@ -11,6 +12,14 @@
   color: white;
   margin-left: 1.5rem;
   margin-top: 0.7rem;
+}
+
+@media (max-width: 768px) {
+    .navbar-header {
+        /* Override the default of -20px */
+        margin-left: -10px;
+        margin-right: 10px;
+    }
 }
 
 @media (min-width: 992px) {
