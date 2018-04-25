@@ -6,12 +6,15 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { StoryComponent } from './story/story.component';
 import { StoryService } from './services/story.service';
+import { StoryRowComponent, PlumbConnectDirective } from './story/storyrow/storyrow.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    StoryComponent
+    StoryComponent,
+    StoryRowComponent,
+    PlumbConnectDirective
   ],
   imports: [
     AppRoutingModule,

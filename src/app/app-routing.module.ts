@@ -5,7 +5,7 @@ import { StoryComponent } from './story/story.component'
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':resource/:uid',
     component: StoryComponent
   }
 ];

@@ -1,0 +1,20 @@
+div.diagramRow > :not(:first-child) {
+    margin-left: 50px;
+}
+
+div.diagramRow {
+    margin-bottom: 50px;
+}
+
+div.diagramRow.circleRow img.item {
+    height: 66px;
+    width: 66px;
+    display: inline-block;
+}
+
+div.diagramRow.rectangleRow div.item {
+    border: 3px solid black;
+    height: 140px; width: 66px;
+    border-radius: 5px;
+    display: inline-block;
+}
