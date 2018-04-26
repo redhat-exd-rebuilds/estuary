@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, HostListener, OnInit, Input, ViewChildren } from '@angular/core';
+import { Component, AfterViewInit, HostListener, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
 import { StoryService } from '../services/story.service';
@@ -14,7 +14,7 @@ declare var jsPlumb: any;
   templateUrl: './story.component.html',
   styleUrls: ['./story.component.css']
 })
-export class StoryComponent implements OnInit {
+export class StoryComponent implements OnInit, OnDestroy {
 
   // Currently unused but we should use this for a loading bar of some kind
   loading: Boolean;
@@ -25,9 +25,16 @@ export class StoryComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params: ParamMap) => {
       this.loading = true;
+      // If the route changes, then remove all the connections
+      jsPlumb.reset();
       this.story = [];
       this.getStory(params['resource'], params['uid']);
     });
+  }
+
+  ngOnDestroy() {
+    // If the component is destroyed, reset all the connections
+    jsPlumb.reset();
   }
 
   // TODO: Figure out a more efficient way here
