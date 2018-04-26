@@ -1,4 +1,6 @@
-import { Component, OnInit, AfterViewInit, Input, ElementRef, Directive, HostListener } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, ElementRef, Directive } from '@angular/core';
+
+import { Connection as jsPlumbConnection } from 'jsplumb';
 
 // The TypeScript definitions are missing a few functions we need. I submitted a PR at
 // https://github.com/jsplumb/jsplumb/pull/736. In the meantime, lets use any as the type.
@@ -14,14 +16,18 @@ export class PlumbConnectDirective implements AfterViewInit {
   constructor(private element: ElementRef) { }
 
   ngAfterViewInit() {
-    this.nodeIDs.forEach(nodeID => {
-      jsPlumb.connect({
-        source: nodeID,
-        target: this.element.nativeElement.id,
-        endpoint : 'Blank',
-        connector : ['Flowchart', {cornerRadius: 3}],
-        anchor: ['Bottom', 'Top'],
-        paintStyle: {stroke: 'black', strokeWidth: 2},
+    let that = this;
+    // We have to wait for jsPlumb to be ready before doing any connections
+    jsPlumb.bind('ready', function() {
+      that.nodeIDs.forEach(nodeID => {
+        jsPlumb.connect({
+          source: nodeID,
+          target: that.element.nativeElement.id,
+          endpoint : 'Blank',
+          connector : ['Flowchart', {cornerRadius: 3}],
+          anchor: ['Bottom', 'Top'],
+          paintStyle: {stroke: 'black', strokeWidth: 2},
+        });
       });
     });
   }
