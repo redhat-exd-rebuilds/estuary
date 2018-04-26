@@ -14,7 +14,8 @@ div.diagramRow.circleRow img.item {
 
 div.diagramRow.rectangleRow div.item {
     border: 3px solid black;
-    height: 140px; width: 66px;
+    height: 140px;
+    width: 66px;
     border-radius: 5px;
     display: inline-block;
 }

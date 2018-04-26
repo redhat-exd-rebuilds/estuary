@@ -37,12 +37,9 @@ export class StoryRowComponent implements OnInit, AfterViewInit {
   @Input('nodes') nodes: Array<object>;
   @Input('nodeType') nodeType: String;
   private nodeShape: String;
-  private element: ElementRef;
   private prevNodeIDs: Array<String> = [];
 
-  constructor(element: ElementRef) {
-    this.element = element;
-  }
+  constructor(private element: ElementRef) { }
 
   ngOnInit() {
     this.nodeShape = this.getNodeShape();
