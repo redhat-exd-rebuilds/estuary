@@ -1,6 +1,13 @@
-#diagram > div {
+app-storyrow {
     display: flex;
-    margin-top: 20px;
-    margin-left: 20px;
-    margin-bottom: 30px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+@media (min-width : 992px) {
+    app-storyrow {
+        justify-content: flex-start;
+    }
 }

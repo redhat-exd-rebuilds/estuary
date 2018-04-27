@@ -1,21 +1,81 @@
-div.diagramRow > :not(:first-child) {
-    margin-left: 50px;
+div.mainItemText {
+    flex-basis: 30%;
+    word-wrap: break-word;
 }
 
-div.diagramRow {
-    margin-bottom: 50px;
+div.mainItem, div.secondaryItem {
+    flex-basis: 30%;
 }
 
-div.diagramRow.circleRow img.item {
+div.mainItem > div, div.secondaryItem > div {
+    margin: auto;
+}
+
+p.mainItemIcon, p.secondaryItemText {
+    display: none;
+}
+
+@media (min-width : 992px) {
+    p.mainItemIcon, p.secondaryItemText {
+        display: block;
+    }
+
+    p.mainItemIcon > span.displayName {
+        padding-left: 5px;
+    }
+
+    p.mainItemIcon {
+        flex-basis: 12.5%;
+        max-width: 175px;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 1.3rem;
+    }
+
+    p.mainItemIcon i {
+        padding: 5px;
+        border: 2px solid black;
+        border-radius: 50%;
+        font-size: 2rem;
+    }
+
+    div.mainItemText {
+        max-width: 350px;
+        flex-basis: 10%;
+    }
+
+    div.mainItem, div.secondaryItem {
+        flex-basis: 10%;
+        max-width: 300px;
+    }
+
+    div.secondaryItem > div {
+        margin: 0;
+        margin-left: auto;
+    }
+
+     p.secondaryItemText {
+        padding-left: 20px;
+    }
+}
+
+div.mainItem > div.circleItem, div.secondaryItem > div.circleItem {
     height: 66px;
     width: 66px;
-    display: inline-block;
+    border: 3px solid black;
+    border-radius: 50%;
 }
 
-div.diagramRow.rectangleRow div.item {
-    border: 3px solid black;
+div.mainItem > div.rectangleItem, div.secondaryItem > div.rectangleItem {
     height: 140px;
     width: 66px;
     border-radius: 5px;
-    display: inline-block;
+}
+
+div.mainItem > div.circleItem, div.mainItem > div.rectangleItem {
+    border: 3px solid black;
+}
+
+div.secondaryItem > div.circleItem, div.secondaryItem > div.rectangleItem {
+    border: 3px dashed black;
 }
