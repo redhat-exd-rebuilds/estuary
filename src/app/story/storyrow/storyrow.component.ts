@@ -76,17 +76,65 @@ export class StoryRowComponent implements OnInit, AfterViewInit {
     let previousSibling = this.element.nativeElement.previousElementSibling;
 
     if (previousSibling && previousSibling.tagName === 'APP-STORYROW') {
-      if (previousSibling.children) {
-        let nodes = Array.from(previousSibling.children[0].children);
-        nodes.forEach(function(node: HTMLElement) {
-          // Only connect with HTML elements that have the class "item"
-          if (Array.from(node.classList).includes('item')) {
-            prevNodeIDs.push(node.id);
-          }
-       });
-      }
+      let previousRow: Array<HTMLElement> = Array.from(previousSibling.children);
+      previousRow.forEach(function(column: HTMLElement) {
+        if ((column.classList.contains('mainItem') || column.classList.contains('secondaryItem')) && column.children.length) {
+          prevNodeIDs.push(column.children[0].id);
+        }
+      });
     }
 
     return prevNodeIDs;
+  }
+
+  getNodeUID(nodeType: String): String {
+    switch(nodeType) {
+      case('BugzillaBug'):
+        return 'RHBZ#' + this.nodes[0]['id'];
+      case('DistGitCommit'):
+        return '#' + this.nodes[0]['hash'].slice(0, 7);
+      case('KojiBuild'):
+        return `${this.nodes[0]['name']}-${this.nodes[0]['version']}-${this.nodes[0]['release']}`;
+      case('Advisory'):
+        return this.nodes[0]['advisory_name'];
+      default:
+        return this.nodes[0]['id'];
+    }
+  }
+
+  getNodeDisplayName(nodeType: String): String {
+    switch(nodeType) {
+      case('BugzillaBug'):
+        return 'Bug';
+      case('DistGitCommit'):
+        return 'Commit';
+      case('KojiBuild'):
+        return 'Build';
+      case('FreshmakerEvent'):
+        return 'Freshmaker';
+      case('ContainerBuilds'):
+        return 'Containers';
+      default:
+        return nodeType;
+    }
+  }
+
+  getNodeIconClass(nodeType: String): String {
+    switch(nodeType) {
+      case('BugzillaBug'):
+        return 'fa-bug';
+      case('DistGitCommit'):
+        return 'pficon-bundle';
+      case('KojiBuild'):
+        return 'pficon-build';
+      case('Advisory'):
+        return 'pficon-security';
+      case('FreshmakerEvent'):
+        return 'fa-refresh';
+      case('ContainerBuilds'):
+        return 'pficon-build';
+      default:
+        return 'fa-cube';
+    }
   }
 }
