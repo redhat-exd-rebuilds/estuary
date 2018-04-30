@@ -16,7 +16,7 @@ export class PlumbConnectDirective implements AfterViewInit {
   constructor(private element: ElementRef) { }
 
   ngAfterViewInit() {
-    let that = this;
+    const that = this;
     // We have to wait for jsPlumb to be ready before doing any connections
     jsPlumb.bind('ready', function() {
       that.nodeIDs.forEach(nodeID => {
@@ -60,7 +60,7 @@ export class StoryRowComponent implements OnInit, AfterViewInit {
   }
 
   getNodeShape(): String {
-    switch(this.nodeType.toLowerCase()) {
+    switch (this.nodeType.toLowerCase()) {
       case('bugzillabug'):
       case('distgitcommit'):
       case('freshmakerevent'):
@@ -72,11 +72,11 @@ export class StoryRowComponent implements OnInit, AfterViewInit {
   }
 
   getPreviousNodes(): Array<String> {
-    let prevNodeIDs = [];
-    let previousSibling = this.element.nativeElement.previousElementSibling;
+    const prevNodeIDs = [];
+    const previousSibling = this.element.nativeElement.previousElementSibling;
 
     if (previousSibling && previousSibling.tagName === 'APP-STORYROW') {
-      let previousRow: Array<HTMLElement> = Array.from(previousSibling.children);
+      const previousRow: Array<HTMLElement> = Array.from(previousSibling.children);
       previousRow.forEach(function(column: HTMLElement) {
         if ((column.classList.contains('mainItem') || column.classList.contains('secondaryItem')) && column.children.length) {
           prevNodeIDs.push(column.children[0].id);
@@ -88,7 +88,7 @@ export class StoryRowComponent implements OnInit, AfterViewInit {
   }
 
   getNodeUID(nodeType: String): String {
-    switch(nodeType) {
+    switch (nodeType) {
       case('BugzillaBug'):
         return 'RHBZ#' + this.nodes[0]['id'];
       case('DistGitCommit'):
@@ -103,7 +103,7 @@ export class StoryRowComponent implements OnInit, AfterViewInit {
   }
 
   getNodeDisplayName(nodeType: String): String {
-    switch(nodeType) {
+    switch (nodeType) {
       case('BugzillaBug'):
         return 'Bug';
       case('DistGitCommit'):
@@ -120,7 +120,7 @@ export class StoryRowComponent implements OnInit, AfterViewInit {
   }
 
   getNodeIconClass(nodeType: String): String {
-    switch(nodeType) {
+    switch (nodeType) {
       case('BugzillaBug'):
         return 'fa-bug';
       case('DistGitCommit'):
