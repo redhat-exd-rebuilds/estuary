@@ -11,7 +11,7 @@ declare var jsPlumb: any;
   selector: '[appPlumbConnect]'
 })
 export class PlumbConnectDirective implements AfterViewInit {
-  @Input('appPlumbConnect') nodeIDs: Array<String> = [];
+  @Input('appPlumbConnect') nodeIDs: Array<String> = []; // tslint:disable-line
 
   constructor(private element: ElementRef) { }
 
@@ -40,8 +40,8 @@ export class PlumbConnectDirective implements AfterViewInit {
   styleUrls: ['./storyrow.component.css']
 })
 export class StoryRowComponent implements OnInit, AfterViewInit {
-  @Input('node') node: any;
-  @Input('relatedNodes') relatedNodes: Number;
+  @Input() node: any;
+  @Input() relatedNodes: Number;
   private nodeShape: String;
   private prevNodeIDs: Array<String> = [];
 
