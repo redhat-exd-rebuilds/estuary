@@ -40,8 +40,8 @@ export class PlumbConnectDirective implements AfterViewInit {
   styleUrls: ['./storyrow.component.css']
 })
 export class StoryRowComponent implements OnInit, AfterViewInit {
-  @Input('nodes') nodes: Array<object>;
-  @Input('nodeType') nodeType: String;
+  @Input('node') node: any;
+  @Input('relatedNodes') relatedNodes: Number;
   private nodeShape: String;
   private prevNodeIDs: Array<String> = [];
 
@@ -60,7 +60,7 @@ export class StoryRowComponent implements OnInit, AfterViewInit {
   }
 
   getNodeShape(): String {
-    switch (this.nodeType.toLowerCase()) {
+    switch (this.node.resource_type.toLowerCase()) {
       case('bugzillabug'):
       case('distgitcommit'):
       case('freshmakerevent'):
@@ -76,9 +76,14 @@ export class StoryRowComponent implements OnInit, AfterViewInit {
     const previousSibling = this.element.nativeElement.previousElementSibling;
 
     if (previousSibling && previousSibling.tagName === 'APP-STORYROW') {
+      // The second row connects to all nodes in the previous row, where as
+      // all others just connect to the first node in the previous row
+      const isSecondRow = previousSibling.id === 'storyRow0';
       const previousRow: Array<HTMLElement> = Array.from(previousSibling.children);
       previousRow.forEach(function(column: HTMLElement) {
-        if ((column.classList.contains('mainItem') || column.classList.contains('secondaryItem')) && column.children.length) {
+        if (column.classList.contains('mainItem')) {
+          prevNodeIDs.push(column.children[0].id);
+        } else if (isSecondRow && column.classList.contains('secondaryItem') && column.children.length) {
           prevNodeIDs.push(column.children[0].id);
         }
       });
@@ -87,23 +92,23 @@ export class StoryRowComponent implements OnInit, AfterViewInit {
     return prevNodeIDs;
   }
 
-  getNodeUID(nodeType: String): String {
-    switch (nodeType) {
+  getNodeUID(): String {
+    switch (this.node.resource_type) {
       case('BugzillaBug'):
-        return 'RHBZ#' + this.nodes[0]['id'];
+        return 'RHBZ#' + this.node.id;
       case('DistGitCommit'):
-        return '#' + this.nodes[0]['hash'].slice(0, 7);
+        return '#' + this.node.hash.slice(0, 7);
       case('KojiBuild'):
-        return `${this.nodes[0]['name']}-${this.nodes[0]['version']}-${this.nodes[0]['release']}`;
+        return `${this.node.name}-${this.node.version}-${this.node.release}`;
       case('Advisory'):
-        return this.nodes[0]['advisory_name'];
+        return this.node.advisory_name;
       default:
-        return this.nodes[0]['id'];
+        return this.node.id;
     }
   }
 
-  getNodeDisplayName(nodeType: String): String {
-    switch (nodeType) {
+  getNodeDisplayName(): String {
+    switch (this.node.resource_type) {
       case('BugzillaBug'):
         return 'Bug';
       case('DistGitCommit'):
@@ -115,12 +120,12 @@ export class StoryRowComponent implements OnInit, AfterViewInit {
       case('ContainerBuilds'):
         return 'Containers';
       default:
-        return nodeType;
+        return this.node.resource_type;
     }
   }
 
-  getNodeIconClass(nodeType: String): String {
-    switch (nodeType) {
+  getNodeIconClass(): String {
+    switch (this.node.resource_type) {
       case('BugzillaBug'):
         return 'fa-bug';
       case('DistGitCommit'):

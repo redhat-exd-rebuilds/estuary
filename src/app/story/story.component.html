@@ -1,4 +1,4 @@
 <div id="diagram" *ngIf="story">
-  <app-storyrow [nodeType]="resources[0]" [nodes]="resources.slice(1)" *ngFor="let resources of story">
+  <app-storyrow id="{{ 'storyRow' + i }}" [node]="resource" [relatedNodes]="story.meta.related_nodes[resource.resource_type]" *ngFor="let resource of story.data; let i = index">
   </app-storyrow>
 </div>

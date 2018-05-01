@@ -1,12 +1,12 @@
 <p class="mainItemIcon">
-  <i class="fa fa-th {{ getNodeIconClass(nodeType) }}" aria-hidden="true"></i>
-  <span>{{ getNodeDisplayName(nodeType) }}</span>
+  <i class="fa fa-th {{ getNodeIconClass() }}" aria-hidden="true"></i>
+  <span>{{ getNodeDisplayName() }}</span>
 </p>
-<div class="mainItemText">{{ getNodeUID(nodeType) }}</div>
+<div class="mainItemText">{{ getNodeUID() }}</div>
 <div class="mainItem">
-  <div [appPlumbConnect]="prevNodeIDs" id="{{ nodeType }}Primary" class="{{ nodeShape + 'Item' }}"></div>
+  <div [appPlumbConnect]="prevNodeIDs" id="{{ node.resource_type }}Primary" class="{{ nodeShape + 'Item' }}"></div>
 </div>
 <div class="secondaryItem">
-  <div *ngIf="nodes.length >= 2" [appPlumbConnect]="prevNodeIDs" id="{{ nodeType }}Secondary" class="{{ nodeShape + 'Item' }}"></div>
+  <div *ngIf="relatedNodes" [appPlumbConnect]="prevNodeIDs" id="{{ node.resource_type }}Secondary" class="{{ nodeShape + 'Item' }}"></div>
 </div>
-<p *ngIf="nodes.length >= 2" class="secondaryItemText">{{ (nodes.length - 1) + ' more' }}</p>
+<p *ngIf="relatedNodes" class="secondaryItemText">{{ relatedNodes + ' more' }}</p>
