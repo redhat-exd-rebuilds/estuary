@@ -79,3 +79,8 @@ div.mainItem > div.circleItem, div.mainItem > div.rectangleItem {
 div.secondaryItem > div.circleItem, div.secondaryItem > div.rectangleItem {
     border: 3px dashed black;
 }
+
+div.mainItem > div.active {
+    border-color: #5B96A9;
+    background-color: #D7E5EA;
+}

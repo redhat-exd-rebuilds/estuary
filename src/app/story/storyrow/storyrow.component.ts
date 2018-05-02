@@ -42,6 +42,7 @@ export class PlumbConnectDirective implements AfterViewInit {
 export class StoryRowComponent implements OnInit, AfterViewInit {
   @Input() node: any;
   @Input() relatedNodes: Number;
+  @Input() active: Boolean;
   private nodeShape: String;
   private prevNodeIDs: Array<String> = [];
 

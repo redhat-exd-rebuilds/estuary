@@ -4,9 +4,11 @@
 </p>
 <div class="mainItemText">{{ getNodeUID() }}</div>
 <div class="mainItem">
-  <div [appPlumbConnect]="prevNodeIDs" id="{{ node.resource_type }}Primary" class="{{ nodeShape + 'Item' }}"></div>
+  <div [appPlumbConnect]="prevNodeIDs" id="{{ node.resource_type + 'Primary' }}"
+      class="{{ nodeShape + 'Item' }}" [ngClass]="{'active': active}"></div>
 </div>
 <div class="secondaryItem">
-  <div *ngIf="relatedNodes" [appPlumbConnect]="prevNodeIDs" id="{{ node.resource_type }}Secondary" class="{{ nodeShape + 'Item' }}"></div>
+  <div *ngIf="relatedNodes" [appPlumbConnect]="prevNodeIDs" id="{{ node.resource_type + 'Secondary'}}"
+      class="{{ nodeShape + 'Item' }}"></div>
 </div>
 <p *ngIf="relatedNodes" class="secondaryItemText">{{ relatedNodes + ' more' }}</p>
