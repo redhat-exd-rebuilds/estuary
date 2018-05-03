@@ -37,6 +37,11 @@
     text-decoration: none;
 }
 
+#sidebar > h3 {
+    font-weight: bold;
+    margin-left: 10px;
+}
+
 #sidebarProperties {
     margin: 20px 10px 10px 10px;
     padding-right: 10px;

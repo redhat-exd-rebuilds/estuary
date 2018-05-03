@@ -7,10 +7,13 @@
     </a>
     <ng-container *ngIf="sidebarOpen">Properties</ng-container>
   </div>
-  <div id="sidebarProperties" *ngIf="sidebarOpen">
-    <ng-container *ngFor="let keyValue of resource | keyValuePairs">
-      <div>{{ keyValue[0] | propertyDisplay }}</div>
-      <div>{{ isDate(keyValue[1]) ? (keyValue[1] | date:'MMMM d, y, HH:mm:ss':'+0000') + ' UTC' : keyValue[1] }}</div>
-    </ng-container>
-  </div>
+  <ng-container *ngIf="sidebarOpen">
+    <h3>{{ resource | nodeUidDisplay }}</h3>
+    <div id="sidebarProperties">
+      <ng-container *ngFor="let keyValue of resource | keyValuePairs">
+        <div>{{ keyValue[0] | propertyDisplay }}</div>
+        <div>{{ isDate(keyValue[1]) ? (keyValue[1] | date:'MMMM d, y, HH:mm:ss':'+0000') + ' UTC' : keyValue[1] }}</div>
+      </ng-container>
+    </div>
+  </ng-container>
 </div>

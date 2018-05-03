@@ -93,21 +93,6 @@ export class StoryRowComponent implements OnInit, AfterViewInit {
     return prevNodeIDs;
   }
 
-  getNodeUID(): String {
-    switch (this.node.resource_type) {
-      case('BugzillaBug'):
-        return 'RHBZ#' + this.node.id;
-      case('DistGitCommit'):
-        return '#' + this.node.hash.slice(0, 7);
-      case('KojiBuild'):
-        return `${this.node.name}-${this.node.version}-${this.node.release}`;
-      case('Advisory'):
-        return this.node.advisory_name;
-      default:
-        return this.node.id;
-    }
-  }
-
   getNodeDisplayName(): String {
     switch (this.node.resource_type) {
       case('BugzillaBug'):

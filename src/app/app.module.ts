@@ -10,6 +10,7 @@ import { StoryRowComponent, PlumbConnectDirective } from './story/storyrow/story
 import { StorysidebarComponent } from './story/storysidebar/storysidebar.component';
 import { KeyValuePairsPipe } from './pipes/keyvaluepairs';
 import { PropertyDisplayPipe } from './pipes/propertydisplay';
+import { NodeUidDisplayPipe } from './pipes/nodedisplay';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { PropertyDisplayPipe } from './pipes/propertydisplay';
     StorysidebarComponent,
     PlumbConnectDirective,
     KeyValuePairsPipe,
-    PropertyDisplayPipe
+    PropertyDisplayPipe,
+    NodeUidDisplayPipe
   ],
   imports: [
     AppRoutingModule,

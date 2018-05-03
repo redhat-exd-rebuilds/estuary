@@ -2,7 +2,7 @@
   <i class="fa fa-th {{ getNodeIconClass() }}" aria-hidden="true"></i>
   <span>{{ getNodeDisplayName() }}</span>
 </p>
-<div class="mainItemText">{{ getNodeUID() }}</div>
+<div class="mainItemText">{{ node | nodeUidDisplay }}</div>
 <div class="mainItem">
   <div [appPlumbConnect]="prevNodeIDs" id="{{ node.resource_type + 'Primary' }}"
       class="{{ nodeShape + 'Item' }}" [ngClass]="{'active': active}"></div>
