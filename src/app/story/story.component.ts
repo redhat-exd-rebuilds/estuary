@@ -31,6 +31,7 @@ export class StoryComponent implements OnInit, OnDestroy {
       jsPlumb.reset();
       this.story = [];
       this.selectedResource = params['resource'];
+      this.selectedNode = null;
       this.getStory(params['resource'], params['uid']);
     });
   }
