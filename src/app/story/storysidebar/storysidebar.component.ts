@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./storysidebar.component.css']
 })
 export class StorysidebarComponent implements OnInit {
-  @Input() resource: any;
+  @Input() node: any;
   sidebarOpen = false;
 
   constructor() { }
