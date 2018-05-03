@@ -1,0 +1,16 @@
+<div id="sidebar" *ngIf="resource" [ngClass]="{'open': sidebarOpen, 'closed': !sidebarOpen}">
+  <div id="sidebarTitle">
+    <a href="#" (click)="sidebarOpen = !sidebarOpen; $event.preventDefault()">
+      <i [ngClass]="{'fa-angle-double-right': sidebarOpen, 'fa-angle-double-left': !sidebarOpen}"
+          class="fa fa-th" aria-hidden="true">
+      </i>
+    </a>
+    <ng-container *ngIf="sidebarOpen">Properties</ng-container>
+  </div>
+  <div id="sidebarProperties" *ngIf="sidebarOpen">
+    <ng-container *ngFor="let keyValue of resource | keyValuePairs">
+      <div>{{ keyValue[0] | propertyDisplay }}</div>
+      <div>{{ isDate(keyValue[1]) ? (keyValue[1] | date:'MMMM d, y, HH:mm:ss':'+0000') + ' UTC' : keyValue[1] }}</div>
+    </ng-container>
+  </div>
+</div>

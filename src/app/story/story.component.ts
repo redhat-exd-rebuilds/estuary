@@ -19,7 +19,8 @@ export class StoryComponent implements OnInit, OnDestroy {
   // Currently unused but we should use this for a loading bar of some kind
   loading: Boolean;
   story: Array<any> = [];
-  selectedResource: String;
+  selectedResourceType: String;
+  selectedResource: any;
 
   constructor(private storyService: StoryService, private route: ActivatedRoute) { }
 
@@ -29,7 +30,7 @@ export class StoryComponent implements OnInit, OnDestroy {
       // If the route changes, then remove all the connections
       jsPlumb.reset();
       this.story = [];
-      this.selectedResource = params['resource'];
+      this.selectedResourceType = params['resource'];
       this.getStory(params['resource'], params['uid']);
     });
   }
@@ -50,8 +51,14 @@ export class StoryComponent implements OnInit, OnDestroy {
   getStory(resource: String, uid: String) {
     this.loading = true;
     this.storyService.getStory(resource, uid).subscribe(
-      data => {
-        this.story = data;
+      story => {
+        story.data.forEach(resource => {
+          if (resource.resource_type.toLowerCase() === this.selectedResourceType.toLowerCase()) {
+            this.selectedResource = resource;
+            return;
+          }
+        });
+        this.story = story;
       },
       error => {
         // TODO: Change me to be an alert
@@ -61,9 +68,5 @@ export class StoryComponent implements OnInit, OnDestroy {
         this.loading = false;
       }
     );
-  }
-
-  isSelectedResource(resource: any): Boolean {
-    return resource.resource_type.toLowerCase() === this.selectedResource.toLowerCase();
   }
 }

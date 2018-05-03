@@ -6,7 +6,7 @@ app-storyrow {
     margin-bottom: 50px;
 }
 
-@media (min-width : 992px) {
+@media (min-width: 992px) {
     app-storyrow {
         justify-content: flex-start;
     }
