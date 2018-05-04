@@ -20,6 +20,7 @@ export class StoryComponent implements OnInit, OnDestroy {
   loading: Boolean;
   story: Array<any> = [];
   selectedResource: String;
+  selectedNode: any;
 
   constructor(private storyService: StoryService, private route: ActivatedRoute) { }
 
@@ -30,6 +31,7 @@ export class StoryComponent implements OnInit, OnDestroy {
       jsPlumb.reset();
       this.story = [];
       this.selectedResource = params['resource'];
+      this.selectedNode = null;
       this.getStory(params['resource'], params['uid']);
     });
   }
@@ -50,8 +52,14 @@ export class StoryComponent implements OnInit, OnDestroy {
   getStory(resource: String, uid: String) {
     this.loading = true;
     this.storyService.getStory(resource, uid).subscribe(
-      data => {
-        this.story = data;
+      story => {
+        story.data.forEach(node => {
+          if (node.resource_type.toLowerCase() === this.selectedResource.toLowerCase()) {
+            this.selectedNode = node;
+            return;
+          }
+        });
+        this.story = story;
       },
       error => {
         // TODO: Change me to be an alert
@@ -61,9 +69,5 @@ export class StoryComponent implements OnInit, OnDestroy {
         this.loading = false;
       }
     );
-  }
-
-  isSelectedResource(resource: any): Boolean {
-    return resource.resource_type.toLowerCase() === this.selectedResource.toLowerCase();
   }
 }

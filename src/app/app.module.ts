@@ -7,6 +7,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { StoryComponent } from './story/story.component';
 import { StoryService } from './services/story.service';
 import { StoryRowComponent, PlumbConnectDirective } from './story/storyrow/storyrow.component';
+import { StorysidebarComponent } from './story/storysidebar/storysidebar.component';
+import { KeyValuePairsPipe } from './pipes/keyvaluepairs';
+import { PropertyDisplayPipe } from './pipes/propertydisplay';
+import { NodeUidDisplayPipe } from './pipes/nodedisplay';
 
 
 @NgModule({
@@ -14,7 +18,11 @@ import { StoryRowComponent, PlumbConnectDirective } from './story/storyrow/story
     AppComponent,
     StoryComponent,
     StoryRowComponent,
-    PlumbConnectDirective
+    StorysidebarComponent,
+    PlumbConnectDirective,
+    KeyValuePairsPipe,
+    PropertyDisplayPipe,
+    NodeUidDisplayPipe
   ],
   imports: [
     AppRoutingModule,

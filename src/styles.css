@@ -2,3 +2,13 @@ div.container-fluid {
     padding-left: 10px;
     padding-right: 10px;
 }
+
+html {
+    /* This is so that the sidebar can properly use height 100% */
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    background-color: #F8F8F8;
+}

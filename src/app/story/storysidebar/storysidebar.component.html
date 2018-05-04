@@ -1,0 +1,19 @@
+<div id="sidebar" *ngIf="node" [ngClass]="{'open': sidebarOpen, 'closed': !sidebarOpen}">
+  <div id="sidebarTitle">
+    <a href="#" (click)="sidebarOpen = !sidebarOpen; $event.preventDefault()">
+      <i [ngClass]="{'fa-angle-double-right': sidebarOpen, 'fa-angle-double-left': !sidebarOpen}"
+          class="fa fa-th" aria-hidden="true">
+      </i>
+    </a>
+    <ng-container *ngIf="sidebarOpen">Properties</ng-container>
+  </div>
+  <ng-container *ngIf="sidebarOpen">
+    <h3>{{ node | nodeUidDisplay }}</h3>
+    <div id="sidebarProperties">
+      <ng-container *ngFor="let keyValue of node | keyValuePairs">
+        <div>{{ keyValue[0] | propertyDisplay }}</div>
+        <div>{{ isDate(keyValue[1]) ? (keyValue[1] | date:'MMMM d, y, HH:mm:ss':'+0000') + ' UTC' : keyValue[1] }}</div>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>

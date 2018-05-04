@@ -1,5 +1,7 @@
 <div id="diagram" *ngIf="story">
-  <app-storyrow id="{{ 'storyRow' + i }}" [node]="resource" [relatedNodes]="story.meta.related_nodes[resource.resource_type]"
-      [active]="isSelectedResource(resource)" *ngFor="let resource of story.data; let i = index">
+  <app-storyrow id="{{ 'storyRow' + i }}" [node]="node" [relatedNodes]="story.meta.related_nodes[node.resource_type]"
+      [active]="node.resource_type === selectedNode.resource_type" *ngFor="let node of story.data; let i = index">
   </app-storyrow>
 </div>
+
+<app-storysidebar *ngIf="!isLoading" [node]="selectedNode"></app-storysidebar>
