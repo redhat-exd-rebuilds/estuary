@@ -9,6 +9,12 @@ div.mainItem, div.secondaryItem {
 
 div.mainItem > div, div.secondaryItem > div {
     margin: auto;
+    outline: 0;
+}
+
+div.mainItem > div:hover {
+    cursor: pointer;
+    background-color: #D7E5EA;
 }
 
 p.mainItemIcon, p.secondaryItemText {
