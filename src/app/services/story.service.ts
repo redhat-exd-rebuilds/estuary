@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 import { environment } from '../../environments/environment';
 
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class StoryService {
 
   readonly apiUrl: String = environment.api;

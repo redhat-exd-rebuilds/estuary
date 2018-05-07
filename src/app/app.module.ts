@@ -5,7 +5,6 @@ import { HttpClientModule,  } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { StoryComponent } from './story/story.component';
-import { StoryService } from './services/story.service';
 import { StoryRowComponent, PlumbConnectDirective } from './story/storyrow/storyrow.component';
 import { StorysidebarComponent } from './story/storysidebar/storysidebar.component';
 import { KeyValuePairsPipe } from './pipes/keyvaluepairs';
@@ -29,7 +28,7 @@ import { NodeUidDisplayPipe } from './pipes/nodedisplay';
     BrowserModule,
     HttpClientModule
   ],
-  providers: [StoryService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
