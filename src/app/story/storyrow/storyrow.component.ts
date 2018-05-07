@@ -128,4 +128,13 @@ export class StoryRowComponent implements OnInit, AfterViewInit {
         return 'fa-cube';
     }
   }
+
+  getNodeUid(): String {
+    switch (this.node.resource_type) {
+      case('DistGitCommit'):
+        return this.node.hash;
+      default:
+        return this.node.id;
+    }
+  }
 }
