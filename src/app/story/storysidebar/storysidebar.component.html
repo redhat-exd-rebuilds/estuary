@@ -1,4 +1,4 @@
-<div id="sidebar" *ngIf="node" [ngClass]="{'open': sidebarOpen, 'closed': !sidebarOpen}">
+<div id="sidebar" [ngClass]="{'open': sidebarOpen, 'closed': !sidebarOpen}">
   <div id="sidebarTitle">
     <a href="#" (click)="sidebarOpen = !sidebarOpen; $event.preventDefault()">
       <i [ngClass]="{'fa-angle-double-right': sidebarOpen, 'fa-angle-double-left': !sidebarOpen}"
@@ -7,7 +7,7 @@
     </a>
     <ng-container *ngIf="sidebarOpen">Properties</ng-container>
   </div>
-  <ng-container *ngIf="sidebarOpen">
+  <ng-container *ngIf="sidebarOpen && node">
     <h3>{{ node | nodeUidDisplay }}</h3>
     <div id="sidebarProperties">
       <ng-container *ngFor="let keyValue of node | keyValuePairs">
