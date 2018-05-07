@@ -1,7 +1,9 @@
-<div id="diagram" *ngIf="story">
-  <app-storyrow id="{{ 'storyRow' + i }}" [node]="node" [relatedNodes]="story.meta.related_nodes[node.resource_type]"
-      [active]="node.resource_type === selectedNode.resource_type" *ngFor="let node of story.data; let i = index">
-  </app-storyrow>
+<div class="container-fluid">
+  <div id="diagram" *ngIf="story">
+    <app-storyrow id="{{ 'storyRow' + i }}" [node]="node" [relatedNodes]="story.meta.related_nodes[node.resource_type]"
+        [active]="node.resource_type === selectedNode.resource_type" *ngFor="let node of story.data; let i = index">
+    </app-storyrow>
+  </div>
 </div>
 
 <app-storysidebar [node]="selectedNode"></app-storysidebar>
