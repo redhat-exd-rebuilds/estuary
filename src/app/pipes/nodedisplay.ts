@@ -18,3 +18,27 @@ export class NodeUidDisplayPipe implements PipeTransform {
     }
   }
 }
+
+
+@Pipe({name: 'nodeTypeDisplay'})
+export class NodeTypeDisplayPipe implements PipeTransform {
+  // This Pipe takes a node type as input and figures out it's type in display form
+  transform(nodeType: String): String {
+    switch (nodeType.toLowerCase()) {
+        case('bugzillabug'):
+            return 'Bugzilla Bug';
+        case('distgitcommit'):
+            return 'Commit';
+        case('kojibuild'):
+            return 'Brew Build';
+        case('advisory'):
+            return 'Advisory';
+        case('freshmakerevent'):
+            return 'Freshmaker Event';
+        case('containerbuilds'):
+            return 'Container Build';
+        default:
+            return '';
+    }
+  }
+}
