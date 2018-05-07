@@ -16,19 +16,18 @@ export class PlumbConnectDirective implements AfterViewInit {
   constructor(private element: ElementRef) { }
 
   ngAfterViewInit() {
-    const that = this;
     // We have to wait for jsPlumb to be ready before doing any connections
-    jsPlumb.bind('ready', function() {
-      that.nodeIDs.forEach(nodeID => {
+    jsPlumb.bind('ready', () => {
+      for (const nodeID of this.nodeIDs) {
         jsPlumb.connect({
           source: nodeID,
-          target: that.element.nativeElement.id,
+          target: this.element.nativeElement.id,
           endpoint : 'Blank',
           connector : ['Flowchart', {cornerRadius: 3}],
           anchor: ['Bottom', 'Top'],
           paintStyle: {stroke: 'black', strokeWidth: 2},
         });
-      });
+      }
     });
   }
 }
@@ -81,13 +80,13 @@ export class StoryRowComponent implements OnInit, AfterViewInit {
       // all others just connect to the first node in the previous row
       const isSecondRow = previousSibling.id === 'storyRow0';
       const previousRow: Array<HTMLElement> = Array.from(previousSibling.children);
-      previousRow.forEach(function(column: HTMLElement) {
+      for (const column of previousRow) {
         if (column.classList.contains('mainItem')) {
           prevNodeIDs.push(column.children[0].id);
         } else if (isSecondRow && column.classList.contains('secondaryItem') && column.children.length) {
           prevNodeIDs.push(column.children[0].id);
         }
-      });
+      }
     }
 
     return prevNodeIDs;

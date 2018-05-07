@@ -53,12 +53,12 @@ export class StoryComponent implements OnInit, OnDestroy {
     this.loading = true;
     this.storyService.getStory(resource, uid).subscribe(
       story => {
-        story.data.forEach(node => {
+        for (const node of story.data) {
           if (node.resource_type.toLowerCase() === this.selectedResource.toLowerCase()) {
             this.selectedNode = node;
-            return;
+            break;
           }
-        });
+        }
         this.story = story;
       },
       error => {
