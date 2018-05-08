@@ -1,0 +1,22 @@
+<div *ngIf="availableResources" id="searchContainer">
+  <h1>Select an Artifact</h1>
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-btn">
+        <select [(ngModel)]="selectedResource" id="resourceSelector" class="btn btn-info">
+          <option *ngFor="let resource of availableResources | keys" [value]="resource">
+            {{ resource | nodeTypeDisplay }}
+          </option>
+        </select>
+      </span>
+      <input (keyup.enter)="navigateToStory()" [(ngModel)]="selectedUID" type="text" class="form-control" required
+          placeholder="Enter the {{ availableResources[selectedResource] }}">
+      <span class="input-group-btn">
+        <button (click)="navigateToStory()" id="searchButton" class="btn btn-success" type="button">
+          <!-- The button will only have the text " Story" when in mobile view -->
+          Show<span id="searchButtonTextDesktop"> Story</span>
+        </button>
+      </span>
+    </div>
+  </div>
+</div>

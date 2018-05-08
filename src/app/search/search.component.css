@@ -1,0 +1,107 @@
+#searchContainer {
+    margin: 5rem auto 5rem auto;
+    width: 90%;
+    left: 5%;
+}
+
+#searchContainer div.form-group * {
+    /* Make the text in the form elements larger */
+    font-size: 1.5rem;
+}
+
+#searchContainer input, #searchContainer select, #searchButton {
+    /* Make the form elements taller */
+    height: 40px;
+}
+
+#searchButton {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#searchContainer input {
+    /* Make the text in the input box be further to the right */
+    padding-left: 5px;
+}
+
+#searchContainer select.btn {
+    /* Center the text in the select element */
+    text-align-last: center;
+    /* Don't show an outline on the select element when it is focused */
+    outline: 0;
+    /* Add the same border that the input element next to it has */
+    border: 1px solid #bbb;
+
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    /* Workaround to replace the ugly arrow in Firefox */
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("/assets/arrowdown.svg");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 7.5px) center;
+    padding-right: 25px;
+}
+
+#searchContainer select.btn > option {
+    /* Override the colors coming from the btn classes on the select options */
+    background-color: #F8F8F8;
+    color: #363636;
+}
+
+#searchContainer div.form-group {
+    /* Center the form elements within the search container */
+    margin: 0 auto 0 auto;
+    /* Don't allow the form elements to get too long */
+    max-width: 800px;
+}
+
+#searchButtonTextDesktop {
+    /* Shorten the search button text when on mobile */
+    display: none;
+}
+
+#searchContainer > h1 {
+    text-align: center;
+    margin: 0 0 2.5rem 0;
+}
+
+@media (min-width: 992px) {
+    /* On desktops, make the form elements take up less room on the page */
+    #searchContainer {
+        width: 60%;
+        left: 20%;
+    }
+
+    #searchContainer h1 {
+        margin-bottom: 4rem;
+    }
+
+    #searchButtonTextDesktop {
+        /* On desktops, show more text on the search button */
+        display: initial;
+    }
+
+    #searchContainer input {
+        /* Make the text in the input box be further to the right */
+        padding-left: 10px;
+    }
+
+    #searchButton {
+        /* Add space around the text in the button */
+        padding-left: 10px;
+        padding-right: 10px;
+
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+}
+
+@media (min-height: 400px) {
+    #searchContainer {
+        /* Position the search container be 35% down the page */
+        position: fixed;
+        /* 35% minus half the size of #seachContainer */
+        top: calc(35% - 53px);
+    }
+}
