@@ -8,9 +8,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { StoryComponent } from './story/story.component';
 import { StoryRowComponent, PlumbConnectDirective } from './story/storyrow/storyrow.component';
 import { StorysidebarComponent } from './story/storysidebar/storysidebar.component';
-import { KeyValuePairsPipe, KeysPipe } from './pipes/keyvaluepairs';
+import { KeysPipe } from './pipes/keyvaluepairs';
 import { PropertyDisplayPipe } from './pipes/propertydisplay';
-import { NodeUidDisplayPipe, NodeTypeDisplayPipe } from './pipes/nodedisplay';
+import { NodeUidDisplayPipe, NodeTypeDisplayPipe, NodeFilterPropertiesPipe } from './pipes/nodedisplay';
 import { SearchComponent } from './search/search.component';
 
 
@@ -21,12 +21,12 @@ import { SearchComponent } from './search/search.component';
     StoryRowComponent,
     StorysidebarComponent,
     PlumbConnectDirective,
-    KeyValuePairsPipe,
     PropertyDisplayPipe,
     NodeUidDisplayPipe,
     SearchComponent,
     KeysPipe,
-    NodeTypeDisplayPipe
+    NodeTypeDisplayPipe,
+    NodeFilterPropertiesPipe
   ],
   imports: [
     AppRoutingModule,

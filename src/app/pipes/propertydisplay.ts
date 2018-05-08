@@ -8,10 +8,15 @@ export class PropertyDisplayPipe implements PipeTransform {
     if (property === 'id') {
       return 'ID:';
     }
-    const rv = property.toLowerCase().replace('_', ' ').split(' ');
-    for (let i = 0; i < rv.length; i++) {
-      rv[i] = rv[i].charAt(0).toUpperCase() + rv[i].slice(1);
+    const rvArray = property.toLowerCase().replace(/_/g, ' ').split(' ');
+    for (let i = 0; i < rvArray.length; i++) {
+      rvArray[i] = rvArray[i].charAt(0).toUpperCase() + rvArray[i].slice(1);
     }
-    return rv.join(' ') + ':';
+    let rv = rvArray.join(' ') + ':';
+    // Edge cases that need capitalization
+    if (rv.startsWith('Qa')) {
+      rv = 'QA' + rv.slice(2);
+    }
+    return rv;
   }
 }
