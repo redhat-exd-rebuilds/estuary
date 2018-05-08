@@ -1,6 +1,6 @@
 <p class="mainItemIcon">
   <i class="fa fa-th {{ getNodeIconClass() }}" aria-hidden="true"></i>
-  <span>{{ getNodeDisplayName() }}</span>
+  <span>{{ node.resource_type | nodeTypeDisplay }}</span>
 </p>
 <div class="mainItemText">{{ node | nodeUidDisplay }}</div>
 <div class="mainItem">

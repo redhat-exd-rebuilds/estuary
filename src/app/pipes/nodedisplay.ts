@@ -38,7 +38,7 @@ export class NodeTypeDisplayPipe implements PipeTransform {
         case('containerbuilds'):
             return 'Container Build';
         default:
-            return '';
+            return nodeType;
     }
   }
 }
