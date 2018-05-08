@@ -2,7 +2,7 @@ import { PipeTransform, Pipe } from '@angular/core';
 
 @Pipe({name: 'nodeUidDisplay'})
 export class NodeUidDisplayPipe implements PipeTransform {
-  // This Pipe takes a node as input and figures out how to display it's unique identifier
+  // This Pipe takes a node as input and figures out how to display its unique identifier
   transform(node: any): String {
     switch (node.resource_type.toLowerCase()) {
         case('bugzillabug'):
@@ -22,7 +22,7 @@ export class NodeUidDisplayPipe implements PipeTransform {
 
 @Pipe({name: 'nodeTypeDisplay'})
 export class NodeTypeDisplayPipe implements PipeTransform {
-  // This Pipe takes a node type as input and figures out it's type in display form
+  // This Pipe takes a node type as input and figures out its type in display form
   transform(nodeType: String): String {
     switch (nodeType.toLowerCase()) {
         case('bugzillabug'):
