@@ -76,12 +76,38 @@ export class NodeFilterPropertiesPipe implements PipeTransform {
 
 @Pipe({name: 'nodeTypePlural'})
 export class NodeTypePluralPipe implements PipeTransform {
-  // This Pipe takes a node type as input and figures out its plural form
-  transform(nodeType: String): String {
-    if (nodeType.endsWith('y')) {
-        return `${nodeType.slice(0, -1)}ies`;
-    } else {
-        return `${nodeType}s`;
+    // This Pipe takes a node type as input and figures out its plural form
+    transform(nodeType: String): String {
+        if (nodeType.endsWith('y')) {
+            return `${nodeType.slice(0, -1)}ies`;
+        } else {
+            return `${nodeType}s`;
+        }
     }
-  }
+}
+
+
+@Pipe({name: 'nodeExternalUrl'})
+export class NodeExternalUrlPipe implements PipeTransform {
+    // This Pipe takes a node as input and figures out its external URL
+    transform(node: any): String {
+        switch (node.resource_type.toLowerCase()) {
+            case('bugzillabug'):
+                return `https://bugzilla.redhat.com/show_bug.cgi?id=${node.id}`;
+            case('distgitcommit'):
+                // Currently returning the link to cgit and not the commit
+                // because this will require a change in the API
+                return `http://pkgs.devel.redhat.com/cgit/`;
+            case('kojibuild'):
+                return `https://brew.engineering.redhat.com/brew/buildinfo?buildID=${node.id}`;
+            case('advisory'):
+                return `http://errata.engineering.redhat.com/advisory/${node.id}`;
+            case('freshmakerevent'):
+                return `https://freshmaker.engineering.redhat.com/api/1/events/${node.id}`;
+            case('containerbuilds'):
+                return `https://freshmaker.engineering.redhat.com/api/1/builds/${node.id}`;
+            default:
+                return '';
+        }
+    }
 }

@@ -11,7 +11,8 @@ import { StoryRowComponent, PlumbConnectDirective } from './story/storyrow/story
 import { StorysidebarComponent } from './story/storysidebar/storysidebar.component';
 import { KeysPipe } from './pipes/keyvaluepairs';
 import { PropertyDisplayPipe } from './pipes/propertydisplay';
-import { NodeUidDisplayPipe, NodeTypeDisplayPipe, NodeTypePluralPipe, NodeFilterPropertiesPipe } from './pipes/nodedisplay';
+import { NodeUidDisplayPipe, NodeTypeDisplayPipe, NodeTypePluralPipe, NodeFilterPropertiesPipe,
+         NodeExternalUrlPipe } from './pipes/nodedisplay';
 import { SearchComponent } from './search/search.component';
 
 
@@ -28,7 +29,8 @@ import { SearchComponent } from './search/search.component';
     KeysPipe,
     NodeTypeDisplayPipe,
     NodeFilterPropertiesPipe,
-    NodeTypePluralPipe
+    NodeTypePluralPipe,
+    NodeExternalUrlPipe
   ],
   imports: [
     AppRoutingModule,
