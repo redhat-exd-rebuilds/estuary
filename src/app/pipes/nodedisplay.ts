@@ -95,9 +95,12 @@ export class NodeExternalUrlPipe implements PipeTransform {
             case('bugzillabug'):
                 return `https://bugzilla.redhat.com/show_bug.cgi?id=${node.id}`;
             case('distgitcommit'):
-                // Currently returning the link to cgit and not the commit
-                // because this will require a change in the API
-                return `http://pkgs.devel.redhat.com/cgit/`;
+                const baseUrl = 'http://pkgs.devel.redhat.com/cgit/';
+                if (node.repos.length) {
+                    const repo = node.repos[0];
+                    return `${baseUrl}${repo.namespace}/${repo.name}/commit/?id=${node.hash}`;
+                }
+                return baseUrl;
             case('kojibuild'):
                 return `https://brew.engineering.redhat.com/brew/buildinfo?buildID=${node.id}`;
             case('advisory'):
