@@ -42,13 +42,11 @@ export class StoryRowComponent implements OnInit, AfterViewInit {
   @Input() node: any;
   @Input() relatedNodes: Number;
   @Input() active: Boolean;
-  private nodeShape: String;
   private prevNodeIDs: Array<String> = [];
 
   constructor(private element: ElementRef) { }
 
   ngOnInit() {
-    this.nodeShape = this.getNodeShape();
     this.prevNodeIDs = this.getPreviousNodes();
     // Don't draw until the view is initialized
     jsPlumb.setSuspendDrawing(true);
@@ -57,18 +55,6 @@ export class StoryRowComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     // Any connections have now been made, so the drawing can continue
     jsPlumb.setSuspendDrawing(false, true);
-  }
-
-  getNodeShape(): String {
-    switch (this.node.resource_type.toLowerCase()) {
-      case('bugzillabug'):
-      case('distgitcommit'):
-      case('freshmakerevent'):
-        return 'circle';
-
-      default:
-        return 'rectangle';
-    }
   }
 
   getPreviousNodes(): Array<String> {

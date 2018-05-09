@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule,  } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -10,7 +11,7 @@ import { StoryRowComponent, PlumbConnectDirective } from './story/storyrow/story
 import { StorysidebarComponent } from './story/storysidebar/storysidebar.component';
 import { KeysPipe } from './pipes/keyvaluepairs';
 import { PropertyDisplayPipe } from './pipes/propertydisplay';
-import { NodeUidDisplayPipe, NodeTypeDisplayPipe, NodeFilterPropertiesPipe } from './pipes/nodedisplay';
+import { NodeUidDisplayPipe, NodeTypeDisplayPipe, NodeTypePluralPipe, NodeFilterPropertiesPipe } from './pipes/nodedisplay';
 import { SearchComponent } from './search/search.component';
 
 
@@ -26,13 +27,15 @@ import { SearchComponent } from './search/search.component';
     SearchComponent,
     KeysPipe,
     NodeTypeDisplayPipe,
-    NodeFilterPropertiesPipe
+    NodeFilterPropertiesPipe,
+    NodeTypePluralPipe
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    TooltipModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

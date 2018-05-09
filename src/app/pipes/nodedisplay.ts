@@ -72,3 +72,16 @@ export class NodeFilterPropertiesPipe implements PipeTransform {
     return properties;
   }
 }
+
+
+@Pipe({name: 'nodeTypePlural'})
+export class NodeTypePluralPipe implements PipeTransform {
+  // This Pipe takes a node type as input and figures out its plural form
+  transform(nodeType: String): String {
+    if (nodeType.endsWith('y')) {
+        return `${nodeType.slice(0, -1)}ies`;
+    } else {
+        return `${nodeType}s`;
+    }
+  }
+}
