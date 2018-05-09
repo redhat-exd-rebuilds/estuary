@@ -1,92 +1,68 @@
+:host {
+    display: table-row;
+}
+
+:host > div {
+    display: table-cell;
+    padding-bottom: 6rem;
+}
+
 div.mainItemText {
-    flex-basis: 30%;
     word-wrap: break-word;
+    text-align: right;
+    padding-right: 1.5rem;
 }
 
-div.mainItem, div.secondaryItem {
-    flex-basis: 30%;
+div.mainItem {
+    padding-right: 5rem;
 }
 
-div.mainItem > div, div.secondaryItem > div {
-    margin: auto;
-    outline: 0;
+div.secondaryItem {
+    padding-right: 2rem;
 }
 
 div.mainItem > div:hover {
     cursor: pointer;
     background-color: #D7E5EA;
+    outline: 0;
 }
 
-p.mainItemIcon, p.secondaryItemText {
+div.secondaryItemText {
+    /* Don't show the "x more" text on mobile */
     display: none;
 }
 
-@media (min-width : 992px) {
-    p.mainItemIcon, p.secondaryItemText {
-        display: block;
-    }
-
-    p.mainItemIcon > span.displayName {
-        padding-left: 5px;
-    }
-
-    p.mainItemIcon {
-        flex-basis: 12.5%;
-        max-width: 175px;
-        padding-left: 10px;
-        padding-right: 10px;
-        font-size: 1.3rem;
-    }
-
-    p.mainItemIcon i {
-        padding: 5px;
-        border: 2px solid black;
-        border-radius: 50%;
-        font-size: 2rem;
-    }
-
-    div.mainItemText {
-        max-width: 350px;
-        flex-basis: 10%;
-    }
-
-    div.mainItem, div.secondaryItem {
-        flex-basis: 10%;
-        max-width: 300px;
-    }
-
-    div.secondaryItem > div {
-        margin: 0;
-        margin-left: auto;
-    }
-
-     p.secondaryItemText {
-        padding-left: 20px;
-    }
+div.mainItemText, div.secondaryItemText {
+    position: relative;
+    top: 13px;
 }
 
-div.mainItem > div.circleItem, div.secondaryItem > div.circleItem {
+div.mainItem > div, div.secondaryItem > div {
     height: 66px;
     width: 66px;
     border: 3px solid black;
     border-radius: 50%;
+    text-align: center;
 }
 
-div.mainItem > div.rectangleItem, div.secondaryItem > div.rectangleItem {
-    height: 140px;
-    width: 66px;
-    border-radius: 5px;
-}
-
-div.mainItem > div.circleItem, div.mainItem > div.rectangleItem {
-    border: 3px solid black;
-}
-
-div.secondaryItem > div.circleItem, div.secondaryItem > div.rectangleItem {
+div.secondaryItem > div {
     border: 3px dashed black;
 }
 
 div.mainItem > div.active {
     border-color: #5B96A9;
     background-color: #D7E5EA;
+}
+
+div.mainItem > div > i, div.secondaryItem > div > i {
+    font-size: 2.5rem;
+    position: relative;
+    top: 18px;
+}
+
+/* Roughly a small phone in landscape mode */
+@media (min-width : 550px) {
+    div.secondaryItemText {
+        display: block;
+    }
 }

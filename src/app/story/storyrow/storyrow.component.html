@@ -1,15 +1,15 @@
-<p class="mainItemIcon">
-  <i class="fa fa-th {{ getNodeIconClass() }}" aria-hidden="true"></i>
-  <span>{{ node.resource_type | nodeTypeDisplay }}</span>
-</p>
 <div class="mainItemText">{{ node | nodeUidDisplay }}</div>
 <div class="mainItem">
   <div [appPlumbConnect]="prevNodeIDs" id="{{ node.resource_type + 'Primary' }}"
-      class="{{ nodeShape + 'Item' }}" [ngClass]="{'active': active}"
-      [routerLink]="['/', node.resource_type.toLowerCase(), getNodeUid()]" ></div>
+      [ngClass]="{'active': active}" [routerLink]="['/', node.resource_type.toLowerCase(), getNodeUid()]"
+      tooltip="{{ node.resource_type | nodeTypeDisplay }}: {{ node | nodeUidDisplay }}">
+    <i class="fa fa-th {{ getNodeIconClass() }}" aria-hidden="true"></i>
+  </div>
 </div>
 <div class="secondaryItem">
   <div *ngIf="relatedNodes" [appPlumbConnect]="prevNodeIDs" id="{{ node.resource_type + 'Secondary'}}"
-      class="{{ nodeShape + 'Item' }}"></div>
+      tooltip="Related {{ node.resource_type | nodeTypeDisplay | nodeTypePlural }}">
+    <i class="fa fa-th {{ getNodeIconClass() }}" aria-hidden="true"></i>
+  </div>
 </div>
-<p *ngIf="relatedNodes" class="secondaryItemText">{{ relatedNodes + ' more' }}</p>
+<div *ngIf="relatedNodes" class="secondaryItemText">{{ relatedNodes + ' more' }}</div>
