@@ -3,8 +3,7 @@
     position: absolute;
     top: 50px;
     right: 0px;
-    height: 100%;
-    overflow: hidden;
+    min-height: 100%;
     z-index: 1;
     transition: width 0.5s;
     box-sizing: border-box;
@@ -12,7 +11,7 @@
 }
 
 #sidebar.open {
-    width: 65%;
+    width: 100%;
 }
 
 #sidebar.closed {
@@ -28,6 +27,9 @@
 
 #sidebarTitle i {
     font-size: 2rem;
+}
+
+#sidebar.open #sidebarTitle i {
     margin-right: 0.5rem;
 }
 
@@ -43,26 +45,24 @@
 }
 
 #sidebarProperties {
-    margin: 20px 10px 10px 10px;
-    padding-right: 10px;
-    display: flex;
-    flex-wrap: wrap;
+    margin: 2rem 1rem 3rem 1rem;
+    padding-right: 1rem;
 }
 
-#sidebarProperties > div {
+#sidebarProperties > div.sidebarPropertiesRow {
+    display: table-row;
     font-size: 1.3rem;
-    max-width: 50%;
-    word-wrap: break-word;
 }
 
-#sidebarProperties > div:nth-child(odd) {
+#sidebarProperties > div.sidebarPropertiesRow > div {
+    display: table-cell;
+    word-break: break-all;
+}
+
+#sidebarProperties > div.sidebarPropertiesRow > div:nth-child(odd) {
     padding-right: 10px;
-    flex-basis: 40%;
     font-weight: bold;
-}
-
-#sidebarProperties > div:nth-child(even) {
-    flex-basis: 60%;
+    white-space: nowrap;
 }
 
 @media (min-width: 992px) {
@@ -71,10 +71,15 @@
     }
 
     #sidebar.open {
-        width: 30%;
+        width: 40%;
+        max-width: 750px;
     }
 
     #sidebar.closed {
         width: 30px;
+    }
+
+    #sidebarProperties > div.sidebarPropertiesRow > div:nth-child(odd) {
+        padding-right: 1.5rem;
     }
 }
