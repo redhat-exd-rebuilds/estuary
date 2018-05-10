@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule,  } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { NotificationModule } from 'patternfly-ng/notification';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -37,6 +38,7 @@ import { SearchComponent } from './search/search.component';
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    NotificationModule,
     TooltipModule.forRoot()
   ],
   providers: [],

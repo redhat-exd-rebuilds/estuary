@@ -7,3 +7,10 @@
 </div>
 
 <app-storysidebar [node]="selectedNode"></app-storysidebar>
+
+<pfng-toast-notification class="showNotification" *ngIf="errorMsg"
+  [message]="errorMsg"
+  [showClose]="true"
+  [type]="'danger'"
+  (onCloseSelect)="errorMsg = ''">
+</pfng-toast-notification>

@@ -12,3 +12,10 @@ html {
 body {
     background-color: #F8F8F8;
 }
+
+.showNotification {
+    max-width: 400px;
+    position: static;
+    right: 20px;
+    z-index: 2;
+ }

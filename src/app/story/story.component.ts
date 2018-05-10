@@ -21,6 +21,7 @@ export class StoryComponent implements OnInit, OnDestroy {
   story: Array<any> = [];
   selectedResource: String;
   selectedNode: any;
+  errorMsg: String;
 
   constructor(private storyService: StoryService, private route: ActivatedRoute) { }
 
@@ -61,9 +62,8 @@ export class StoryComponent implements OnInit, OnDestroy {
         }
         this.story = story;
       },
-      error => {
-        // TODO: Change me to be an alert
-        console.error(error);
+      errorResponse => {
+        this.errorMsg = errorResponse.error.message;
       },
       () => {
         this.loading = false;
