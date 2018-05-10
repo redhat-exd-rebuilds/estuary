@@ -2,7 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule,  } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { NotificationModule } from 'patternfly-ng/notification';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +16,7 @@ import { PropertyDisplayPipe } from './pipes/propertydisplay';
 import { NodeUidDisplayPipe, NodeTypeDisplayPipe, NodeTypePluralPipe, NodeFilterPropertiesPipe,
          NodeExternalUrlPipe } from './pipes/nodedisplay';
 import { SearchComponent } from './search/search.component';
+import { AlertComponent } from './alert/alert.component';
 
 
 @NgModule({
@@ -30,13 +33,16 @@ import { SearchComponent } from './search/search.component';
     NodeTypeDisplayPipe,
     NodeFilterPropertiesPipe,
     NodeTypePluralPipe,
-    NodeExternalUrlPipe
+    NodeExternalUrlPipe,
+    AlertComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    BrowserAnimationsModule,
+    NotificationModule,
     TooltipModule.forRoot()
   ],
   providers: [],

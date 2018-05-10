@@ -13,6 +13,7 @@ export class SearchComponent implements OnInit {
   availableResources: Array<any>;
   selectedResource: String;
   selectedUID: String;
+  errorMsg: String;
 
   constructor(private search: SearchService, private router: Router) { }
 
@@ -23,9 +24,8 @@ export class SearchComponent implements OnInit {
         this.selectedResource = Object.keys(resources)[0];
         this.availableResources = resources;
       },
-      error => {
-        // TODO: Change this to an alert
-        console.error(error);
+      errorResponse => {
+        this.errorMsg = errorResponse.error.message;
       }
     );
   }
