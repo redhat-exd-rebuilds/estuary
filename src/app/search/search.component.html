@@ -21,9 +21,4 @@
   </div>
 </div>
 
-<pfng-toast-notification class="showNotification" *ngIf="errorMsg"
-  [message]="errorMsg"
-  [showClose]="true"
-  [type]="'danger'"
-  (onCloseSelect)="errorMsg = ''">
-</pfng-toast-notification>
+<app-alert [errorMsg]="errorMsg"></app-alert>
