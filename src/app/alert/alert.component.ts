@@ -6,7 +6,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
   templateUrl: './alert.component.html',
   styleUrls: ['./alert.component.css'],
   animations: [
-    trigger('easeInOut', [
+    trigger('slideInEaseOut', [
       transition(':enter', [
         style({
           right: '-100%',
