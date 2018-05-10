@@ -1,3 +1,5 @@
+<app-spinner [loading]="loading"></app-spinner>
+
 <div class="container-fluid">
   <div id="diagram" *ngIf="story">
     <app-storyrow id="{{ 'storyRow' + i }}" [node]="node" [relatedNodes]="story.meta.related_nodes[node.resource_type]"
