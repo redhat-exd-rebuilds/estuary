@@ -35,7 +35,7 @@ export class NodeTypeDisplayPipe implements PipeTransform {
             return 'Advisory';
         case('freshmakerevent'):
             return 'Freshmaker Event';
-        case('containerbuilds'):
+        case('containerbuild'):
             return 'Container Build';
         default:
             return nodeType;
@@ -107,7 +107,7 @@ export class NodeExternalUrlPipe implements PipeTransform {
                 return `http://errata.engineering.redhat.com/advisory/${node.id}`;
             case('freshmakerevent'):
                 return `https://freshmaker.engineering.redhat.com/api/1/events/${node.id}`;
-            case('containerbuilds'):
+            case('containerbuild'):
                 return `https://freshmaker.engineering.redhat.com/api/1/builds/${node.id}`;
             default:
                 return '';
