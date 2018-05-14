@@ -71,12 +71,17 @@
     }
 
     #sidebar.open {
-        width: 40%;
+        width: 45%;
         max-width: 750px;
     }
 
     #sidebar.closed {
         width: 30px;
+    }
+
+    #sidebarProperties, #sidebar > a > h3 {
+        margin-left: 2rem;
+        margin-right: 2rem;
     }
 
     #sidebarProperties > div.sidebarPropertiesRow > div:nth-child(odd) {
