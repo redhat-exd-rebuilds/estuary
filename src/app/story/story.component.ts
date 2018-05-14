@@ -61,11 +61,10 @@ export class StoryComponent implements OnInit, OnDestroy {
           }
         }
         this.story = story;
+        this.loading = false;
       },
       errorResponse => {
         this.errorMsg = errorResponse.error.message;
-      },
-      () => {
         this.loading = false;
       }
     );

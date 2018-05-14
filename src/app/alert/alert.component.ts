@@ -1,12 +1,12 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {trigger, transition, style, animate, state} from '@angular/animations';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-alert',
   templateUrl: './alert.component.html',
   styleUrls: ['./alert.component.css'],
   animations: [
-    trigger('easeInOut', [
+    trigger('slideInEaseOut', [
       transition(':enter', [
         style({
           right: '-100%',
