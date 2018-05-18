@@ -42,7 +42,7 @@ export class StoryRowComponent implements OnInit, AfterViewInit {
   @Input() node: any;
   @Input() relatedNodes: Number;
   @Input() active: Boolean;
-  private prevNodeIDs: Array<String> = [];
+  prevNodeIDs: Array<String> = [];
 
   constructor(private element: ElementRef) { }
 
