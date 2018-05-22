@@ -5,7 +5,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { StoryService } from '../services/story.service';
 
 
-describe('HttpClient testing', () => {
+describe('StoryService testing', () => {
     let httpTestingController: HttpTestingController;
     let storyService: StoryService;
 

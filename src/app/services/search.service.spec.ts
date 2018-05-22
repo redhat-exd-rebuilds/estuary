@@ -5,7 +5,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { SearchService } from '../services/search.service';
 
 
-describe('HttpClient testing', () => {
+describe('SearchService testing', () => {
     let httpTestingController: HttpTestingController;
     let searchService: SearchService;
 
