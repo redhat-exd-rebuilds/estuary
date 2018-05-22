@@ -17,4 +17,8 @@ import { trigger, transition, style, animate } from '@angular/animations';
 export class SpinnerComponent {
 
   @Input() loading: boolean;
+
+  constructor() {
+    this.loading = false;
+  }
 }
