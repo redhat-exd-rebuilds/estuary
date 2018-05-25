@@ -4,7 +4,7 @@ import { ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testin
 import { StorysidebarComponent } from './storysidebar.component';
 import { NodeUidDisplayPipe, NodeExternalUrlPipe, NodeFilterPropertiesPipe } from '../../pipes/nodedisplay';
 import { PropertyDisplayPipe } from '../../pipes/propertydisplay';
-import { bug } from '../testbugzillabug';
+import { bug } from '../test.data';
 
 
 describe('SpinnerComponent testing', () => {

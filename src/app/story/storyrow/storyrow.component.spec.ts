@@ -5,7 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 import { StoryRowComponent, PlumbConnectDirective } from './storyrow.component';
-import { bug } from '../testbugzillabug';
+import { bug } from '../test.data';
 import { NodeUidDisplayPipe, NodeTypeDisplayPipe, NodeTypePluralPipe } from '../../pipes/nodedisplay';
 
 
