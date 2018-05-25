@@ -6,8 +6,8 @@
     <i class="fa fa-th {{ getNodeIconClass() }}" aria-hidden="true"></i>
   </div>
 </div>
-<div class="secondaryItem">
-  <div *ngIf="relatedNodes" [appPlumbConnect]="prevNodeIDs" id="{{ node.resource_type + 'Secondary'}}"
+<div *ngIf="relatedNodes" class="secondaryItem">
+  <div [appPlumbConnect]="prevNodeIDs" id="{{ node.resource_type + 'Secondary'}}"
       tooltip="Related {{ node.resource_type | nodeTypeDisplay | nodeTypePlural }}">
     <i class="fa fa-th {{ getNodeIconClass() }}" aria-hidden="true"></i>
   </div>

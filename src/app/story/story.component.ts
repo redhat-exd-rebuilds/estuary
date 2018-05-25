@@ -16,7 +16,6 @@ declare var jsPlumb: any;
 })
 export class StoryComponent implements OnInit, OnDestroy {
 
-  // Currently unused but we should use this for a loading bar of some kind
   loading: Boolean;
   story: Array<any> = [];
   selectedResource: String;
