@@ -11,11 +11,13 @@
     <a [href]="node | nodeExternalUrl" target="_blank">
       <h3>{{ node | nodeUidDisplay }}</h3>
     </a>
-    <div id="sidebarProperties">
-      <div *ngFor="let keyValue of node | nodeFilterProperties" class="sidebarPropertiesRow">
-        <div>{{ keyValue[0] | propertyDisplay }}</div>
-        <div>{{ isDate(keyValue[1]) ? (keyValue[1] | date:'MMMM d, y, HH:mm:ss':'+0000') + ' UTC' : keyValue[1] }}</div>
-      </div>
-    </div>
+    <table id="sidebarProperties">
+      <tbody>
+        <tr *ngFor="let keyValue of node | nodeFilterProperties" class="sidebarPropertiesRow">
+          <td>{{ keyValue[0] | propertyDisplay }}</td>
+          <td>{{ isDate(keyValue[1]) ? (keyValue[1] | date:'MMMM d, y, HH:mm:ss':'+0000') + ' UTC' : keyValue[1] }}</td>
+        </tr>
+      </tbody>
+    </table>
   </ng-container>
 </div>

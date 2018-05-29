@@ -49,17 +49,16 @@
     padding-right: 1rem;
 }
 
-#sidebarProperties > div.sidebarPropertiesRow {
-    display: table-row;
+.sidebarPropertiesRow {
     font-size: 1.3rem;
 }
 
-#sidebarProperties > div.sidebarPropertiesRow > div {
-    display: table-cell;
+.sidebarPropertiesRow > td {
     word-break: break-all;
 }
 
-#sidebarProperties > div.sidebarPropertiesRow > div:nth-child(odd) {
+.sidebarPropertiesRow td:nth-child(odd) {
+    vertical-align: top;
     padding-right: 10px;
     font-weight: bold;
     white-space: nowrap;
