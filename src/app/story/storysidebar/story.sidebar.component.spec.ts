@@ -2,7 +2,7 @@ import { By } from '@angular/platform-browser';
 import { ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
 
 import { StorysidebarComponent } from './storysidebar.component';
-import { NodeUidDisplayPipe, NodeExternalUrlPipe, NodeFilterPropertiesPipe } from '../../pipes/nodedisplay';
+import { NodeUidDisplayPipe, NodeExternalUrlPipe } from '../../pipes/nodedisplay';
 import { PropertyDisplayPipe } from '../../pipes/propertydisplay';
 import { bug } from '../test.data';
 
@@ -17,8 +17,7 @@ describe('SpinnerComponent testing', () => {
             StorysidebarComponent,
             NodeUidDisplayPipe,
             NodeExternalUrlPipe,
-            PropertyDisplayPipe,
-            NodeFilterPropertiesPipe
+            PropertyDisplayPipe
         ]
     }).compileComponents();
   });

@@ -14,8 +14,8 @@ import { StoryRowComponent, PlumbConnectDirective } from './story/storyrow/story
 import { StorysidebarComponent } from './story/storysidebar/storysidebar.component';
 import { KeysPipe } from './pipes/keyvaluepairs';
 import { PropertyDisplayPipe } from './pipes/propertydisplay';
-import { NodeUidDisplayPipe, NodeTypeDisplayPipe, NodeTypePluralPipe, NodeFilterPropertiesPipe,
-         NodeExternalUrlPipe, TruncatePipe} from './pipes/nodedisplay';
+import { NodeUidDisplayPipe, NodeTypeDisplayPipe, NodeTypePluralPipe, NodeExternalUrlPipe,
+         TruncatePipe } from './pipes/nodedisplay';
 import { SearchComponent } from './search/search.component';
 import { AlertComponent } from './alert/alert.component';
 import { SpinnerComponent } from './spinner/spinner.component';
@@ -33,7 +33,6 @@ import { SpinnerComponent } from './spinner/spinner.component';
     SearchComponent,
     KeysPipe,
     NodeTypeDisplayPipe,
-    NodeFilterPropertiesPipe,
     NodeTypePluralPipe,
     NodeExternalUrlPipe,
     AlertComponent,

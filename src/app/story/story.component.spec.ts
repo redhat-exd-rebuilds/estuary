@@ -13,8 +13,7 @@ import { StorysidebarComponent } from './storysidebar/storysidebar.component';
 import { StoryRowComponent, PlumbConnectDirective } from './storyrow/storyrow.component';
 import { AlertComponent } from '../alert/alert.component';
 import { SpinnerComponent } from '../spinner/spinner.component';
-import { NodeUidDisplayPipe, NodeTypeDisplayPipe, NodeTypePluralPipe, NodeExternalUrlPipe,
-         NodeFilterPropertiesPipe } from '../pipes/nodedisplay';
+import { NodeUidDisplayPipe, NodeTypeDisplayPipe, NodeTypePluralPipe, NodeExternalUrlPipe } from '../pipes/nodedisplay';
 import { PropertyDisplayPipe } from '../pipes/propertydisplay';
 import { StoryService } from '../services/story.service';
 import { bug, story } from './test.data';
@@ -37,7 +36,6 @@ describe('StoryComponent testing', () => {
             NodeTypeDisplayPipe,
             NodeTypePluralPipe,
             NodeExternalUrlPipe,
-            NodeFilterPropertiesPipe,
             PropertyDisplayPipe,
             AlertComponent,
             SpinnerComponent

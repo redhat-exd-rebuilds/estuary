@@ -44,36 +44,6 @@ export class NodeTypeDisplayPipe implements PipeTransform {
 }
 
 
-@Pipe({name: 'nodeFilterProperties'})
-export class NodeFilterPropertiesPipe implements PipeTransform {
-  // This Pipe takes a node as input and figures out the properties to return
-  transform(node: any): Array<any> {
-    const properties = [];
-    for (const keyValue of Object.entries(node)) {
-        // Have to do this here instead of the for loop to make TypeScript happy
-        const [key, value]: Array<any> = keyValue;
-        if (value === null || key === 'resource_type') {
-            continue;
-        }
-        // Can't use typeof to determine if it's an Array
-        if (value instanceof Array) {
-            properties.push([key, value.length]);
-        } else if (typeof value === 'object') {
-            // Only display objects' name or username properties
-            if (value.name) {
-                properties.push([key, value.name]);
-            } else if (value.username) {
-                properties.push([key, value.username]);
-            }
-        } else {
-            properties.push([key, value]);
-        }
-    }
-    return properties;
-  }
-}
-
-
 @Pipe({name: 'nodeTypePlural'})
 export class NodeTypePluralPipe implements PipeTransform {
     // This Pipe takes a node type as input and figures out its plural form

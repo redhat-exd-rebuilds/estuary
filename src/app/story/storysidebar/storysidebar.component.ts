@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { DatePipe } from '@angular/common';
-import { NodeFilterPropertiesPipe } from '../../pipes/nodedisplay';
 
 @Component({
   selector: 'app-storysidebar',
@@ -27,8 +26,7 @@ export class StorysidebarComponent implements OnInit, OnChanges {
     // the node input changes.
     this.properties = [];
     if (this.node) {
-      const filterProperties = new NodeFilterPropertiesPipe();
-      for (const [key, val] of filterProperties.transform(this.node)) {
+      for (const [key, val] of this.filterProperties(this.node)) {
         let formattedVal = val;
         if (this.isDate(val)) {
           formattedVal = this.datePipe.transform(val, 'MMMM d, y, HH:mm:ss', '+0000') + ' UTC';
@@ -49,5 +47,30 @@ export class StorysidebarComponent implements OnInit, OnChanges {
         return dtRegEx.test(dateStr);
     }
     return false;
+  }
+
+  filterProperties(node: any): any {
+    const properties = [];
+    for (const keyValue of Object.entries(node)) {
+        // Have to do this here instead of the for loop to make TypeScript happy
+        const [key, value]: Array<any> = keyValue;
+        if (value === null || key === 'resource_type') {
+            continue;
+        }
+        // Can't use typeof to determine if it's an Array
+        if (value instanceof Array) {
+            properties.push([key, value.length]);
+        } else if (typeof value === 'object') {
+            // Only display objects' name or username properties
+            if (value.name) {
+                properties.push([key, value.name]);
+            } else if (value.username) {
+                properties.push([key, value.username]);
+            }
+        } else {
+            properties.push([key, value]);
+        }
+    }
+    return properties;
   }
 }
