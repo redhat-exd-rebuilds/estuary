@@ -114,3 +114,16 @@ export class NodeExternalUrlPipe implements PipeTransform {
         }
     }
 }
+
+
+@Pipe({name: 'truncate'})
+export class TruncatePipe implements PipeTransform {
+  // This Pipe takes text and truncates it
+  transform(text: String, maxLength = 150): String {
+      if (typeof text === 'string' && text.length > maxLength) {
+        return text.slice(0, maxLength) + '…';
+      } else {
+          return text;
+      }
+  }
+}

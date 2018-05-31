@@ -13,9 +13,17 @@
     </a>
     <table id="sidebarProperties">
       <tbody>
-        <tr *ngFor="let keyValue of node | nodeFilterProperties" class="sidebarPropertiesRow">
-          <td>{{ keyValue[0] | propertyDisplay }}</td>
-          <td>{{ isDate(keyValue[1]) ? (keyValue[1] | date:'MMMM d, y, HH:mm:ss':'+0000') + ' UTC' : keyValue[1] }}</td>
+        <tr *ngFor="let prop of properties; let i = index" class="sidebarPropertiesRow">
+          <td>{{ prop.name | propertyDisplay }}</td>
+          <td>
+            <ng-container *ngIf="prop.truncate">{{ prop.value | truncate }}</ng-container>
+            <ng-container *ngIf="!prop.truncate">{{ prop.value }}</ng-container>
+            <ng-container *ngIf="prop.needsTruncating">
+              <a (click)="prop.truncate = !prop.truncate; $event.preventDefault()" *ngIf="prop.needsTruncating" href="#" class="truncateArrow">
+                <i [ngClass]="{'fa-angle-down': prop.truncate, 'fa-angle-up': !prop.truncate}" class="fa fa-th" aria-hidden="true"></i>
+              </a>
+            </ng-container>
+          </td>
         </tr>
       </tbody>
     </table>

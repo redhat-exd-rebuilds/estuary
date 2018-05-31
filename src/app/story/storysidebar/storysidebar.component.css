@@ -64,6 +64,10 @@
     white-space: nowrap;
 }
 
+.truncateArrow {
+    margin-left: 0.5rem;
+}
+
 @media (min-width: 992px) {
     #sidebar {
         top: 62px;
