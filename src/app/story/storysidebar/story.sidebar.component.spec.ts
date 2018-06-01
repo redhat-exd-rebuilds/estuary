@@ -31,6 +31,11 @@ describe('StorysidebarComponent testing', () => {
     fixture = TestBed.createComponent(StorysidebarComponent);
     component = fixture.componentInstance;
     component.sidebarOpen = true;
+    bug.short_description = 'A very long description. A very long description. ' +
+                            'A very long description. A very long description. ' +
+                            'A very long description. A very long description. ' +
+                            'A very long description. A very long description.' +
+                            'A very long description. A very long description.';
     component.node = bug;
     fixture.detectChanges();
     // Have to call this directly or it never gets called
@@ -78,7 +83,8 @@ describe('StorysidebarComponent testing', () => {
     expect(sidebarPropertiesEl.children[15].children[0].textContent).toBe('Severity');
     expect(sidebarPropertiesEl.children[15].children[1].textContent).toBe('high');
     expect(sidebarPropertiesEl.children[16].children[0].textContent).toBe('Short Description');
-    expect(sidebarPropertiesEl.children[16].children[1].textContent).toBe('Some description');
+    // Truncated text length
+    expect(sidebarPropertiesEl.children[16].children[1].textContent.length).toBe(151);
     expect(sidebarPropertiesEl.children[17].children[0].textContent).toBe('Status');
     expect(sidebarPropertiesEl.children[17].children[1].textContent).toBe('CLOSED');
     expect(sidebarPropertiesEl.children[18].children[0].textContent).toBe('Target Milestone');
@@ -86,6 +92,21 @@ describe('StorysidebarComponent testing', () => {
     expect(sidebarPropertiesEl.children[19].children[0].textContent).toBe('Votes');
     expect(sidebarPropertiesEl.children[19].children[1].textContent).toBe('0');
   }));
+
+  it('should truncate long property values', () => {
+    const sidebarPropertiesEl = fixture.debugElement.query(By.css('#sidebarProperties > tbody')).nativeElement;
+    // Make sure the expand/unexpand (truncate) button works
+    const truncateAnchorEl = sidebarPropertiesEl.children[16].children[1].children[0];
+    expect(truncateAnchorEl.tagName).toBe('A');
+    const truncateIconEl = truncateAnchorEl.children[0];
+    expect(truncateIconEl.tagName).toBe('I');
+    expect(truncateIconEl.classList).toContain('fa-angle-down');
+    // Expand the text
+    truncateAnchorEl.click();
+    fixture.detectChanges();
+    expect(sidebarPropertiesEl.children[16].children[1].textContent.length).toBe(248);
+    expect(truncateIconEl.classList).toContain('fa-angle-up');
+  });
 
   it('should not display the input node when the sidebar is closed', fakeAsync(() => {
     component.sidebarOpen = false;
