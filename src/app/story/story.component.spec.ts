@@ -1,6 +1,7 @@
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { By } from '@angular/platform-browser';
 import { ActivatedRoute, Params } from '@angular/router';
+import { DatePipe } from '@angular/common';
 import { ComponentFixture, async, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
@@ -14,7 +15,7 @@ import { StoryRowComponent, PlumbConnectDirective } from './storyrow/storyrow.co
 import { AlertComponent } from '../alert/alert.component';
 import { SpinnerComponent } from '../spinner/spinner.component';
 import { NodeUidDisplayPipe, NodeTypeDisplayPipe, NodeTypePluralPipe, NodeExternalUrlPipe,
-         NodeFilterPropertiesPipe } from '../pipes/nodedisplay';
+         TruncatePipe } from '../pipes/nodedisplay';
 import { PropertyDisplayPipe } from '../pipes/propertydisplay';
 import { StoryService } from '../services/story.service';
 import { bug, story } from './test.data';
@@ -37,13 +38,14 @@ describe('StoryComponent testing', () => {
             NodeTypeDisplayPipe,
             NodeTypePluralPipe,
             NodeExternalUrlPipe,
-            NodeFilterPropertiesPipe,
             PropertyDisplayPipe,
+            TruncatePipe,
             AlertComponent,
             SpinnerComponent
         ],
         providers: [
             StoryService,
+            DatePipe,
             {provide: ActivatedRoute, useValue: {params: routeParams}}
         ],
         imports: [

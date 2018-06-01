@@ -6,13 +6,13 @@ export class PropertyDisplayPipe implements PipeTransform {
   // underscores with spaces, capitalization, etc.)
   transform(property: String): String {
     if (property === 'id') {
-      return 'ID:';
+      return property.toUpperCase();
     }
     const rvArray = property.toLowerCase().replace(/_/g, ' ').split(' ');
     for (let i = 0; i < rvArray.length; i++) {
       rvArray[i] = rvArray[i].charAt(0).toUpperCase() + rvArray[i].slice(1);
     }
-    let rv = rvArray.join(' ') + ':';
+    let rv = rvArray.join(' ');
     // Edge cases that need capitalization
     if (rv.startsWith('Qa')) {
       rv = 'QA' + rv.slice(2);
