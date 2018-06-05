@@ -23,7 +23,13 @@ import { trigger, transition, style, animate } from '@angular/animations';
 })
 export class AlertComponent {
 
+  @Output() errorMsgChange: EventEmitter<String> = new EventEmitter<String>();
   @Input() errorMsg: String;
+
   constructor() { }
 
+  resetErrorMsg() {
+    this.errorMsg = '';
+    this.errorMsgChange.emit(this.errorMsg);
+  }
 }

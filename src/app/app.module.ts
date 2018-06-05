@@ -19,6 +19,7 @@ import { NodeUidDisplayPipe, NodeTypeDisplayPipe, NodeTypePluralPipe, NodeExtern
 import { SearchComponent } from './search/search.component';
 import { AlertComponent } from './alert/alert.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
     NodeExternalUrlPipe,
     AlertComponent,
     SpinnerComponent,
-    TruncatePipe
+    TruncatePipe,
+    NavbarComponent
   ],
   imports: [
     AppRoutingModule,

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { SearchService } from '../services/search.service';
 import { Router } from '@angular/router';
 
@@ -8,14 +8,17 @@ import { Router } from '@angular/router';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit, OnDestroy {
 
   availableResources: Array<any>;
   selectedResource: String;
   selectedUID: String;
   errorMsg: String;
 
-  constructor(private search: SearchService, private router: Router) { }
+  constructor(private search: SearchService, private router: Router) {
+    // Set the the background image
+    document.body.className = 'searchBg';
+  }
 
   ngOnInit() {
     this.search.getAvailableResources().subscribe(
@@ -30,7 +33,16 @@ export class SearchComponent implements OnInit {
     );
   }
 
+  ngOnDestroy() {
+    // Remove the background image
+    document.body.className = '';
+  }
+
   navigateToStory() {
-    this.router.navigate(['/', this.selectedResource, this.selectedUID]);
+    if (this.selectedResource && this.selectedUID) {
+      this.router.navigate(['/', this.selectedResource, this.selectedUID]);
+    } else {
+      this.errorMsg = 'Please enter a search value';
+    }
   }
 }

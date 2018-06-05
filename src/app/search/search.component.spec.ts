@@ -14,6 +14,7 @@ import { SearchService } from '../services/search.service';
 import { KeysPipe } from '../pipes/keyvaluepairs';
 import { NodeTypeDisplayPipe } from '../pipes/nodedisplay';
 import { AlertComponent } from '../alert/alert.component';
+import { PropertyDisplayPipe } from '../pipes/propertydisplay';
 
 
 describe('SearchComponent testing', () => {
@@ -23,7 +24,7 @@ describe('SearchComponent testing', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-        declarations: [SearchComponent, AlertComponent, KeysPipe, NodeTypeDisplayPipe],
+        declarations: [SearchComponent, AlertComponent, KeysPipe, NodeTypeDisplayPipe, PropertyDisplayPipe],
         providers: [SearchService],
         imports: [FormsModule, NotificationModule, HttpClientTestingModule, RouterTestingModule, NoopAnimationsModule]
     }).compileComponents();
@@ -37,10 +38,9 @@ describe('SearchComponent testing', () => {
     spyOn(searchService, 'getAvailableResources').and.returnValue(
         // Create an observable like the HTTP client would return
         of({
-          typeOne: 'id',
-          typeTwo: 'name',
-          typeThree: 'hash',
-          typeFour: 'id'
+          'advisory': 'id',
+          'bugzillabug': 'id',
+          'distgitcommit': 'hash'
         })
     );
     fixture.detectChanges();
@@ -51,35 +51,27 @@ describe('SearchComponent testing', () => {
 
     const dropdownEl = fixture.debugElement.query(By.css('select')).nativeElement;
     const dropDownOptions = dropdownEl.children;
-    expect(dropDownOptions[0].text).toBe('typeOne');
-    expect(dropDownOptions[0].value).toBe('typeOne');
-    expect(dropDownOptions[1].text).toBe('typeTwo');
-    expect(dropDownOptions[1].value).toBe('typeTwo');
-    expect(dropDownOptions[2].text).toBe('typeThree');
-    expect(dropDownOptions[2].value).toBe('typeThree');
-    expect(dropDownOptions[3].text).toBe('typeFour');
-    expect(dropDownOptions[3].value).toBe('typeFour');
+    expect(dropDownOptions[0].text).toBe('Advisory');
+    expect(dropDownOptions[0].value).toBe('advisory');
+    expect(dropDownOptions[1].text).toBe('Bugzilla Bug');
+    expect(dropDownOptions[1].value).toBe('bugzillabug');
+    expect(dropDownOptions[2].text).toBe('Commit');
+    expect(dropDownOptions[2].value).toBe('distgitcommit');
 
     const inputEl = fixture.debugElement.query(By.css('input')).nativeElement;
-    expect(inputEl.placeholder).toBe('Enter the id');
+    expect(inputEl.placeholder).toBe('Advisory ID');
 
-    component.selectedResource = 'typeTwo';
+    component.selectedResource = 'bugzillabug';
     fixture.detectChanges();
     tick();
-    expect(dropdownEl.value).toBe('typeTwo');
-    expect(inputEl.placeholder).toBe('Enter the name');
+    expect(dropdownEl.value).toBe('bugzillabug');
+    expect(inputEl.placeholder).toBe('Bugzilla Bug ID');
 
-    component.selectedResource = 'typeThree';
+    component.selectedResource = 'distgitcommit';
     fixture.detectChanges();
     tick();
-    expect(dropdownEl.value).toBe('typeThree');
-    expect(inputEl.placeholder).toBe('Enter the hash');
-
-    component.selectedResource = 'typeFour';
-    fixture.detectChanges();
-    tick();
-    expect(dropdownEl.value).toBe('typeFour');
-    expect(inputEl.placeholder).toBe('Enter the id');
+    expect(dropdownEl.value).toBe('distgitcommit');
+    expect(inputEl.placeholder).toBe('Commit Hash');
   }));
 
   it('should display an error when the API call fails', fakeAsync(() => {

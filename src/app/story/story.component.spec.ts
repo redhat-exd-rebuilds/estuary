@@ -14,6 +14,7 @@ import { StorysidebarComponent } from './storysidebar/storysidebar.component';
 import { StoryRowComponent, PlumbConnectDirective } from './storyrow/storyrow.component';
 import { AlertComponent } from '../alert/alert.component';
 import { SpinnerComponent } from '../spinner/spinner.component';
+import { NavbarComponent } from '../navbar/navbar.component';
 import { NodeUidDisplayPipe, NodeTypeDisplayPipe, NodeTypePluralPipe, NodeExternalUrlPipe,
          TruncatePipe } from '../pipes/nodedisplay';
 import { PropertyDisplayPipe } from '../pipes/propertydisplay';
@@ -41,7 +42,8 @@ describe('StoryComponent testing', () => {
             PropertyDisplayPipe,
             TruncatePipe,
             AlertComponent,
-            SpinnerComponent
+            SpinnerComponent,
+            NavbarComponent
         ],
         providers: [
             StoryService,

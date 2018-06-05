@@ -1,4 +1,5 @@
 <app-spinner [loading]="loading"></app-spinner>
+<app-navbar></app-navbar>
 
 <div class="container-fluid">
   <div id="diagram" *ngIf="story">
@@ -10,4 +11,4 @@
 
 <app-storysidebar [node]="selectedNode"></app-storysidebar>
 
-<app-alert [errorMsg]="errorMsg"></app-alert>
+<app-alert [(errorMsg)]="errorMsg"></app-alert>
