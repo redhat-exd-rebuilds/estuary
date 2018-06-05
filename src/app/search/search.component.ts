@@ -39,6 +39,10 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   navigateToStory() {
-    this.router.navigate(['/', this.selectedResource, this.selectedUID]);
+    if (this.selectedResource && this.selectedUID) {
+      this.router.navigate(['/', this.selectedResource, this.selectedUID]);
+    } else {
+      this.errorMsg = 'Please enter a search value';
+    }
   }
 }
