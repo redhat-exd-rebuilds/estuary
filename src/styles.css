@@ -5,10 +5,15 @@ div.container-fluid {
 
 html {
     /* This is so that the sidebar can properly use height 100% */
-    position: relative;
-    min-height: 100%;
+    height: 100%;
 }
 
-body {
-    background-color: #F8F8F8;
+body.searchBg {
+    min-height: 100%;
+    background-image: url(assets/bg_portal.jpg);
+    background-position: center bottom;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-color: rgb(245, 245, 245);
 }
