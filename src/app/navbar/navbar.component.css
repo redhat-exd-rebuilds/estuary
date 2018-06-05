@@ -1,5 +1,5 @@
 #navLogo {
-  margin-top: 0.25rem;
+    margin-top: 0.25rem;
 }
 
 #navLogo img {
@@ -8,10 +8,10 @@
 }
 
 #navLogoTitle {
-  font-size: 2rem;
-  color: white;
-  margin-left: 1.5rem;
-  margin-top: 0.7rem;
+    font-size: 2rem;
+    color: white;
+    margin-left: 1.5rem;
+    margin-top: 0.7rem;
 }
 
 @media (max-width: 768px) {
