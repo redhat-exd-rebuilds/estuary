@@ -90,6 +90,14 @@
 
 #searchForm > input {
     padding-left: 0.75rem;
+    /* Animate the highlight effect */
+    transition: all 0.30s ease-in-out;
+}
+
+#searchForm > input:focus {
+    /* Highlight the input border when the user clicks on it */
+    box-shadow: 0 0 5px #00659c;
+    border: 0.25px solid #00659c;
 }
 
 #searchForm > button {
