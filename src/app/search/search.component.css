@@ -2,11 +2,7 @@
 #searchContainer {
     /* Take up the whole screen in portrait mobile mode */
     width: 100%;
-    min-width: 300px;
-    max-width: 600px;
-    min-height: 100%;
-    position: absolute;
-    top: 0px;
+    min-height: 100vh;
     background-color: #000000;
     padding-top: 4rem;
     padding-bottom: 4rem;
@@ -116,8 +112,8 @@
     display: none;
 }
 
-@media (min-width: 500px) {
-    /* Only take up half the screen in landscape mobile mode and higher */
+@media (min-width: 600px) {
+    /* Only take up half the screen once we know the sidebar would be at least 300px */
     #searchContainer {
         width: 50%;
     }
@@ -144,5 +140,13 @@
         right: 5rem;
         top: 5.25rem;
         height: 3rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    #searchContainer {
+        /* Using static value here instead of max-width for easier calculations
+        with the background image offset */
+        width: 600px;
     }
 }

@@ -8,12 +8,23 @@ html {
     height: 100%;
 }
 
-body.searchBg {
-    min-height: 100%;
-    background-image: url(assets/bg_portal.jpg);
-    background-position: center bottom;
-    background-size: cover;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-color: rgb(245, 245, 245);
+@media (min-width: 600px) {
+    /* At this point, the search sidebar transitions to covering 50% of the screen,
+    so the background becomes visible */
+    body.searchBg {
+        background-image: url(assets/mountain.png);
+        background-position: 50% bottom;
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-color: #484e51;
+    }
+}
+
+@media (min-width: 1200px) {
+    /* At this point, the search sidebar sets a static width of 600px, so the background needs to
+    shift over 600px instead of 50% */
+    body.searchBg {
+        background-position: 600px bottom;
+    }
 }
