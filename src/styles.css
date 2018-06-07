@@ -12,12 +12,12 @@ html {
     /* At this point, the search sidebar transitions to covering 50% of the screen,
     so the background becomes visible */
     body.searchBg {
-        background-image: url(assets/bg_portal.jpg);
+        background-image: url(assets/mountain.png);
         background-position: 50% bottom;
         background-size: cover;
         background-attachment: fixed;
         background-repeat: no-repeat;
-        background-color: rgb(245, 245, 245);
+        background-color: #484e51;
     }
 }
 
