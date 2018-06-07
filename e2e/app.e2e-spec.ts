@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('purview App', () => {
+describe('estuary App', () => {
   let page: AppPage;
 
   beforeEach(() => {

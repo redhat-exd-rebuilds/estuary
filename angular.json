@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "purview": {
+    "estuary": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -89,18 +89,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "purview:build"
+            "browserTarget": "estuary:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "purview:build:production"
+              "browserTarget": "estuary:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "purview:build"
+            "browserTarget": "estuary:build"
           }
         },
         "test": {
@@ -141,7 +141,7 @@
         }
       }
     },
-    "purview-e2e": {
+    "estuary-e2e": {
       "root": "",
       "sourceRoot": "",
       "projectType": "application",
@@ -150,7 +150,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "purview:serve"
+            "devServerTarget": "estuary:serve"
           }
         },
         "lint": {
@@ -167,7 +167,7 @@
       }
     }
   },
-  "defaultProject": "purview",
+  "defaultProject": "estuary",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
