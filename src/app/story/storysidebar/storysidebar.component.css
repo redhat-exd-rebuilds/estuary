@@ -1,7 +1,7 @@
 #sidebar {
     background-color: #FFFFFF;
     position: absolute;
-    top: 50px;
+    top: 52px;
     right: 0px;
     min-height: 100%;
     z-index: 1;
@@ -69,10 +69,6 @@
 }
 
 @media (min-width: 992px) {
-    #sidebar {
-        top: 62px;
-    }
-
     #sidebar.open {
         width: 45%;
         max-width: 750px;

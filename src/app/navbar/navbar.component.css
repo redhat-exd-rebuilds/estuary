@@ -1,42 +1,32 @@
-#navLogo {
-    margin-top: 0.25rem;
+nav.navbar {
+    background-color: #282d33;
 }
 
-#navLogo img {
-    /* Make the logo smaller */
-    height: 42.5px;
+.navbar-brand {
+    color: #efefef;
+    font-weight: 600;
+    font-size: 1.5rem;
 }
 
-#navLogoTitle {
-    font-size: 2rem;
-    color: white;
-    margin-left: 1.5rem;
-    margin-top: 0.7rem;
+#brandPipeline {
+    color: #282d33;
+    background-color: #efefef;
+    margin-left: 1rem;
+    padding: 1.5px 10px 1.5px 10px;
 }
 
-@media (max-width: 768px) {
-    .navbar-header {
-        /* Override the default of -20px */
-        margin-left: -5px;
-        margin-right: 5px;
-    }
+.navbar-right {
+    /* Don't show the right logo in mobile view */
+    display: none;
 }
 
-@media (min-width: 992px) {
-    nav.navbar {
-        padding-top: 5px;
-        padding-bottom: 5px;
-    }
+#brandRightLogo {
+    height: 30px;
+    margin-top: 10px;
+}
 
-    #navLogo {
-        margin-top: 0rem;
-    }
-
-    #navLogo img {
-        height: 50px;
-    }
-
-    #navLogoTitle {
-        font-size: 2.25rem;
+@media (min-width: 768px) {
+    .navbar-right {
+        display: initial;
     }
 }

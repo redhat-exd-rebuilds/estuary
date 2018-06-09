@@ -1,6 +1,6 @@
 #overlayContainer {
     position: absolute;
-    top: 50px;
+    top: 52px;
     background-color: #C0C0C0;
     width: 100%;
     height: 100%;
@@ -13,16 +13,6 @@
   left: calc(50% - 5.5px);
   margin: 2.5rem auto 1rem auto;
   z-index: 101;
-}
-
-@media (min-width: 992px) {
-    #overlayContainer {
-        top: 62px;
-    }
-
-    #spinner {
-        top: 100px;
-    }
 }
 
 /* CSS taken from https://projects.lukehaas.me/css-loaders/ with slight modifications */
