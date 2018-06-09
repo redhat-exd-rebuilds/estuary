@@ -80,7 +80,7 @@ describe('StoryService testing', () => {
           'related_nodes': {
             'Advisory': 0,
             'BugzillaBug': 3,
-            'ContainerBuild': 0,
+            'ContainerKojiBuild': 0,
             'DistGitCommit': 0,
             'FreshmakerEvent': 0,
             'KojiBuild': 0

@@ -90,7 +90,7 @@ export class StoryRowComponent implements OnInit, AfterViewInit {
         return 'pficon-security';
       case('FreshmakerEvent'):
         return 'fa-refresh';
-      case('ContainerBuild'):
+      case('ContainerKojiBuild'):
         return 'pficon-build';
       default:
         return 'fa-cube';
