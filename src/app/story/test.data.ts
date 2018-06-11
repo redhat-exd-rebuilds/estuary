@@ -144,29 +144,24 @@ export let story = {
       'url': '/api/1/events/1180'
     },
     {
-      'build_id': 15639047,
-      'dep_on': null,
-      'event_id': 1180,
-      'id': '397',
-      'name': 'jboss-eap-7-eap70-openshift-docker',
-      'original_nvr': 'jboss-eap-7-eap70-openshift-docker-1.4-36',
-      'rebuilt_nvr': 'jboss-eap-7-eap70-openshift-docker-1.4-36.1522094763',
-      'resource_type': 'ContainerBuild',
+      'completion_time': '2018-05-08T19:17:42+00:00',
+      'creation_time': '2018-05-08T19:17:44.180482+00:00',
+      'epoch': null,
+      'id': '687618',
+      'name': 'rh-perl520-docker',
+      'original_nvr': null,
+      'release': '17.1525804575',
+      'resource_type': 'ContainerKojiBuild',
+      'start_time': '2018-05-08T18:56:25+00:00',
       'state': 1,
-      'state_name': 'DONE',
-      'state_reason': 'Built successfully.',
-      'time_completed': '2017-04-02T19:39:06+00:00',
-      'time_submitted': '2017-04-02T19:39:06+00:00',
-      'type': 1,
-      'type_name': 'IMAGE',
-      'url': '/api/1/builds/397'
+      'version': '5.20'
     }
   ],
   'meta': {
     'related_nodes': {
       'Advisory': 0,
       'BugzillaBug': 1,
-      'ContainerBuild': 0,
+      'ContainerKojiBuild': 0,
       'DistGitCommit': 0,
       'FreshmakerEvent': 0,
       'KojiBuild': 0

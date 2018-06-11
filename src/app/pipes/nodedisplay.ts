@@ -10,6 +10,7 @@ export class NodeUidDisplayPipe implements PipeTransform {
         case('distgitcommit'):
             return '#' + node.hash.slice(0, 7);
         case('kojibuild'):
+        case('containerkojibuild'):
             return `${node.name}-${node.version}-${node.release}`;
         case('advisory'):
             return node.advisory_name;
@@ -35,7 +36,7 @@ export class NodeTypeDisplayPipe implements PipeTransform {
             return 'Advisory';
         case('freshmakerevent'):
             return 'Freshmaker Event';
-        case('containerbuild'):
+        case('containerkojibuild'):
             return 'Container Build';
         default:
             return nodeType;
@@ -72,13 +73,12 @@ export class NodeExternalUrlPipe implements PipeTransform {
                 }
                 return baseUrl;
             case('kojibuild'):
+            case('containerkojibuild'):
                 return `https://brew.engineering.redhat.com/brew/buildinfo?buildID=${node.id}`;
             case('advisory'):
                 return `http://errata.engineering.redhat.com/advisory/${node.id}`;
             case('freshmakerevent'):
                 return `https://freshmaker.engineering.redhat.com/api/1/events/${node.id}`;
-            case('containerbuild'):
-                return `https://freshmaker.engineering.redhat.com/api/1/builds/${node.id}`;
             default:
                 return '';
         }
