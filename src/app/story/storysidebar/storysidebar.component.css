@@ -3,7 +3,8 @@
     position: absolute;
     top: 52px;
     right: 0px;
-    min-height: 100%;
+    /* 100% height minus the navbar height */
+    min-height: calc(100% - 50px);
     z-index: 1;
     transition: width 0.5s;
     box-sizing: border-box;
