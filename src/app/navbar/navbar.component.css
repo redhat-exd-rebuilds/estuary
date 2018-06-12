@@ -29,4 +29,16 @@ nav.navbar {
     .navbar-right {
         display: initial;
     }
+
+    nav > div.container-fluid {
+        padding-left: 5rem;
+        padding-right: 5rem;
+    }
+}
+
+@media (min-width: 992px) {
+    nav > div.container-fluid {
+        padding-left: 7.5rem;
+        padding-right: 7.5rem;
+    }
 }
