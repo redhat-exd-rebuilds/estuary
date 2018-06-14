@@ -74,7 +74,7 @@ export class NodeExternalUrlPipe implements PipeTransform {
                 return baseUrl;
             case('kojibuild'):
             case('containerkojibuild'):
-                return `https://brew.engineering.redhat.com/brew/buildinfo?buildID=${node.id}`;
+                return `https://brewweb.engineering.redhat.com/brew/buildinfo?buildID=${node.id}`;
             case('advisory'):
                 return `http://errata.engineering.redhat.com/advisory/${node.id}`;
             case('freshmakerevent'):
