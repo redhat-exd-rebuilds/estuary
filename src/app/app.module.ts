@@ -12,7 +12,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { StoryComponent } from './story/story.component';
 import { StoryRowComponent, PlumbConnectDirective } from './story/storyrow/storyrow.component';
 import { StorysidebarComponent } from './story/storysidebar/storysidebar.component';
-import { KeysPipe } from './pipes/keyvaluepairs';
 import { PropertyDisplayPipe } from './pipes/propertydisplay';
 import { NodeUidDisplayPipe, NodeTypeDisplayPipe, NodeTypePluralPipe, NodeExternalUrlPipe,
          TruncatePipe } from './pipes/nodedisplay';
@@ -32,7 +31,6 @@ import { NavbarComponent } from './navbar/navbar.component';
     PropertyDisplayPipe,
     NodeUidDisplayPipe,
     SearchComponent,
-    KeysPipe,
     NodeTypeDisplayPipe,
     NodeTypePluralPipe,
     NodeExternalUrlPipe,

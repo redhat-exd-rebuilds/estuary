@@ -8,12 +8,12 @@
   <h3 id="helpText">Select an artifact to get started.</h3>
   <div id="searchForm" *ngIf="availableResources">
     <select [(ngModel)]="selectedResource" id="resourceSelector">
-      <option *ngFor="let resource of availableResources | keys" [value]="resource">
+      <option *ngFor="let resource of availableResources" [value]="resource">
         {{ resource | nodeTypeDisplay }}
       </option>
     </select>
     <input (keyup.enter)="navigateToStory()" [(ngModel)]="selectedUID" type="text" required
-        placeholder="{{ selectedResource | nodeTypeDisplay }} {{ availableResources[selectedResource] | propertyDisplay }}">
+        placeholder="Enter an identifier">
     <button (click)="navigateToStory()" id="searchButton" class="btn btn-info" type="button">
       Show Story
     </button>
