@@ -31,7 +31,7 @@ export class NodeTypeDisplayPipe implements PipeTransform {
         case('distgitcommit'):
             return 'Commit';
         case('kojibuild'):
-            return 'Brew Build';
+            return 'Build';
         case('advisory'):
             return 'Advisory';
         case('freshmakerevent'):
