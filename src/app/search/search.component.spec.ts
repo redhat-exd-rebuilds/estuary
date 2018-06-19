@@ -11,7 +11,6 @@ import { NotificationModule } from 'patternfly-ng/notification';
 
 import { SearchComponent } from './search.component';
 import { SearchService } from '../services/search.service';
-import { KeysPipe } from '../pipes/keyvaluepairs';
 import { NodeTypeDisplayPipe } from '../pipes/nodedisplay';
 import { AlertComponent } from '../alert/alert.component';
 import { PropertyDisplayPipe } from '../pipes/propertydisplay';
@@ -24,7 +23,7 @@ describe('SearchComponent testing', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-        declarations: [SearchComponent, AlertComponent, KeysPipe, NodeTypeDisplayPipe, PropertyDisplayPipe],
+        declarations: [SearchComponent, AlertComponent, NodeTypeDisplayPipe, PropertyDisplayPipe],
         providers: [SearchService],
         imports: [FormsModule, NotificationModule, HttpClientTestingModule, RouterTestingModule, NoopAnimationsModule]
     }).compileComponents();
@@ -59,19 +58,14 @@ describe('SearchComponent testing', () => {
     expect(dropDownOptions[2].value).toBe('distgitcommit');
 
     const inputEl = fixture.debugElement.query(By.css('input')).nativeElement;
-    expect(inputEl.placeholder).toBe('Advisory ID');
-
     component.selectedResource = 'bugzillabug';
     fixture.detectChanges();
     tick();
     expect(dropdownEl.value).toBe('bugzillabug');
-    expect(inputEl.placeholder).toBe('Bugzilla Bug ID');
-
     component.selectedResource = 'distgitcommit';
     fixture.detectChanges();
     tick();
     expect(dropdownEl.value).toBe('distgitcommit');
-    expect(inputEl.placeholder).toBe('Commit Hash');
   }));
 
   it('should display an error when the API call fails', fakeAsync(() => {

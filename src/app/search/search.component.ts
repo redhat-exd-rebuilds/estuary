@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class SearchComponent implements OnInit, OnDestroy {
 
-  availableResources: Array<any>;
+  availableResources: Array<String>;
   selectedResource: String;
   selectedUID: String;
   errorMsg: String;
@@ -25,7 +25,7 @@ export class SearchComponent implements OnInit, OnDestroy {
       resources => {
         // Default the select element to be the first key
         this.selectedResource = Object.keys(resources)[0];
-        this.availableResources = resources;
+        this.availableResources = Object.keys(resources);
       },
       errorResponse => {
         this.errorMsg = errorResponse.error.message;
@@ -40,7 +40,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   navigateToStory() {
     if (this.selectedResource && this.selectedUID) {
-      this.router.navigate(['/', this.selectedResource, this.selectedUID]);
+      this.router.navigate(['/', this.selectedResource, this.selectedUID.trim()]);
     } else {
       this.errorMsg = 'Please enter a search value';
     }
