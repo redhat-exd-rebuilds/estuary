@@ -77,14 +77,8 @@ describe('StoryService testing', () => {
           }
         ],
         'meta': {
-          'related_nodes': {
-            'Advisory': 0,
-            'BugzillaBug': 3,
-            'ContainerKojiBuild': 0,
-            'DistGitCommit': 0,
-            'FreshmakerEvent': 0,
-            'KojiBuild': 0
-          }
+          'requested_node_index': 0,
+          'story_related_nodes': [3, 0]
         }
       };
 

@@ -1,5 +1,6 @@
 interface StoryMetaAPI {
-    related_nodes: Array<any>;
+    requested_node_index: Number;
+    story_related_nodes: Array<Number>;
 }
 
 export interface StoryAPI {
