@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/co
 import { SearchService } from '../services/search.service';
 import { Router } from '@angular/router';
 
+import { NodeTypeDisplayPipe } from '../pipes/nodedisplay';
+
 
 @Component({
   selector: 'app-search',
@@ -10,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class SearchComponent implements OnInit, OnDestroy {
 
-  availableResources: Array<String>;
+  availableResources: Array<any>;
   selectedResource: String;
   selectedUID: String;
   errorMsg: String;
@@ -23,9 +25,25 @@ export class SearchComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.search.getAvailableResources().subscribe(
       resources => {
+        const nodeTypeDisplayPipe = new NodeTypeDisplayPipe();
+        this.availableResources = [];
+        for (const resource of Object.keys(resources)) {
+          this.availableResources.push({
+            'name': resource,
+            'displayName': nodeTypeDisplayPipe.transform(resource)
+          });
+        }
+        this.availableResources.sort((a, b) => {
+          if (a.displayName < b.displayName) {
+            return -1;
+          } else if (a.displayName > b.displayName) {
+            return 1;
+          } else {
+            return 0;
+          }
+        });
         // Default the select element to be the first key
         this.selectedResource = Object.keys(resources)[0];
-        this.availableResources = Object.keys(resources);
       },
       errorResponse => {
         this.errorMsg = errorResponse.error.message;
