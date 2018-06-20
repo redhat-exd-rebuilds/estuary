@@ -28,10 +28,14 @@ export class SearchComponent implements OnInit, OnDestroy {
         const nodeTypeDisplayPipe = new NodeTypeDisplayPipe();
         this.availableResources = [];
         for (const resource of Object.keys(resources)) {
-          this.availableResources.push({
-            'name': resource,
-            'displayName': nodeTypeDisplayPipe.transform(resource)
-          });
+          // For now, we don't want to display certain search options to avoid clutter
+          // and simplify the UX
+          if (resource !== 'containerkojibuild' && resource !== 'freshmakerevent') {
+            this.availableResources.push({
+              'name': resource,
+              'displayName': nodeTypeDisplayPipe.transform(resource)
+            });
+          }
         }
         this.availableResources.sort((a, b) => {
           if (a.displayName < b.displayName) {

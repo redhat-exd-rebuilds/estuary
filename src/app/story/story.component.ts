@@ -2,6 +2,7 @@ import { Component, AfterViewInit, HostListener, OnInit, OnDestroy } from '@angu
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
 import { StoryService } from '../services/story.service';
+import { StoryAPI } from '../models/story.type';
 
 
 // The TypeScript definitions are missing a few functions we need. I submitted a PR at
@@ -17,7 +18,7 @@ declare var jsPlumb: any;
 export class StoryComponent implements OnInit, OnDestroy {
 
   loading: Boolean;
-  story: Array<any> = [];
+  story: StoryAPI;
   selectedResource: String;
   selectedNode: any;
   errorMsg: String;
@@ -29,7 +30,7 @@ export class StoryComponent implements OnInit, OnDestroy {
       this.loading = true;
       // If the route changes, then remove all the connections
       jsPlumb.reset();
-      this.story = [];
+      this.story = null;
       this.selectedResource = params['resource'];
       this.selectedNode = null;
       this.getStory(params['resource'], params['uid']);
