@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="75" height="73" version="1.1" style=""><rect id="backgroundrect" width="100%" height="100%" x="0" y="0" fill="none" stroke="none" class="" style=""/>
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>Oval Copy 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="130" cy="36" r="36"/>
+        <filter x="-5.6%" y="-2.8%" width="111.1%" height="111.1%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.0797101449 0" type="matrix" in="shadowBlurOuter1"/>
+        </filter>
+    </defs>
+    
+<g class="currentLayer" style=""><title>Layer 1</title><g id="Visualization---Final" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Viz-2">
+            <g id="Second">
+                <g id="Oval-Copy-2">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1" y="0" x="-92" id="svg_1"/>
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1" y="0" x="-92" id="svg_2"/>
+                </g>
+            </g>
+        </g>
+    </g></g></svg>

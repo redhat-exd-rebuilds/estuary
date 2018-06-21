@@ -3,13 +3,15 @@
   <div [appPlumbConnect]="prevNodeIDs" id="{{ node.resource_type + 'Primary' }}"
       [ngClass]="{'active': active}" [routerLink]="['/', node.resource_type.toLowerCase(), getNodeUid()]"
       tooltip="{{ node.resource_type | nodeTypeDisplay }}: {{ node | nodeUidDisplay }}">
-    <i class="fa fa-th {{ getNodeIconClass() }}" aria-hidden="true"></i>
+    <img src="assets/circle_single.svg" />
+    <div class="mainItemIconContainer"><i class="fa fa-th {{ getNodeIconClass() }}" aria-hidden="true"></i></div>
   </div>
 </div>
 <div *ngIf="relatedNodes" class="secondaryItem">
   <div [appPlumbConnect]="prevNodeIDs" id="{{ node.resource_type + 'Secondary'}}"
       tooltip="Related {{ node.resource_type | nodeTypeDisplay | nodeTypePlural }}">
-    <i class="fa fa-th {{ getNodeIconClass() }}" aria-hidden="true"></i>
+    <img src="assets/circle_multi.svg" />
+    <div class="secondaryItemIconContainer"><i class="fa fa-th {{ getNodeIconClass() }}" aria-hidden="true"></i></div>
   </div>
 </div>
 <div *ngIf="relatedNodes" class="secondaryItemText">{{ relatedNodes + ' more' }}</div>
