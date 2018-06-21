@@ -1,3 +1,9 @@
+/* A hack that fixes an overflowing page in mobile view */
+.container-fluid > .navbar-header {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
 nav.navbar {
     background-color: #282d33;
 }
