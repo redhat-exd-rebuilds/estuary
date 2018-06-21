@@ -44,8 +44,8 @@ describe('StoryRowComponent testing', () => {
 
     const artifactEl = fixture.debugElement.query(By.css('#BugzillaBugPrimary')).nativeElement;
     // Verify the artifact details are correct
-    expect(artifactEl.children[0].tagName).toBe('I');
-    expect(artifactEl.children[0].classList).toContain('fa-bug');
+    expect(artifactEl.children[0].tagName).toBe('IMG');
+    expect(artifactEl.children[0].src).toContain('circle_single.svg');
     expect(artifactEl.attributes['ng-reflect-tooltip'].value).toBe('Bugzilla Bug: RHBZ#23456');
     expect(artifactEl.attributes['ng-reflect-router-link'].value).toBe('/,bugzillabug,23456');
   }));
@@ -63,8 +63,8 @@ describe('StoryRowComponent testing', () => {
 
     const secondaryArtifactEl = fixture.debugElement.query(By.css('#BugzillaBugSecondary')).nativeElement;
     // Verify the secondary artifact details are correct
-    expect(secondaryArtifactEl.children[0].tagName).toBe('I');
-    expect(secondaryArtifactEl.children[0].classList).toContain('fa-bug');
+    expect(secondaryArtifactEl.children[0].tagName).toBe('IMG');
+    expect(secondaryArtifactEl.children[0].src).toContain('circle_multi.svg');
     expect(secondaryArtifactEl.attributes['ng-reflect-tooltip'].value).toBe('Related Bugzilla Bugs');
 
     const secondaryItemTextEl = fixture.debugElement.query(By.css('.secondaryItemText')).nativeElement;

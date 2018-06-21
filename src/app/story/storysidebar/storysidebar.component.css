@@ -1,14 +1,24 @@
+:host, #sidebarTitle a {
+    color: #6A6C6F;
+}
+
+a > h2 {
+    /* This makes the h2 be on the same line as the wrapping anchor */
+    display: inline-block;
+}
+
 #sidebar {
     background-color: #FFFFFF;
+    /* Position the sidebar on the right side of the page */
     position: absolute;
     top: 52px;
     right: 0px;
     /* 100% height minus the navbar height */
     min-height: calc(100% - 50px);
+    /* Have the sidebar be on top of all other elements */
     z-index: 1;
+    /* Smooth the transition when opening/close */
     transition: width 0.5s;
-    box-sizing: border-box;
-    border-left: 2px solid #A9A9A9;
 }
 
 #sidebar.open {
@@ -19,34 +29,43 @@
     width: 25px;
 }
 
-#sidebarTitle {
-    border-bottom: 2px solid #A9A9A9;
-    font-size: 1.5rem;
-    font-weight: bold;
-    padding: 0.75rem;
+#sidebar.closed > * {
+    /* When the sidebar is closed, make the arrow closer to the edge */
+    margin-left: 0.75rem;
 }
 
-#sidebarTitle i {
-    font-size: 2rem;
+#sidebar > * {
+    /* Move all content in the sidebar over 2.5rem to not hug the border */
+    margin-left: 2.5rem;
+}
+
+#sidebarTitle {
+    font-size: 1.6rem;
+    font-weight: 600;
+    /* Give some space around the arrow and "Properties" */
+    margin-top: 2rem;
+    margin-bottom: 1rem;
 }
 
 #sidebar.open #sidebarTitle i {
-    margin-right: 0.5rem;
+    /* Push "Properties" to the right 1rem */
+    margin-right: 1rem;
 }
 
 #sidebarTitle a {
-    color: #363636;
+    /* Remove some of the default styles on the arrow */
     outline: 0;
     text-decoration: none;
 }
 
-#sidebar > a > h3 {
+#sidebar > a > h2 {
     font-weight: bold;
-    margin-left: 10px;
 }
 
 #sidebarProperties {
-    margin: 2rem 1rem 3rem 1rem;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 3rem;
     padding-right: 1rem;
 }
 
@@ -56,16 +75,25 @@
 
 .sidebarPropertiesRow > td {
     word-break: break-all;
+    padding-bottom: 0.5rem;
 }
 
 .sidebarPropertiesRow td:nth-child(odd) {
+    /* If the value to the right is more than one line, don't vertically center the key */
     vertical-align: top;
-    padding-right: 10px;
-    font-weight: bold;
+    /* Create some space between the key and the value */
+    padding-right: 1rem;
+    /* Ensure all keys are on their own line and */
     white-space: nowrap;
 }
 
+.sidebarPropertiesRow td:nth-child(even) {
+    /* Bold the values in the table */
+    font-weight: bold;
+}
+
 .truncateArrow {
+    /* Create some space between the text and the truncate arrow */
     margin-left: 0.5rem;
 }
 
@@ -79,12 +107,15 @@
         width: 30px;
     }
 
-    #sidebarProperties, #sidebar > a > h3 {
-        margin-left: 2rem;
-        margin-right: 2rem;
+    #sidebar > * {
+        margin-left: 3rem;
     }
 
-    #sidebarProperties > div.sidebarPropertiesRow > div:nth-child(odd) {
-        padding-right: 1.5rem;
+    .sidebarPropertiesRow td:nth-child(odd) {
+        padding-right: 2rem;
+    }
+
+    #sidebarProperties {
+        margin-right: 2rem;
     }
 }

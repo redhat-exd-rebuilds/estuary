@@ -9,6 +9,10 @@ html {
     position: relative;
 }
 
+body {
+    background-color: #F2F2F2;
+}
+
 @media (min-width: 600px) {
     /* At this point, the search sidebar transitions to covering 50% of the screen,
     so the background becomes visible */

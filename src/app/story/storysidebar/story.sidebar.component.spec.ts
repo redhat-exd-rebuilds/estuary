@@ -46,7 +46,7 @@ describe('StorysidebarComponent testing', () => {
   it('should display the input node when the sidebar is open', fakeAsync(() => {
     const titleAnchorEl = fixture.debugElement.query(By.css('#sidebar a[target="_blank"]')).nativeElement;
     expect(titleAnchorEl.href).toBe('https://bugzilla.redhat.com/show_bug.cgi?id=23456');
-    const titleEl = fixture.debugElement.query(By.css('#sidebar > a > h3')).nativeElement;
+    const titleEl = fixture.debugElement.query(By.css('#sidebar > a > h2')).nativeElement;
     expect(titleEl.textContent).toBe('RHBZ#23456');
     const sidebarPropertiesEl = fixture.debugElement.query(By.css('#sidebarProperties > tbody')).nativeElement;
     expect(sidebarPropertiesEl.children.length).toBe(20);

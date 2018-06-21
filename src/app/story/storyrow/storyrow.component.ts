@@ -25,7 +25,7 @@ export class PlumbConnectDirective implements AfterViewInit {
           endpoint : 'Blank',
           connector : ['Flowchart', {cornerRadius: 3}],
           anchor: ['Bottom', 'Top'],
-          paintStyle: {stroke: 'black', strokeWidth: 2},
+          paintStyle: {stroke: '#6A6C6F', strokeWidth: 2},
         });
       }
     });

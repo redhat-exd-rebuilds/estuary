@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="108" height="74" version="1.1"><rect id="backgroundrect" width="100%" height="100%" x="0" y="0" fill="none" stroke="none"/>
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="68" cy="36" r="36"/>
+        <filter x="-5.6%" y="-2.8%" width="111.1%" height="111.1%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.0797101449 0" type="matrix" in="shadowBlurOuter1"/>
+        </filter>
+        <circle id="path-3" cx="52" cy="36" r="36"/>
+        <filter x="-5.6%" y="-2.8%" width="111.1%" height="111.1%" filterUnits="objectBoundingBox" id="filter-4">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.0797101449 0" type="matrix" in="shadowBlurOuter1"/>
+        </filter>
+        <circle id="path-5" cx="36" cy="36" r="36"/>
+        <filter x="-5.6%" y="-2.8%" width="111.1%" height="111.1%" filterUnits="objectBoundingBox" id="filter-6">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.0797101449 0" type="matrix" in="shadowBlurOuter1"/>
+        </filter>
+    </defs>
+    
+<g class="currentLayer" style=""><title>Layer 1</title><g id="Visualization---Final" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Viz-2">
+            <g id="3-More">
+                <g id="Bug-2-Copy">
+                    <g id="Group">
+                        <g id="Oval-Copy-6">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1" y="0" x="2" id="svg_1"/>
+                            <use fill="#EDEDED" fill-rule="evenodd" xlink:href="#path-1" y="0" x="2" id="svg_2"/>
+                        </g>
+                        <g id="Oval-Copy">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3" y="0" x="2" id="svg_3"/>
+                            <use fill="#F5F5F5" fill-rule="evenodd" xlink:href="#path-3" y="0" x="2" id="svg_4"/>
+                        </g>
+                        <g id="Oval-Copy">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-6)" xlink:href="#path-5" y="0" x="2" id="svg_5"/>
+                            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-5" y="0" x="2" id="svg_6"/>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g></g></svg>
