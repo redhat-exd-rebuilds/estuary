@@ -158,13 +158,7 @@ export let story = {
     }
   ],
   'meta': {
-    'related_nodes': {
-      'Advisory': 0,
-      'BugzillaBug': 1,
-      'ContainerKojiBuild': 0,
-      'DistGitCommit': 0,
-      'FreshmakerEvent': 0,
-      'KojiBuild': 0
-    }
+    'requested_node_index': 0,
+    'story_related_nodes': [1, 0, 0, 0, 0, 0]
   }
 };
