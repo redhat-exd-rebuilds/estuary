@@ -87,6 +87,7 @@ export class StoryRowComponent implements OnInit, AfterViewInit {
       case('KojiBuild'):
         return 'pficon-build';
       case('Advisory'):
+      case('ContainerAdvisory'):
         return 'pficon-security';
       case('FreshmakerEvent'):
         return 'fa-refresh';

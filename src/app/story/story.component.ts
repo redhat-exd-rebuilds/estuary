@@ -63,6 +63,9 @@ export class StoryComponent implements OnInit, OnDestroy {
           // will replicate the user's search
           if (prevNode && prevNode.resource_type === 'DistGitCommit' && node.resource_type === 'ContainerKojiBuild') {
             node.resource_type = 'KojiBuild';
+          } else if (prevNode && prevNode.resource_type === 'KojiBuild' && node.resource_type === 'ContainerAdvisory') {
+            // Similar situation as above except with Advisories
+            node.resource_type = 'Advisory';
           }
           prevNode = node;
         }
