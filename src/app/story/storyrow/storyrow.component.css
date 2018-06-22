@@ -21,11 +21,6 @@ div.mainItem {
     padding-right: 5rem;
 }
 
-div.secondaryItem {
-    /* Leave a small gap between the siblings and the "x more" text  */
-    padding-right: 1.25rem;
-}
-
 div.mainItem > div:hover {
     /* Make the mouse look like a pointer so the user intuitively knows they can click on the shape */
     cursor: pointer;
@@ -116,5 +111,10 @@ div.secondaryItem > div {
     div.secondaryItemText {
         /* Display the "x more" text */
         display: block;
+    }
+
+    div.secondaryItem {
+        /* Leave a small gap between the siblings and the "x more" text  */
+        padding-right: 1.25rem;
     }
 }
