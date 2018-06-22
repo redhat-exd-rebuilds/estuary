@@ -90,4 +90,17 @@ describe('StoryService testing', () => {
       expect(req.request.method).toEqual('GET');
       req.flush(testData);
     });
+
+    it('uses the fallback option in the URL', () => {
+      const testData = {};
+
+      storyService.getStory('kojibuild', '12345').subscribe(data => {
+          expect(data).toEqual(testData);
+      });
+
+      const req = httpTestingController.expectOne(
+        `${storyService.apiUrl}story/containerkojibuild/12345?fallback=kojibuild`);
+      expect(req.request.method).toEqual('GET');
+      req.flush(testData);
+    });
 });
