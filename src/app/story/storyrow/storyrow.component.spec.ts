@@ -6,7 +6,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 import { StoryRowComponent, PlumbConnectDirective } from './storyrow.component';
 import { bug } from '../test.data';
-import { NodeUidDisplayPipe, NodeTypeDisplayPipe, NodeTypePluralPipe } from '../../pipes/nodedisplay';
+import { NodeUidDisplayPipe, NodeTypeDisplayPipe, NodeTypePluralPipe, TruncatePipe } from '../../pipes/nodedisplay';
 
 
 describe('StoryRowComponent testing', () => {
@@ -20,7 +20,8 @@ describe('StoryRowComponent testing', () => {
             PlumbConnectDirective,
             NodeUidDisplayPipe,
             NodeTypeDisplayPipe,
-            NodeTypePluralPipe
+            NodeTypePluralPipe,
+            TruncatePipe
         ],
         imports: [RouterTestingModule, TooltipModule.forRoot()]
     }).compileComponents();

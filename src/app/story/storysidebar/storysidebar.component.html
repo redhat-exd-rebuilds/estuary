@@ -9,7 +9,13 @@
   </div>
   <ng-container *ngIf="sidebarOpen && node">
     <a [href]="node | nodeExternalUrl" target="_blank">
-      <h2>{{ node | nodeUidDisplay }}</h2>
+      <!-- *ngIf is used because it should only tooltip on long UIDs -->
+      <h2 *ngIf="(node | nodeUidDisplay).length > 30; else shortUid" tooltip="{{ node | nodeUidDisplay }}">
+        {{ node | nodeUidDisplay | truncate: 30 }}
+      </h2>
+      <ng-template #shortUid>
+        <h2>{{ node | nodeUidDisplay }}</h2>
+      </ng-template>
     </a>
     <table id="sidebarProperties">
       <tbody>

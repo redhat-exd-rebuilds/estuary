@@ -6,6 +6,7 @@ import { StorysidebarComponent } from './storysidebar.component';
 import { NodeUidDisplayPipe, NodeExternalUrlPipe, TruncatePipe } from '../../pipes/nodedisplay';
 import { PropertyDisplayPipe } from '../../pipes/propertydisplay';
 import { bug } from '../test.data';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 
 describe('StorysidebarComponent testing', () => {
@@ -23,6 +24,9 @@ describe('StorysidebarComponent testing', () => {
         ],
         providers: [
           DatePipe
+        ],
+        imports: [
+          TooltipModule.forRoot()
         ]
     }).compileComponents();
   });
