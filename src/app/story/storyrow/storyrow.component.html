@@ -1,4 +1,4 @@
-<div class="mainItemText">{{ node | nodeUidDisplay }}</div>
+<div class="mainItemText">{{ node | nodeUidDisplay | truncate: 30 }}</div>
 <div class="mainItem">
   <div [appPlumbConnect]="prevNodeIDs" id="{{ node.resource_type + 'Primary' }}"
       [ngClass]="{'active': active}" [routerLink]="['/', node.resource_type.toLowerCase(), getNodeUid()]"

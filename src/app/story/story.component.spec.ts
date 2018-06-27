@@ -133,7 +133,7 @@ describe('StoryComponent testing', () => {
     // Ensure the number of columns in the row
     expect(storyRowEls[5].nativeElement.children.length).toBe(2);
     // Ensure the text is correct
-    expect(storyRowEls[5].nativeElement.firstElementChild.innerText).toBe('rh-perl520-docker-5.20-17.1525804575');
+    expect(storyRowEls[5].nativeElement.firstElementChild.innerText).toBe('rh-perl520-docker-5.20-17.1525…');
     // Ensure the order is correct
     expect(storyRowEls[5].nativeElement.children[1].firstElementChild.id).toBe('ContainerKojiBuildPrimary');
     // Ensure the it is not active
