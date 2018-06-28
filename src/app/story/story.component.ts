@@ -89,13 +89,13 @@ export class StoryComponent implements OnInit, AfterViewInit, OnDestroy {
     // relationship flows backwards and is set after the loop
     for (let i = 0; i < storyRows.length - 1; i++) {
       // Connect the main node to the next main node
-      const target = storyRows[i + 1].querySelector('.mainItem').children[0];
+      const target = storyRows[i + 1].querySelector('.node-column').children[0];
       jsPlumb.connect({
-        source: storyRows[i].querySelector('.mainItem').children[0],
+        source: storyRows[i].querySelector('.node-column').children[0],
         target: target
       });
       // Check to see if this story row has siblings
-      const secondaryItem = storyRows[i].querySelector('.secondaryItem');
+      const secondaryItem = storyRows[i].querySelector('.node-siblings-column');
       if (secondaryItem) {
         // If there are siblings, connect them to the next main node
         jsPlumb.connect({
@@ -106,12 +106,12 @@ export class StoryComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     // Check to see if the last row has any siblings
-    const lastSecondaryItem = storyRows[storyRows.length - 1].querySelector('.secondaryItem');
-    if (lastSecondaryItem) {
+    const lastSiblingsItem = storyRows[storyRows.length - 1].querySelector('.node-siblings-column');
+    if (lastSiblingsItem) {
       // If there are siblings, connect them to the previous main node
       jsPlumb.connect({
-        source: lastSecondaryItem.children[0],
-        target: storyRows[storyRows.length - 2].querySelector('.mainItem').children[0],
+        source: lastSiblingsItem.children[0],
+        target: storyRows[storyRows.length - 2].querySelector('.node-column').children[0],
       });
     }
 
