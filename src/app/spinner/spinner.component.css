@@ -1,4 +1,5 @@
-#overlayContainer {
+/* ----- Blocks ----- */
+.overlay-container {
     position: absolute;
     top: 52px;
     background-color: #C0C0C0;
@@ -7,7 +8,9 @@
     z-index: 100;
 }
 
-#spinner {
+
+/* ----- Elements ----- */
+.overlay-container__spinner {
   position: fixed;
   top: 70px;
   left: calc(50% - 5.5px);
@@ -16,14 +19,14 @@
 }
 
 /* CSS taken from https://projects.lukehaas.me/css-loaders/ with slight modifications */
-#spinner, #spinner:before, #spinner:after {
+.overlay-container__spinner, .overlay-container__spinner:before, .overlay-container__spinner:after {
   background: #FFFFFF;
   animation: load1 1s infinite ease-in-out;
   width: 1rem;
   height: 4rem;
 }
 
-#spinner {
+.overlay-container__spinner {
   color: #FFFFFF;
   text-indent: -9999rem;
   font-size: 11px;
@@ -31,18 +34,18 @@
   animation-delay: -0.16s;
 }
 
-#spinner:before, #spinner:after {
+.overlay-container__spinner:before, .overlay-container__spinner:after {
   position: absolute;
   top: 0;
   content: '';
 }
 
-#spinner:before {
+.overlay-container__spinner:before {
   left: -1.5rem;
   animation-delay: -0.32s;
 }
 
-#spinner:after {
+.overlay-container__spinner:after {
   left: 1.5rem;
 }
 
