@@ -1,10 +1,27 @@
-/* A hack that fixes an overflowing page in mobile view */
-.container-fluid > .navbar-header {
+/* ----- Elements ----- */
+.navbar-left__brand {
+    color: #282d33;
+    background-color: #efefef;
+    margin-left: 1rem;
+    padding: 1.5px 10px 1.5px 10px;
+}
+
+.navbar-right__brand {
+    height: 30px;
+    margin-top: 10px;
+    /* Don't show the right logo in mobile view */
+    display: none;
+}
+
+
+/* ----- Bootstrap Overrides ----- */
+.navbar-header {
+    /* A hack that fixes an overflowing page in mobile view */
     margin-left: 0 !important;
     margin-right: 0 !important;
 }
 
-nav.navbar {
+.navbar {
     background-color: #282d33;
 }
 
@@ -14,36 +31,19 @@ nav.navbar {
     font-size: 1.5rem;
 }
 
-#brandPipeline {
-    color: #282d33;
-    background-color: #efefef;
-    margin-left: 1rem;
-    padding: 1.5px 10px 1.5px 10px;
-}
-
-.navbar-right {
-    /* Don't show the right logo in mobile view */
-    display: none;
-}
-
-#brandRightLogo {
-    height: 30px;
-    margin-top: 10px;
-}
-
 @media (min-width: 768px) {
-    .navbar-right {
+    .navbar-right__brand {
         display: initial;
     }
 
-    nav > div.container-fluid {
+    .navbar__container {
         padding-left: 5rem;
         padding-right: 5rem;
     }
 }
 
 @media (min-width: 992px) {
-    nav > div.container-fluid {
+    .navbar__container {
         padding-left: 7.5rem;
         padding-right: 7.5rem;
     }
