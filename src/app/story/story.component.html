@@ -2,10 +2,12 @@
 <app-navbar></app-navbar>
 
 <div class="container-fluid">
-  <div id="diagram" *ngIf="story">
-    <app-storyrow id="{{ 'storyRow' + i }}" [node]="node" [relatedNodes]="story.meta.story_related_nodes[i]"
-        [active]="node === selectedNode" *ngFor="let node of story.data; let i = index">
-    </app-storyrow>
+  <div id="diagram">
+    <ng-container *ngIf="story">
+      <app-storyrow [node]="node" [relatedNodes]="story.meta.story_related_nodes[i]" [last]="last"
+          [active]="node === selectedNode" *ngFor="let node of story.data; let i = index; let last = last">
+      </app-storyrow>
+    </ng-container>
   </div>
 </div>
 

@@ -1,6 +1,6 @@
 <div class="mainItemText">{{ node | nodeUidDisplay | truncate: 30 }}</div>
 <div class="mainItem">
-  <div [appPlumbConnect]="prevNodeIDs" id="{{ node.resource_type + 'Primary' }}"
+  <div id="{{ node.resource_type + 'Primary' }}"
       [ngClass]="{'active': active}" [routerLink]="['/', node.resource_type.toLowerCase(), getNodeUid()]"
       tooltip="{{ node.resource_type | nodeTypeDisplay }}: {{ node | nodeUidDisplay }}">
     <img src="assets/circle_single.svg" />
@@ -8,7 +8,7 @@
   </div>
 </div>
 <div *ngIf="relatedNodes" class="secondaryItem">
-  <div [appPlumbConnect]="prevNodeIDs" id="{{ node.resource_type + 'Secondary'}}"
+  <div id="{{ node.resource_type + 'Secondary'}}"
       tooltip="Related {{ node.resource_type | nodeTypeDisplay | nodeTypePlural }}">
     <img src="assets/circle_multi.svg" />
     <div class="secondaryItemIconContainer"><i class="fa fa-th {{ getNodeIconClass() }}" aria-hidden="true"></i></div>
