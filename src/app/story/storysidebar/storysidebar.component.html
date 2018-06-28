@@ -1,6 +1,6 @@
-<div id="sidebar" [ngClass]="{'open': sidebarOpen, 'closed': !sidebarOpen}">
-  <div id="sidebarTitle">
-    <a href="#" (click)="sidebarOpen = !sidebarOpen; $event.preventDefault()">
+<div class="sidebar" [ngClass]="{'sidebar--open': sidebarOpen, 'sidebar--closed': !sidebarOpen}">
+  <div class="sidebar-title">
+    <a class="sidebar-title__arrow" href="#" (click)="sidebarOpen = !sidebarOpen; $event.preventDefault()">
       <i [ngClass]="{'fa-angle-double-right': sidebarOpen, 'fa-angle-double-left': !sidebarOpen}"
           class="fa fa-th" aria-hidden="true">
       </i>
@@ -8,7 +8,7 @@
     <ng-container *ngIf="sidebarOpen">Properties</ng-container>
   </div>
   <ng-container *ngIf="sidebarOpen && node">
-    <a [href]="node | nodeExternalUrl" target="_blank">
+    <a class="sidebar__external-system-link" [href]="node | nodeExternalUrl" target="_blank">
       <!-- *ngIf is used because it should only tooltip on long UIDs -->
       <h2 *ngIf="(node | nodeUidDisplay).length > 30; else shortUid" tooltip="{{ node | nodeUidDisplay }}">
         {{ node | nodeUidDisplay | truncate: 30 }}
@@ -17,15 +17,16 @@
         <h2>{{ node | nodeUidDisplay }}</h2>
       </ng-template>
     </a>
-    <table id="sidebarProperties">
+    <table class="sidebar-properties">
       <tbody>
-        <tr *ngFor="let prop of properties; let i = index" class="sidebarPropertiesRow">
-          <td>{{ prop.name | propertyDisplay }}</td>
-          <td>
+        <tr class="sidebar-properties__row" *ngFor="let prop of properties; let i = index">
+          <td class="sidebar-properties__key-column">{{ prop.name | propertyDisplay }}</td>
+          <td class="sidebar-properties__value-column">
             <ng-container *ngIf="prop.truncate">{{ prop.value | truncate }}</ng-container>
             <ng-container *ngIf="!prop.truncate">{{ prop.value }}</ng-container>
             <ng-container *ngIf="prop.needsTruncating">
-              <a (click)="prop.truncate = !prop.truncate; $event.preventDefault()" *ngIf="prop.needsTruncating" href="#" class="truncateArrow">
+              <a class="sidebar-properties__truncate-arrow" (click)="prop.truncate = !prop.truncate; $event.preventDefault()"
+                  *ngIf="prop.needsTruncating" href="#">
                 <i [ngClass]="{'fa-angle-down': prop.truncate, 'fa-angle-up': !prop.truncate}" class="fa fa-th" aria-hidden="true"></i>
               </a>
             </ng-container>

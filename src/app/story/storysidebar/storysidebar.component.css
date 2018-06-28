@@ -1,13 +1,9 @@
-:host, #sidebarTitle a {
+/* ----- Blocks ----- */
+:host {
     color: #6A6C6F;
 }
 
-a > h2 {
-    /* This makes the h2 be on the same line as the wrapping anchor */
-    display: inline-block;
-}
-
-#sidebar {
+.sidebar {
     background-color: #FFFFFF;
     /* Position the sidebar on the right side of the page */
     position: absolute;
@@ -21,25 +17,7 @@ a > h2 {
     transition: width 0.5s;
 }
 
-#sidebar.open {
-    width: 100%;
-}
-
-#sidebar.closed {
-    width: 25px;
-}
-
-#sidebar.closed > * {
-    /* When the sidebar is closed, make the arrow closer to the edge */
-    margin-left: 0.75rem;
-}
-
-#sidebar > * {
-    /* Move all content in the sidebar over 2.5rem to not hug the border */
-    margin-left: 2.5rem;
-}
-
-#sidebarTitle {
+.sidebar-title {
     font-size: 1.6rem;
     font-weight: 600;
     /* Give some space around the arrow and "Properties" */
@@ -47,38 +25,41 @@ a > h2 {
     margin-bottom: 1rem;
 }
 
-#sidebar.open #sidebarTitle i {
-    /* Push "Properties" to the right 1rem */
-    margin-right: 1rem;
-}
-
-#sidebarTitle a {
-    /* Remove some of the default styles on the arrow */
-    outline: 0;
-    text-decoration: none;
-}
-
-#sidebar > a > h2 {
-    font-weight: bold;
-}
-
-#sidebarProperties {
+.sidebar-properties {
     margin-top: 1rem;
     margin-right: 1rem;
     margin-bottom: 3rem;
     padding-right: 1rem;
 }
 
-.sidebarPropertiesRow {
+/* ----- Elements ----- */
+.sidebar > * {
+    margin-left: 2.5rem;
+}
+
+.sidebar-title__arrow {
+    /* Remove some of the default styles on the arrow */
+    outline: 0;
+    text-decoration: none;
+    color: #6A6C6F;
+}
+
+.sidebar__external-system-link > h2 {
+    /* This makes the h2 be on the same line as the wrapping anchor */
+    display: inline-block;
+    font-weight: bold;
+}
+
+.sidebar-properties__row {
     font-size: 1.3rem;
 }
 
-.sidebarPropertiesRow > td {
+.sidebar-properties__row > td {
     word-break: break-all;
     padding-bottom: 0.5rem;
 }
 
-.sidebarPropertiesRow td:nth-child(odd) {
+.sidebar-properties__key-column {
     /* If the value to the right is more than one line, don't vertically center the key */
     vertical-align: top;
     /* Create some space between the key and the value */
@@ -87,35 +68,56 @@ a > h2 {
     white-space: nowrap;
 }
 
-.sidebarPropertiesRow td:nth-child(even) {
+.sidebar-properties__value-column {
     /* Bold the values in the table */
     font-weight: bold;
 }
 
-.truncateArrow {
+.sidebar-properties__truncate-arrow {
     /* Create some space between the text and the truncate arrow */
     margin-left: 0.5rem;
 }
 
 @media (min-width: 992px) {
-    #sidebar.open {
+    .sidebar > * {
+        margin-left: 3rem;
+    }
+
+    .sidebar-properties {
+        margin-right: 2rem;
+    }
+
+    .sidebar-properties__key-column {
+        padding-right: 2rem;
+    }
+}
+
+/* ----- Modifiers ----- */
+.sidebar--open {
+    width: 100%;
+}
+
+.sidebar--closed {
+    width: 25px;
+}
+
+.sidebar--closed > * {
+    /* When the sidebar is closed, make the arrow closer to the edge */
+    margin-left: 0.75rem;
+}
+
+.sidebar--open .sidebar-title i {
+    /* Push "Properties" to the right 1rem */
+    margin-right: 1rem;
+}
+
+@media (min-width: 992px) {
+    .sidebar--open {
         width: 45%;
         max-width: 750px;
     }
 
-    #sidebar.closed {
+    .sidebar--closed {
         width: 30px;
-    }
-
-    #sidebar > * {
-        margin-left: 3rem;
-    }
-
-    .sidebarPropertiesRow td:nth-child(odd) {
-        padding-right: 2rem;
-    }
-
-    #sidebarProperties {
-        margin-right: 2rem;
     }
 }
