@@ -40,7 +40,7 @@ export class StoryComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit() {
     // Set the defaults to jsPlumb after the view is initialized since jsPlumb will now be defined
     jsPlumb.importDefaults({
-      Container: 'diagram',
+      Container: 'js-diagram',
       Endpoint : 'Blank',
       Connector : ['Flowchart', {cornerRadius: 3}],
       Anchor: ['Bottom', 'Top'],
