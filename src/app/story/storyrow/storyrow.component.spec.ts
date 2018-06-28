@@ -4,9 +4,10 @@ import { ComponentFixture, async, TestBed, fakeAsync, tick } from '@angular/core
 import { RouterTestingModule } from '@angular/router/testing';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
-import { StoryRowComponent, PlumbConnectDirective } from './storyrow.component';
+import { StoryRowComponent } from './storyrow.component';
 import { bug } from '../test.data';
 import { NodeUidDisplayPipe, NodeTypeDisplayPipe, NodeTypePluralPipe, TruncatePipe } from '../../pipes/nodedisplay';
+import { StoryComponent } from '../story.component';
 
 
 describe('StoryRowComponent testing', () => {
@@ -17,11 +18,13 @@ describe('StoryRowComponent testing', () => {
     TestBed.configureTestingModule({
         declarations: [
             StoryRowComponent,
-            PlumbConnectDirective,
             NodeUidDisplayPipe,
             NodeTypeDisplayPipe,
             NodeTypePluralPipe,
             TruncatePipe
+        ],
+        providers: [
+          {provide: StoryComponent, useValue: {connectStory: () => {}}}
         ],
         imports: [RouterTestingModule, TooltipModule.forRoot()]
     }).compileComponents();
@@ -70,5 +73,16 @@ describe('StoryRowComponent testing', () => {
 
     const secondaryItemTextEl = fixture.debugElement.query(By.css('.secondaryItemText')).nativeElement;
     expect(secondaryItemTextEl.innerText).toBe('5 more');
+  }));
+
+  it('should call story.connectStory when it\'s the last row', fakeAsync(() => {
+    component.node = bug;
+    component.relatedNodes = 0;
+    component.active = true;
+    component.last = true;
+    spyOn(component.story, 'connectStory').and.returnValue(null);
+    fixture.detectChanges();
+    tick();
+    expect(component.story.connectStory).toHaveBeenCalled();
   }));
 });
