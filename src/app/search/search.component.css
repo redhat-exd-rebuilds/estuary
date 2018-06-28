@@ -1,58 +1,19 @@
-/* Create the left sidebar */
-#searchContainer {
+/* ----- Blocks ----- */
+.search {
     /* Take up the whole screen in portrait mobile mode */
     width: 100%;
     min-height: 100vh;
     background-color: #000000;
     padding-top: 4rem;
     padding-bottom: 4rem;
-}
-
-#searchContainer > * {
-    margin-left: 2.5rem;
-}
-
-#searchContainer {
     color: #efefef;
 }
 
-#logoText > h3 {
-    font-size: 150%;
-    font-weight: 600;
-    margin-bottom: 5rem;
-}
-
-#logoSubText {
-    margin-left: 1rem;
-    padding: 1.5px 10px 1.5px 10px;
-    color: #000000;
-    background-color: #efefef;
-}
-
-#title, #subtitle {
-    font-size: 230%;
-    font-weight: 600;
-}
-
-#title {
-    margin-bottom: 0.5rem;
-}
-
-#subtitle {
-    margin-top: 0;
-}
-
-#helpText {
-    font-size: 130%;
-    margin-top: 2.5rem;
-    color: #efefef;
-}
-
-#searchForm {
+.search-form {
     margin-top: 5rem;
 }
 
-#searchForm > select, #searchForm > input {
+.search-select, .search-input {
     /* Stack the form elements in mobile view */
     display: block;
     /* Make the form elements have the same width when stacked in mobile view */
@@ -66,7 +27,7 @@
     border: 0.25px solid #777777;
 }
 
-#searchForm > select {
+.search-select {
     padding-left: 7.5px;
     margin-right: 1rem;
     /* Workaround to replace the ugly arrow in Firefox */
@@ -79,62 +40,30 @@
     padding-right: 25px;
 }
 
-#searchForm > select > option {
-    background-color: #F8F8F8;
-    color: #363636;
-}
-
-#searchForm > input {
-    padding-left: 0.75rem;
-    /* Animate the highlight effect */
-    transition: all 0.30s ease-in-out;
-}
-
-#searchForm > input:focus {
-    /* Highlight the input border when the user clicks on it */
-    box-shadow: 0 0 5px #00659c;
-    border: 0.25px solid #00659c;
-}
-
-#searchForm > button {
-    display: block;
-    /* Don't show an outline on the element when it is focused */
-    outline: 0;
-    font-size: 120%;
-    margin-top: 3rem;
-    /* Make the button bigger and curved */
-    border-radius: 2rem;
-    padding: 2.5px 22px 2.5px 22px;
-}
-
-#redHatLogo {
+.watermark {
     /* Don't display the Red Hat logo in mobile view since there isn't enough room */
     display: none;
 }
 
 @media (min-width: 600px) {
     /* Only take up half the screen once we know the sidebar would be at least 300px */
-    #searchContainer {
+    .search {
         width: 50%;
     }
 }
 
 @media (min-width: 992px) {
-    #searchContainer > * {
+    .search > * {
         margin-left: 5rem;
     }
 
-    #logoText > h3 {
-        margin-bottom: 8rem;
-    }
-
-    #searchForm > select, #searchForm > input {
+    .search-select, .search-input {
         display: inline-block;
         width: auto;
     }
 
     /* Display the Red Hat logo in the top right corner */
-    #redHatLogo {
+    .watermark {
         display: initial;
         position: absolute;
         right: 5rem;
@@ -144,9 +73,84 @@
 }
 
 @media (min-width: 1200px) {
-    #searchContainer {
+    .search {
         /* Using static value here instead of max-width for easier calculations
         with the background image offset */
         width: 600px;
     }
+}
+
+/* ----- Elements ----- */
+
+.search > * {
+    margin-left: 2.5rem;
+}
+
+.brand__text {
+    font-size: 150%;
+    font-weight: 600;
+    margin-bottom: 5rem;
+}
+
+.search__title, .search__subtitle {
+    font-size: 230%;
+    font-weight: 600;
+}
+
+.search__title {
+    margin-bottom: 0.5rem;
+}
+
+.search__subtitle {
+    margin-top: 0;
+}
+
+.search__explanation {
+    font-size: 130%;
+    margin-top: 2.5rem;
+    color: #efefef;
+}
+
+.search-option {
+    background-color: #F8F8F8;
+    color: #363636;
+}
+
+.search-input {
+    padding-left: 0.75rem;
+    /* Animate the highlight effect */
+    transition: all 0.30s ease-in-out;
+}
+
+.search-input:focus {
+    /* Highlight the input border when the user clicks on it */
+    box-shadow: 0 0 5px #00659c;
+    border: 0.25px solid #00659c;
+}
+
+@media (min-width: 992px) {
+    .brand__text {
+        margin-bottom: 8rem;
+    }
+}
+
+
+/* ----- Modifiers ----- */
+
+.brand__text--highlight {
+    margin-left: 1rem;
+    padding: 1.5px 10px 1.5px 10px;
+    color: #000000;
+    background-color: #efefef;
+}
+
+.btn--lg-rounded {
+    display: block;
+    /* Don't show an outline on the element when it is focused */
+    outline: 0;
+    font-size: 120%;
+    margin-top: 3rem;
+    /* Make the button bigger and curved */
+    border-radius: 2rem;
+    padding: 2.5px 22px 2.5px 22px;
 }
