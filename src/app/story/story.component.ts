@@ -54,21 +54,6 @@ export class StoryComponent implements OnInit, OnDestroy {
     this.loading = true;
     this.storyService.getStory(resource, uid).subscribe(
       story => {
-        let prevNode = null;
-        for (const node of story.data) {
-          // If the user searched for a Build that happens to be a Container Build,
-          // the API will return a story with the node labeled as a Container Build,
-          // but since the API URLs in this app are constructed with node.resource_type,
-          // we must overwrite the value to 'KojiBuild' so that clicking on the node
-          // will replicate the user's search
-          if (prevNode && prevNode.resource_type === 'DistGitCommit' && node.resource_type === 'ContainerKojiBuild') {
-            node.resource_type = 'KojiBuild';
-          } else if (prevNode && prevNode.resource_type === 'KojiBuild' && node.resource_type === 'ContainerAdvisory') {
-            // Similar situation as above except with Advisories
-            node.resource_type = 'Advisory';
-          }
-          prevNode = node;
-        }
         this.selectedNode = story.data[story.meta.requested_node_index];
         this.story = story;
         this.loading = false;
