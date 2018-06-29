@@ -48,11 +48,11 @@ describe('StorysidebarComponent testing', () => {
   }));
 
   it('should display the input node when the sidebar is open', fakeAsync(() => {
-    const titleAnchorEl = fixture.debugElement.query(By.css('#sidebar a[target="_blank"]')).nativeElement;
+    const titleAnchorEl = fixture.debugElement.query(By.css('.sidebar a[target="_blank"]')).nativeElement;
     expect(titleAnchorEl.href).toBe('https://bugzilla.redhat.com/show_bug.cgi?id=23456');
-    const titleEl = fixture.debugElement.query(By.css('#sidebar > a > h2')).nativeElement;
+    const titleEl = fixture.debugElement.query(By.css('.sidebar__external-system-link > h2')).nativeElement;
     expect(titleEl.textContent).toBe('RHBZ#23456');
-    const sidebarPropertiesEl = fixture.debugElement.query(By.css('#sidebarProperties > tbody')).nativeElement;
+    const sidebarPropertiesEl = fixture.debugElement.query(By.css('.sidebar-properties > tbody')).nativeElement;
     expect(sidebarPropertiesEl.children.length).toBe(20);
     expect(sidebarPropertiesEl.children[0].children[0].textContent).toBe('Assignee');
     expect(sidebarPropertiesEl.children[0].children[1].textContent).toBe('user1');
@@ -98,7 +98,7 @@ describe('StorysidebarComponent testing', () => {
   }));
 
   it('should truncate long property values', () => {
-    const sidebarPropertiesEl = fixture.debugElement.query(By.css('#sidebarProperties > tbody')).nativeElement;
+    const sidebarPropertiesEl = fixture.debugElement.query(By.css('.sidebar-properties > tbody')).nativeElement;
     // Make sure the expand/unexpand (truncate) button works
     const truncateAnchorEl = sidebarPropertiesEl.children[16].children[1].children[0];
     expect(truncateAnchorEl.tagName).toBe('A');
@@ -117,11 +117,11 @@ describe('StorysidebarComponent testing', () => {
     fixture.detectChanges();
     tick();
 
-    const titleAnchorEl = fixture.debugElement.query(By.css('#sidebar a[target="_blank"]'));
+    const titleAnchorEl = fixture.debugElement.query(By.css('.sidebar a[target="_blank"]'));
     expect(titleAnchorEl).toBeNull();
-    const titleEl = fixture.debugElement.query(By.css('#sidebar > a > h3'));
+    const titleEl = fixture.debugElement.query(By.css('.sidebar > a > h3'));
     expect(titleEl).toBeNull();
-    const sidebarPropertiesEl = fixture.debugElement.query(By.css('#sidebarProperties'));
+    const sidebarPropertiesEl = fixture.debugElement.query(By.css('.sidebar-properties'));
     expect(sidebarPropertiesEl).toBeNull();
   }));
 });

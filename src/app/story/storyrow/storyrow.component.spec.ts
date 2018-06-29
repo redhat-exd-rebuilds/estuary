@@ -43,15 +43,15 @@ describe('StoryRowComponent testing', () => {
     tick();
 
     // Verify the text is correct
-    const mainItemTextEl = fixture.debugElement.query(By.css('.mainItemText')).nativeElement;
-    expect(mainItemTextEl.innerText).toBe('RHBZ#23456');
+    const nodeUidColEl = fixture.debugElement.query(By.css('.node-uid-column')).nativeElement;
+    expect(nodeUidColEl.innerText).toBe('RHBZ#23456');
 
-    const artifactEl = fixture.debugElement.query(By.css('#BugzillaBugPrimary')).nativeElement;
+    const nodeEl = fixture.debugElement.query(By.css('.node-column__node')).nativeElement;
     // Verify the artifact details are correct
-    expect(artifactEl.children[0].tagName).toBe('IMG');
-    expect(artifactEl.children[0].src).toContain('circle_single.svg');
-    expect(artifactEl.attributes['ng-reflect-tooltip'].value).toBe('Bugzilla Bug: RHBZ#23456');
-    expect(artifactEl.attributes['ng-reflect-router-link'].value).toBe('/,bugzillabug,23456');
+    expect(nodeEl.children[0].tagName).toBe('IMG');
+    expect(nodeEl.children[0].src).toContain('circle_single.svg');
+    expect(nodeEl.attributes['ng-reflect-tooltip'].value).toBe('Bugzilla Bug: RHBZ#23456');
+    expect(nodeEl.attributes['ng-reflect-router-link'].value).toBe('/,bugzillabug,23456');
   }));
 
   it('should display multiple artifacts', fakeAsync(() => {
@@ -62,17 +62,17 @@ describe('StoryRowComponent testing', () => {
     tick();
 
     // Verify the text is correct
-    const mainItemTextEl = fixture.debugElement.query(By.css('.mainItemText')).nativeElement;
-    expect(mainItemTextEl.innerText).toBe('RHBZ#23456');
+    const nodeUidColEl = fixture.debugElement.query(By.css('.node-uid-column')).nativeElement;
+    expect(nodeUidColEl.innerText).toBe('RHBZ#23456');
 
-    const secondaryArtifactEl = fixture.debugElement.query(By.css('#BugzillaBugSecondary')).nativeElement;
+    const siblingsEl = fixture.debugElement.query(By.css('.node-column__siblings')).nativeElement;
     // Verify the secondary artifact details are correct
-    expect(secondaryArtifactEl.children[0].tagName).toBe('IMG');
-    expect(secondaryArtifactEl.children[0].src).toContain('circle_multi.svg');
-    expect(secondaryArtifactEl.attributes['ng-reflect-tooltip'].value).toBe('Related Bugzilla Bugs');
+    expect(siblingsEl.children[0].tagName).toBe('IMG');
+    expect(siblingsEl.children[0].src).toContain('circle_multi.svg');
+    expect(siblingsEl.attributes['ng-reflect-tooltip'].value).toBe('Related Bugzilla Bugs');
 
-    const secondaryItemTextEl = fixture.debugElement.query(By.css('.secondaryItemText')).nativeElement;
-    expect(secondaryItemTextEl.innerText).toBe('5 more');
+    const siblingsTextEl = fixture.debugElement.query(By.css('.node-siblings-text-column')).nativeElement;
+    expect(siblingsTextEl.innerText).toBe('5 more');
   }));
 
   it('should call story.connectStory when it\'s the last row', fakeAsync(() => {

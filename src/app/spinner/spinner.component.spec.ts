@@ -25,17 +25,17 @@ describe('SpinnerComponent testing', () => {
     component.loading = true;
     fixture.detectChanges();
     expect(component.loading).toBe(true);
-    const overlayEl = fixture.debugElement.query(By.css('#overlayContainer')).nativeElement;
+    const overlayEl = fixture.debugElement.query(By.css('.overlay-container')).nativeElement;
     expect(overlayEl).toBeTruthy();
-    const spinnerEl = fixture.debugElement.query(By.css('#spinner')).nativeElement;
+    const spinnerEl = fixture.debugElement.query(By.css('.overlay-container__spinner')).nativeElement;
     expect(spinnerEl).toBeTruthy();
   });
 
   it('should not be visible when loading is false (default)', () => {
     expect(component.loading).toBe(false);
-    const overlay = fixture.debugElement.query(By.css('#overlayContainer'));
+    const overlay = fixture.debugElement.query(By.css('.overlay-container'));
     expect(overlay).toBeNull();
-    const spinner = fixture.debugElement.query(By.css('#spinner'));
+    const spinner = fixture.debugElement.query(By.css('.overlay-container__spinner'));
     expect(spinner).toBeNull();
   });
 });

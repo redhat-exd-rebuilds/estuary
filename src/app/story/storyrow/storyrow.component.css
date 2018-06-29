@@ -1,42 +1,54 @@
+/* ----- Blocks ----- */
 :host {
     display: table-row;
     color: #6A6C6F;
 }
 
-:host > div {
+.story-row-column {
     display: table-cell;
     /* Leave a large vertical gap between nodes */
     padding-bottom: 6rem;
 }
 
-div.mainItemText {
+.node-uid-column {
     word-wrap: break-word;
     text-align: right;
     /* Leave a gap next to the main node */
     padding-right: 1.5rem;
 }
 
-div.mainItem {
+.node-uid-column, .node-siblings-text-column {
+    position: relative;
+    /* Vertically center the text */
+    top: 5px;
+}
+
+.node-column {
     /* Leave a decent gap between the main node and the siblings */
     padding-right: 5rem;
 }
 
-div.mainItem > div:hover {
-    /* Make the mouse look like a pointer so the user intuitively knows they can click on the shape */
-    cursor: pointer;
-    outline: 0;
-    /* Add a thin border when hovering over the node */
-    border: 3px solid #0088cc;
-    /* Hides the shadow effect of node's SVG while it is being bordered */
-    background-color: #FFFFFF;
+.node-siblings-text-column {
+    /* Don't show the "x more" text on mobile */
+    display: none;
 }
 
-div.mainItem > div:active img, div.mainItem > div:hover img {
-    /* Hides the shadow effect of node's SVG while it is being bordered */
-    opacity: 0;
+/* Roughly a small phone in landscape mode */
+@media (min-width : 550px) {
+    .node-siblings-text-column {
+        /* Display the "x more" text */
+        display: block;
+    }
+
+    .node-siblings-column {
+        /* Leave a small gap between the siblings and the "x more" text  */
+        padding-right: 1.25rem;
+    }
 }
 
-div.mainItem > div {
+
+/* ----- Elements ----- */
+.node-column__node {
     width: 68px;
     height: 66px;
     text-align: center;
@@ -46,7 +58,58 @@ div.mainItem > div {
     margin-left: 2px;
 }
 
-div.mainItem > div.active {
+.node-column__node, .node-column__siblings {
+    /* Make the position relative so that the icons can be absolutely positioned within it */
+    position: relative;
+}
+
+.node-column__node:hover {
+    /* Make the mouse look like a pointer so the user intuitively knows they can click on the shape */
+    cursor: pointer;
+    outline: 0;
+    /* Add a thin border when hovering over the node */
+    border: 3px solid #0088cc;
+    /* Hides the shadow effect of node's SVG while it is being bordered */
+    background-color: #FFFFFF;
+}
+
+.node-column__node:hover .node-column__node-img {
+    /* Hides the shadow effect of node's img while it is being bordered */
+    opacity: 0;
+}
+
+.node-column__node-img, .node-column__siblings-img {
+    /* Make the images take up the whole div that has a fixed size */
+    height: 100%;
+}
+
+.node-column__node-icon {
+    /* Place the icon halfway to the left of the circle */
+    left: 50%;
+}
+
+.node-column__node-icon, .node-siblings-column__node-icon {
+    /* Make the icons larger */
+    font-size: 2.25rem;
+    position: absolute;
+    /* Place the icon halfway down the circle */
+    top: 50%;
+    /* Move the icon half its size up and to the left */
+    transform: translate(-50%, -50%);
+}
+
+.node-siblings-column__node-icon {
+    /* Place the icon roughly a third to the left of the circle */
+    left: 36.6%;
+}
+
+.node-column__siblings {
+    width: 96px;
+    height: 66px;
+}
+
+/* ----- Modifiers ----- */
+.node-column__node--active, .node-column__node--active:hover  {
     /* Add a blue border on the node that the user queried for */
     border: 5px solid #0088cc;
     /* Also make the text blue */
@@ -60,61 +123,7 @@ div.mainItem > div.active {
     background-color: #FFFFFF;
 }
 
-div.secondaryItemText {
-    /* Don't show the "x more" text on mobile */
-    display: none;
-}
-
-div.mainItemText, div.secondaryItemText {
-    position: relative;
-    /* Vertically center the text */
-    top: 5px;
-}
-
-div.mainItem > div, div.secondaryItem > div {
-    /* Make the position relative so that the icons can be absolutely positioned within it */
-    position: relative;
-}
-
-div.mainItem > div > img, div.secondaryItem > div > img {
-    /* Make the images take up the whole div that has a fixed size */
-    height: 100%;
-}
-
-div.mainItemIconContainer, div.secondaryItemIconContainer {
-    /* Make the icons larger */
-    font-size: 2.25rem;
-    position: absolute;
-    /* Place the icon halfway down the circle */
-    top: 50%;
-    /* Move the icon half its size up and to the left */
-    transform: translate(-50%, -50%);
-}
-
-div.mainItemIconContainer {
-    /* Place the icon halfway to the left of the circle */
-    left: 50%;
-}
-
-div.secondaryItemIconContainer {
-    /* Place the icon roughly a third to the left of the circle */
-    left: 36.6%;
-}
-
-div.secondaryItem > div {
-    width: 96px;
-    height: 66px;
-}
-
-/* Roughly a small phone in landscape mode */
-@media (min-width : 550px) {
-    div.secondaryItemText {
-        /* Display the "x more" text */
-        display: block;
-    }
-
-    div.secondaryItem {
-        /* Leave a small gap between the siblings and the "x more" text  */
-        padding-right: 1.25rem;
-    }
+.node-column__node--active .node-column__node-img {
+    /* Hides the shadow effect of node's img while it is being bordered */
+    opacity: 0;
 }

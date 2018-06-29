@@ -2,7 +2,7 @@
 <app-navbar></app-navbar>
 
 <div class="container-fluid">
-  <div id="diagram">
+  <div class="diagram" id="js-diagram">
     <ng-container *ngIf="story">
       <app-storyrow [node]="node" [relatedNodes]="story.meta.story_related_nodes[i]" [last]="last"
           [active]="node === selectedNode" *ngFor="let node of story.data; let i = index; let last = last">
