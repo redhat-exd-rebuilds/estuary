@@ -53,10 +53,6 @@
 }
 
 @media (min-width: 992px) {
-    .search > * {
-        margin-left: 5rem;
-    }
-
     .search-select, .search-input {
         display: inline-block;
         width: auto;
@@ -129,6 +125,10 @@
 }
 
 @media (min-width: 992px) {
+    .search > * {
+        margin-left: 5rem;
+    }
+
     .brand__text {
         margin-bottom: 8rem;
     }
