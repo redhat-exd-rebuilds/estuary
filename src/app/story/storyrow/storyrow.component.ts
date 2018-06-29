@@ -32,14 +32,14 @@ export class StoryRowComponent implements AfterViewInit {
       case('BugzillaBug'):
         return 'fa-bug';
       case('DistGitCommit'):
-        return 'pficon-bundle';
+        return 'estuary-icon-commit';
       case('KojiBuild'):
         return 'pficon-build';
       case('Advisory'):
       case('ContainerAdvisory'):
         return 'pficon-security';
       case('FreshmakerEvent'):
-        return 'fa-refresh';
+        return 'estuary-icon-freshmaker';
       case('ContainerKojiBuild'):
         return 'pficon-build';
       default:
