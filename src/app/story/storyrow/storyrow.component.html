@@ -3,7 +3,7 @@
   <div id="{{ 'js-' + node.resource_type.toLowerCase() + '-node' }}" class="node-column__node" [ngClass]="{'node-column__node--active': active}" 
       [routerLink]="['/', node.resource_type.toLowerCase(), getNodeUid()]"
       tooltip="{{ node.resource_type | nodeTypeDisplay }}: {{ node | nodeUidDisplay }}">
-    <img class="node-column__node-img" src="assets/circle_single.svg"/>
+    <img class="node-column__node-img" src="assets/circle_single.svg" />
     <div class="node-column__node-icon"><i class="fa fa-th {{ getNodeIconClass() }}" aria-hidden="true"></i></div>
   </div>
 </div>
