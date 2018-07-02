@@ -80,42 +80,44 @@ export class StoryComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   connectStory(): void {
-    // Get all the story rows in the component
-    const storyRows: Array<Element> = Array.from(this.elRef.nativeElement.querySelectorAll('app-storyrow'));
-    // Don't show the connecting lines until the whole story has been processed
-    jsPlumb.setSuspendDrawing(true);
+    jsPlumb.bind('ready', () => {
+      // Get all the story rows in the component
+      const storyRows: Array<Element> = Array.from(this.elRef.nativeElement.querySelectorAll('app-storyrow'));
+      // Don't show the connecting lines until the whole story has been processed
+      jsPlumb.setSuspendDrawing(true);
 
-    // Loop through all the story rows except for the last one, because that
-    // relationship flows backwards and is set after the loop
-    for (let i = 0; i < storyRows.length - 1; i++) {
-      // Connect the main node to the next main node
-      const target = storyRows[i + 1].querySelector('.node-column').children[0];
-      jsPlumb.connect({
-        source: storyRows[i].querySelector('.node-column').children[0],
-        target: target
-      });
-      // Check to see if this story row has siblings
-      const secondaryItem = storyRows[i].querySelector('.node-siblings-column');
-      if (secondaryItem) {
-        // If there are siblings, connect them to the next main node
+      // Loop through all the story rows except for the last one, because that
+      // relationship flows backwards and is set after the loop
+      for (let i = 0; i < storyRows.length - 1; i++) {
+        // Connect the main node to the next main node
+        const target = storyRows[i + 1].querySelector('.node-column').children[0];
         jsPlumb.connect({
-          source: secondaryItem.children[0],
+          source: storyRows[i].querySelector('.node-column').children[0],
           target: target
         });
+        // Check to see if this story row has siblings
+        const secondaryItem = storyRows[i].querySelector('.node-siblings-column');
+        if (secondaryItem) {
+          // If there are siblings, connect them to the next main node
+          jsPlumb.connect({
+            source: secondaryItem.children[0],
+            target: target
+          });
+        }
       }
-    }
 
-    // Check to see if the last row has any siblings
-    const lastSiblingsItem = storyRows[storyRows.length - 1].querySelector('.node-siblings-column');
-    if (lastSiblingsItem) {
-      // If there are siblings, connect them to the previous main node
-      jsPlumb.connect({
-        source: lastSiblingsItem.children[0],
-        target: storyRows[storyRows.length - 2].querySelector('.node-column').children[0],
-      });
-    }
+      // Check to see if the last row has any siblings
+      const lastSiblingsItem = storyRows[storyRows.length - 1].querySelector('.node-siblings-column');
+      if (lastSiblingsItem) {
+        // If there are siblings, connect them to the previous main node
+        jsPlumb.connect({
+          source: lastSiblingsItem.children[0],
+          target: storyRows[storyRows.length - 2].querySelector('.node-column').children[0],
+        });
+      }
 
-    // The whole story has been processed, so the connecting lines can now be shown
-    jsPlumb.setSuspendDrawing(false, true);
+      // The whole story has been processed, so the connecting lines can now be shown
+      jsPlumb.setSuspendDrawing(false, true);
+    });
   }
 }
