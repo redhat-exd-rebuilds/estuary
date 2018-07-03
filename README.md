@@ -8,7 +8,8 @@ To setup a development environment, make sure you have `npm` installed.
 
 Once npm is installed:
 * Run `npm install` to install the dev and production dependencies
-* Run `ng serve --open` to start the development server
+* Run `ng serve --open` to start the development server that uses your local Estuary API.
+  Alternatively, you can start the development server using the production API with `ng serve --open -c local-prod-api`.
 * Once the development server is up, your browser will open up to `http://localhost:4200/`
 
 ## Run the Unit Tests
