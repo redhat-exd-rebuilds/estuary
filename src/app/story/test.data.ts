@@ -163,3 +163,146 @@ export let story = {
     'story_related_nodes_forward': [1, 0, 0, 0, 0, 0]
   }
 };
+
+export let siblings = [
+  {
+    'assignee': {
+      'email': 'tbrady@redhat.com',
+      'name': null,
+      'username': 'tbrady'
+    },
+    'attached_advisories': [
+      {
+        'actual_ship_date': '2018-05-08T18:32:03+00:00',
+        'advisory_name': 'RHSA-2018:1234-07',
+        'content_types': [
+          'rpm'
+        ],
+        'created_at': '2018-04-16T12:03:55+00:00',
+        'id': '33491',
+        'issue_date': '2018-05-08T17:15:15+00:00',
+        'product_name': 'Red Hat Enterprise Linux',
+        'product_short_name': 'RHEL',
+        'release_date': '2018-05-08T00:00:00+00:00',
+        'security_impact': 'Important',
+        'security_sla': '2018-04-04T00:00:00+00:00',
+        'state': 'SHIPPED_LIVE',
+        'status_time': '2018-05-09T17:35:52+00:00',
+        'synopsis': 'Important: kernel security,bug fix,and enhancement update',
+        'type': null,
+        'update_date': '2018-05-09T15:32:44+00:00',
+        'updated_at': '2018-05-09T17:35:52+00:00'
+      }
+    ],
+    'classification': 'Red Hat',
+    'creation_time': '2018-04-13T01:57:40+00:00',
+    'id': '1566849',
+    'modified_time': '2018-06-19T09:10:31+00:00',
+    'priority': 'urgent',
+    'product_name': 'Red Hat Enterprise Linux 7',
+    'product_version': '7.5',
+    'qa_contact': {
+      'email': 'qa@redhat.com',
+      'name': null,
+      'username': 'kernel-qe'
+    },
+    'related_by_commits': [],
+    'reporter': {
+      'email': 'user1@redhat.com',
+      'name': null,
+      'username': 'user1'
+    },
+    'resolution': 'ERRATA',
+    'resolved_by_commits': [
+      {
+        'author_date': '2018-05-10T23:51:54+00:00',
+        'commit_date': '2018-05-10T23:51:54+00:00',
+        'hash': 'eacc1bf66aa53b3136ac045ead618e18a6751625',
+        'log_message': 'message1'
+      },
+      {
+        'author_date': '2018-05-10T09:32:59+00:00',
+        'commit_date': '2018-05-10T09:32:59+00:00',
+        'hash': 'dc5d9238ea212c0177176edad82255891a7f942e',
+        'log_message': 'message2',
+      }
+    ],
+    'resource_type': 'BugzillaBug',
+    'reverted_by_commits': [],
+    'severity': 'high',
+    'short_description': 'CVE-2018-1234 kernel: some error [rhel-7.5.z]',
+    'status': 'CLOSED',
+    'target_milestone': 'rc',
+    'votes': 0
+  },
+  {
+    'assignee': {
+      'email': 'user2@redhat.com',
+      'name': null,
+      'username': 'user2'
+    },
+    'attached_advisories': [
+      {
+        'actual_ship_date': '2018-05-08T18:32:03+00:00',
+        'advisory_name': 'RHSA-2018:1318-07',
+        'content_types': [
+          'rpm'
+        ],
+        'created_at': '2018-04-16T12:03:55+00:00',
+        'id': '33491',
+        'issue_date': '2018-05-08T17:15:15+00:00',
+        'product_name': 'Red Hat Enterprise Linux',
+        'product_short_name': 'RHEL',
+        'release_date': '2018-05-08T00:00:00+00:00',
+        'security_impact': 'Important',
+        'security_sla': '2018-04-04T00:00:00+00:00',
+        'state': 'SHIPPED_LIVE',
+        'status_time': '2018-05-09T17:35:52+00:00',
+        'synopsis': 'Important: kernel security,bug fix,and enhancement update',
+        'type': null,
+        'update_date': '2018-05-09T15:32:44+00:00',
+        'updated_at': '2018-05-09T17:35:52+00:00'
+      }
+    ],
+    'classification': 'Red Hat',
+    'creation_time': '2018-04-13T07:57:42+00:00',
+    'id': '1567084',
+    'modified_time': '2018-06-19T07:34:08+00:00',
+    'priority': 'urgent',
+    'product_name': 'Red Hat Enterprise Linux 7',
+    'product_version': '7.5',
+    'qa_contact': {
+      'email': 'qa@redhat.com',
+      'name': null,
+      'username': 'kernel-qe'
+    },
+    'related_by_commits': [],
+    'reporter': {
+      'email': 'user1',
+      'name': null,
+      'username': 'user1'
+    },
+    'resolution': 'ERRATA',
+    'resolved_by_commits': [
+      {
+        'author_date': '2018-05-10T23:51:54+00:00',
+        'commit_date': '2018-05-10T23:51:54+00:00',
+        'hash': 'eacc1bf66aa53b3136ac045ead618e18a6751625',
+        'log_message': 'message1'
+      },
+      {
+        'author_date': '2018-05-10T09:32:59+00:00',
+        'commit_date': '2018-05-10T09:32:59+00:00',
+        'hash': 'dc5d9238ea212c0177176edad82255891a7f942e',
+        'log_message': 'message3'
+      }
+    ],
+    'resource_type': 'BugzillaBug',
+    'reverted_by_commits': [],
+    'severity': 'medium',
+    'short_description': 'CVE-2018-1234 kernel: some error [rhel-7.5.z]',
+    'status': 'CLOSED',
+    'target_milestone': 'rc',
+    'votes': 0
+  }
+];

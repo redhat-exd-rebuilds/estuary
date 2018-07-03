@@ -12,13 +12,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { StoryComponent } from './story/story.component';
 import { StoryRowComponent } from './story/storyrow/storyrow.component';
 import { StorysidebarComponent } from './story/storysidebar/storysidebar.component';
-import { PropertyDisplayPipe } from './pipes/propertydisplay';
+import { PropertyDisplayPipe, PropertyValueDisplayPipe } from './pipes/propertydisplay';
 import { NodeUidDisplayPipe, NodeTypeDisplayPipe, NodeTypePluralPipe, NodeExternalUrlPipe,
          TruncatePipe } from './pipes/nodedisplay';
 import { SearchComponent } from './search/search.component';
 import { AlertComponent } from './alert/alert.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { SiblingsComponent } from './story/siblings/siblings.component';
 
 
 @NgModule({
@@ -36,7 +37,9 @@ import { NavbarComponent } from './navbar/navbar.component';
     AlertComponent,
     SpinnerComponent,
     TruncatePipe,
-    NavbarComponent
+    NavbarComponent,
+    SiblingsComponent,
+    PropertyValueDisplayPipe
   ],
   imports: [
     AppRoutingModule,

@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, Input, ElementRef, Directive, Host } from '@angular/core';
+import { Component, AfterViewInit, Input, Host, OnInit, OnChanges } from '@angular/core';
 
 import { StoryComponent } from '../story.component';
 
@@ -8,15 +8,24 @@ import { StoryComponent } from '../story.component';
   templateUrl: './storyrow.component.html',
   styleUrls: ['./storyrow.component.css']
 })
-export class StoryRowComponent implements AfterViewInit {
+export class StoryRowComponent implements OnChanges, AfterViewInit {
   @Input() node: any;
   @Input() relatedNodes: number;
   @Input() active: boolean;
   @Input() last: boolean;
+  siblingsRouterLink: string;
+  siblingsRouterParams: any;
   story: StoryComponent;
 
   constructor(@Host() story: StoryComponent) {
     this.story = story;
+  }
+
+  ngOnChanges() {
+    if (this.relatedNodes) {
+      // If there are related nodes, then the siblings link should get defined
+      [this.siblingsRouterLink, this.siblingsRouterParams] = this.story.getSiblingsRouterLink(this.node, this.last);
+    }
   }
 
   ngAfterViewInit() {

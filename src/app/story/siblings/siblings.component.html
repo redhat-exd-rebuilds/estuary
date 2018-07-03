@@ -1,0 +1,32 @@
+<app-spinner [loading]="loading"></app-spinner>
+<app-navbar></app-navbar>
+
+<div class="container">
+  <h2 class="title">Siblings{{ selectedDisplayName ? ' of ' + selectedDisplayName : '' }}</h2>
+  <div class="table-responsive" *ngIf="siblings">
+    <table class="siblings-table table">
+      <thead>
+        <tr>
+          <th *ngFor="let prop of defaultProperties">{{ prop | propertyDisplay }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sibling of siblings">
+          <td *ngFor="let prop of defaultProperties">
+            <!-- Check to see if it's a UID, if it is, make it a link to the corresponding external system -->
+            <ng-container *ngIf="['id', 'hash'].indexOf(prop) != -1; else normalProperty">
+              <a href="{{ sibling | nodeExternalUrl }}" target="_blank">
+                {{ sibling[prop] | propertyValueDisplay }}
+              </a>
+            </ng-container>
+            <ng-template #normalProperty>
+              {{ sibling[prop] | propertyValueDisplay }}
+            </ng-template>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<app-alert [(errorMsg)]="errorMsg"></app-alert>

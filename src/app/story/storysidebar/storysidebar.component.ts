@@ -1,6 +1,9 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { DatePipe } from '@angular/common';
 
+import { PropertyValueDisplayPipe } from '../../pipes/propertydisplay';
+
+
 @Component({
   selector: 'app-storysidebar',
   templateUrl: './storysidebar.component.html',
@@ -51,24 +54,18 @@ export class StorysidebarComponent implements OnInit, OnChanges {
 
   filterProperties(node: any): any {
     const properties = [];
+    const propertyValueDisplayPipe = new PropertyValueDisplayPipe();
     for (const keyValue of Object.entries(node)) {
         // Have to do this here instead of the for loop to make TypeScript happy
         const [key, value]: Array<any> = keyValue;
         if (value === null || key === 'resource_type') {
-            continue;
-        }
-        // Can't use typeof to determine if it's an Array
-        if (value instanceof Array) {
-            properties.push([key, value.length]);
-        } else if (typeof value === 'object') {
-            // Only display objects' name or username properties
-            if (value.name) {
-                properties.push([key, value.name]);
-            } else if (value.username) {
-                properties.push([key, value.username]);
-            }
+          continue;
         } else {
-            properties.push([key, value]);
+          const displayValue = propertyValueDisplayPipe.transform(value);
+          // If the pipe doesn't know how to convert the value to a display value, it returns null
+          if (displayValue !== null) {
+            properties.push([key, propertyValueDisplayPipe.transform(value)]);
+          }
         }
     }
     return properties;

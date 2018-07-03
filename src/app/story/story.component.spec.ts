@@ -90,8 +90,13 @@ describe('StoryComponent testing', () => {
     expect(storyRowEls[0].nativeElement.children[1].firstElementChild.classList).toContain('node-column__node--active');
     // Ensure a secondary Bugzilla Bug is shown
     expect(storyRowEls[0].nativeElement.children[2].firstElementChild.id).toBe('js-bugzillabug-siblings');
-    // Ensure the secondary Bugzilla Bug text is shown
+    // Ensure the secondary Bugzilla Bug text is shown and the link is correct
     expect(storyRowEls[0].nativeElement.children[3].innerText).toBe('1 more');
+    const siblingsAnchor = storyRowEls[0].nativeElement.children[3].children[0];
+    expect(siblingsAnchor.tagName).toBe('A');
+    const expSiblingsUrl = 'http://localhost:9876/siblings/distgitcommit/8a63adb248ba633e200067e1ad6dc61931727bad?' +
+                           'displayName=RHBZ%2312345&reverse=false';
+    expect(siblingsAnchor.href).toBe(expSiblingsUrl);
 
     // Ensure the number of columns in the row
     expect(storyRowEls[1].nativeElement.children.length).toBe(2);

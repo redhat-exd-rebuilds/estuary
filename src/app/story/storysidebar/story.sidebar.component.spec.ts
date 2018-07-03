@@ -4,7 +4,7 @@ import { ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testin
 
 import { StorysidebarComponent } from './storysidebar.component';
 import { NodeUidDisplayPipe, NodeExternalUrlPipe, TruncatePipe } from '../../pipes/nodedisplay';
-import { PropertyDisplayPipe } from '../../pipes/propertydisplay';
+import { PropertyDisplayPipe, PropertyValueDisplayPipe } from '../../pipes/propertydisplay';
 import { bug } from '../test.data';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
@@ -20,6 +20,7 @@ describe('StorysidebarComponent testing', () => {
             NodeUidDisplayPipe,
             NodeExternalUrlPipe,
             PropertyDisplayPipe,
+            PropertyValueDisplayPipe,
             TruncatePipe
         ],
         providers: [
