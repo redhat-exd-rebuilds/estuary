@@ -1,11 +1,11 @@
 /* ----- Icon Definitions ----- */
 @font-face {
     font-family: 'estuary-icons';
-    src:  url('assets/fonts/estuary-icons.eot?5793j3');
-    src:  url('assets/fonts/estuary-icons.eot?5793j3#iefix') format('embedded-opentype'),
-          url('assets/fonts/estuary-icons.ttf?5793j3') format('truetype'),
-          url('assets/fonts/estuary-icons.woff?5793j3') format('woff'),
-          url('assets/fonts/estuary-icons.svg?5793j3#estuary-icons') format('svg');
+    src:  url('assets/fonts/estuary-icons.eot');
+    src:  url('assets/fonts/estuary-icons.eot#iefix') format('embedded-opentype'),
+          url('assets/fonts/estuary-icons.ttf') format('truetype'),
+          url('assets/fonts/estuary-icons.woff') format('woff'),
+          url('assets/fonts/estuary-icons.svg#estuary-icons') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -26,11 +26,11 @@
 }
   
 .estuary-icon-commit:before {
-    content: "\e900";
+    content: "\e901";
 }
 
 .estuary-icon-freshmaker:before {
-    content: "\e901";
+    content: "\e900";
 }
 
 
