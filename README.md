@@ -1,27 +1,48 @@
 # Estuary
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.0.
+Visualizes the story an artifact takes in the Red Hat build to release pipeline.
 
-## Development server
+## Development
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+To setup a development environment, make sure you have `npm` installed.
 
-## Code scaffolding
+Once npm is installed:
+* Run `npm install` to install the dev and production dependencies
+* Run `ng serve --open` to start the development server that uses your local Estuary API.
+  Alternatively, you can start the development server using the production API with `ng serve --open -c local-prod-api`.
+* Once the development server is up, your browser will open up to `http://localhost:4200/`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
+## Run the Unit Tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## Adding an SVG Icon to the Font
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+The "estuary-icons" font is generated using [IcoMoon](http://icomoon.io/app).
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+To modify the fonts:
+* Navigate to the [IcoMoon projects page](https://icomoon.io/app/#/projects)
+* Click on "Import Project"
+* Select `estuary-icomoon.json` from the root of the repo
+* Click "Load" next to the loaded project called "Estuary"
+* You'll now be at a page that shows the "Estuary" icon set
+* Click on the hamburger button associated with the "Estuary" icon set and click on "Import to Set"
+* Select the SVG you want to add and now your SVG will appear in the "Estuary" icon set
+* Select the new icon in the "Estuary" icon set
+* Click on "Generate Font"
+* Click on the "Download" button and this will download a zip file with a "fonts" folder with four files
+* Rename all those font files to be `estuary-icons.*` instead of `icomoon.*`
+* Replace the "icomoon" ID with "estuary-icons" in the "estuary-icons.svg" file
+* Add an entry in `src/styles.css` for your new icon as such (replacing `freshmaker` with your icon
+  name and `\e901` with the actual character code):
+  ```css
+  .estuary-icon-freshmaker:before {
+      content: "\e901";
+  }
+  ```
+* Replace the font files in `src/assets/fonts` with the new files
+* The new icon will now be ready to be used by using the class defined above
+* Once you've tested things work properly, generate the updated JSON by going to the
+  IcoMoon projects page](https://icomoon.io/app/#/projects) and clicking on "Download"
+  next to the "Estuary" icon set
+* Replace `estuary-icomoon.json` with the updated JSON file
