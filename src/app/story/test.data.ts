@@ -159,6 +159,7 @@ export let story = {
   ],
   'meta': {
     'requested_node_index': 0,
-    'story_related_nodes': [1, 0, 0, 0, 0, 0]
+    'story_related_nodes_backward': [0, 0, 0, 0, 0, 0],
+    'story_related_nodes_forward': [1, 0, 0, 0, 0, 0]
   }
 };
