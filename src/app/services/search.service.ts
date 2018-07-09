@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
 @Injectable({providedIn: 'root'})
 export class SearchService {
 
-  readonly apiUrl: String = environment.api;
+  readonly apiUrl: string = environment.api;
 
   constructor(private http: HttpClient) { }
 

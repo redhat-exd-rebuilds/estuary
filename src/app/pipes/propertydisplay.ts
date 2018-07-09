@@ -4,7 +4,7 @@ import { PipeTransform, Pipe } from '@angular/core';
 export class PropertyDisplayPipe implements PipeTransform {
   // This Pipe formats node property names to its display form (e.g. replace
   // underscores with spaces, capitalization, etc.)
-  transform(property: String): String {
+  transform(property: string): string {
     if (property === 'id') {
       return property.toUpperCase();
     }

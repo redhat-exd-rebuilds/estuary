@@ -8,11 +8,11 @@ import { environment } from '../../environments/environment';
 @Injectable({providedIn: 'root'})
 export class StoryService {
 
-  readonly apiUrl: String = environment.api;
+  readonly apiUrl: string = environment.api;
 
   constructor(private http: HttpClient) { }
 
-  getStory(resource: String, uid: String): Observable<any> {
+  getStory(resource: string, uid: string): Observable<any> {
     let fallback = null;
     let targetResource = resource.toLowerCase();
     if (targetResource === 'advisory' || targetResource === 'kojibuild') {

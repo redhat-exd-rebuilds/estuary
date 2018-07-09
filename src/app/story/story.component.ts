@@ -16,10 +16,10 @@ declare var jsPlumb: jsPlumbInstance;
 })
 export class StoryComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  loading: Boolean;
+  loading: boolean;
   story: StoryAPI;
   selectedNode: any;
-  errorMsg: String;
+  errorMsg: string;
 
   constructor(private storyService: StoryService, private route: ActivatedRoute,
               private elRef: ElementRef) { }
@@ -64,7 +64,7 @@ export class StoryComponent implements OnInit, AfterViewInit, OnDestroy {
     jsPlumb.repaintEverything();
   }
 
-  getStory(resource: String, uid: String) {
+  getStory(resource: string, uid: string) {
     this.loading = true;
     this.storyService.getStory(resource, uid).subscribe(
       story => {

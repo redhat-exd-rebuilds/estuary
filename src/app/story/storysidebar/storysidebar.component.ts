@@ -41,7 +41,7 @@ export class StorysidebarComponent implements OnInit, OnChanges {
     }
   }
 
-  isDate(dateStr: String): Boolean {
+  isDate(dateStr: string): boolean {
     if (typeof dateStr === 'string') {
         const dtRegEx = /^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})(?:\.\d+)?(?:Z|[-+]00(?::00)?)?$/;
         return dtRegEx.test(dateStr);

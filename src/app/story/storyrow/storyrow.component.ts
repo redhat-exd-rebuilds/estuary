@@ -10,9 +10,9 @@ import { StoryComponent } from '../story.component';
 })
 export class StoryRowComponent implements AfterViewInit {
   @Input() node: any;
-  @Input() relatedNodes: Number;
-  @Input() active: Boolean;
-  @Input() last: Boolean;
+  @Input() relatedNodes: number;
+  @Input() active: boolean;
+  @Input() last: boolean;
   story: StoryComponent;
 
   constructor(@Host() story: StoryComponent) {
@@ -27,7 +27,7 @@ export class StoryRowComponent implements AfterViewInit {
     }
   }
 
-  getNodeIconClass(): String {
+  getNodeIconClass(): string {
     switch (this.node.resource_type) {
       case('BugzillaBug'):
         return 'fa-bug';
@@ -47,7 +47,7 @@ export class StoryRowComponent implements AfterViewInit {
     }
   }
 
-  getNodeUid(): String {
+  getNodeUid(): string {
     switch (this.node.resource_type) {
       case('DistGitCommit'):
         return this.node.hash;

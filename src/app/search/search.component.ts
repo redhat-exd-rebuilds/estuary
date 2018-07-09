@@ -13,9 +13,9 @@ import { NodeTypeDisplayPipe } from '../pipes/nodedisplay';
 export class SearchComponent implements OnInit, OnDestroy {
 
   availableResources: Array<any>;
-  selectedResource: String;
-  selectedUID: String;
-  errorMsg: String;
+  selectedResource: string;
+  selectedUID: string;
+  errorMsg: string;
 
   constructor(private search: SearchService, private router: Router) {
     // Set the the background image
