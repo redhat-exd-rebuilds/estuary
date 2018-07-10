@@ -6,15 +6,13 @@ import { environment } from '../../environments/environment';
 
 
 @Injectable({providedIn: 'root'})
-export class SearchService {
+export class SiblingsService {
 
   readonly apiUrl: string = environment.api;
 
   constructor(private http: HttpClient) { }
 
-  getAvailableResources(): Observable<any> {
-    // TODO: Cache this
-    const url = `${this.apiUrl}story`;
-    return this.http.get(url);
+  getSiblings(resource: string, uid: string, reverse = false): Observable<any> {
+    return this.http.get(`${this.apiUrl}siblings/${resource}/${uid}?reverse=${reverse}`);
   }
 }

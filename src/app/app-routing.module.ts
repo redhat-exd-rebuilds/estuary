@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { StoryComponent } from './story/story.component';
 import { SearchComponent } from './search/search.component';
+import { SiblingsComponent } from './story/siblings/siblings.component';
+
 
 const routes: Routes = [
   {
@@ -12,6 +14,10 @@ const routes: Routes = [
   {
     path: ':resource/:uid',
     component: StoryComponent
+  },
+  {
+    path: 'siblings/:resource/:uid',
+    component: SiblingsComponent
   }
 ];
 

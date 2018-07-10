@@ -3,7 +3,7 @@ import { PipeTransform, Pipe } from '@angular/core';
 @Pipe({name: 'nodeUidDisplay'})
 export class NodeUidDisplayPipe implements PipeTransform {
   // This Pipe takes a node as input and figures out how to display its unique identifier
-  transform(node: any): String {
+  transform(node: any): string {
     switch (node.resource_type.toLowerCase()) {
         case('bugzillabug'):
             return 'RHBZ#' + node.id;
@@ -25,7 +25,7 @@ export class NodeUidDisplayPipe implements PipeTransform {
 @Pipe({name: 'nodeTypeDisplay'})
 export class NodeTypeDisplayPipe implements PipeTransform {
   // This Pipe takes a node type as input and figures out its type in display form
-  transform(nodeType: String): String {
+  transform(nodeType: string): string {
     switch (nodeType.toLowerCase()) {
         case('bugzillabug'):
             return 'Bugzilla Bug';
@@ -51,7 +51,7 @@ export class NodeTypeDisplayPipe implements PipeTransform {
 @Pipe({name: 'nodeTypePlural'})
 export class NodeTypePluralPipe implements PipeTransform {
     // This Pipe takes a node type as input and figures out its plural form
-    transform(nodeType: String): String {
+    transform(nodeType: string): string {
         if (nodeType.endsWith('y')) {
             return `${nodeType.slice(0, -1)}ies`;
         } else {
@@ -64,7 +64,7 @@ export class NodeTypePluralPipe implements PipeTransform {
 @Pipe({name: 'nodeExternalUrl'})
 export class NodeExternalUrlPipe implements PipeTransform {
     // This Pipe takes a node as input and figures out its external URL
-    transform(node: any): String {
+    transform(node: any): string {
         switch (node.resource_type.toLowerCase()) {
             case('bugzillabug'):
                 return `https://bugzilla.redhat.com/show_bug.cgi?id=${node.id}`;
@@ -93,7 +93,7 @@ export class NodeExternalUrlPipe implements PipeTransform {
 @Pipe({name: 'truncate'})
 export class TruncatePipe implements PipeTransform {
   // This Pipe takes text and truncates it
-  transform(text: String, maxLength = 150): String {
+  transform(text: string, maxLength = 150): string {
       if (typeof text === 'string' && text.length > maxLength) {
         return text.slice(0, maxLength) + '…';
       } else {

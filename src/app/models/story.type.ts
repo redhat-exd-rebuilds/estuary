@@ -1,7 +1,7 @@
 interface StoryMetaAPI {
-    requested_node_index: Number;
-    story_related_nodes_backward: Array<Number>;
-    story_related_nodes_forward: Array<Number>;
+    requested_node_index: number;
+    story_related_nodes_backward: Array<number>;
+    story_related_nodes_forward: Array<number>;
 }
 
 export interface StoryAPI {

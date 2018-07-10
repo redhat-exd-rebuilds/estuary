@@ -13,4 +13,6 @@
     <div class="node-siblings-column__node-icon"><i class="fa fa-th {{ getNodeIconClass() }}" aria-hidden="true"></i></div>
   </div>
 </div>
-<div class="node-siblings-text-column story-row-column" *ngIf="relatedNodes">{{ relatedNodes + ' more' }}</div>
+<div class="node-siblings-text-column story-row-column" *ngIf="relatedNodes">
+  <a [routerLink]="siblingsRouterLink" [queryParams]="siblingsRouterParams">{{ relatedNodes }} more</a>
+</div>

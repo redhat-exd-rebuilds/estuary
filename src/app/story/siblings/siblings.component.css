@@ -1,0 +1,57 @@
+/* ----- Blocks ----- */
+.title {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.siblings-table {
+    font-size: 110%;
+}
+
+@media (min-width: 992px) {
+    .title {
+        margin-bottom: 5rem;
+    }
+
+    .siblings-table {
+        margin-bottom: 5rem;
+    }
+}
+
+
+/* ----- Elements ----- */
+.siblings-table td, .siblings-table th {
+    border: none;
+    padding: 1rem;
+}
+
+.siblings-table th {
+    border-bottom: 1.5px solid #F2F2F2;
+}
+
+.siblings-table thead {
+    color: #9B9B9B;
+    /* Patternfly has a gradient background, so this removes it */
+    background-image: none;
+}
+
+.siblings-table thead, .siblings-table tbody {
+    font-weight: 600;
+    /* Set a background color on the table so that it doesn't blend with the background */
+    background-color: #ffffff;
+}
+
+.siblings-table tbody {
+    color: #606060;
+}
+
+@media (min-width: 992px) {
+    .siblings-table tr td:first-child, .siblings-table tr th:first-child {
+        padding-left: 2rem;
+    }
+
+    .siblings-table tr td:last-child, .siblings-table tr th:last-child {
+        padding-right: 2rem;
+    }
+}
