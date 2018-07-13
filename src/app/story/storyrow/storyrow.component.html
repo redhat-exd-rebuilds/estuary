@@ -7,12 +7,14 @@
     <div class="node-column__node-icon"><i class="fa fa-th {{ getNodeIconClass() }}" aria-hidden="true"></i></div>
   </div>
 </div>
-<div class="node-siblings-column story-row-column" *ngIf="relatedNodes" >
-  <div id="{{ 'js-' + node.resource_type.toLowerCase() + '-siblings' }}" class="node-column__siblings" tooltip="Related {{ node.resource_type | nodeTypeDisplay | nodeTypePlural }}">
-    <img class="node-column__siblings-img" src="assets/circle_multi.svg" />
-    <div class="node-siblings-column__node-icon"><i class="fa fa-th {{ getNodeIconClass() }}" aria-hidden="true"></i></div>
+<div class="node-siblings-column story-row-column" *ngIf="relatedNodes">
+  <div id="{{ 'js-' + node.resource_type.toLowerCase() + '-siblings' }}" class="node-siblings-column__siblings"
+      tooltip="Related {{ node.resource_type | nodeTypeDisplay | nodeTypePlural }}"
+      [routerLink]="siblingsRouterLink" [queryParams]="siblingsRouterParams">
+    <img class="node-siblings-column__siblings-img" src="assets/circle_multi.svg" />
+    <div class="badge siblings-badge node-siblings-column__badge">+{{ relatedNodes }}</div>
+    <div class="node-siblings-column__node-icon">
+      <i class="fa fa-th {{ getNodeIconClass() }}" aria-hidden="true"></i>
+    </div>
   </div>
-</div>
-<div class="node-siblings-text-column story-row-column" *ngIf="relatedNodes">
-  <a [routerLink]="siblingsRouterLink" [queryParams]="siblingsRouterParams">{{ relatedNodes }} more</a>
 </div>

@@ -81,22 +81,20 @@ describe('StoryComponent testing', () => {
     expect(storyRowEls.length).toBe(6);
 
     // Ensure the number of columns in the row
-    expect(storyRowEls[0].nativeElement.children.length).toBe(4);
+    expect(storyRowEls[0].nativeElement.children.length).toBe(3);
     // Ensure the text is correct
     expect(storyRowEls[0].nativeElement.firstElementChild.innerText).toBe('RHBZ#12345');
     // Ensure the order is correct
     expect(storyRowEls[0].nativeElement.children[1].firstElementChild.id).toBe('js-bugzillabug-node');
     // Ensure the Bugzilla Bug is the active one
     expect(storyRowEls[0].nativeElement.children[1].firstElementChild.classList).toContain('node-column__node--active');
-    // Ensure a secondary Bugzilla Bug is shown
-    expect(storyRowEls[0].nativeElement.children[2].firstElementChild.id).toBe('js-bugzillabug-siblings');
-    // Ensure the secondary Bugzilla Bug text is shown and the link is correct
-    expect(storyRowEls[0].nativeElement.children[3].innerText).toBe('1 more');
-    const siblingsAnchor = storyRowEls[0].nativeElement.children[3].children[0];
-    expect(siblingsAnchor.tagName).toBe('A');
-    const expSiblingsUrl = 'http://localhost:9876/siblings/distgitcommit/8a63adb248ba633e200067e1ad6dc61931727bad?' +
-                           'displayName=RHBZ%2312345&reverse=false';
-    expect(siblingsAnchor.href).toBe(expSiblingsUrl);
+    // Ensure there are Bugzilla Bug siblings shown
+    const siblingsDivEl = storyRowEls[0].nativeElement.querySelector('.node-siblings-column__siblings');
+    expect(siblingsDivEl.id).toBe('js-bugzillabug-siblings');
+    expect(siblingsDivEl.attributes.getNamedItem('ng-reflect-query-params')).toBeTruthy();
+    expect(siblingsDivEl.attributes.getNamedItem('ng-reflect-router-link').value).toBe('/siblings/distgitcommit/8a63ad');
+    const siblingsBadgeEl = storyRowEls[0].nativeElement.querySelector('.node-siblings-column__badge');
+    expect(siblingsBadgeEl.innerText).toBe('+1');
 
     // Ensure the number of columns in the row
     expect(storyRowEls[1].nativeElement.children.length).toBe(2);
