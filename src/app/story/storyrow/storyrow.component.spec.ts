@@ -65,14 +65,15 @@ describe('StoryRowComponent testing', () => {
     const nodeUidColEl = fixture.debugElement.query(By.css('.node-uid-column')).nativeElement;
     expect(nodeUidColEl.innerText).toBe('RHBZ#23456');
 
-    const siblingsEl = fixture.debugElement.query(By.css('.node-column__siblings')).nativeElement;
-    // Verify the secondary artifact details are correct
+    const siblingsEl = fixture.debugElement.query(By.css('.node-siblings-column__siblings')).nativeElement;
+    // Verify the siblings are correct
+    expect(siblingsEl.attributes['ng-reflect-tooltip'].value).toBe('Related Bugzilla Bugs');
     expect(siblingsEl.children[0].tagName).toBe('IMG');
     expect(siblingsEl.children[0].src).toContain('circle_multi.svg');
-    expect(siblingsEl.attributes['ng-reflect-tooltip'].value).toBe('Related Bugzilla Bugs');
-
-    const siblingsTextEl = fixture.debugElement.query(By.css('.node-siblings-text-column')).nativeElement;
-    expect(siblingsTextEl.innerText).toBe('5 more');
+    // Verify the badge with "+x" is correct
+    const siblingsBadgeEl = siblingsEl.querySelector('.node-siblings-column__badge');
+    expect(siblingsBadgeEl.tagName).toBe('DIV');
+    expect(siblingsBadgeEl.innerText).toBe('+5');
   }));
 
   it('should call story.connectStory when it\'s the last row', fakeAsync(() => {
