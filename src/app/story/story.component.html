@@ -4,7 +4,8 @@
 <div class="container-fluid">
   <div class="diagram" id="js-diagram">
     <ng-container *ngIf="story">
-      <app-storyrow [node]="node" [relatedNodes]="last ? story.meta.story_related_nodes_backward[i] : story.meta.story_related_nodes_forward[i]" [last]="last"
+      <app-storyrow [node]="node" [backwardSiblings]="story.meta.story_related_nodes_backward[i]"
+          [forwardSiblings]="story.meta.story_related_nodes_forward[i]" [last]="last"
           [active]="node === selectedNode" *ngFor="let node of story.data; let i = index; let last = last">
       </app-storyrow>
     </ng-container>

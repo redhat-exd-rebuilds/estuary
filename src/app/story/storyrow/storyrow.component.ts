@@ -10,11 +10,14 @@ import { StoryComponent } from '../story.component';
 })
 export class StoryRowComponent implements OnChanges, AfterViewInit {
   @Input() node: any;
-  @Input() relatedNodes: number;
+  @Input() backwardSiblings: number;
+  @Input() forwardSiblings: number;
   @Input() active: boolean;
   @Input() last: boolean;
-  siblingsRouterLink: string;
-  siblingsRouterParams: any;
+  backwardSiblingsRouterLink: string;
+  forwardSiblingsRouterLink: string;
+  backwardSiblingsRouterParams: any;
+  forwardSiblingsRouterParams: any;
   story: StoryComponent;
 
   constructor(@Host() story: StoryComponent) {
@@ -22,9 +25,13 @@ export class StoryRowComponent implements OnChanges, AfterViewInit {
   }
 
   ngOnChanges() {
-    if (this.relatedNodes) {
-      // If there are related nodes, then the siblings link should get defined
-      [this.siblingsRouterLink, this.siblingsRouterParams] = this.story.getSiblingsRouterLink(this.node, this.last);
+    // If there are siblings in either direction, then the siblings links should get defined
+    if (this.backwardSiblings) {
+      [this.backwardSiblingsRouterLink, this.backwardSiblingsRouterParams] = this.story.getSiblingsRouterLink(this.node, true);
+    }
+
+    if (this.forwardSiblings) {
+      [this.forwardSiblingsRouterLink, this.forwardSiblingsRouterParams] = this.story.getSiblingsRouterLink(this.node, false);
     }
   }
 

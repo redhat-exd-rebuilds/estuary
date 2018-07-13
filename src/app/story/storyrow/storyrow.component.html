@@ -7,12 +7,23 @@
     <div class="node-column__node-icon"><i class="fa fa-th {{ getNodeIconClass() }}" aria-hidden="true"></i></div>
   </div>
 </div>
-<div class="node-siblings-column story-row-column" *ngIf="relatedNodes">
-  <div id="{{ 'js-' + node.resource_type.toLowerCase() + '-siblings' }}" class="node-siblings-column__siblings"
-      tooltip="Related {{ node.resource_type | nodeTypeDisplay | nodeTypePlural }}"
-      [routerLink]="siblingsRouterLink" [queryParams]="siblingsRouterParams">
+<div class="node-siblings-column node-siblings-backward-column story-row-column" *ngIf="backwardSiblings">
+  <div id="{{ 'js-' + node.resource_type.toLowerCase() + '-backward-siblings' }}" class="node-siblings-column__siblings"
+      tooltip="{{ node.resource_type | nodeTypeDisplay | nodeTypePlural }} related with the primary artifact above"
+      [routerLink]="backwardSiblingsRouterLink" [queryParams]="backwardSiblingsRouterParams">
     <img class="node-siblings-column__siblings-img" src="assets/circle_multi.svg" />
-    <div class="badge siblings-badge node-siblings-column__badge">+{{ relatedNodes }}</div>
+    <div class="badge siblings-badge node-siblings-column__badge">+{{ backwardSiblings }}</div>
+    <div class="node-siblings-column__node-icon">
+      <i class="fa fa-th {{ getNodeIconClass() }}" aria-hidden="true"></i>
+    </div>
+  </div>
+</div>
+<div class="node-siblings-column node-siblings-forward-column story-row-column" *ngIf="forwardSiblings">
+  <div id="{{ 'js-' + node.resource_type.toLowerCase() + '-forward-siblings' }}" class="node-siblings-column__siblings"
+      tooltip="{{ node.resource_type | nodeTypeDisplay | nodeTypePlural }} related with the primary artifact below"
+      [routerLink]="forwardSiblingsRouterLink" [queryParams]="forwardSiblingsRouterParams">
+    <img class="node-siblings-column__siblings-img" src="assets/circle_multi.svg" />
+    <div class="badge siblings-badge node-siblings-column__badge">+{{ forwardSiblings }}</div>
     <div class="node-siblings-column__node-icon">
       <i class="fa fa-th {{ getNodeIconClass() }}" aria-hidden="true"></i>
     </div>

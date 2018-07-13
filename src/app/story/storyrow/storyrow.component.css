@@ -20,9 +20,9 @@
     top: 5px;
 }
 
-.node-column {
+.node-siblings-column {
     /* Leave a small gap between the main node and the siblings */
-    padding-right: 1rem;
+    padding-left: 1rem;
 }
 
 /* Assumes the Bootstrap badge class is also applied */
@@ -33,9 +33,16 @@
 }
 
 @media (min-width: 992px) {
-    .node-column {
+    .node-siblings-column {
         /* Leave a larger gap between the main node and the siblings when on a tablet or larger */
-        padding-right: 2.5rem;
+        padding-left: 2.5rem;
+    }
+}
+
+@media only screen and (min-width : 1200px) {
+    .node-siblings-column {
+        /* Leave an even larger gap between the main node and the siblings when on large devices */
+        padding-left: 4.5rem;
     }
 }
 
