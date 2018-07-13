@@ -24,8 +24,8 @@
 }
 
 .node-column {
-    /* Leave a decent gap between the main node and the siblings */
-    padding-right: 5rem;
+    /* Leave a small gap between the main node and the siblings */
+    padding-right: 1rem;
 }
 
 .node-siblings-text-column {
@@ -43,6 +43,13 @@
     .node-siblings-column {
         /* Leave a small gap between the siblings and the "x more" text  */
         padding-right: 1.25rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .node-column {
+        /* Leave a larger gap between the main node and the siblings */
+        padding-right: 2.5rem;
     }
 }
 
@@ -84,13 +91,13 @@
 }
 
 .node-column__node-icon {
+     /* Make the icons larger */
+     font-size: 2.25rem;
     /* Place the icon halfway to the left of the circle */
     left: 50%;
 }
 
 .node-column__node-icon, .node-siblings-column__node-icon {
-    /* Make the icons larger */
-    font-size: 2.25rem;
     position: absolute;
     /* Place the icon halfway down the circle */
     top: 50%;
@@ -99,14 +106,17 @@
 }
 
 .node-siblings-column__node-icon {
+    /* Make the icons larger but smaller than the main node column */
+    font-size: 1.8rem;
     /* Place the icon roughly a third to the left of the circle */
     left: 36.6%;
 }
 
 .node-column__siblings {
-    width: 96px;
-    height: 66px;
+    width: 73px;
+    height: 50px;
 }
+
 
 /* ----- Modifiers ----- */
 .node-column__node--active, .node-column__node--active:hover  {
