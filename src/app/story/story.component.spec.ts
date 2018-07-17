@@ -90,7 +90,7 @@ describe('StoryComponent testing', () => {
     expect(storyRowEls[0].nativeElement.children[1].firstElementChild.classList).toContain('node-column__node--active');
     // Ensure there are Bugzilla Bug siblings shown
     const siblingsDivEl = storyRowEls[0].nativeElement.querySelector('.node-siblings-column__siblings');
-    expect(siblingsDivEl.id).toBe('js-bugzillabug-siblings');
+    expect(siblingsDivEl.id).toBe('js-bugzillabug-forward-siblings');
     expect(siblingsDivEl.attributes.getNamedItem('ng-reflect-query-params')).toBeTruthy();
     expect(siblingsDivEl.attributes.getNamedItem('ng-reflect-router-link').value).toBe('/siblings/distgitcommit/8a63ad');
     const siblingsBadgeEl = storyRowEls[0].nativeElement.querySelector('.node-siblings-column__badge');

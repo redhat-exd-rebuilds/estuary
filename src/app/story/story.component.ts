@@ -116,24 +116,32 @@ export class StoryComponent implements OnInit, AfterViewInit, OnDestroy {
       // relationship flows backwards and is set after the loop
       for (let i = 0; i < storyRows.length - 1; i++) {
         // Connect the main node to the next main node
-        const target = storyRows[i + 1].querySelector('.node-column').children[0];
+        const nextNode = storyRows[i + 1].querySelector('.node-column').children[0];
         jsPlumb.connect({
           source: storyRows[i].querySelector('.node-column').children[0],
-          target: target
+          target: nextNode
         });
         // Check to see if this story row has siblings
-        const siblings = storyRows[i].querySelector('.node-siblings-column');
-        if (siblings) {
-          // If there are siblings, connect them to the next main node
+        const backwardSiblings = storyRows[i].querySelector('.node-siblings-backward-column');
+        if (backwardSiblings) {
+          // If there are backward siblings, connect them to the previous main node
           jsPlumb.connect({
-            source: siblings.children[0],
-            target: target
+            source: storyRows[i - 1].querySelector('.node-column').children[0],
+            target: backwardSiblings.children[0]
+          });
+        }
+        const forwardSiblings = storyRows[i].querySelector('.node-siblings-forward-column');
+        if (forwardSiblings) {
+          // If there are forward siblings, connect them to the next main node
+          jsPlumb.connect({
+            source: forwardSiblings.children[0],
+            target: nextNode
           });
         }
       }
 
       // Check to see if the last row has any siblings
-      const lastSiblings = storyRows[storyRows.length - 1].querySelector('.node-siblings-column');
+      const lastSiblings = storyRows[storyRows.length - 1].querySelector('.node-siblings-backward-column');
       if (lastSiblings) {
         // If there are siblings, connect them to the previous main node
         jsPlumb.connect({

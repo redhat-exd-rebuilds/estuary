@@ -37,7 +37,8 @@ describe('StoryRowComponent testing', () => {
 
   it('should display single artifact', fakeAsync(() => {
     component.node = bug;
-    component.relatedNodes = 0;
+    component.forwardSiblings = 0;
+    component.backwardSiblings = 0;
     component.active = true;
     fixture.detectChanges();
     tick();
@@ -56,7 +57,8 @@ describe('StoryRowComponent testing', () => {
 
   it('should display multiple artifacts', fakeAsync(() => {
     component.node = bug;
-    component.relatedNodes = 5;
+    component.backwardSiblings = 3;
+    component.forwardSiblings = 5;
     component.active = true;
     fixture.detectChanges();
     tick();
@@ -65,20 +67,35 @@ describe('StoryRowComponent testing', () => {
     const nodeUidColEl = fixture.debugElement.query(By.css('.node-uid-column')).nativeElement;
     expect(nodeUidColEl.innerText).toBe('RHBZ#23456');
 
-    const siblingsEl = fixture.debugElement.query(By.css('.node-siblings-column__siblings')).nativeElement;
-    // Verify the siblings are correct
-    expect(siblingsEl.attributes['ng-reflect-tooltip'].value).toBe('Related Bugzilla Bugs');
-    expect(siblingsEl.children[0].tagName).toBe('IMG');
-    expect(siblingsEl.children[0].src).toContain('circle_multi.svg');
+    const siblingsEl = fixture.debugElement.queryAll(By.css('.node-siblings-column__siblings'));
+    const siblingsBackwardEl = siblingsEl[0].nativeElement;
+    const siblingsForwardEl = siblingsEl[1].nativeElement;
+    // Verify the backward siblings are correct
+    // For some reason, the whole tooltip text isn't stored in the attribute if it's long,
+    // but it still displays properly
+    expect(siblingsBackwardEl.attributes['ng-reflect-tooltip'].value).toBe('Bugzilla Bugs related with the');
+    expect(siblingsBackwardEl.children[0].tagName).toBe('IMG');
+    expect(siblingsBackwardEl.children[0].src).toContain('circle_multi.svg');
     // Verify the badge with "+x" is correct
-    const siblingsBadgeEl = siblingsEl.querySelector('.node-siblings-column__badge');
-    expect(siblingsBadgeEl.tagName).toBe('DIV');
-    expect(siblingsBadgeEl.innerText).toBe('+5');
+    const siblingsBackwardBadgeEl = siblingsBackwardEl.querySelector('.node-siblings-column__badge');
+    expect(siblingsBackwardBadgeEl.tagName).toBe('DIV');
+    expect(siblingsBackwardBadgeEl.innerText).toBe('+3');
+    // Verify the forward siblings are correct
+    // For some reason, the whole tooltip text isn't stored in the attribute if it's long,
+    // but it still displays properly
+    expect(siblingsForwardEl.attributes['ng-reflect-tooltip'].value).toBe('Bugzilla Bugs related with the');
+    expect(siblingsForwardEl.children[0].tagName).toBe('IMG');
+    expect(siblingsForwardEl.children[0].src).toContain('circle_multi.svg');
+    // Verify the badge with "+x" is correct
+    const siblingsForwardBadgeEl = siblingsForwardEl.querySelector('.node-siblings-column__badge');
+    expect(siblingsForwardBadgeEl.tagName).toBe('DIV');
+    expect(siblingsForwardBadgeEl.innerText).toBe('+5');
   }));
 
   it('should call story.connectStory when it\'s the last row', fakeAsync(() => {
     component.node = bug;
-    component.relatedNodes = 0;
+    component.forwardSiblings = 0;
+    component.backwardSiblings = 0;
     component.active = true;
     component.last = true;
     spyOn(component.story, 'connectStory').and.returnValue(null);

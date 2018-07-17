@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, Input, Host, OnInit, OnChanges } from '@angular/core';
+import { Component, AfterViewInit, Input, Host, OnChanges } from '@angular/core';
 
 import { StoryComponent } from '../story.component';
 
@@ -10,11 +10,15 @@ import { StoryComponent } from '../story.component';
 })
 export class StoryRowComponent implements OnChanges, AfterViewInit {
   @Input() node: any;
-  @Input() relatedNodes: number;
+  @Input() backwardSiblings: number;
+  @Input() forwardSiblings: number;
   @Input() active: boolean;
   @Input() last: boolean;
-  siblingsRouterLink: string;
-  siblingsRouterParams: any;
+  iconClasses: any;
+  backwardSiblingsRouterLink: string;
+  forwardSiblingsRouterLink: string;
+  backwardSiblingsRouterParams: any;
+  forwardSiblingsRouterParams: any;
   story: StoryComponent;
 
   constructor(@Host() story: StoryComponent) {
@@ -22,9 +26,14 @@ export class StoryRowComponent implements OnChanges, AfterViewInit {
   }
 
   ngOnChanges() {
-    if (this.relatedNodes) {
-      // If there are related nodes, then the siblings link should get defined
-      [this.siblingsRouterLink, this.siblingsRouterParams] = this.story.getSiblingsRouterLink(this.node, this.last);
+    this.iconClasses = this.getIconClasses();
+    // If there are siblings in either direction, then the siblings links should get defined
+    if (this.backwardSiblings) {
+      [this.backwardSiblingsRouterLink, this.backwardSiblingsRouterParams] = this.story.getSiblingsRouterLink(this.node, true);
+    }
+
+    if (this.forwardSiblings) {
+      [this.forwardSiblingsRouterLink, this.forwardSiblingsRouterParams] = this.story.getSiblingsRouterLink(this.node, false);
     }
   }
 
@@ -36,24 +45,35 @@ export class StoryRowComponent implements OnChanges, AfterViewInit {
     }
   }
 
-  getNodeIconClass(): string {
+  getIconClasses(): any {
+    const classes = {
+      'fa': true,
+      'fa-th': true
+    };
+
     switch (this.node.resource_type) {
       case('BugzillaBug'):
-        return 'fa-bug';
+        classes['fa-bug'] = true;
+        break;
       case('DistGitCommit'):
-        return 'estuary-icon-commit';
+        classes['estuary-icon-commit'] = true;
+        break;
       case('KojiBuild'):
-        return 'pficon-build';
+      case('ContainerKojiBuild'):
+        classes['pficon-build'] = true;
+        break;
       case('Advisory'):
       case('ContainerAdvisory'):
-        return 'pficon-security';
+        classes['pficon-security'] = true;
+        break;
       case('FreshmakerEvent'):
-        return 'estuary-icon-freshmaker';
-      case('ContainerKojiBuild'):
-        return 'pficon-build';
+        classes['estuary-icon-freshmaker'] = true;
+        break;
       default:
-        return 'fa-cube';
+        classes['fa-cube'] = true;
     }
+
+    return classes;
   }
 
   getNodeUid(): string {
