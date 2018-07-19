@@ -300,7 +300,7 @@ export let siblings = [
     'resource_type': 'BugzillaBug',
     'reverted_by_commits': [],
     'severity': 'medium',
-    'short_description': 'CVE-2018-1234 kernel: some error [rhel-7.5.z]',
+    'short_description': 'CVE-2018-1235 kernel: some really long error that is hard to fix and causes problems [rhel-7.5.z]',
     'status': 'CLOSED',
     'target_milestone': 'rc',
     'votes': 0

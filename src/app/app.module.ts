@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatePipe } from '@angular/common';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { ModalModule } from 'ngx-bootstrap/modal';
 import { NotificationModule } from 'patternfly-ng/notification';
 
 import { AppComponent } from './app.component';
@@ -20,6 +22,7 @@ import { AlertComponent } from './alert/alert.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SiblingsComponent } from './story/siblings/siblings.component';
+import { KeysPipe } from './pipes/general.pipe';
 
 
 @NgModule({
@@ -39,7 +42,8 @@ import { SiblingsComponent } from './story/siblings/siblings.component';
     TruncatePipe,
     NavbarComponent,
     SiblingsComponent,
-    PropertyValueDisplayPipe
+    PropertyValueDisplayPipe,
+    KeysPipe
   ],
   imports: [
     AppRoutingModule,
@@ -48,7 +52,9 @@ import { SiblingsComponent } from './story/siblings/siblings.component';
     FormsModule,
     BrowserAnimationsModule,
     NotificationModule,
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    BsDropdownModule.forRoot(),
+    ModalModule.forRoot()
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
