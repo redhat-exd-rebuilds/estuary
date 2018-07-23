@@ -1,49 +1,164 @@
 /* ----- Blocks ----- */
+.siblings-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+/* A wrapper around the table for when it gets too wide */
+.siblings-table-responsive {
+    overflow-x: auto;
+    white-space: nowrap;
+    /* Remove the default border provided by Bootstrap */
+    border: none;
+}
+
+/* A wrapper around the table to create the section above the table for the "Show Columns" button to go */
+.siblings-table-wrapper {
+    background-color: #ffffff;
+    display: inline-block;
+    padding-top: 8rem; 
+}
+
 .title {
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 3rem;
+    font-size: 2rem;
+    font-weight: 400;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* This div contains the "Show Columns" button. It is positioned in the DOM outside of
+   div.siblings-table-responsive, otherwise, it will cause a vertical scroll bar to appear
+   on short tables when the "Show Columns" button is expanded. */
+.siblings-table-header {
+    /* Make the width 100% minus the padding used by div.siblings-container */
+    width: calc(100% - 3rem);
+    /* Make the position absolute so the header is positioned on top of the padding-top of
+       div.siblings-table-wrapper */
+    position: absolute;
+    height: 8rem;
 }
 
 .siblings-table {
+    margin: 0;
+    /* Set the minimum width of the table to roughly that of div.siblings-table-header */
+    min-width: 350px;
     font-size: 110%;
 }
 
+.modal-link {
+    color: #363636;
+}
+
+.modal-link:hover {
+    color: #363636;
+    text-decoration: underline;
+}
+
 @media (min-width: 992px) {
-    .title {
+    .siblings-container {
+        padding-left: 5rem;
+        padding-right: 5rem;
         margin-bottom: 5rem;
     }
 
-    .siblings-table {
-        margin-bottom: 5rem;
+    .title {
+        margin-top:5rem;
+        margin-bottom: 3rem;
+    }
+
+    .siblings-table-header {
+        /* Make the width 100% minus the padding used by div.siblings-container */
+        width: calc(100% - 10rem);
     }
 }
 
 
 /* ----- Elements ----- */
+.siblings-table-header__btn-group {
+    position: absolute;
+    /* Vertically center the "Show Columns" button in div.siblings-table-wrapper  */
+    top: 2.1rem;
+    left: 2rem;
+}
+
+.siblings-table-header__dropdown-button, .open > .siblings-table-header__dropdown-button,
+.siblings-table-header__dropdown-button:active {
+    /* Override the colors default to Bootstrap */
+    color: #363636;
+    background-color: #ffffff;
+    background-image: none;
+}
+
+.open > .siblings-table-header__dropdown-button {
+    /* When the dropdown menu is open, don't round the bottom of the "Show Columns" button */
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.siblings-table-header__dropdown-button {
+    font-size: 115%;
+    /* Make the "Show Columns" button bigger */
+    padding: 0.75rem 3rem 0.75rem 1rem;
+    border: 0.5px solid #8c8d8f;
+    border-radius: 3px;
+    box-shadow: none;
+}
+
+.siblings-table-header__dropdown-button .caret::before {
+    /* Give some space between the "Show Columns" text and the arrow icon on the button */
+    padding-left: 2.5rem;
+}
+
+.siblings-table-header__dropdown-menu {
+    padding-top: 2rem;
+    padding-left: 2rem;
+    margin-bottom: 2rem;
+    width: 250px;
+    /* Add scrolling to the dropdown menu */
+    height: auto;
+    max-height: 300px;
+    overflow-x: hidden;
+}
+
+.siblings-table-header__dropdown-menu li {
+    font-size: 125%;
+    padding-bottom: 1rem;
+}
+
+.siblings-table-header__dropdown-menu input {
+    margin-right: 0.75rem;
+}
+
+.siblings-table-header__columns-text {
+    position: absolute;
+    /* Vertically center the text in div.siblings-table-wrapper  */
+    top: 3rem;
+    left: 18.5rem;
+    color: #8c8d8f;
+    font-size: 115%;
+}
+
 .siblings-table td, .siblings-table th {
     border: none;
     padding: 1rem;
 }
 
 .siblings-table th {
-    border-bottom: 1.5px solid #F2F2F2;
+    border-top: 1.5px solid #F2F2F2 !important;
+    border-bottom: 1.5px solid #F2F2F2 !important;
 }
 
 .siblings-table thead {
-    color: #9B9B9B;
     /* Patternfly has a gradient background, so this removes it */
     background-image: none;
+    font-size: 115%;
 }
 
 .siblings-table thead, .siblings-table tbody {
     font-weight: 600;
     /* Set a background color on the table so that it doesn't blend with the background */
     background-color: #ffffff;
-}
-
-.siblings-table tbody {
-    color: #606060;
 }
 
 @media (min-width: 992px) {

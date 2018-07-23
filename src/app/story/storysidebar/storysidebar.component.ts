@@ -30,13 +30,9 @@ export class StorysidebarComponent implements OnInit, OnChanges {
     this.properties = [];
     if (this.node) {
       for (const [key, val] of this.filterProperties(this.node)) {
-        let formattedVal = val;
-        if (this.isDate(val)) {
-          formattedVal = this.datePipe.transform(val, 'MMMM d, y, HH:mm:ss', '+0000') + ' UTC';
-        }
         this.properties.push({
           name: key,
-          value: formattedVal,
+          value: val,
           truncate: true,
           needsTruncating: val.length > 200
         });
@@ -44,17 +40,9 @@ export class StorysidebarComponent implements OnInit, OnChanges {
     }
   }
 
-  isDate(dateStr: string): boolean {
-    if (typeof dateStr === 'string') {
-        const dtRegEx = /^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})(?:\.\d+)?(?:Z|[-+]00(?::00)?)?$/;
-        return dtRegEx.test(dateStr);
-    }
-    return false;
-  }
-
   filterProperties(node: any): any {
     const properties = [];
-    const propertyValueDisplayPipe = new PropertyValueDisplayPipe();
+    const propertyValueDisplayPipe = new PropertyValueDisplayPipe(this.datePipe);
     for (const keyValue of Object.entries(node)) {
         // Have to do this here instead of the for loop to make TypeScript happy
         const [key, value]: Array<any> = keyValue;
