@@ -278,9 +278,9 @@ export let siblings = [
     },
     'related_by_commits': [],
     'reporter': {
-      'email': 'user1',
+      'email': 'user2@redhat.com',
       'name': null,
-      'username': 'user1'
+      'username': 'user2'
     },
     'resolution': 'ERRATA',
     'resolved_by_commits': [
