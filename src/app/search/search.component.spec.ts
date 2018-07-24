@@ -7,7 +7,7 @@ import { ComponentFixture, async, TestBed, fakeAsync, tick } from '@angular/core
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { of, throwError } from 'rxjs';
-import { NotificationModule } from 'patternfly-ng/notification';
+import { ToastNotificationModule } from 'patternfly-ng/notification';
 
 import { SearchComponent } from './search.component';
 import { SearchService } from '../services/search.service';
@@ -25,7 +25,7 @@ describe('SearchComponent testing', () => {
     TestBed.configureTestingModule({
         declarations: [SearchComponent, AlertComponent, NodeTypeDisplayPipe, PropertyDisplayPipe],
         providers: [SearchService],
-        imports: [FormsModule, NotificationModule, HttpClientTestingModule, RouterTestingModule, NoopAnimationsModule]
+        imports: [FormsModule, ToastNotificationModule, HttpClientTestingModule, RouterTestingModule, NoopAnimationsModule]
     }).compileComponents();
     fixture = TestBed.createComponent(SearchComponent);
     component = fixture.componentInstance;

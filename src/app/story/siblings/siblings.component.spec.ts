@@ -5,7 +5,7 @@ import { NavigationEnd, Router, ActivatedRoute } from '@angular/router';
 import { By } from '@angular/platform-browser';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { of } from 'rxjs';
-import { NotificationModule } from 'patternfly-ng/notification';
+import { ToastNotificationModule } from 'patternfly-ng/notification';
 
 import { SiblingsComponent } from './siblings.component';
 import { SiblingsService } from '../../services/siblings.service';
@@ -59,7 +59,7 @@ describe('SiblingsComponent', () => {
       ],
       imports: [
         HttpClientTestingModule,
-        NotificationModule,
+        ToastNotificationModule,
         NoopAnimationsModule,
         BsDropdownModule.forRoot(),
         ModalModule.forRoot()
