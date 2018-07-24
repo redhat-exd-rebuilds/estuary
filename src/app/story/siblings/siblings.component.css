@@ -99,13 +99,13 @@
 .siblings-table-header__dropdown-button {
     font-size: 115%;
     /* Make the "Show Columns" button bigger */
-    padding: 0.75rem 3rem 0.75rem 1rem;
+    padding: 0.75rem 0.75rem 0.75rem 1rem;
     border: 0.5px solid #8c8d8f;
     border-radius: 3px;
     box-shadow: none;
 }
 
-.siblings-table-header__dropdown-button .caret::before {
+.siblings-table-header__dropdown-button i {
     /* Give some space between the "Show Columns" text and the arrow icon on the button */
     padding-left: 2.5rem;
 }
@@ -147,6 +147,20 @@
 .siblings-table th {
     border-top: 1.5px solid #F2F2F2 !important;
     border-bottom: 1.5px solid #F2F2F2 !important;
+}
+
+.siblings-table th:hover {
+    /* Make it seem like a link when hovering on the table header to let the user know they can sort */
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.siblings-table__sort-icon {
+    padding-left: 0.5rem;
+    /* Since the element is present in every column but the class that determines the icon
+       is only active on sorted columns, we must set a constant width of the icon element
+       so that the table columns don't shift when the arrow appears/disappears  */
+    width: 15px;
 }
 
 .siblings-table thead {

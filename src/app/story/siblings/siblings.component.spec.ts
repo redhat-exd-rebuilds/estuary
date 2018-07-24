@@ -86,11 +86,11 @@ describe('SiblingsComponent', () => {
 
     const tableHeaders = fixture.debugElement.queryAll(By.css('.siblings-table th'));
     expect(tableHeaders.length).toBe(5);
-    expect(tableHeaders[0].nativeElement.textContent).toBe('Assignee');
-    expect(tableHeaders[1].nativeElement.textContent).toBe('ID');
-    expect(tableHeaders[2].nativeElement.textContent).toBe('Reporter');
-    expect(tableHeaders[3].nativeElement.textContent).toBe('Short Description');
-    expect(tableHeaders[4].nativeElement.textContent).toBe('Status');
+    expect(tableHeaders[0].nativeElement.textContent.trim()).toBe('Assignee');
+    expect(tableHeaders[1].nativeElement.textContent.trim()).toBe('ID');
+    expect(tableHeaders[2].nativeElement.textContent.trim()).toBe('Reporter');
+    expect(tableHeaders[3].nativeElement.textContent.trim()).toBe('Short Description');
+    expect(tableHeaders[4].nativeElement.textContent.trim()).toBe('Status');
 
     const activeColumnsText = fixture.debugElement.query(By.css('.siblings-table-header__columns-text')).nativeElement;
     expect(activeColumnsText.textContent.trim()).toBe('5 of 20 columns selected');
@@ -111,7 +111,7 @@ describe('SiblingsComponent', () => {
     // The ID column should contain a link to Bugzilla
     expect(rowTwoColumns[1].children[0].tagName).toBe('A');
     expect(rowTwoColumns[1].children[0].textContent.trim()).toBe('1567084');
-    expect(rowTwoColumns[2].textContent.trim()).toBe('user1');
+    expect(rowTwoColumns[2].textContent.trim()).toBe('user2');
     // The "Short Description" column is too long, so it gets truncated and becomes a link
     // that activates a modal
     expect(rowTwoColumns[3].textContent.trim()).toBe('CVE-2018-1235 kernel: some really long error that …');
@@ -177,12 +177,12 @@ describe('SiblingsComponent', () => {
     // Check to make sure the columns are right
     let tableHeaders = fixture.debugElement.queryAll(By.css('.siblings-table th'));
     expect(tableHeaders.length).toBe(6);
-    expect(tableHeaders[0].nativeElement.textContent).toBe('Assignee');
-    expect(tableHeaders[1].nativeElement.textContent).toBe('Classification');
-    expect(tableHeaders[2].nativeElement.textContent).toBe('ID');
-    expect(tableHeaders[3].nativeElement.textContent).toBe('Reporter');
-    expect(tableHeaders[4].nativeElement.textContent).toBe('Short Description');
-    expect(tableHeaders[5].nativeElement.textContent).toBe('Status');
+    expect(tableHeaders[0].nativeElement.textContent.trim()).toBe('Assignee');
+    expect(tableHeaders[1].nativeElement.textContent.trim()).toBe('Classification');
+    expect(tableHeaders[2].nativeElement.textContent.trim()).toBe('ID');
+    expect(tableHeaders[3].nativeElement.textContent.trim()).toBe('Reporter');
+    expect(tableHeaders[4].nativeElement.textContent.trim()).toBe('Short Description');
+    expect(tableHeaders[5].nativeElement.textContent.trim()).toBe('Status');
 
     // Now uncheck ac olumn to make sure it dissapears
     dropdownMenu.children[0].children[0].click();
@@ -191,10 +191,48 @@ describe('SiblingsComponent', () => {
     // Check to make sure the columns are right
     tableHeaders = fixture.debugElement.queryAll(By.css('.siblings-table th'));
     expect(tableHeaders.length).toBe(5);
-    expect(tableHeaders[0].nativeElement.textContent).toBe('Classification');
-    expect(tableHeaders[1].nativeElement.textContent).toBe('ID');
-    expect(tableHeaders[2].nativeElement.textContent).toBe('Reporter');
-    expect(tableHeaders[3].nativeElement.textContent).toBe('Short Description');
-    expect(tableHeaders[4].nativeElement.textContent).toBe('Status');
+    expect(tableHeaders[0].nativeElement.textContent.trim()).toBe('Classification');
+    expect(tableHeaders[1].nativeElement.textContent.trim()).toBe('ID');
+    expect(tableHeaders[2].nativeElement.textContent.trim()).toBe('Reporter');
+    expect(tableHeaders[3].nativeElement.textContent.trim()).toBe('Short Description');
+    expect(tableHeaders[4].nativeElement.textContent.trim()).toBe('Status');
+  }));
+
+  it('should allow columns to be sorted when showing the siblings for RHBZ#1566849', fakeAsync(() => {
+    spyOn(siblingsService, 'getSiblings').and.returnValue(
+      // Create an observable like the HTTP client would return
+      of(siblings)
+    );
+    // The component must be created after the spy on the SiblingsService because
+    // the SiblingsService is used as part of the constructor
+    fixture = TestBed.createComponent(SiblingsComponent);
+    fixture.detectChanges();
+
+    let rows = fixture.debugElement.queryAll(By.css('.siblings-table tbody > tr'));
+    // Make sure the rows are sorted by ID by default
+    expect(rows[0].nativeElement.children[1].children[0].textContent.trim()).toBe('1566849');
+    expect(rows[1].nativeElement.children[1].children[0].textContent.trim()).toBe('1567084');
+
+    const tableHeaders = fixture.debugElement.queryAll(By.css('.siblings-table th'));
+    // Click on the ID th to make sure the order is reversed
+    tableHeaders[1].nativeElement.click();
+    fixture.detectChanges();
+    rows = fixture.debugElement.queryAll(By.css('.siblings-table tbody > tr'));
+    expect(rows[0].nativeElement.children[1].children[0].textContent.trim()).toBe('1567084');
+    expect(rows[1].nativeElement.children[1].children[0].textContent.trim()).toBe('1566849');
+
+    // Click on the Reporter th to make sure the order is set
+    tableHeaders[2].nativeElement.click();
+    fixture.detectChanges();
+    rows = fixture.debugElement.queryAll(By.css('.siblings-table tbody > tr'));
+    expect(rows[0].nativeElement.children[2].textContent.trim()).toBe('user1');
+    expect(rows[1].nativeElement.children[2].textContent.trim()).toBe('user2');
+
+    // Click on the Reporter th to make sure the order is reversed
+    tableHeaders[2].nativeElement.click();
+    fixture.detectChanges();
+    rows = fixture.debugElement.queryAll(By.css('.siblings-table tbody > tr'));
+    expect(rows[0].nativeElement.children[2].textContent.trim()).toBe('user2');
+    expect(rows[1].nativeElement.children[2].textContent.trim()).toBe('user1');
   }));
 });
