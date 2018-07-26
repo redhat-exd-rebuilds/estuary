@@ -7,7 +7,7 @@ import { DatePipe } from '@angular/common';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { NotificationModule } from 'patternfly-ng/notification';
+import { ToastNotificationModule } from 'patternfly-ng/notification';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -51,7 +51,7 @@ import { KeysPipe } from './pipes/general.pipe';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    NotificationModule,
+    ToastNotificationModule,
     TooltipModule.forRoot(),
     BsDropdownModule.forRoot(),
     ModalModule.forRoot()

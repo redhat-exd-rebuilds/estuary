@@ -6,7 +6,7 @@ import { ComponentFixture, async, TestBed, fakeAsync, tick } from '@angular/core
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
-import { NotificationModule } from 'patternfly-ng/notification';
+import { ToastNotificationModule } from 'patternfly-ng/notification';
 import { of, Subject } from 'rxjs';
 
 import { StoryComponent } from './story.component';
@@ -52,7 +52,7 @@ describe('StoryComponent testing', () => {
         imports: [
             RouterTestingModule,
             TooltipModule.forRoot(),
-            NotificationModule,
+            ToastNotificationModule,
             HttpClientTestingModule,
             NoopAnimationsModule
         ]
