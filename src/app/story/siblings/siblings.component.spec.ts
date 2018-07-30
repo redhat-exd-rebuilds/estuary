@@ -49,9 +49,7 @@ describe('SiblingsComponent', () => {
                 'resource': 'distgitcommit',
                 'uid': 'eacc1bf66aa53b3136ac045ead618e18a6751625'
               },
-              queryParams: {
-                'displayName': 'RHBZ#1566849'
-              }
+              queryParams: {}
             }
           }
         },
@@ -82,7 +80,7 @@ describe('SiblingsComponent', () => {
     fixture.detectChanges();
 
     const title = fixture.debugElement.query(By.css('.title')).nativeElement;
-    expect(title.textContent).toBe('Siblings of RHBZ#1566849');
+    expect(title.textContent).toBe('Bugzilla bugs resolved by commit #eacc1bf66aa53b3136ac045ead618e18a6751625');
 
     const tableHeaders = fixture.debugElement.queryAll(By.css('.siblings-table th'));
     expect(tableHeaders.length).toBe(5);

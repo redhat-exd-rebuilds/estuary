@@ -36,11 +36,11 @@ describe('SiblingsService testing', () => {
 
       const resource = 'distgitcommit';
       const uid = 'eacc1bf66aa53b3136ac045ead618e18a6751625';
-      siblingsService.getSiblings(resource, uid, false).subscribe(data => {
-          expect(data).toEqual(testData);
+      siblingsService.getSiblings(resource, uid, true).subscribe(data => {
+        expect(data).toEqual(testData);
       });
 
-      const req = httpTestingController.expectOne(`${siblingsService.apiUrl}siblings/${resource}/${uid}?reverse=false`);
+      const req = httpTestingController.expectOne(`${siblingsService.apiUrl}siblings/${resource}/${uid}?backward_rel=true`);
       expect(req.request.method).toEqual('GET');
       req.flush(testData);
     });
