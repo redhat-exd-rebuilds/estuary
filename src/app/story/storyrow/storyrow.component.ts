@@ -29,11 +29,13 @@ export class StoryRowComponent implements OnChanges, AfterViewInit {
     this.iconClasses = this.getIconClasses();
     // If there are siblings in either direction, then the siblings links should get defined
     if (this.backwardSiblings) {
-      [this.backwardSiblingsRouterLink, this.backwardSiblingsRouterParams] = this.story.getSiblingsRouterLink(this.node, true);
+      [this.backwardSiblingsRouterLink, this.backwardSiblingsRouterParams] =
+        this.story.getSiblingsRouterLink(this.node, true);
     }
 
     if (this.forwardSiblings) {
-      [this.forwardSiblingsRouterLink, this.forwardSiblingsRouterParams] = this.story.getSiblingsRouterLink(this.node, false);
+      [this.forwardSiblingsRouterLink, this.forwardSiblingsRouterParams] =
+        this.story.getSiblingsRouterLink(this.node, false);
     }
   }
 

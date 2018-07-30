@@ -2,7 +2,7 @@
 <app-navbar></app-navbar>
 
 <div class="siblings-container" *ngIf="siblings">
-  <h2 class="title">Siblings{{ selectedDisplayName ? ' of ' + selectedDisplayName : '' }}</h2>
+  <h2 class="title">{{ selectedDisplayName }}</h2>
   <div class="siblings-table-header">
       <!-- Set autoClose to false so that way the dropdown menu doesn't close when a user clicks on a check box -->
       <div class="btn-group siblings-table-header__btn-group" dropdown [autoClose]="false">

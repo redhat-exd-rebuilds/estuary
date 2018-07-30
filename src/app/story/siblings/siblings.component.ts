@@ -49,28 +49,23 @@ export class SiblingsComponent implements OnDestroy {
     this.router.events.pipe(takeUntil(this.unsubscribe),
                             filter((event: Event) => event instanceof NavigationEnd)).subscribe(() => {
       // Reset the values on every route change
-      this.siblings = undefined;
-      this.columns = undefined;
+      this.siblings = [];
+      this.columns = {};
       this.numActiveColumns = 0;
-      this.sortedBy = undefined;
+      this.sortedBy = null;
+      this.selectedDisplayName = null;
 
       this.selectedResource = this.route.snapshot.params['resource'];
       this.selectedUid = this.route.snapshot.params['uid'];
 
-      let reverse: boolean;
-      if ('reverse' in this.route.snapshot.queryParams) {
-        reverse = this.route.snapshot.queryParams['reverse'];
+      let backwardRel: boolean;
+      if ('backward_rel' in this.route.snapshot.queryParams) {
+        backwardRel = this.route.snapshot.queryParams['backward_rel'];
       } else {
-        reverse = false;
+        backwardRel = false;
       }
 
-      if ('displayName' in this.route.snapshot.queryParams) {
-        this.selectedDisplayName = this.route.snapshot.queryParams['displayName'];
-      } else {
-        this.selectedDisplayName = null;
-      }
-
-      this.getSiblings(this.selectedResource, this.selectedUid, reverse);
+      this.getSiblings(this.selectedResource, this.selectedUid, backwardRel);
     });
   }
 
@@ -79,16 +74,17 @@ export class SiblingsComponent implements OnDestroy {
     this.unsubscribe.complete();
   }
 
-  getSiblings(resource: string, uid: string, reverse: boolean) {
+  getSiblings(resource: string, uid: string, backwardRel: boolean) {
     this.loading = true;
-    this.siblingsService.getSiblings(resource, uid, reverse).subscribe(
+    this.siblingsService.getSiblings(resource, uid, backwardRel).subscribe(
       siblings => {
-        if (siblings.length) {
+        if (siblings.data.length) {
+          this.selectedDisplayName = siblings.meta.description;
           this.siblings = [];
           this.columns = {};
           let sortedBy: string;
-          const defaultColumns = this.getDefaultColumns(siblings[0].resource_type);
-          for (const column of Object.keys(siblings[0])) {
+          const defaultColumns = this.getDefaultColumns(siblings.data[0].resource_type);
+          for (const column of Object.keys(siblings.data[0])) {
             // resource_type is an internal detail so avoid displaying that
             if (column === 'resource_type') {
               continue;
@@ -111,7 +107,7 @@ export class SiblingsComponent implements OnDestroy {
           // Format the property values now instead of in the template for efficiency
           // and to also allow sorting using only strings
           const propValDisplayPipe = new PropertyValueDisplayPipe(this.datePipe);
-          for (const sibling of siblings) {
+          for (const sibling of siblings.data) {
             const formattedSibling = {};
             for (const [key, value] of Object.entries(sibling)) {
               formattedSibling[key] = propValDisplayPipe.transform(value);

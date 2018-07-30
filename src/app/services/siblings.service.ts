@@ -12,7 +12,11 @@ export class SiblingsService {
 
   constructor(private http: HttpClient) { }
 
-  getSiblings(resource: string, uid: string, reverse = false): Observable<any> {
-    return this.http.get(`${this.apiUrl}siblings/${resource}/${uid}?reverse=${reverse}`);
+  getSiblings(resource: string, uid: string, backwardRel = false): Observable<any> {
+    let url = `${this.apiUrl}siblings/${resource}/${uid}`;
+    if (backwardRel) {
+      url += '?backward_rel=true';
+    }
+    return this.http.get(url);
   }
 }

@@ -82,27 +82,27 @@ export class StoryComponent implements OnInit, AfterViewInit, OnDestroy {
     );
   }
 
-  getSiblingsRouterLink(currentNode, reverse = false): Array<any> {
-    const nodeUidDisplayPipe = new NodeUidDisplayPipe();
-    const queryParams = {
-      'displayName': nodeUidDisplayPipe.transform(currentNode),
-      'reverse': reverse
-    };
-
-    let nextNode;
-    if (reverse === true) {
-      nextNode = this.story.data[this.story.data.indexOf(currentNode) - 1];
+  getSiblingsRouterLink(nodeWithSiblings, relWithPrevNode = false): Array<any> {
+    let nodeWithRel;
+    const queryParams = {};
+    if (relWithPrevNode === true) {
+      // If the passed in node has a relationship with the previous node in the story,
+      // then query from the previous node's forward relationship
+      nodeWithRel = this.story.data[this.story.data.indexOf(nodeWithSiblings) - 1];
     } else {
-      nextNode = this.story.data[this.story.data.indexOf(currentNode) + 1];
+      // If the passed in node has a relationship with the next node in the story,
+      // then query from the next node's backward relationship
+      nodeWithRel = this.story.data[this.story.data.indexOf(nodeWithSiblings) + 1];
+      queryParams['backward_rel'] = true;
     }
 
-    let nextNodeUid;
-    if (nextNode.resource_type.toLowerCase() === 'distgitcommit') {
-      nextNodeUid = nextNode.hash;
+    let nodeWithRelUid;
+    if (nodeWithRel.resource_type.toLowerCase() === 'distgitcommit') {
+      nodeWithRelUid = nodeWithRel.hash;
     } else {
-      nextNodeUid = nextNode.id;
+      nodeWithRelUid = nodeWithRel.id;
     }
-    return [`/siblings/${nextNode.resource_type.toLowerCase()}/${nextNodeUid}`, queryParams];
+    return [`/siblings/${nodeWithRel.resource_type.toLowerCase()}/${nodeWithRelUid}`, queryParams];
   }
 
   connectStory(): void {
