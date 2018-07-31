@@ -1,27 +1,5 @@
 import { PipeTransform, Pipe } from '@angular/core';
 
-@Pipe({name: 'nodeUidDisplay'})
-export class NodeUidDisplayPipe implements PipeTransform {
-  // This Pipe takes a node as input and figures out how to display its unique identifier
-  transform(node: any): string {
-    switch (node.resource_type.toLowerCase()) {
-        case('bugzillabug'):
-            return 'RHBZ#' + node.id;
-        case('distgitcommit'):
-            return '#' + node.hash.slice(0, 7);
-        case('kojibuild'):
-        case('containerkojibuild'):
-            return `${node.name}-${node.version}-${node.release}`;
-        case('advisory'):
-        case('containeradvisory'):
-            return node.advisory_name;
-        default:
-            return node.id;
-    }
-  }
-}
-
-
 @Pipe({name: 'nodeTypeDisplay'})
 export class NodeTypeDisplayPipe implements PipeTransform {
   // This Pipe takes a node type as input and figures out its type in display form

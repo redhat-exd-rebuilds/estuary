@@ -86,7 +86,7 @@ export class SiblingsComponent implements OnDestroy {
           const defaultColumns = this.getDefaultColumns(siblings.data[0].resource_type);
           for (const column of Object.keys(siblings.data[0])) {
             // resource_type is an internal detail so avoid displaying that
-            if (column === 'resource_type') {
+            if (column === 'resource_type' || column === 'display_name') {
               continue;
             }
 

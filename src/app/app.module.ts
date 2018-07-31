@@ -15,7 +15,7 @@ import { StoryComponent } from './story/story.component';
 import { StoryRowComponent } from './story/storyrow/storyrow.component';
 import { StorysidebarComponent } from './story/storysidebar/storysidebar.component';
 import { PropertyDisplayPipe, PropertyValueDisplayPipe } from './pipes/propertydisplay';
-import { NodeUidDisplayPipe, NodeTypeDisplayPipe, NodeTypePluralPipe, NodeExternalUrlPipe,
+import { NodeTypeDisplayPipe, NodeTypePluralPipe, NodeExternalUrlPipe,
          TruncatePipe } from './pipes/nodedisplay';
 import { SearchComponent } from './search/search.component';
 import { AlertComponent } from './alert/alert.component';
@@ -32,7 +32,6 @@ import { KeysPipe } from './pipes/general.pipe';
     StoryRowComponent,
     StorysidebarComponent,
     PropertyDisplayPipe,
-    NodeUidDisplayPipe,
     SearchComponent,
     NodeTypeDisplayPipe,
     NodeTypePluralPipe,

@@ -3,7 +3,7 @@ import { DatePipe } from '@angular/common';
 import { ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
 
 import { StorysidebarComponent } from './storysidebar.component';
-import { NodeUidDisplayPipe, NodeExternalUrlPipe, TruncatePipe } from '../../pipes/nodedisplay';
+import { NodeExternalUrlPipe, TruncatePipe } from '../../pipes/nodedisplay';
 import { PropertyDisplayPipe, PropertyValueDisplayPipe } from '../../pipes/propertydisplay';
 import { bug } from '../test.data';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
@@ -17,7 +17,6 @@ describe('StorysidebarComponent testing', () => {
     TestBed.configureTestingModule({
         declarations: [
             StorysidebarComponent,
-            NodeUidDisplayPipe,
             NodeExternalUrlPipe,
             PropertyDisplayPipe,
             PropertyValueDisplayPipe,
