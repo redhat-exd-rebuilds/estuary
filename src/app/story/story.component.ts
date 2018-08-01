@@ -4,7 +4,6 @@ import { jsPlumbInstance } from 'jsplumb';
 
 import { StoryService } from '../services/story.service';
 import { StoryAPI } from '../models/story.type';
-import { NodeUidDisplayPipe } from '../pipes/nodedisplay';
 
 
 declare var jsPlumb: jsPlumbInstance;

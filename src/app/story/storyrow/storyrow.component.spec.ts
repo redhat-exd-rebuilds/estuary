@@ -6,7 +6,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 import { StoryRowComponent } from './storyrow.component';
 import { bug } from '../test.data';
-import { NodeUidDisplayPipe, NodeTypeDisplayPipe, NodeTypePluralPipe, TruncatePipe } from '../../pipes/nodedisplay';
+import { NodeTypeDisplayPipe, NodeTypePluralPipe, TruncatePipe } from '../../pipes/nodedisplay';
 import { StoryComponent } from '../story.component';
 
 
@@ -18,7 +18,6 @@ describe('StoryRowComponent testing', () => {
     TestBed.configureTestingModule({
         declarations: [
             StoryRowComponent,
-            NodeUidDisplayPipe,
             NodeTypeDisplayPipe,
             NodeTypePluralPipe,
             TruncatePipe
@@ -51,7 +50,7 @@ describe('StoryRowComponent testing', () => {
     // Verify the artifact details are correct
     expect(nodeEl.children[0].tagName).toBe('IMG');
     expect(nodeEl.children[0].src).toContain('circle_single.svg');
-    expect(nodeEl.attributes['ng-reflect-tooltip'].value).toBe('Bugzilla Bug: RHBZ#23456');
+    expect(nodeEl.attributes['ng-reflect-tooltip'].value).toBe('Bugzilla Bug RHBZ#23456');
     expect(nodeEl.attributes['ng-reflect-router-link'].value).toBe('/,bugzillabug,23456');
   }));
 

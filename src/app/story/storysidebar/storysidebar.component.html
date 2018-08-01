@@ -10,11 +10,11 @@
   <ng-container *ngIf="sidebarOpen && node">
     <a class="sidebar__external-system-link" [href]="node | nodeExternalUrl" target="_blank">
       <!-- *ngIf is used because it should only tooltip on long UIDs -->
-      <h2 *ngIf="(node | nodeUidDisplay).length > 30; else shortUid" tooltip="{{ node | nodeUidDisplay }}">
-        {{ node | nodeUidDisplay | truncate: 30 }}
+      <h2 *ngIf="node.display_name.split(' ').slice(-1)[0].length > 30; else shortUid" tooltip="{{ node.display_name.split(' ').slice(-1)[0] }}">
+        {{ node.display_name.split(' ').slice(-1)[0] | truncate: 30 }}
       </h2>
       <ng-template #shortUid>
-        <h2>{{ node | nodeUidDisplay }}</h2>
+        <h2>{{ node.display_name.split(' ').slice(-1)[0] }}</h2>
       </ng-template>
     </a>
     <table class="sidebar-properties">

@@ -46,7 +46,7 @@ export class StorysidebarComponent implements OnInit, OnChanges {
     for (const keyValue of Object.entries(node)) {
         // Have to do this here instead of the for loop to make TypeScript happy
         const [key, value]: Array<any> = keyValue;
-        if (value === null || key === 'resource_type') {
+        if (value === null || key === 'resource_type' || key === 'display_name') {
           continue;
         } else {
           const displayValue = propertyValueDisplayPipe.transform(value);
