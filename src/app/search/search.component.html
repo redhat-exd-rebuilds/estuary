@@ -8,7 +8,7 @@
 
   <h3 class="search__explanation">Select an artifact to get started.</h3>
 
-  <div class="search-form" *ngIf="availableResources">
+  <div class="search-form">
     <select [(ngModel)]="selectedResource" class="search-select">
       <option *ngFor="let resource of availableResources" [value]="resource.name" class="search-option">
         {{ resource.displayName }}
