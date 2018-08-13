@@ -36,7 +36,8 @@
     /* Make the position absolute so the header is positioned on top of the padding-top of
        div.siblings-table-wrapper */
     position: absolute;
-    height: 8rem;
+    margin-left: 2rem;
+    margin-top: 2.4rem;
 }
 
 .siblings-table {
@@ -76,10 +77,9 @@
 
 /* ----- Elements ----- */
 .siblings-table-header__btn-group {
-    position: absolute;
-    /* Vertically center the "Show Columns" button in div.siblings-table-wrapper  */
-    top: 2.1rem;
-    left: 2rem;
+    /* A small hack to make the button vertically centered with the text o the line */
+    position: relative;
+    top: -3px;
 }
 
 .siblings-table-header__dropdown-button, .open > .siblings-table-header__dropdown-button,
@@ -131,10 +131,9 @@
 }
 
 .siblings-table-header__columns-text {
-    position: absolute;
-    /* Vertically center the text in div.siblings-table-wrapper  */
-    top: 3rem;
-    left: 18.5rem;
+    /* Position this a little below where it normally is so it is centered with the button  */
+    display: inline-block;
+    margin-left: 1.5rem;
     color: #8c8d8f;
     font-size: 115%;
 }
