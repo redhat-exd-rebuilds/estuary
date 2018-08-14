@@ -136,6 +136,11 @@
     font-size: 115%;
 }
 
+.siblings-table-header__columns-text-ending {
+    /* Don't display the export to CSV button on mobile */
+    display: none;
+}
+
 .siblings-table-header__export-btn {
     /* Don't display the export to CSV button on mobile */
     display: none;
@@ -178,6 +183,10 @@
 }
 
 @media (min-width: 992px) {
+    .siblings-table-header__columns-text-ending {
+        display: initial;
+    }
+
     .siblings-table-header__export-btn {
         display: initial;
         margin-left: 3rem;
