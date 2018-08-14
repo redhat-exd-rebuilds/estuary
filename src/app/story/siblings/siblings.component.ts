@@ -5,7 +5,7 @@ import { Subject } from 'rxjs';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 import { SiblingsService } from '../../services/siblings.service';
-import { PropertyValueDisplayPipe } from '../../pipes/propertydisplay';
+import { PropertyValueDisplayPipe, PropertyDisplayPipe } from '../../pipes/propertydisplay';
 import { DatePipe } from '@angular/common';
 
 
@@ -196,5 +196,50 @@ export class SiblingsComponent implements OnDestroy {
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
+  }
+
+  exportToCsv(): void {
+    const activeColumns: Array<string> = [];
+    for (const [column, active] of Object.entries(this.columns)) {
+      if (active) {
+        activeColumns.push(column);
+      }
+    }
+
+    if (activeColumns.length === 0) {
+      this.errorMsg = 'There are no columns selected. Please select at least one columnn and try again.';
+    }
+
+    let csvContent = '';
+    const propertyDisplayPipe = new PropertyDisplayPipe();
+    // Add the column headers
+    for (let i = 0; i < activeColumns.length; i++) {
+      csvContent += propertyDisplayPipe.transform(activeColumns[i]);
+      if (i === activeColumns.length - 1) {
+        csvContent += '\n';
+      } else {
+        csvContent += ',';
+      }
+    }
+
+    // Add the actual content
+    for (const sibling of this.siblings) {
+      for (let i = 0; i < activeColumns.length; i++) {
+        csvContent += '"' + sibling[activeColumns[i]] + '"';
+        if (i !== activeColumns.length - 1) {
+          csvContent += ',';
+        } else {
+          csvContent += '\n';
+        }
+      }
+    }
+
+    // Create a link with the CSV content and simulate the user clicking on it to
+    // trigger a download
+    const tempLink = document.createElement('a');
+    tempLink.href = 'data:text/csv;charset=utf-8,' + encodeURI(csvContent);
+    tempLink.target = '_blank';
+    tempLink.download = this.selectedDisplayName.toLowerCase().replace(/ /g, '_') + '.csv';
+    tempLink.click();
   }
 }

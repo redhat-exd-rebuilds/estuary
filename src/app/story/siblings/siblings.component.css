@@ -36,13 +36,12 @@
     /* Make the position absolute so the header is positioned on top of the padding-top of
        div.siblings-table-wrapper */
     position: absolute;
-    height: 8rem;
+    margin-left: 2rem;
+    margin-top: 2.4rem;
 }
 
 .siblings-table {
     margin: 0;
-    /* Set the minimum width of the table to roughly that of div.siblings-table-header */
-    min-width: 350px;
     font-size: 110%;
 }
 
@@ -76,10 +75,9 @@
 
 /* ----- Elements ----- */
 .siblings-table-header__btn-group {
-    position: absolute;
-    /* Vertically center the "Show Columns" button in div.siblings-table-wrapper  */
-    top: 2.1rem;
-    left: 2rem;
+    /* A small hack to make the button vertically centered with the text on the line */
+    position: relative;
+    top: -3px;
 }
 
 .siblings-table-header__dropdown-button, .open > .siblings-table-header__dropdown-button,
@@ -131,12 +129,21 @@
 }
 
 .siblings-table-header__columns-text {
-    position: absolute;
-    /* Vertically center the text in div.siblings-table-wrapper  */
-    top: 3rem;
-    left: 18.5rem;
+    /* Position this a little below where it normally is so it is centered with the button  */
+    display: inline-block;
+    margin-left: 1.5rem;
     color: #8c8d8f;
     font-size: 115%;
+}
+
+.siblings-table-header__columns-text-ending {
+    /* Don't display the export to CSV button on mobile */
+    display: none;
+}
+
+.siblings-table-header__export-btn {
+    /* Don't display the export to CSV button on mobile */
+    display: none;
 }
 
 .siblings-table td, .siblings-table th {
@@ -176,6 +183,34 @@
 }
 
 @media (min-width: 992px) {
+    .siblings-table-header__columns-text-ending {
+        display: initial;
+    }
+
+    .siblings-table-header__export-btn {
+        display: initial;
+        margin-left: 3rem;
+        font-size: 110%;
+        padding: 0.3rem 1.5rem 0.3rem 1.5rem;
+        border-radius: 5rem;
+        border: none;
+        background-color: #0088ce;
+        color: #ffffff;
+    }
+
+    .siblings-table-header__export-btn:hover {
+        background-color: #00659c;
+    }
+
+    .siblings-table-header__export-btn:focus {
+        outline: none;
+    }
+
+    .siblings-table {
+        /* Set the minimum width of the table to roughly that of div.siblings-table-header */
+        min-width: 500px;
+    }
+
     .siblings-table tr td:first-child, .siblings-table tr th:first-child {
         padding-left: 2rem;
     }
