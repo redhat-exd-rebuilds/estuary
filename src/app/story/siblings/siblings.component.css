@@ -42,8 +42,6 @@
 
 .siblings-table {
     margin: 0;
-    /* Set the minimum width of the table to roughly that of div.siblings-table-header */
-    min-width: 350px;
     font-size: 110%;
 }
 
@@ -77,7 +75,7 @@
 
 /* ----- Elements ----- */
 .siblings-table-header__btn-group {
-    /* A small hack to make the button vertically centered with the text o the line */
+    /* A small hack to make the button vertically centered with the text on the line */
     position: relative;
     top: -3px;
 }
@@ -138,6 +136,11 @@
     font-size: 115%;
 }
 
+.siblings-table-header__export-btn {
+    /* Don't display the export to CSV button on mobile */
+    display: none;
+}
+
 .siblings-table td, .siblings-table th {
     border: none;
     padding: 1rem;
@@ -175,6 +178,30 @@
 }
 
 @media (min-width: 992px) {
+    .siblings-table-header__export-btn {
+        display: initial;
+        margin-left: 3rem;
+        font-size: 110%;
+        padding: 0.3rem 1.5rem 0.3rem 1.5rem;
+        border-radius: 5rem;
+        border: none;
+        background-color: #0088ce;
+        color: #ffffff;
+    }
+
+    .siblings-table-header__export-btn:hover {
+        background-color: #00659c;
+    }
+
+    .siblings-table-header__export-btn:focus {
+        outline: none;
+    }
+
+    .siblings-table {
+        /* Set the minimum width of the table to roughly that of div.siblings-table-header */
+        min-width: 500px;
+    }
+
     .siblings-table tr td:first-child, .siblings-table tr th:first-child {
         padding-left: 2rem;
     }

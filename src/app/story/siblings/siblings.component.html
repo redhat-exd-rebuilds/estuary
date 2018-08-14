@@ -20,6 +20,7 @@
         </ul>
       </div>
       <div class="siblings-table-header__columns-text">{{ numActiveColumns }} of {{ (columns | keys).length }} columns selected</div>
+      <button class="siblings-table-header__export-btn" (click)="exportToCsv()">Export CSV</button>
   </div>
   <div class="siblings-table-responsive">
     <div class="siblings-table-wrapper">
