@@ -225,7 +225,10 @@ export class SiblingsComponent implements OnDestroy {
     // Add the actual content
     for (const sibling of this.siblings) {
       for (let i = 0; i < activeColumns.length; i++) {
-        csvContent += '"' + sibling[activeColumns[i]] + '"';
+        // Surround the column content by double quotes but if there are double quotes that appear
+        // in the column, replace them with two double quotes as that is the proper way
+        // to escape them
+        csvContent += '"' + sibling[activeColumns[i]].replace(/"/g, '""') + '"';
         if (i !== activeColumns.length - 1) {
           csvContent += ',';
         } else {
