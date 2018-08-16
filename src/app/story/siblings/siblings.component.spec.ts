@@ -233,4 +233,37 @@ describe('SiblingsComponent', () => {
     expect(rows[0].nativeElement.children[2].textContent.trim()).toBe('user2');
     expect(rows[1].nativeElement.children[2].textContent.trim()).toBe('user1');
   }));
+
+  it('should show allow the siblings of RHBZ#1566849 to be exported to a CSV', fakeAsync(() => {
+    spyOn(siblingsService, 'getSiblings').and.returnValue(
+      // Create an observable like the HTTP client would return
+      of(siblings)
+    );
+    // The component must be created after the spy on the SiblingsService because
+    // the SiblingsService is used as part of the constructor
+    fixture = TestBed.createComponent(SiblingsComponent);
+    fixture.detectChanges();
+
+    // Create a spy object with a click() method to simulate the dynamically created link
+    // after clicking on the "Export CSV" button
+    const spyLink = jasmine.createSpyObj(['click']);
+    // Spy on document.createElement() and return the fake link
+    spyOn(document, 'createElement').and.returnValue(spyLink);
+
+    const exportBtn = fixture.debugElement.query(By.css('.siblings-table-header__export-btn'));
+    exportBtn.nativeElement.click();
+    // Make sure a link was created
+    expect(document.createElement).toHaveBeenCalledTimes(1);
+    expect(document.createElement).toHaveBeenCalledWith('a');
+    // Make sure the link was generated with the CSV data
+    expect(spyLink.href).toBe('data:text/csv;charset=utf-8,Assignee,ID,Reporter,Short%20Description,Status%0A%22' +
+                              'tbrady%22,%221566849%22,%22user1%22,%22CVE-2018-1234%20kernel:%20some%20error%20%5B' +
+                              'rhel-7.5.z%5D%22,%22CLOSED%22%0A%22user2%22,%221567084%22,%22user2%22,' +
+                              '%22CVE-2018-1235%20kernel:%20some%20really%20long%20error%20that%20is%20hard%20to%20fix' +
+                              '%20and%20causes%20problems%20%5Brhel-7.5.z%5D%22,%22CLOSED%22%0A');
+    expect(spyLink.target).toBe('_blank');
+    expect(spyLink.download).toBe('bugzilla_bugs_resolved_by_commit_#eacc1bf66aa53b3136ac045ead618e18a6751625.csv');
+    // Make sure the link was clicked to trigger the download
+    expect(spyLink.click).toHaveBeenCalledTimes(1);
+  }));
 });
