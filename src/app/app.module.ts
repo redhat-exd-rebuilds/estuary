@@ -23,6 +23,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SiblingsComponent } from './story/siblings/siblings.component';
 import { KeysPipe } from './pipes/general.pipe';
+import { ArtifactsTableComponent } from './artifacts-table/artifacts-table.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { KeysPipe } from './pipes/general.pipe';
     NavbarComponent,
     SiblingsComponent,
     PropertyValueDisplayPipe,
-    KeysPipe
+    KeysPipe,
+    ArtifactsTableComponent
   ],
   imports: [
     AppRoutingModule,
