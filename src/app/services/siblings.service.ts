@@ -12,10 +12,10 @@ export class SiblingsService {
 
   constructor(private http: HttpClient) { }
 
-  getSiblings(resource: string, uid: string, backwardRel = false): Observable<any> {
-    let url = `${this.apiUrl}siblings/${resource}/${uid}`;
+  getSiblings(resource: string, uid: string, backwardRel = false, story_type = 'container'): Observable<any> {
+    let url = `${this.apiUrl}siblings/${resource}/${uid}?story_type=${story_type}`;
     if (backwardRel) {
-      url += '?backward_rel=true';
+      url += '&backward_rel=true';
     }
     return this.http.get(url);
   }

@@ -94,6 +94,8 @@ export class StoryComponent implements OnInit, AfterViewInit, OnDestroy {
       nodeWithRel = this.story.data[this.story.data.indexOf(nodeWithSiblings) + 1];
       queryParams['backward_rel'] = true;
     }
+    // This parameter specifies which story flow to take to get the siblings
+    queryParams['story_type'] = this.story.meta.story_type;
 
     let nodeWithRelUid;
     if (nodeWithRel.resource_type.toLowerCase() === 'distgitcommit') {

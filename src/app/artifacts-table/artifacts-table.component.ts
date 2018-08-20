@@ -150,6 +150,7 @@ export class ArtifactsTableComponent implements OnChanges {
         return ['author', 'hash', 'log_message'];
       case ('kojibuild'):
       case ('containerkojibuild'):
+      case ('modulekojibuild'):
         return ['id', 'name', 'owner', 'release', 'version'];
       case ('containeradvisory'):
       case ('advisory'):

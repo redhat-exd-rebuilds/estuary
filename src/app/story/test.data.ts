@@ -167,7 +167,152 @@ export let story = {
   'meta': {
     'requested_node_index': 0,
     'story_related_nodes_backward': [0, 0, 0, 0, 0, 0],
-    'story_related_nodes_forward': [1, 0, 0, 0, 0, 0]
+    'story_related_nodes_forward': [1, 0, 0, 0, 0, 0],
+    'story_path': 'container'
+  }
+};
+
+export let module_story = {
+  'data': [
+    {
+      'author_date': null,
+      'commit_date': null,
+      'display_name': 'commit #d11fcbf',
+      'hash': 'd11fcbf943086c0d55ce35beacaf10ef1f816c5a',
+      'log_message': null,
+      'resource_type': 'DistGitCommit'
+    },
+    {
+      'advisories': [],
+      'commit': {
+        'author_date': null,
+        'commit_date': null,
+        'hash': 'd11fcbf943086c0d55ce35beacaf10ef1f816c5a',
+        'log_message': null
+      },
+      'completion_time': '2018-08-14T02:04:09.827157+00:00',
+      'creation_time': '2018-08-14T01:31:15.583303+00:00',
+      'display_name': 'libguestfs-1.38.4-1.el8+1579+44551958',
+      'epoch': '1',
+      'extra': {'source': {'original_url': 'git://pkgs.devel.redhat.com/rpms/libguestfs?#d11fcbf943086c0d55ce35beacaf10ef1f816c5a'}},
+      'id': '750095',
+      'module_builds': [
+        {
+          'id': '755647',
+          'mbs_id': 1667,
+          'module_name': 'virt',
+          'module_stream': 'rhel',
+          'module_version': '20180822114445',
+          'name': 'virt',
+          'release': '20180822114445.9edba152',
+          'start_time': '2018-08-22T11:45:20+00:00',
+          'state': 1,
+          'version': 'rhel'
+        }
+      ],
+      'name': 'libguestfs',
+      'owner': {
+        'email': null,
+        'name': null,
+        'username': 'mbs/mbs-backend.host.prod.eng.bos.redhat.com'
+      },
+      'release': '1.el8+1579+44551958',
+      'resource_type': 'KojiBuild',
+      'start_time': '2018-08-14T01:31:15.583303+00:00',
+      'state': 1,
+      'tags': [
+        {
+          'id': '17224',
+          'name': 'module-virt-rhel-20180822114445-9edba152-build'
+        },
+        {
+          'id': '17223',
+          'name': 'module-virt-rhel-20180822114445-9edba152'
+        },
+        {
+          'id': '17210',
+          'name': 'module-virt-rhel-20180821132937-9edba152-build'
+        },
+        {
+          'id': '17209',
+          'name': 'module-virt-rhel-20180821132937-9edba152'
+        },
+        {
+          'id': '17177',
+          'name': 'module-virt-rhel-20180817161005-9edba152-build'
+        },
+        {
+          'id': '17176',
+          'name': 'module-virt-rhel-20180817161005-9edba152'
+        },
+        {
+          'id': '17153',
+          'name': 'module-virt-rhel-20180816163147-9edba152-build'
+        },
+        {
+          'id': '17152',
+          'name': 'module-virt-rhel-20180816163147-9edba152'
+        },
+        {
+          'id': '17112',
+          'name': 'module-virt-rhel-20180816084153-9edba152-build'
+        },
+        {
+          'id': '17111',
+          'name': 'module-virt-rhel-20180816084153-9edba152'
+        },
+        {
+          'id': '17109',
+          'name': 'module-virt-rhel-20180816080957-9edba152-build'
+        },
+        {
+          'id': '17108',
+          'name': 'module-virt-rhel-20180816080957-9edba152'
+        },
+        {
+          'id': '17025',
+          'name': 'module-virt-rhel-20180814142623-9edba152-build'
+        },
+        {
+          'id': '17024',
+          'name': 'module-virt-rhel-20180814142623-9edba152'
+        },
+        {
+          'id': '16991',
+          'name': 'module-virt-rhel-20180814005649-9edba152-build'
+        },
+        {
+          'id': '16990',
+          'name': 'module-virt-rhel-20180814005649-9edba152'
+        }
+      ],
+      'version': '1.38.4'
+    },
+    {
+      'completion_time': '2018-08-22T12:45:27+00:00',
+      'context': '9edba152',
+      'creation_time': '2018-08-22T12:45:34.855569+00:00',
+      'display_name': 'virt-rhel-20180822114445.9edba152',
+      'epoch': null,
+      'extra': 'some data',
+      'id': '755647',
+      'mbs_id': 1667,
+      'module_name': 'virt',
+      'module_stream': 'rhel',
+      'module_version': '20180822114445',
+      'name': 'virt',
+      'release': '20180822114445.9edba152',
+      'resource_type': 'ModuleKojiBuild',
+      'start_time': '2018-08-22T11:45:20+00:00',
+      'state': 1,
+      'version': 'rhel'
+    }
+  ],
+  'meta': {
+    'requested_node_index': 1,
+    'story_related_nodes_backward': [0, 0, 0],
+    'story_related_nodes_forward': [0, 17, 0],
+    'story_type': 'module'
   }
 };
 

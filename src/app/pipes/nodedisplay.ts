@@ -11,6 +11,8 @@ export class NodeTypeDisplayPipe implements PipeTransform {
             return 'Commit';
         case('kojibuild'):
             return 'Build';
+        case('modulekojibuild'):
+            return 'Module Build';
         case('advisory'):
             return 'Advisory';
         case('freshmakerevent'):
@@ -55,6 +57,7 @@ export class NodeExternalUrlPipe implements PipeTransform {
                 return baseUrl;
             case('kojibuild'):
             case('containerkojibuild'):
+            case('modulekojibuild'):
                 return `https://brewweb.engineering.redhat.com/brew/buildinfo?buildID=${node.id}`;
             case('advisory'):
             case('containeradvisory'):

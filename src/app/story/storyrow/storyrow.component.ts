@@ -64,6 +64,9 @@ export class StoryRowComponent implements OnChanges, AfterViewInit {
       case('ContainerKojiBuild'):
         classes['pficon-build'] = true;
         break;
+      case('ModuleKojiBuild'):
+        classes['estuary-icon-module'] = true;
+        break;
       case('Advisory'):
       case('ContainerAdvisory'):
         classes['pficon-security'] = true;
