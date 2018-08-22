@@ -12,6 +12,7 @@ import { PropertyValueDisplayPipe } from '../../pipes/propertydisplay';
 export class StorysidebarComponent implements OnInit, OnChanges {
   @Input() node: any;
   sidebarOpen = false;
+  // These are the formatted properties to display
   properties = [];
 
   constructor(private datePipe: DatePipe) { }
@@ -29,18 +30,32 @@ export class StorysidebarComponent implements OnInit, OnChanges {
     // the node input changes.
     this.properties = [];
     if (this.node) {
-      for (const [key, val] of this.filterProperties(this.node)) {
-        this.properties.push({
+      for (const [key, val] of this.formatProperties(this.node)) {
+        const property = {
           name: key,
-          value: val,
           truncate: true,
-          needsTruncating: val.length > 200
-        });
+          value: val,
+          needsTruncating: false,
+          link: null
+        };
+        // All 0+ relationships are represented as arrays with objects inside
+        if (this.node[key] instanceof Array && this.node[key].length && this.node[key][0] instanceof Object) {
+          property['link'] = ['/relationship', this.node.resource_type.toLowerCase()];
+          if (this.node.resource_type === 'DistGitCommit') {
+            property['link'].push(this.node.hash);
+          } else {
+            property['link'].push(this.node.id);
+          }
+          property['link'].push(key);
+        } else {
+          property['needsTruncating'] = val.length > 200;
+        }
+        this.properties.push(property);
       }
     }
   }
 
-  filterProperties(node: any): any {
+  formatProperties(node: any): any {
     const properties = [];
     const propertyValueDisplayPipe = new PropertyValueDisplayPipe(this.datePipe);
     for (const keyValue of Object.entries(node)) {
@@ -52,7 +67,7 @@ export class StorysidebarComponent implements OnInit, OnChanges {
           const displayValue = propertyValueDisplayPipe.transform(value);
           // If the pipe doesn't know how to convert the value to a display value, it returns null
           if (displayValue !== null) {
-            properties.push([key, propertyValueDisplayPipe.transform(value)]);
+            properties.push([key, displayValue]);
           }
         }
     }

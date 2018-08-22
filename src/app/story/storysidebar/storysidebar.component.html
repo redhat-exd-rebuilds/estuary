@@ -22,8 +22,15 @@
         <tr class="sidebar-properties__row" *ngFor="let prop of properties; let i = index">
           <td class="sidebar-properties__key-column">{{ prop.name | propertyDisplay }}</td>
           <td class="sidebar-properties__value-column">
-            <ng-container *ngIf="prop.truncate">{{ prop.value | truncate }}</ng-container>
-            <ng-container *ngIf="!prop.truncate">{{ prop.value }}</ng-container>
+            <ng-container *ngIf="prop.truncate; else noTruncate">
+              <ng-container *ngIf="prop.link; else regularProp">
+                <a [routerLink]="prop.link">{{ prop.value }}</a>
+              </ng-container>
+              <ng-template #regularProp>
+                {{ prop.value | truncate }}
+              </ng-template>
+            </ng-container>
+            <ng-template #noTruncate>{{ prop.value }}</ng-template>
             <ng-container *ngIf="prop.needsTruncating">
               <a class="sidebar-properties__truncate-arrow" (click)="prop.truncate = !prop.truncate; $event.preventDefault()"
                   *ngIf="prop.needsTruncating" href="#">

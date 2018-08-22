@@ -30,7 +30,7 @@ export class PropertyValueDisplayPipe implements PipeTransform {
 
   // This Pipe formats node property values to its display form (e.g. show
   // objects as an inuitive string)
-  transform(value): String {
+  transform(value): string {
     const dtRegEx = /^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})(?:\.\d+)?(?:Z|[-+]00(?::00)?)?$/;
     // Can't use typeof to determine if it's an Array
     if (value instanceof Array) {
@@ -50,6 +50,8 @@ export class PropertyValueDisplayPipe implements PipeTransform {
       }
     } else if (dtRegEx.test(value)) {
       return this.datePipe.transform(value, 'MMMM d, y, HH:mm:ss', '+0000') + ' UTC';
+    } else if (typeof value === 'number') {
+      return value.toString();
     } else if (value === null) {
       // Rather than return null, just return an empty string for consistent types
       return '';
