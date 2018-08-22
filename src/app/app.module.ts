@@ -24,6 +24,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SiblingsComponent } from './story/siblings/siblings.component';
 import { KeysPipe } from './pipes/general.pipe';
 import { ArtifactsTableComponent } from './artifacts-table/artifacts-table.component';
+import { ArtifactRelationshipComponent } from './story/artifact-relationship/artifact-relationship.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { ArtifactsTableComponent } from './artifacts-table/artifacts-table.compo
     SiblingsComponent,
     PropertyValueDisplayPipe,
     KeysPipe,
-    ArtifactsTableComponent
+    ArtifactsTableComponent,
+    ArtifactRelationshipComponent
   ],
   imports: [
     AppRoutingModule,

@@ -45,9 +45,12 @@
               <td *ngIf="columns[column]">
                 <!-- If this column is the artifact's UID, make it a link to the corresponding external system -->
                 <ng-container *ngIf="uidColumns.includes(column); else nonUidProperty">
-                  <a href="{{ artifact | nodeExternalUrl }}" target="_blank">
-                    {{ artifact[column] }}
-                  </a>
+                  <ng-container *ngIf="(artifact | nodeExternalUrl).length; else noLink">
+                    <a href="{{ artifact | nodeExternalUrl }}" target="_blank">
+                      {{ artifact[column] }}
+                    </a>
+                  </ng-container>
+                  <ng-template #noLink>{{ artifact[column] }}</ng-template>
                 </ng-container>
                 <ng-template #nonUidProperty>
                   <ng-container *ngIf="(artifact[column]).length > 50; else shortProperty">

@@ -318,3 +318,27 @@ export let siblings = {
     'description': 'Bugzilla bugs resolved by commit #eacc1bf66aa53b3136ac045ead618e18a6751625'
   }
 };
+
+export const relationships = {
+  'data': [
+    {
+      'builds': [],
+      'display_name': 'rhscl-12345-candidate',
+      'id': '1234',
+      'module_builds': null,
+      'name': 'rhscl-12345-candidate',
+      'resource_type': 'KojiTag'
+    },
+    {
+      'builds': [],
+      'display_name': 'rhscl-23456-candidate',
+      'id': '2345',
+      'module_builds': null,
+      'name': 'rhscl-23456-candidate',
+      'resource_type': 'KojiTag'
+    },
+  ],
+  'meta': {
+    'description': 'Tags of rh-some20-docker-16.23-17.12345'
+  }
+};

@@ -156,6 +156,12 @@ export class ArtifactsTableComponent implements OnChanges {
         return ['advisory_name', 'assigned_to', 'id', 'security_impact', 'state', 'synopsis'];
       case ('freshmakerevent'):
         return ['id', 'state_name', 'state_reason', 'triggered_container_builds'];
+      case ('distgitrepo'):
+        return ['commits', 'name', 'namespace'];
+      case ('distgitbranch'):
+        return ['repos', 'repo_name', 'repo_namespace'];
+      case ('kojitag'):
+        return ['builds', 'id', 'name'];
       default:
         return ['id'];
     }
