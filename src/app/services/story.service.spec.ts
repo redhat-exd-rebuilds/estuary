@@ -99,7 +99,7 @@ describe('StoryService testing', () => {
       });
 
       const req = httpTestingController.expectOne(
-        `${storyService.apiUrl}story/containerkojibuild/12345?fallback=kojibuild`);
+        `${storyService.apiUrl}story/containerkojibuild/12345?fallback=modulekojibuild&fallback=kojibuild`);
       expect(req.request.method).toEqual('GET');
       req.flush(testData);
     });
