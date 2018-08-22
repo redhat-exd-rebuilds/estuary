@@ -27,6 +27,8 @@ export class SiblingsComponent implements OnDestroy {
       this.siblings = [];
       this.title = null;
 
+      const story_type: string = this.route.snapshot.queryParams['story_type'];
+
       let backwardRel: boolean;
       if ('backward_rel' in this.route.snapshot.queryParams) {
         backwardRel = this.route.snapshot.queryParams['backward_rel'];
@@ -34,7 +36,7 @@ export class SiblingsComponent implements OnDestroy {
         backwardRel = false;
       }
 
-      this.getSiblings(this.route.snapshot.params['resource'], this.route.snapshot.params['uid'], backwardRel);
+      this.getSiblings(this.route.snapshot.params['resource'], this.route.snapshot.params['uid'], backwardRel, story_type);
     });
   }
 
@@ -43,9 +45,9 @@ export class SiblingsComponent implements OnDestroy {
     this.unsubscribe.complete();
   }
 
-  getSiblings(resource: string, uid: string, backwardRel: boolean) {
+  getSiblings(resource: string, uid: string, backwardRel: boolean, story_type: string) {
     this.loading = true;
-    this.siblingsService.getSiblings(resource, uid, backwardRel).subscribe(
+    this.siblingsService.getSiblings(resource, uid, backwardRel, story_type).subscribe(
       siblings => {
         this.title = siblings.meta.description;
         if (siblings.data.length) {

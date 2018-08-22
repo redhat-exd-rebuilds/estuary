@@ -33,6 +33,9 @@
     content: "\e900";
 }
 
+.estuary-icon-module:before {
+    content: "\e902";
+}
 
 div.container-fluid {
     padding-left: 10px;
