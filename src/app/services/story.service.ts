@@ -13,16 +13,23 @@ export class StoryService {
   constructor(private http: HttpClient) { }
 
   getStory(resource: string, uid: string): Observable<any> {
-    let fallback = null;
+    const fallback = [];
     let targetResource = resource.toLowerCase();
     if (targetResource === 'advisory' || targetResource === 'kojibuild') {
       // Try the container labels first and fallback to the general labels
-      fallback = targetResource;
+      if (targetResource === 'kojibuild') {
+        fallback.push(`module${targetResource}`);
+      }
+      fallback.push(targetResource);
       targetResource = `container${targetResource}`;
     }
+
     let url = `${this.apiUrl}story/${targetResource}/${uid}`;
-    if (fallback) {
-      url += `?fallback=${fallback}`;
+    if (fallback.length) {
+      url += `?fallback=${fallback[0]}`;
+      for (let i = 1; i < fallback.length; i++) {
+        url += `&fallback=${fallback[i]}`;
+      }
     }
     return this.http.get(url);
   }
