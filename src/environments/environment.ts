@@ -5,5 +5,8 @@
 
 export const environment = {
   production: false,
-  api: 'http://127.0.0.1:5000/api/v1/'
+  api: 'http://127.0.0.1:5000/api/v1/',
+  enableAuth: false,
+  oidcIssuer: null,
+  oidcClientId: null
 };
