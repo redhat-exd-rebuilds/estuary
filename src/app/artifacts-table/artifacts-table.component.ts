@@ -19,6 +19,9 @@ export class ArtifactsTableComponent implements OnChanges {
   // This will contain key value pairs, where each key is a column and each value
   // is a boolean determining if the column should be shown
   columns: any;
+  // Cache the number of columns that can be displayed rather than add load to
+  // Angular's change detection cycle
+  numColumns: number;
   // This number is displayed on the screen and a map function can't be run in the
   // Angular template, so we must manually maintain it. Alternatively, we could make
   // this a function, but then it'd get run on every change detection cycle which isn't
@@ -38,6 +41,7 @@ export class ArtifactsTableComponent implements OnChanges {
   constructor(private modalService: BsModalService, private datePipe: DatePipe) {
     this.formattedArtifacts = [];
     this.columns = {};
+    this.numColumns = 0;
     this.numActiveColumns = 0;
   }
 
@@ -67,6 +71,7 @@ export class ArtifactsTableComponent implements OnChanges {
         continue;
       }
 
+      this.numColumns += 1;
       // Check to see if the column should be displayed by default
       if (defaultColumns.includes(column)) {
         this.numActiveColumns += 1;

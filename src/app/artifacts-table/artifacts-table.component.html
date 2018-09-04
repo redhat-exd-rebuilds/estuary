@@ -17,7 +17,7 @@
         </ul>
       </div>
       <div class="artifacts-table-header__columns-text">
-        {{ numActiveColumns }} of {{ (columns | keyvalue).length }} columns
+        {{ numActiveColumns }} of {{ numColumns }} columns
         <span class="artifacts-table-header__columns-text-ending">selected</span>
       </div>
       <button class="artifacts-table-header__export-btn" (click)="exportToCsv()">Export CSV</button>
