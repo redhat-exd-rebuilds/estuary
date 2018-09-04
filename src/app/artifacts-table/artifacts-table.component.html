@@ -8,16 +8,16 @@
         </button>
         <!-- Create a dropdown menu with all the columns the user can choose to have shown -->
         <ul *dropdownMenu class="dropdown-menu artifacts-table-header__dropdown-menu">
-          <li *ngFor="let column of columns | keys">
+          <li *ngFor="let column of columns | keyvalue">
             <!-- The default columns will be checked by default, any changes made by the user will trigger the
                  setColumnState method to be called, which will store that state change in the columns component property. 
                  This change will then be reflected by Angular when it reruns the various ngFors in this template. -->
-            <input type="checkbox" [checked]="columns[column]" (change)="setColumnState(column)" /> {{ column | propertyDisplay }}
+            <input type="checkbox" [checked]="column.value" (change)="setColumnState(column.key)" /> {{ column.key | propertyDisplay }}
           </li>
         </ul>
       </div>
       <div class="artifacts-table-header__columns-text">
-        {{ numActiveColumns }} of {{ (columns | keys).length }} columns
+        {{ numActiveColumns }} of {{ (columns | keyvalue).length }} columns
         <span class="artifacts-table-header__columns-text-ending">selected</span>
       </div>
       <button class="artifacts-table-header__export-btn" (click)="exportToCsv()">Export CSV</button>
@@ -28,11 +28,11 @@
         <thead>
           <tr>
             <!-- Display a header cell for every active column -->
-            <ng-container *ngFor="let column of columns | keys">
-              <th *ngIf="columns[column]" (click)="sortTable(column)">
+            <ng-container *ngFor="let column of columns | keyvalue">
+              <th *ngIf="column.value" (click)="sortTable(column.key)">
                 <!-- Display an arrow if the table is being sorted by this column -->
-                {{ column | propertyDisplay }}<i class="fa artifacts-table__sort-icon"
-                    [ngClass]="{'fa-angle-down': sortedBy === column, 'fa-angle-up': sortedBy === '-' + column}"></i>
+                {{ column.key | propertyDisplay }}<i class="fa artifacts-table__sort-icon"
+                    [ngClass]="{'fa-angle-down': sortedBy === column.key, 'fa-angle-up': sortedBy === '-' + column.key}"></i>
               </th>
             </ng-container>
           </tr>
@@ -41,43 +41,43 @@
           <!-- Display a table row for every artifact -->
           <tr *ngFor="let artifact of formattedArtifacts">
             <!-- Display all the active columns for each artifact -->
-            <ng-container *ngFor="let column of columns | keys">
-              <td *ngIf="columns[column]">
+            <ng-container *ngFor="let column of columns | keyvalue">
+              <td *ngIf="column.value">
                 <!-- If this column is the artifact's UID, make it a link to the corresponding external system -->
-                <ng-container *ngIf="uidColumns.includes(column); else nonUidProperty">
+                <ng-container *ngIf="uidColumns.includes(column.key); else nonUidProperty">
                   <ng-container *ngIf="(artifact | nodeExternalUrl).length; else noLink">
                     <a href="{{ artifact | nodeExternalUrl }}" target="_blank">
-                      {{ artifact[column] }}
+                      {{ artifact[column.key] }}
                     </a>
                   </ng-container>
-                  <ng-template #noLink>{{ artifact[column] }}</ng-template>
+                  <ng-template #noLink>{{ artifact[column.key] }}</ng-template>
                 </ng-container>
                 <ng-template #nonUidProperty>
-                  <ng-container *ngIf="(artifact[column]).length > 50; else shortProperty">
+                  <ng-container *ngIf="(artifact[column.key]).length > 50; else shortProperty">
                     <!-- If it's a long value, then truncate it in the table and make it so that when it is clicked,
                          a modal is displayed with the whole text -->
                     <a href="#" class="modal-link" (click)="openModal(truncateModal); $event.preventDefault()">
-                      {{ (artifact[column] | truncate: 50) }}
+                      {{ (artifact[column.key] | truncate: 50) }}
                     </a>
                     <!-- Define the modal template to be shown when the text is clicked -->
                     <ng-template #truncateModal>
                       <div class="modal-header">
-                        <h4 class="modal-title pull-left">{{ column | propertyDisplay }}</h4>
+                        <h4 class="modal-title pull-left">{{ column.key | propertyDisplay }}</h4>
                         <button type="button" class="close pull-right" (click)="modalRef.hide()">&times;</button>
                       </div>
                       <div class="modal-body">
-                        <ng-container *ngIf="preformattedColumns.includes(column); else normalValue">
-                          <pre>{{ artifact[column] }}</pre>
+                        <ng-container *ngIf="preformattedColumns.includes(column.key); else normalValue">
+                          <pre>{{ artifact[column.key] }}</pre>
                         </ng-container>
                         <ng-template #normalValue>
-                          {{ artifact[column] }}
+                          {{ artifact[column.key] }}
                         </ng-template>
                       </div>
                     </ng-template>
                   </ng-container>
                   <!-- If the column is not a UID and the text is not too long, then just display it normally -->
                   <ng-template #shortProperty>
-                      {{ artifact[column] }}
+                      {{ artifact[column.key] }}
                   </ng-template>
                 </ng-template>
               </td>

@@ -22,7 +22,6 @@ import { AlertComponent } from './alert/alert.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SiblingsComponent } from './story/siblings/siblings.component';
-import { KeysPipe } from './pipes/general.pipe';
 import { ArtifactsTableComponent } from './artifacts-table/artifacts-table.component';
 import { ArtifactRelationshipComponent } from './story/artifact-relationship/artifact-relationship.component';
 
@@ -44,7 +43,6 @@ import { ArtifactRelationshipComponent } from './story/artifact-relationship/art
     NavbarComponent,
     SiblingsComponent,
     PropertyValueDisplayPipe,
-    KeysPipe,
     ArtifactsTableComponent,
     ArtifactRelationshipComponent
   ],

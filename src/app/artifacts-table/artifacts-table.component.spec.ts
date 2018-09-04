@@ -10,7 +10,6 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { NodeExternalUrlPipe, TruncatePipe } from '../pipes/nodedisplay';
 import { PropertyDisplayPipe, PropertyValueDisplayPipe } from '../pipes/propertydisplay';
-import { KeysPipe } from '../pipes/general.pipe';
 import { siblings } from '../story/test.data';
 
 import { ArtifactsTableComponent } from './artifacts-table.component';
@@ -38,7 +37,6 @@ describe('ArtifactsTableComponent', () => {
         NodeExternalUrlPipe,
         PropertyDisplayPipe,
         PropertyValueDisplayPipe,
-        KeysPipe,
         TruncatePipe
       ],
       providers: [DatePipe],
