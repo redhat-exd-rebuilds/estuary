@@ -39,14 +39,14 @@
         </thead>
         <tbody>
           <!-- Display a table row for every artifact -->
-          <tr *ngFor="let artifact of formattedArtifacts">
+          <tr *ngFor="let artifact of formattedArtifacts; let i = index">
             <!-- Display all the active columns for each artifact -->
             <ng-container *ngFor="let column of columns | keyvalue">
               <td *ngIf="column.value">
                 <!-- If this column is the artifact's UID, make it a link to the corresponding external system -->
                 <ng-container *ngIf="uidColumns.includes(column.key); else nonUidProperty">
                   <ng-container *ngIf="(artifact | nodeExternalUrl).length; else noLink">
-                    <a href="{{ artifact | nodeExternalUrl }}" target="_blank">
+                    <a href="{{ artifacts[i] | nodeExternalUrl }}" target="_blank">
                       {{ artifact[column.key] }}
                     </a>
                   </ng-container>
