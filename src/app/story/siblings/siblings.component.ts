@@ -1,5 +1,5 @@
 import { Component, OnDestroy, TemplateRef } from '@angular/core';
-import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute, RouterEvent } from '@angular/router';
 import { filter, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
@@ -22,7 +22,7 @@ export class SiblingsComponent implements OnDestroy {
               private route: ActivatedRoute) {
     this.loading = true;
     this.router.events.pipe(takeUntil(this.unsubscribe),
-                            filter((event: Event) => event instanceof NavigationEnd)).subscribe(() => {
+                            filter((event: RouterEvent) => event instanceof NavigationEnd)).subscribe(() => {
       // Reset the values on every route change
       this.siblings = [];
       this.title = null;
