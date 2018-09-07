@@ -4,6 +4,7 @@ import { StoryComponent } from './story/story.component';
 import { SearchComponent } from './search/search.component';
 import { SiblingsComponent } from './story/siblings/siblings.component';
 import { ArtifactRelationshipComponent } from './story/artifact-relationship/artifact-relationship.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 
 const routes: Routes = [
@@ -13,15 +14,22 @@ const routes: Routes = [
   },
   {
     path: ':resource/:uid',
-    component: StoryComponent
+    component: StoryComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: 'siblings/:resource/:uid',
-    component: SiblingsComponent
+    component: SiblingsComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: 'relationship/:resource/:uid/:relationship',
-    component: ArtifactRelationshipComponent
+    component: ArtifactRelationshipComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: '**',
+    redirectTo: ''
   }
 ];
 

@@ -20,6 +20,7 @@ import { NodeTypeDisplayPipe, NodeTypePluralPipe, NodeExternalUrlPipe,
 import { PropertyDisplayPipe } from '../pipes/propertydisplay';
 import { StoryService } from '../services/story.service';
 import { bug, story, module_story } from './test.data';
+import { OAuthModule } from 'angular-oauth2-oidc';
 
 
 describe('StoryComponent testing', () => {
@@ -53,7 +54,8 @@ describe('StoryComponent testing', () => {
             TooltipModule.forRoot(),
             ToastNotificationModule,
             HttpClientTestingModule,
-            NoopAnimationsModule
+            NoopAnimationsModule,
+            OAuthModule.forRoot()
         ]
     }).compileComponents();
   });

@@ -5,5 +5,8 @@
 
 export const environment = {
   production: false,
-  api: 'https://estuary-api-prod.cloud.upshift.engineering.redhat.com/api/v1/'
+  api: 'https://estuary-api-prod.cloud.upshift.engineering.redhat.com/api/v1/',
+  enableAuth: false,
+  oidcIssuer: null,
+  oidcClientId: null
 };

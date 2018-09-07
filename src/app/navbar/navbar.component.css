@@ -8,13 +8,25 @@
 
 .navbar-right__brand {
     height: 30px;
-    margin-top: 10px;
-    /* Don't show the right logo in mobile view */
-    display: none;
+    position: relative;
+    /* Nudge the brand up a little to make it centered */
+    top: -2px;
+}
+
+.navbar-right__logout {
+    margin-right: 30px;
+    color: white;
+    font-size: 110%;
 }
 
 
 /* ----- Bootstrap Overrides ----- */
+.navbar-right {
+    /* Don't show the right logo in mobile view */
+    display: none;
+    margin-top: 10px;
+}
+
 .navbar-header {
     /* A hack that fixes an overflowing page in mobile view */
     margin-left: 0 !important;
@@ -32,7 +44,7 @@
 }
 
 @media (min-width: 768px) {
-    .navbar-right__brand {
+    .navbar-right {
         display: initial;
     }
 

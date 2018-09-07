@@ -8,6 +8,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ToastNotificationModule } from 'patternfly-ng/notification';
+import { OAuthModule } from 'angular-oauth2-oidc';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +25,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SiblingsComponent } from './story/siblings/siblings.component';
 import { ArtifactsTableComponent } from './artifacts-table/artifacts-table.component';
 import { ArtifactRelationshipComponent } from './story/artifact-relationship/artifact-relationship.component';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -55,7 +57,13 @@ import { ArtifactRelationshipComponent } from './story/artifact-relationship/art
     ToastNotificationModule,
     TooltipModule.forRoot(),
     BsDropdownModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    OAuthModule.forRoot({
+      resourceServer: {
+        allowedUrls: [environment.api],
+        sendAccessToken: true
+      }
+    })
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
