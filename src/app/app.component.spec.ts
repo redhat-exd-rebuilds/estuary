@@ -9,7 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 import { AlertComponent } from './alert/alert.component';
-import { NodeTypeDisplayPipe, NodeTypePluralPipe, NodeExternalUrlPipe, TruncatePipe } from './pipes/nodedisplay';
+import { NodeTypeDisplayPipe, NodeTypePluralPipe, NodeExternalUrlPipe, TruncatePipe,
+         NodeDisplayNamePipe } from './pipes/nodedisplay';
 import { PropertyDisplayPipe } from './pipes/propertydisplay';
 import { StoryComponent } from './story/story.component';
 import { StoryRowComponent } from './story/storyrow/storyrow.component';
@@ -60,7 +61,8 @@ describe('AppComponent', () => {
         StoryComponent,
         StoryRowComponent,
         StorysidebarComponent,
-        TruncatePipe
+        TruncatePipe,
+        NodeDisplayNamePipe
       ],
       imports: [
         AppRoutingModule,

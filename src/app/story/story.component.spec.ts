@@ -16,7 +16,7 @@ import { AlertComponent } from '../alert/alert.component';
 import { SpinnerComponent } from '../spinner/spinner.component';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { NodeTypeDisplayPipe, NodeTypePluralPipe, NodeExternalUrlPipe,
-         TruncatePipe } from '../pipes/nodedisplay';
+         TruncatePipe, NodeDisplayNamePipe } from '../pipes/nodedisplay';
 import { PropertyDisplayPipe } from '../pipes/propertydisplay';
 import { StoryService } from '../services/story.service';
 import { bug, story, module_story } from './test.data';
@@ -42,7 +42,8 @@ describe('StoryComponent testing', () => {
             TruncatePipe,
             AlertComponent,
             SpinnerComponent,
-            NavbarComponent
+            NavbarComponent,
+            NodeDisplayNamePipe
         ],
         providers: [
             StoryService,

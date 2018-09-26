@@ -1,8 +1,8 @@
-<div class="node-uid-column story-row-column">{{ (node.display_name.split(' ') | slice:-1)[0] | truncate: 30 }}</div>
+<div class="node-uid-column story-row-column">{{ node.display_name | nodeDisplayName | truncate: 30 }}</div>
 <div class="node-column story-row-column">
   <div id="{{ 'js-' + node.resource_type.toLowerCase() + '-node' }}" class="node-column__node" [ngClass]="{'node-column__node--active': active}" 
       [routerLink]="['/', node.resource_type.toLowerCase(), getNodeUid()]"
-      tooltip="{{ node.resource_type | nodeTypeDisplay }} {{ (node.display_name.split(' ') | slice:-1)[0] }}">
+      tooltip="{{ node.resource_type | nodeTypeDisplay }} {{ node.display_name | nodeDisplayName }}">
     <img class="node-column__node-img" src="assets/circle_single.svg" />
     <div class="node-column__node-icon"><i [ngClass]="iconClasses" aria-hidden="true"></i></div>
   </div>

@@ -84,3 +84,16 @@ export class TruncatePipe implements PipeTransform {
       }
   }
 }
+
+
+@Pipe({name: 'nodeDisplayName'})
+export class NodeDisplayNamePipe implements PipeTransform {
+    // This Pipe takes a node's display_name as input and only shows the identifier
+    // and not the prefixes. The displayName type is any because `null` is also accepted.
+    transform(displayName: any): string {
+        if (!displayName) {
+            return '';
+        }
+        return displayName.split(' ').slice(-1)[0];
+    }
+}
