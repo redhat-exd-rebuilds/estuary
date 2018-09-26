@@ -17,7 +17,7 @@ import { StoryRowComponent } from './story/storyrow/storyrow.component';
 import { StorysidebarComponent } from './story/storysidebar/storysidebar.component';
 import { PropertyDisplayPipe, PropertyValueDisplayPipe } from './pipes/propertydisplay';
 import { NodeTypeDisplayPipe, NodeTypePluralPipe, NodeExternalUrlPipe,
-         TruncatePipe } from './pipes/nodedisplay';
+         TruncatePipe, NodeDisplayNamePipe } from './pipes/nodedisplay';
 import { SearchComponent } from './search/search.component';
 import { AlertComponent } from './alert/alert.component';
 import { SpinnerComponent } from './spinner/spinner.component';
@@ -46,7 +46,8 @@ import { environment } from '../environments/environment';
     SiblingsComponent,
     PropertyValueDisplayPipe,
     ArtifactsTableComponent,
-    ArtifactRelationshipComponent
+    ArtifactRelationshipComponent,
+    NodeDisplayNamePipe
   ],
   imports: [
     AppRoutingModule,
