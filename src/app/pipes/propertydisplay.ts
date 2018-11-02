@@ -34,7 +34,13 @@ export class PropertyValueDisplayPipe implements PipeTransform {
     const dtRegEx = /^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})(?:\.\d+)?(?:Z|[-+]00(?::00)?)?$/;
     // Can't use typeof to determine if it's an Array
     if (value instanceof Array) {
-      return value.length.toString();
+      // We need to specifically check if this is an advisory so that, if it
+      // is one, we can list out its names rather than just a number.
+      if (value.length !== 0 && value[0].advisory_name) {
+        return value.map(x => x.advisory_name).join(', ');
+      } else {
+        return value.length.toString();
+      }
     } else if (value instanceof Object) {
       // Only display objects' name or username properties
       if (value.name) {
