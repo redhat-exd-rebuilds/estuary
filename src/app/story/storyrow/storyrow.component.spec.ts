@@ -45,7 +45,7 @@ describe('StoryRowComponent testing', () => {
 
     // Verify the text is correct
     const nodeUidColEl = fixture.debugElement.query(By.css('.node-uid-column')).nativeElement;
-    expect(nodeUidColEl.innerText).toBe('RHBZ#23456');
+    expect(nodeUidColEl.innerText.trim()).toBe('RHBZ#23456');
 
     const nodeEl = fixture.debugElement.query(By.css('.node-column__node')).nativeElement;
     // Verify the artifact details are correct
@@ -65,7 +65,7 @@ describe('StoryRowComponent testing', () => {
 
     // Verify the text is correct
     const nodeUidColEl = fixture.debugElement.query(By.css('.node-uid-column')).nativeElement;
-    expect(nodeUidColEl.innerText).toBe('RHBZ#23456');
+    expect(nodeUidColEl.innerText.trim()).toBe('RHBZ#23456');
 
     const siblingsEl = fixture.debugElement.queryAll(By.css('.node-siblings-column__siblings'));
     const siblingsBackwardEl = siblingsEl[0].nativeElement;

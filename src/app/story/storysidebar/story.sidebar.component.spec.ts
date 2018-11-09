@@ -61,7 +61,7 @@ describe('StorysidebarComponent testing', () => {
     expect(sidebarPropertiesEl.children[0].children[1].textContent.trim()).toBe('user1');
     expect(sidebarPropertiesEl.children[1].children[0].textContent).toBe('Attached Advisories');
     expect(sidebarPropertiesEl.children[1].children[1].children[0].tagName).toBe('A');
-    expect(sidebarPropertiesEl.children[1].children[1].textContent.trim()).toBe('1');
+    expect(sidebarPropertiesEl.children[1].children[1].textContent.trim()).toBe('RHSA-2018:1234-01');
     expect(sidebarPropertiesEl.children[2].children[0].textContent).toBe('Classification');
     expect(sidebarPropertiesEl.children[2].children[1].textContent.trim()).toBe('Red Hat');
     expect(sidebarPropertiesEl.children[3].children[0].textContent).toBe('Creation Time');
