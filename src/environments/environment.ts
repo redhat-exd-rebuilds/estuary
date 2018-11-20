@@ -8,5 +8,6 @@ export const environment = {
   api: 'http://127.0.0.1:5000/api/v1/',
   enableAuth: false,
   oidcIssuer: null,
-  oidcClientId: null
+  oidcClientId: null,
+  greenwaveAPI: 'http://127.0.0.1:5001/api/v1.0/',
 };

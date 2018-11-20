@@ -1,18 +1,24 @@
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { By } from '@angular/platform-browser';
 import { ComponentFixture, async, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { of } from 'rxjs';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { StoryRowComponent } from './storyrow.component';
 import { bug } from '../test.data';
 import { NodeTypeDisplayPipe, NodeTypePluralPipe, TruncatePipe, NodeDisplayNamePipe } from '../../pipes/nodedisplay';
 import { StoryComponent } from '../story.component';
+import { GreenwaveService } from '../../services/greenwave.service';
 
 
 describe('StoryRowComponent testing', () => {
   let component: StoryRowComponent;
   let fixture: ComponentFixture<StoryRowComponent>;
+  let greenwaveService: GreenwaveService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -24,10 +30,19 @@ describe('StoryRowComponent testing', () => {
             NodeDisplayNamePipe
         ],
         providers: [
+          GreenwaveService,
           {provide: StoryComponent, useValue: {connectStory: () => {}}}
         ],
-        imports: [RouterTestingModule, TooltipModule.forRoot()]
+        imports: [
+          RouterTestingModule,
+          TooltipModule.forRoot(),
+          HttpClientTestingModule,
+          FontAwesomeModule,
+          NoopAnimationsModule,
+        ]
     }).compileComponents();
+
+    greenwaveService = TestBed.get(GreenwaveService);
   });
 
   beforeEach(() => {
@@ -102,5 +117,38 @@ describe('StoryRowComponent testing', () => {
     fixture.detectChanges();
     tick();
     expect(component.story.connectStory).toHaveBeenCalled();
+  }));
+
+  it('should display a successful gating decision', fakeAsync(() => {
+    spyOn(greenwaveService, 'getArtifactDecision').and.returnValue(
+      // Create an observable like the HTTP client would return
+      of({
+        policies_satisfied: true,
+        summary: 'All required tests passsed',
+        waivers: [],
+      })
+    );
+    component.node = {
+      display_name: 'some-container',
+      resource_type: 'ContainerKojiBuild',
+    };
+    component.forwardSiblings = 0;
+    component.backwardSiblings = 0;
+    component.active = true;
+    // Call setGatingStatus directly since ngOnChanges isn't triggered when directly
+    // setting component properties
+    component.setGatingStatus();
+    fixture.detectChanges();
+    tick();
+    expect(component.gatingStatus).toEqual({
+      icon: faCheck,
+      iconClass: 'text-success',
+      loading: false,
+      statusName: 'Passed',
+      summary: 'All required tests passsed',
+    });
+    const gatingBadgeEl = fixture.debugElement.query(By.css('.node-column__node-gating-badge')).nativeElement;
+    // Verify the gating badge is there and has a tooltip
+    expect(gatingBadgeEl.attributes['ng-reflect-tooltip'].nodeValue).toBe('All required tests passsed');
   }));
 });

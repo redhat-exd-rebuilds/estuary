@@ -1,12 +1,29 @@
-import { Component, AfterViewInit, Input, Host, OnChanges } from '@angular/core';
+import { Component, AfterViewInit, Input, Host, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
+import { trigger, transition, style, animate } from '@angular/animations';
+import { faCheck, faCircle, faExclamation, faTimes, faQuestion, faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 import { StoryComponent } from '../story.component';
+import { GreenwaveService } from '../../services/greenwave.service';
+import { GatingStatus, GreenwaveDecision } from '../../models/greenwave.type';
 
 
 @Component({
   selector: 'app-storyrow',
   templateUrl: './storyrow.component.html',
-  styleUrls: ['./storyrow.component.css']
+  styleUrls: ['./storyrow.component.css'],
+  // Add an animation so that the gating status badges ease (fade) in and out
+  animations: [
+    trigger('easeInOut', [
+      transition(':enter', [
+        style({opacity: 0}),
+        animate('0.5s ease-in-out', style({opacity: 1}))
+      ]),
+      transition(':leave', [
+        style({opacity: 1}),
+        animate('0.5s ease-in-out', style({opacity: 0}))
+      ])
+    ])
+  ]
 })
 export class StoryRowComponent implements OnChanges, AfterViewInit {
   @Input() node: any;
@@ -14,18 +31,45 @@ export class StoryRowComponent implements OnChanges, AfterViewInit {
   @Input() forwardSiblings: number;
   @Input() active: boolean;
   @Input() last: boolean;
+  @Output() error = new EventEmitter<string>();
   iconClasses: any;
   backwardSiblingsRouterLink: string;
   forwardSiblingsRouterLink: string;
   backwardSiblingsRouterParams: any;
   forwardSiblingsRouterParams: any;
   story: StoryComponent;
+  gatingStatus: GatingStatus;
 
-  constructor(@Host() story: StoryComponent) {
+  // Font Awesome icons
+  faCircle = faCircle;
+
+  constructor(@Host() story: StoryComponent, private greenwave: GreenwaveService) {
     this.story = story;
+    this.gatingStatus = {
+      icon: null,
+      iconClass: null,
+      loading: false,
+      statusName: null,
+      summary: null,
+    };
   }
 
-  ngOnChanges() {
+  ngOnChanges(changes: SimpleChanges) {
+    let nodeChanged = false;
+    for (const propName of Object.keys(changes)) {
+      if (propName === 'node') {
+        // Only call this method if the node changes since this is an expensive method call
+        nodeChanged = true;
+      }
+    }
+
+    // If the node is the same, then don't rerun these operations
+    if (nodeChanged === false) {
+      return;
+    }
+
+    this.setGatingStatus();
+
     this.iconClasses = this.getIconClasses();
     // If there are siblings in either direction, then the siblings links should get defined
     if (this.backwardSiblings) {
@@ -88,5 +132,60 @@ export class StoryRowComponent implements OnChanges, AfterViewInit {
       default:
         return this.node.id;
     }
+  }
+
+  setGatingStatus() {
+    // Set the gating status to loading so a spiiner is shown while the Greenwave API is called
+    this.gatingStatus = {
+      icon: faSpinner,
+      iconClass: 'text-info',
+      loading: true,
+      statusName: null,
+      summary: null,
+    };
+
+    this.greenwave.getArtifactDecision(this.node)
+      .subscribe(
+        (decision: GreenwaveDecision) => {
+          const statusName = this.greenwave.getStatusName(decision);
+          let icon;
+          let iconClass;
+          switch (statusName) {
+            case('Passed'):
+              icon = faCheck;
+              iconClass = 'text-success';
+              break;
+            case('Warning'):
+              icon = faExclamation;
+              iconClass = 'text-warning';
+              break;
+            case('Failed'):
+              icon = faTimes;
+              iconClass = 'text-danger';
+              break;
+            default:
+              icon = faQuestion;
+              iconClass = 'text-info';
+          }
+
+          this.gatingStatus = {
+            icon: icon,
+            iconClass: iconClass,
+            loading: false,
+            statusName,
+            summary: decision.summary,
+          };
+        },
+        error => {
+          if (this.greenwave.shouldIgnoreError(error)) {
+            this.gatingStatus.loading = false;
+          } else {
+            this.error.emit(`Getting the gating decision for "${this.node.display_name}" failed`);
+          }
+        },
+        () => {
+          this.gatingStatus.loading = false;
+        }
+      );
   }
 }

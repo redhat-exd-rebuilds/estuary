@@ -1,11 +1,28 @@
 <div class="node-uid-column story-row-column">{{ node.display_name | nodeDisplayName | truncate: 30 }}</div>
 <div class="node-column story-row-column">
-  <div id="{{ 'js-' + node.resource_type.toLowerCase() + '-node' }}" class="node-column__node" [ngClass]="{'node-column__node--active': active}" 
-      [routerLink]="['/', node.resource_type.toLowerCase(), getNodeUid()]"
-      tooltip="{{ node.resource_type | nodeTypeDisplay }} {{ node.display_name | nodeDisplayName }}">
+  <!-- `container="body"` is used to attach the tooltip to the body instead of the parent div. This
+       is used becuase the parent div constrains the width of the tooltip. -->
+  <div id="{{ 'js-' + node.resource_type.toLowerCase() + '-node' }}"
+       class="node-column__node"
+       [ngClass]="{'node-column__node--active': active}"
+       [routerLink]="['/', node.resource_type.toLowerCase(), getNodeUid()]"
+       tooltip="{{ node.resource_type | nodeTypeDisplay }} {{ node.display_name | nodeDisplayName }}"
+       container="body">
     <img class="node-column__node-img" src="assets/circle_single.svg" />
-    <div class="node-column__node-icon"><i [ngClass]="iconClasses" aria-hidden="true"></i></div>
+    <div class="node-column__node-icon">
+      <i [ngClass]="iconClasses" aria-hidden="true"></i>
+    </div>
   </div>
+  <!-- Add a gating status badge. This uses icon layering since using a circle check mark directly would
+       make the checkmark portion transparent, which is not desired. -->
+  <span *ngIf="gatingStatus.loading || gatingStatus.statusName"
+        @easeInOut
+        [tooltip]="gatingStatus.summary"
+        container="body"
+        class="fa-layers fa-fw node-column__node-gating-badge">
+    <fa-icon [icon]="faCircle" [ngClass]="gatingStatus.iconClass"></fa-icon>
+    <fa-icon [icon]="gatingStatus.icon" [spin]="gatingStatus.loading" class="gating-badge-icon"></fa-icon>
+  </span>
 </div>
 <div class="node-siblings-column node-siblings-backward-column story-row-column" *ngIf="backwardSiblings">
   <div id="{{ 'js-' + node.resource_type.toLowerCase() + '-backward-siblings' }}" class="node-siblings-column__siblings"
