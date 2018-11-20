@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { OAuthService, JwksValidationHandler } from 'angular-oauth2-oidc';
+import { filter as filterObservable } from 'rxjs/operators';
 
 import { environment } from '../environments/environment';
 
@@ -30,7 +31,7 @@ export class AppComponent {
     });
     this.auth.tokenValidationHandler = new JwksValidationHandler();
 
-    this.auth.events.filter(e => e.type === 'token_received').subscribe(() => {
+    this.auth.events.pipe(filterObservable(e => e.type === 'token_received')).subscribe(() => {
       const state = this.auth.state;
       if (state) {
         // Only redirect if the state is set. Clear immediately to prevent

@@ -27,10 +27,9 @@
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
     "jsplumb": "^2.7.0",
-    "ngx-bootstrap": "^2.0.5",
-    "patternfly-ng": "^3.12.4",
+    "ngx-bootstrap": "^3.1.1",
+    "patternfly-ng": "^4.5.1",
     "rxjs": "^6.3.2",
-    "rxjs-compat": "^6.3.2",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
