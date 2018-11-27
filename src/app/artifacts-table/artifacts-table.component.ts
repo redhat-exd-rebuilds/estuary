@@ -51,6 +51,7 @@ export class ArtifactsTableComponent implements OnChanges {
         // Only call this if the artifacts array changes since this is an expensive
         // function call
         this.formatArtifacts();
+        break;
       }
     }
   }

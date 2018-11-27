@@ -155,4 +155,8 @@ export class StoryComponent implements OnInit, AfterViewInit, OnDestroy {
       jsPlumb.setSuspendDrawing(false, true);
     });
   }
+
+  onChildError(errorMsg: string) {
+    this.errorMsg = errorMsg;
+  }
 }

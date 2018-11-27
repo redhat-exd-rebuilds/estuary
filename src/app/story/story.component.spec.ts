@@ -8,6 +8,8 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ToastNotificationModule } from 'patternfly-ng/notification';
 import { of, Subject } from 'rxjs';
+import { OAuthModule } from 'angular-oauth2-oidc';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { StoryComponent } from './story.component';
 import { StorysidebarComponent } from './storysidebar/storysidebar.component';
@@ -20,7 +22,7 @@ import { NodeTypeDisplayPipe, NodeTypePluralPipe, NodeExternalUrlPipe,
 import { PropertyDisplayPipe } from '../pipes/propertydisplay';
 import { StoryService } from '../services/story.service';
 import { bug, story, module_story } from './test.data';
-import { OAuthModule } from 'angular-oauth2-oidc';
+import { GreenwaveService } from '../services/greenwave.service';
 
 
 describe('StoryComponent testing', () => {
@@ -48,7 +50,8 @@ describe('StoryComponent testing', () => {
         providers: [
             StoryService,
             DatePipe,
-            {provide: ActivatedRoute, useValue: {params: routeParams}}
+            {provide: ActivatedRoute, useValue: {params: routeParams}},
+            GreenwaveService
         ],
         imports: [
             RouterTestingModule,
@@ -56,7 +59,8 @@ describe('StoryComponent testing', () => {
             ToastNotificationModule,
             HttpClientTestingModule,
             NoopAnimationsModule,
-            OAuthModule.forRoot()
+            OAuthModule.forRoot(),
+            FontAwesomeModule
         ]
     }).compileComponents();
   });

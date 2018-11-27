@@ -20,6 +20,16 @@
     top: 5px;
 }
 
+.node-column {
+    /* Allow the gating badge to be absolutely positioned from this div */
+    position: relative;
+}
+
+.gating-badge-icon {
+    color: #fff;
+    font-size: 55%;
+}
+
 .node-siblings-column {
     /* Leave a small gap between the main node and the siblings */
     padding-left: 1rem;
@@ -92,6 +102,18 @@
     top: 50%;
     /* Move the icon half its size up and to the left */
     transform: translate(-50%, -50%);
+}
+
+.node-column__node-gating-badge {
+    position: absolute;
+    z-index: 1;
+    font-size: 190%;
+    right: -10px;
+    top: 0px;
+}
+
+.node-column__node-gating-badge:focus {
+    outline: 0;
 }
 
 .node-siblings-column__node-icon {

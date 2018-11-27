@@ -25,6 +25,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SiblingsComponent } from './story/siblings/siblings.component';
 import { ArtifactsTableComponent } from './artifacts-table/artifacts-table.component';
 import { ArtifactRelationshipComponent } from './story/artifact-relationship/artifact-relationship.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { environment } from '../environments/environment';
 
 
@@ -59,6 +60,7 @@ import { environment } from '../environments/environment';
     TooltipModule.forRoot(),
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
+    FontAwesomeModule,
     OAuthModule.forRoot({
       resourceServer: {
         allowedUrls: [environment.api],
