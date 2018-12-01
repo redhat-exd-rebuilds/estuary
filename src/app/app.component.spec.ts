@@ -19,6 +19,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SiblingsComponent } from './story/siblings/siblings.component';
 import { ArtifactRelationshipComponent } from './story/artifact-relationship/artifact-relationship.component';
+import { TestResultsComponent } from './story/test-results/test-results.component';
 import { environment } from '../environments/environment';
 
 
@@ -62,7 +63,8 @@ describe('AppComponent', () => {
         StoryRowComponent,
         StorysidebarComponent,
         TruncatePipe,
-        NodeDisplayNamePipe
+        NodeDisplayNamePipe,
+        TestResultsComponent,
       ],
       imports: [
         AppRoutingModule,

@@ -29,6 +29,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { environment } from '../environments/environment';
 import { EstuaryTableComponent } from './tables/table.component';
 import { TruncateModalComponent } from './tables/truncate-modal/truncate-modal.component';
+import { TestsTableComponent } from './tables/tests-table/tests-table.component';
+import { TestResultsComponent } from './story/test-results/test-results.component';
 
 
 @NgModule({
@@ -53,6 +55,8 @@ import { TruncateModalComponent } from './tables/truncate-modal/truncate-modal.c
     NodeDisplayNamePipe,
     EstuaryTableComponent,
     TruncateModalComponent,
+    TestsTableComponent,
+    TestResultsComponent,
   ],
   imports: [
     AppRoutingModule,

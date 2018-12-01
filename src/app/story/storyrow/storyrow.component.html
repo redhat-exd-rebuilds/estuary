@@ -13,16 +13,27 @@
       <i [ngClass]="iconClasses" aria-hidden="true"></i>
     </div>
   </div>
-  <!-- Add a gating status badge. This uses icon layering since using a circle check mark directly would
-       make the checkmark portion transparent, which is not desired. -->
-  <span *ngIf="gatingStatus.loading || gatingStatus.statusName"
-        @easeInOut
-        [tooltip]="gatingStatus.summary"
-        container="body"
-        class="fa-layers fa-fw node-column__node-gating-badge">
-    <fa-icon [icon]="faCircle" [ngClass]="gatingStatus.iconClass"></fa-icon>
-    <fa-icon [icon]="gatingStatus.icon" [spin]="gatingStatus.loading" class="gating-badge-icon"></fa-icon>
-  </span>
+
+  <!-- If gatingBadgeLink is set, then wrap the gatingBadge template with a link, otherwise just
+       show the icons as is -->
+  <ng-container *ngIf="gatingBadgeLink !== null; else gatingBadge">
+    <a [routerLink]="gatingBadgeLink">
+      <ng-container *ngTemplateOutlet="gatingBadge"></ng-container>
+    </a>
+  </ng-container>
+
+  <ng-template #gatingBadge>
+    <!-- Add a gating status badge. This uses icon layering since using a circle check mark directly would
+        make the checkmark portion transparent, which is not desired. -->
+    <span *ngIf="gatingStatus.loading || gatingStatus.statusName"
+          @easeInOut
+          [tooltip]="gatingStatus.summary"
+          container="body"
+          class="fa-layers fa-fw node-column__node-gating-badge disabled">
+      <fa-icon [icon]="faCircle" [ngClass]="gatingStatus.iconClass"></fa-icon>
+      <fa-icon [icon]="gatingStatus.icon" [spin]="gatingStatus.loading" class="gating-badge-icon"></fa-icon>
+    </span>
+  </ng-template>
 </div>
 <div class="node-siblings-column node-siblings-backward-column story-row-column" *ngIf="backwardSiblings">
   <div id="{{ 'js-' + node.resource_type.toLowerCase() + '-backward-siblings' }}" class="node-siblings-column__siblings"

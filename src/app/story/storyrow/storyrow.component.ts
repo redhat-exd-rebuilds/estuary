@@ -39,6 +39,7 @@ export class StoryRowComponent implements OnChanges, AfterViewInit {
   forwardSiblingsRouterParams: any;
   story: StoryComponent;
   gatingStatus: GatingStatus;
+  gatingBadgeLink: Array<string>;
 
   // Font Awesome icons
   faCircle = faCircle;
@@ -135,6 +136,7 @@ export class StoryRowComponent implements OnChanges, AfterViewInit {
   }
 
   setGatingStatus() {
+    this.gatingBadgeLink = null;
     // Set the gating status to loading so a spinner is shown while the Greenwave API is called
     this.gatingStatus = {
       icon: faSpinner,
@@ -144,10 +146,15 @@ export class StoryRowComponent implements OnChanges, AfterViewInit {
       summary: null,
     };
 
-    this.greenwave.getArtifactDecision(this.node)
+    const subjectIdentifier = this.greenwave.getSubjectIdentifier(this.node);
+    this.greenwave.getArtifactDecision(this.node.resource_type, subjectIdentifier)
       .subscribe(
         (decision: GreenwaveDecision) => {
           const statusName = this.greenwave.getStatusName(decision);
+          if (decision.results.length) {
+            this.gatingBadgeLink = ['/test-results', this.node.resource_type.toLowerCase(), subjectIdentifier];
+          }
+
           let icon;
           let iconClass;
           switch (statusName) {

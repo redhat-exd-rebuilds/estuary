@@ -5,6 +5,7 @@ import { SearchComponent } from './search/search.component';
 import { SiblingsComponent } from './story/siblings/siblings.component';
 import { ArtifactRelationshipComponent } from './story/artifact-relationship/artifact-relationship.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { TestResultsComponent } from './story/test-results/test-results.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,11 @@ const routes: Routes = [
   {
     path: 'relationship/:resource/:uid/:relationship',
     component: ArtifactRelationshipComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'test-results/:resource/:subjectIdentifier',
+    component: TestResultsComponent,
     canActivate: [AuthGuardService]
   },
   {

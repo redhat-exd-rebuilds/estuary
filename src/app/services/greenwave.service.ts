@@ -69,19 +69,19 @@ export class GreenwaveService {
     return this.http.post<GreenwaveDecision>(`${this.greenwaveURL}decision`, body, options);
   }
 
-  getArtifactDecision(artifact: any, verbose = true): Observable<any> {
-    // For builds, this is an NVR
-    const subjectIdentifier = artifact.display_name;
+  getArtifactDecision(resource: string, subjectIdentifier: string, verbose = true): Observable<any> {
     let decisionContext: string;
     let productVersion: string;
     const subjectType = 'koji_build';
 
-    switch (artifact.resource_type) {
-      case('ContainerKojiBuild'):
+    switch (resource.toLowerCase()) {
+      case('containerkojibuild'):
+      case('containerbuild'):
         decisionContext = 'cvp_default';
         productVersion = 'cvp';
         break;
-      case('KojiBuild'):
+      case('kojibuild'):
+      case('build'):
         decisionContext = 'osci_compose_gate';
         try {
           productVersion = this.getProductVersionFromNVR(subjectIdentifier);
@@ -108,6 +108,12 @@ export class GreenwaveService {
       }
 
       return 'Failed';
+  }
+
+  getSubjectIdentifier(artifact): string {
+    // We currently only support Koji builds, so we just need to supply the NVR,
+    // which is also the display name of the artifact.
+    return artifact.display_name;
   }
 
   shouldIgnoreError(error): boolean {
