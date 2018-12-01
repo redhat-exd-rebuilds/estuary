@@ -1,0 +1,10 @@
+<app-table
+    [title]="title"
+    [items]="formattedArtifacts"
+    [preformattedColumns]="preformattedColumns"
+    [defaultColumns]="defaultColumns"
+    [uidColumn]="uidColumn"
+    [linkColumnMappings]="linkColumnMappings"
+    [defaultSortedColumn]="defaultSortedColumn"
+    (error)="onChildError($event)"
+></app-table>

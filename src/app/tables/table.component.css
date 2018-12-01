@@ -1,12 +1,12 @@
 /* ----- Blocks ----- */
-.artifacts-container {
+.estuary-container {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     margin-bottom: 2.5rem;
 }
 
 /* A wrapper around the table for when it gets too wide */
-.artifacts-table-responsive {
+.estuary-table-responsive {
     overflow-x: auto;
     white-space: nowrap;
     /* Remove the default border provided by Bootstrap */
@@ -14,10 +14,11 @@
 }
 
 /* A wrapper around the table to create the section above the table for the "Show Columns" button to go */
-.artifacts-table-wrapper {
+.estuary-table-wrapper {
     background-color: #ffffff;
     display: inline-block;
-    padding-top: 8rem; 
+    padding-top: 8rem;
+    min-width: 350px;
 }
 
 .title {
@@ -28,34 +29,25 @@
 }
 
 /* This div contains the "Show Columns" button. It is positioned in the DOM outside of
-   div.artifacts-table-responsive, otherwise, it will cause a vertical scroll bar to appear
+   div.estuary-table-responsive, otherwise, it will cause a vertical scroll bar to appear
    on short tables when the "Show Columns" button is expanded. */
-.artifacts-table-header {
-    /* Make the width 100% minus the padding used by div.artifacts-container */
+.estuary-table-header {
+    /* Make the width 100% minus the padding used by div.estuary-container */
     width: calc(100% - 3rem);
     /* Make the position absolute so the header is positioned on top of the padding-top of
-       div.artifacts-table-wrapper */
+       div.estuary-table-wrapper */
     position: absolute;
     margin-left: 2rem;
     margin-top: 2.4rem;
 }
 
-.artifacts-table {
+.estuary-table {
     margin: 0;
     font-size: 110%;
 }
 
-.modal-link {
-    color: #363636;
-}
-
-.modal-link:hover {
-    color: #363636;
-    text-decoration: underline;
-}
-
 @media (min-width: 992px) {
-    .artifacts-container {
+    .estuary-container {
         padding-left: 5rem;
         padding-right: 5rem;
         margin-bottom: 5rem;
@@ -66,35 +58,35 @@
         margin-bottom: 3rem;
     }
 
-    .artifacts-table-header {
-        /* Make the width 100% minus the padding used by div.artifacts-container */
+    .estuary-table-header {
+        /* Make the width 100% minus the padding used by div.estuary-container */
         width: calc(100% - 10rem);
     }
 }
 
 
 /* ----- Elements ----- */
-.artifacts-table-header__btn-group {
+.estuary-table-header__btn-group {
     /* A small hack to make the button vertically centered with the text on the line */
     position: relative;
     top: -3px;
 }
 
-.artifacts-table-header__dropdown-button, .open > .artifacts-table-header__dropdown-button,
-.artifacts-table-header__dropdown-button:active {
+.estuary-table-header__dropdown-button, .open > .estuary-table-header__dropdown-button,
+.estuary-table-header__dropdown-button:active {
     /* Override the colors default to Bootstrap */
     color: #363636;
     background-color: #ffffff;
     background-image: none;
 }
 
-.open > .artifacts-table-header__dropdown-button {
+.open > .estuary-table-header__dropdown-button {
     /* When the dropdown menu is open, don't round the bottom of the "Show Columns" button */
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
 
-.artifacts-table-header__dropdown-button {
+.estuary-table-header__dropdown-button {
     font-size: 115%;
     /* Make the "Show Columns" button bigger */
     padding: 0.75rem 0.75rem 0.75rem 1rem;
@@ -103,12 +95,12 @@
     box-shadow: none;
 }
 
-.artifacts-table-header__dropdown-button i {
+.estuary-table-header__dropdown-button i {
     /* Give some space between the "Show Columns" text and the arrow icon on the button */
     padding-left: 2.5rem;
 }
 
-.artifacts-table-header__dropdown-menu {
+.estuary-table-header__dropdown-menu {
     padding-top: 2rem;
     padding-left: 2rem;
     margin-bottom: 2rem;
@@ -119,16 +111,16 @@
     overflow-x: hidden;
 }
 
-.artifacts-table-header__dropdown-menu li {
+.estuary-table-header__dropdown-menu li {
     font-size: 125%;
     padding-bottom: 1rem;
 }
 
-.artifacts-table-header__dropdown-menu input {
+.estuary-table-header__dropdown-menu input {
     margin-right: 0.75rem;
 }
 
-.artifacts-table-header__columns-text {
+.estuary-table-header__columns-text {
     /* Position this a little below where it normally is so it is centered with the button  */
     display: inline-block;
     margin-left: 1.5rem;
@@ -136,33 +128,33 @@
     font-size: 115%;
 }
 
-.artifacts-table-header__columns-text-ending {
+.estuary-table-header__columns-text-ending {
     /* Don't display the export to CSV button on mobile */
     display: none;
 }
 
-.artifacts-table-header__export-btn {
+.estuary-table-header__export-btn {
     /* Don't display the export to CSV button on mobile */
     display: none;
 }
 
-.artifacts-table td, .artifacts-table th {
+.estuary-table td, .estuary-table th {
     border: none;
     padding: 1rem;
 }
 
-.artifacts-table th {
+.estuary-table th {
     border-top: 1.5px solid #F2F2F2 !important;
     border-bottom: 1.5px solid #F2F2F2 !important;
 }
 
-.artifacts-table th:hover {
+.estuary-table th:hover {
     /* Make it seem like a link when hovering on the table header to let the user know they can sort */
     cursor: pointer;
     text-decoration: underline;
 }
 
-.artifacts-table__sort-icon {
+.estuary-table__sort-icon {
     padding-left: 0.5rem;
     /* Since the element is present in every column but the class that determines the icon
        is only active on sorted columns, we must set a constant width of the icon element
@@ -170,24 +162,24 @@
     width: 15px;
 }
 
-.artifacts-table thead {
+.estuary-table thead {
     /* Patternfly has a gradient background, so this removes it */
     background-image: none;
     font-size: 115%;
 }
 
-.artifacts-table thead, .artifacts-table tbody {
+.estuary-table thead, .estuary-table tbody {
     font-weight: 600;
     /* Set a background color on the table so that it doesn't blend with the background */
     background-color: #ffffff;
 }
 
 @media (min-width: 992px) {
-    .artifacts-table-header__columns-text-ending {
+    .estuary-table-header__columns-text-ending {
         display: initial;
     }
 
-    .artifacts-table-header__export-btn {
+    .estuary-table-header__export-btn {
         display: initial;
         margin-left: 3rem;
         font-size: 110%;
@@ -198,24 +190,24 @@
         color: #ffffff;
     }
 
-    .artifacts-table-header__export-btn:hover {
+    .estuary-table-header__export-btn:hover {
         background-color: #00659c;
     }
 
-    .artifacts-table-header__export-btn:focus {
+    .estuary-table-header__export-btn:focus {
         outline: none;
     }
 
-    .artifacts-table {
-        /* Set the minimum width of the table to roughly that of div.artifacts-table-header */
+    .estuary-table {
+        /* Set the minimum width of the table to roughly that of div.estuary-table-header */
         min-width: 500px;
     }
 
-    .artifacts-table tr td:first-child, .artifacts-table tr th:first-child {
+    .estuary-table tr td:first-child, .estuary-table tr th:first-child {
         padding-left: 2rem;
     }
 
-    .artifacts-table tr td:last-child, .artifacts-table tr th:last-child {
+    .estuary-table tr td:last-child, .estuary-table tr th:last-child {
         padding-right: 2rem;
     }
 }
