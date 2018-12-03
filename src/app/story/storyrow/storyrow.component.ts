@@ -135,7 +135,7 @@ export class StoryRowComponent implements OnChanges, AfterViewInit {
   }
 
   setGatingStatus() {
-    // Set the gating status to loading so a spiiner is shown while the Greenwave API is called
+    // Set the gating status to loading so a spinner is shown while the Greenwave API is called
     this.gatingStatus = {
       icon: faSpinner,
       iconClass: 'text-info',
