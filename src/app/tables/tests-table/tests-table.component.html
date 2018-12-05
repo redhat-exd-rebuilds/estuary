@@ -1,0 +1,9 @@
+<app-table
+    [title]="title"
+    [items]="formattedResults"
+    [defaultColumns]="defaultColumns"
+    [uidColumn]="uidColumn"
+    [linkColumnMappings]="linkColumnMappings"
+    [defaultSortedColumn]="defaultSortedColumn"
+    (error)="onChildError($event)"
+></app-table>

@@ -124,6 +124,13 @@ describe('StoryRowComponent testing', () => {
       // Create an observable like the HTTP client would return
       of({
         policies_satisfied: true,
+        results: [
+          {
+            data: {
+              item: ['some-container'],
+            },
+          },
+        ],
         summary: 'All required tests passsed',
         waivers: [],
       })
@@ -150,5 +157,8 @@ describe('StoryRowComponent testing', () => {
     const gatingBadgeEl = fixture.debugElement.query(By.css('.node-column__node-gating-badge')).nativeElement;
     // Verify the gating badge is there and has a tooltip
     expect(gatingBadgeEl.attributes['ng-reflect-tooltip'].nodeValue).toBe('All required tests passsed');
+    // Verify that the URL to the test results table is correct
+    const gatingBadgeLink = gatingBadgeEl.parentElement;
+    expect(gatingBadgeLink.href.endsWith('/test-results/containerkojibuild/some-container')).toBe(true);
   }));
 });

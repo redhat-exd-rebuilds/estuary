@@ -1,3 +1,6 @@
+import { GreenwaveDecision } from '../models/greenwave.type';
+
+
 export let bug = {
     'assignee': {
       'email': 'user1@redhat.com',
@@ -486,4 +489,76 @@ export const relationships = {
   'meta': {
     'description': 'Tags of rh-some20-docker-16.23-17.12345'
   }
+};
+
+export const greenwaveDecision: GreenwaveDecision = {
+  'applicable_policies': [
+    'cvp-default'
+  ],
+  'policies_satisfied': true,
+  'results': [
+    {
+      'data': {
+        'item': [
+          'cfme-openshift-app-ui-container-5.9.3.4-1.1533127933'
+        ],
+        'log': [
+          'https://jenkins.domain.local/job/cvp-product-test/1/console'
+        ],
+      },
+      'groups': [
+        'f79f00c2-e0be-4782-8613-7d1b7fa7b6d6'
+      ],
+      'href': 'https://resultsdb.domain.local/api/v2.0/results/6125427',
+      'id': 6125427,
+      'note': '',
+      'outcome': 'INFO',
+      'ref_url': 'https://jenkins.domain.local/job/cvp-product-test/1/',
+      'submit_time': '2018-08-01T19:07:05.442807',
+      'testcase': {
+        'href': 'https://resultsdb.domain.local/api/v2.0/testcases/rhproduct.default.functional',
+        'name': 'rhproduct.default.functional',
+        'ref_url': 'https://jenkins.domain.local/'
+      }
+    },
+    {
+      'data': {
+        'item': [
+          'cfme-openshift-app-ui-container-5.9.3.4-1.1533127933'
+        ],
+        'log': [
+          'https://jenkins.domain.local/job/cvp-product-test/1/console'
+        ],
+      },
+      'groups': [
+        'b6d8bbeb-a7ea-4bc3-b062-25eb8f404b2e'
+      ],
+      'href': 'https://resultsdb.domain.local/api/v2.0/results/6125319',
+      'id': 6125319,
+      'note': '',
+      'outcome': 'PASSED',
+      'ref_url': 'https://jenkins.domain.local/job/cvp-product-test/1/',
+      'submit_time': '2018-08-01T19:04:49.074767',
+      'testcase': {
+        'href': 'https://resultsdb.domain.local/api/v2.0/testcases/rhproduct.default.sanity',
+        'name': 'rhproduct.default.sanity',
+        'ref_url': 'https://jenkins.domain.local/'
+      }
+    }
+  ],
+  'satisfied_requirements': [
+    {
+      'result_id': 6125319,
+      'testcase': 'rhproduct.default.sanity',
+      'type': 'test-result-passed'
+    },
+    {
+      'result_id': 6125427,
+      'testcase': 'rhproduct.default.functional',
+      'type': 'test-result-passed'
+    }
+  ],
+  'summary': 'All required tests passed',
+  'unsatisfied_requirements': [],
+  'waivers': []
 };

@@ -52,6 +52,19 @@ describe('GreenwaveService testing', () => {
     req.flush(testData);
   });
 
+  it('getArtifactDecision calls getDecision correctly with a ContainerKojiBuild', () => {
+    spyOn(greenwaveService, 'getDecision');
+    greenwaveService.getArtifactDecision('containerkojibuild', 'some-nvr');
+    expect(greenwaveService.getDecision).toHaveBeenCalledWith('some-nvr', 'cvp_default', 'cvp', 'koji_build', true);
+  });
+
+  it('getArtifactDecision calls getDecision correctly with a KojiBuild', () => {
+    spyOn(greenwaveService, 'getDecision');
+    greenwaveService.getArtifactDecision('kojibuild', 'yum-utils-1.1.31-46.el8');
+    expect(greenwaveService.getDecision).toHaveBeenCalledWith(
+      'yum-utils-1.1.31-46.el8', 'osci_compose_gate', 'rhel-8', 'koji_build', true);
+  });
+
   it('can parse the RHEL version from an NVR', () => {
     expect(greenwaveService.getProductVersionFromNVR('yum-utils-1.1.31-46.el7_5')).toBe('rhel-7');
   });
@@ -82,5 +95,9 @@ describe('GreenwaveService testing', () => {
     greenwaveDecision.policies_satisfied = false;
     const statusName = greenwaveService.getStatusName(greenwaveDecision);
     expect(statusName).toBe('Failed');
+  });
+
+  it('gets the subject identifier from an artifact', () => {
+    expect(greenwaveService.getSubjectIdentifier({display_name: 'some-nvr'})).toBe('some-nvr');
   });
 });

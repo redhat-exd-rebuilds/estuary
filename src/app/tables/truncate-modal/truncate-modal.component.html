@@ -1,0 +1,19 @@
+<a href="#" class="modal-link" (click)="openModal(truncateModal); $event.preventDefault()">
+  {{ value | truncate: 50 }}
+</a>
+
+<!-- Define the modal template to be shown when the text is clicked -->
+<ng-template #truncateModal>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{ column }}</h4>
+    <button type="button" class="close pull-right" (click)="modalRef.hide()">&times;</button>
+  </div>
+  <div class="modal-body">
+    <ng-container *ngIf="preformatted; else noPre">
+      <pre>{{ value }}</pre>
+    </ng-container>
+  </div>
+  <ng-template #noPre>
+    {{ value }}
+  </ng-template>
+</ng-template>

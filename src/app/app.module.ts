@@ -23,10 +23,14 @@ import { AlertComponent } from './alert/alert.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SiblingsComponent } from './story/siblings/siblings.component';
-import { ArtifactsTableComponent } from './artifacts-table/artifacts-table.component';
+import { ArtifactsTableComponent } from './tables/artifacts-table/artifacts-table.component';
 import { ArtifactRelationshipComponent } from './story/artifact-relationship/artifact-relationship.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { environment } from '../environments/environment';
+import { EstuaryTableComponent } from './tables/table.component';
+import { TruncateModalComponent } from './tables/truncate-modal/truncate-modal.component';
+import { TestsTableComponent } from './tables/tests-table/tests-table.component';
+import { TestResultsComponent } from './story/test-results/test-results.component';
 
 
 @NgModule({
@@ -48,7 +52,11 @@ import { environment } from '../environments/environment';
     PropertyValueDisplayPipe,
     ArtifactsTableComponent,
     ArtifactRelationshipComponent,
-    NodeDisplayNamePipe
+    NodeDisplayNamePipe,
+    EstuaryTableComponent,
+    TruncateModalComponent,
+    TestsTableComponent,
+    TestResultsComponent,
   ],
   imports: [
     AppRoutingModule,
