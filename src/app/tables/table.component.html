@@ -45,30 +45,31 @@
             <ng-container *ngFor="let column of columns | keyvalue">
               <!-- column.value is a boolean determining if the column is selected to be shown by the user -->
               <td *ngIf="column.value">
-                <ng-container [ngSwitch]="true">
-                  <!-- Check if the column should be a link -->
-                  <ng-container *ngSwitchCase="linkColumnMappings &&
-                                               uidColumn &&
-                                               linkColumnMappings[item[uidColumn]] !== undefined &&
-                                               linkColumnMappings[item[uidColumn]][column.key] !== undefined">
-                    <a [href]="linkColumnMappings[item[uidColumn]][column.key]" target="_blank">
-                      {{ item[column.key] }}
-                    </a>
-                  </ng-container>
+                <!-- Check if the column should be a link -->
+                <ng-container *ngIf="linkColumnMappings &&
+                                     uidColumn &&
+                                     linkColumnMappings[item[uidColumn]] !== undefined &&
+                                     linkColumnMappings[item[uidColumn]][column.key] !== undefined;
+                                     else notLinkColumn">
+                  <a [href]="linkColumnMappings[item[uidColumn]][column.key]" target="_blank">
+                    {{ item[column.key] }}
+                  </a>
+                </ng-container>
 
+                <ng-template #notLinkColumn>
                   <!-- If the value is too long, use the TruncateModal component -->
                   <app-truncate-modal
-                      *ngSwitchCase="item[column.key].length > 50"
+                      *ngIf="item[column.key].length > 50; else notTruncatedColumn"
                       [column]="column.key"
                       [value]="item[column.key]"
                       [preformatted]="preformattedColumns && preformattedColumns.includes(column.key)"
                   ></app-truncate-modal>
 
                   <!-- By default, just show the value the way it is -->
-                  <ng-container *ngSwitchDefault>
+                  <ng-template #notTruncatedColumn>
                     {{ item[column.key] }}
-                  </ng-container>
-                </ng-container>
+                  </ng-template>
+                </ng-template>
               </td>
             </ng-container>
           </tr>
