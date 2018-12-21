@@ -8,7 +8,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ToastNotificationModule } from 'patternfly-ng/notification';
-import { OAuthModule } from 'angular-oauth2-oidc';
+import { OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -76,7 +76,12 @@ import { TestResultsComponent } from './story/test-results/test-results.componen
       }
     })
   ],
-  providers: [DatePipe],
+  providers: [
+    DatePipe,
+    // Use localStorage instead of sessionStorage for storing the OpenID
+    // Connect tokens
+    { provide: OAuthStorage, useValue: localStorage }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
