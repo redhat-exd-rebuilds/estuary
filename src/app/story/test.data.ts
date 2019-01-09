@@ -533,6 +533,30 @@ export const greenwaveDecision: GreenwaveDecision = {
       'groups': [
         'b6d8bbeb-a7ea-4bc3-b062-25eb8f404b2e'
       ],
+      'href': 'https://resultsdb.domain.local/api/v2.0/results/6125318',
+      'id': 6125318,
+      'note': '',
+      'outcome': 'PASSED',
+      'ref_url': 'https://jenkins.domain.local/job/cvp-product-test/1/',
+      'submit_time': '2018-08-01T19:03:49.074767',
+      'testcase': {
+        'href': 'https://resultsdb.domain.local/api/v2.0/testcases/rhproduct.default.sanity',
+        'name': 'rhproduct.default.sanity',
+        'ref_url': 'https://jenkins.domain.local/'
+      }
+    },
+    {
+      'data': {
+        'item': [
+          'cfme-openshift-app-ui-container-5.9.3.4-1.1533127933'
+        ],
+        'log': [
+          'https://jenkins.domain.local/job/cvp-product-test/1/console'
+        ],
+      },
+      'groups': [
+        'b6d8bbeb-a7ea-4bc3-b062-25eb8f404b2e'
+      ],
       'href': 'https://resultsdb.domain.local/api/v2.0/results/6125319',
       'id': 6125319,
       'note': '',
