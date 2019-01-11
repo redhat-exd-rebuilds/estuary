@@ -47,28 +47,37 @@ export class TestsTableComponent implements OnChanges {
       .filter(waiver => waiver.waived)
       .map(waiver => waiver.testcase);
 
-    this.formattedResults = this.greenwaveDecision.results.map(result => {
-      const formattedResult = {
-        'ID': result.id,
-        'Item': result.data.item,
-        'Status': result.outcome,
-        'Test Case': result.testcase.name,
-        'Logs': 'No logs available',
-        'Waived': waivedTestCases.includes(result.testcase.name) ? 'Yes' : 'No',
-      };
+    const sortedResults = this.greenwaveDecision.results.slice().sort((a, b) => {
+      return new Date(a.submit_time) > new Date(b.submit_time) ? -1 : (new Date(b.submit_time) > new Date(a.submit_time) ? 1 : 0);
+    });
+    const processedTestCases = [];
+    for (const result of sortedResults) {
+      /* showing only the last result */
+      if (!processedTestCases.includes(result.testcase.name)) {
+        const formattedResult = {
+          'ID': result.id,
+          'Item': result.data.item,
+          'Status': result.outcome,
+          'Test Case': result.testcase.name,
+          'Logs': 'No logs available',
+          'Waived': waivedTestCases.includes(result.testcase.name) ? 'Yes' : 'No',
+        };
 
-      this.linkColumnMappings[result.id] = {
-        'ID': result.href,
-        'Test Case': result.testcase.href,
-      };
+        this.linkColumnMappings[result.id] = {
+          'ID': result.href,
+          'Test Case': result.testcase.href,
+        };
 
-      if (result.data.log) {
-        formattedResult['Logs'] = 'Test Run Logs';
-        this.linkColumnMappings[result.id]['Logs'] = result.data.log;
+        if (result.data.log) {
+          formattedResult['Logs'] = 'Test Run Logs';
+          this.linkColumnMappings[result.id]['Logs'] = result.data.log;
+        }
+
+        this.formattedResults.push(formattedResult);
+        processedTestCases.push(result.testcase.name);
       }
 
-      return formattedResult;
-    });
+    }
   }
 
   onChildError(errorMsg: string) {
