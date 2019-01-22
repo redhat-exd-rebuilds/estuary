@@ -72,7 +72,7 @@ export class GreenwaveService {
   getArtifactDecision(resource: string, subjectIdentifier: string, verbose = true): Observable<any> {
     let decisionContext: string;
     let productVersion: string;
-    const subjectType = 'koji_build';
+    let subjectType = 'koji_build';
 
     switch (resource.toLowerCase()) {
       case('containerkojibuild'):
@@ -90,6 +90,11 @@ export class GreenwaveService {
           // since the caller expects an observable to be returned
           return emptyObservable;
         }
+        break;
+      case('modulekojibuild'):
+        decisionContext = 'osci_compose_gate_modules';
+        productVersion = 'rhel-8';
+        subjectType = 'redhat-module';
         break;
       default:
         return emptyObservable;
