@@ -65,6 +65,13 @@ describe('GreenwaveService testing', () => {
       'yum-utils-1.1.31-46.el8', 'osci_compose_gate', 'rhel-8', 'koji_build', true);
   });
 
+  it('getArtifactDecision calls getDecision correctly with a ModuleKojiBuild', () => {
+    spyOn(greenwaveService, 'getDecision');
+    greenwaveService.getArtifactDecision('modulekojibuild', '389-ds-1.4-820190111173433.9edba152');
+    expect(greenwaveService.getDecision).toHaveBeenCalledWith(
+      '389-ds-1.4-820190111173433.9edba152', 'osci_compose_gate_modules', 'rhel-8', 'redhat-module', true);
+  });
+
   it('can parse the RHEL version from an NVR', () => {
     expect(greenwaveService.getProductVersionFromNVR('yum-utils-1.1.31-46.el7_5')).toBe('rhel-7');
   });
