@@ -66,7 +66,7 @@ describe('ArtifactsTableComponent', () => {
     const bzUrl = 'https://bugzilla.redhat.com/show_bug.cgi?id=';
     // Ensure the title on the page is correct
     const title = fixture.debugElement.query(By.css('.title')).nativeElement;
-    expect(title.textContent).toBe('Bugzilla bugs resolved by commit #eacc1bf66aa53b3136ac045ead618e18a6751625');
+    expect(title.textContent.trim()).toBe('Bugzilla bugs resolved by commit #eacc1bf66aa53b3136ac045ead618e18a6751625');
 
     // Ensure the table headers show only the default columns
     const tableHeaders = fixture.debugElement.queryAll(By.css('.estuary-table th'));

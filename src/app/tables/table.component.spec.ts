@@ -21,6 +21,7 @@ describe('EstuaryTableComponent', () => {
     selector: 'app-test-host',
     template: `<app-table
                   [title]="title"
+                  [titleLink]="titleLink"
                   [items]="items"
                   [defaultColumns]="defaultColumns"
                   [defaultSortedColumn]="defaultSortedColumn"
@@ -31,6 +32,7 @@ describe('EstuaryTableComponent', () => {
   class TestHostComponent {
     // All the inputs to EstuaryTableComponent are defined here
     title: string;
+    titleLink: string;
     items: Array<any>;
     defaultColumns: Array<string>;
     defaultSortedColumn: string;
@@ -101,7 +103,7 @@ describe('EstuaryTableComponent', () => {
   it('should show the table', fakeAsync(() => {
     // Ensure the title on the page is correct
     const title = fixture.debugElement.query(By.css('.title')).nativeElement;
-    expect(title.textContent).toBe('Classic Rock Bands');
+    expect(title.textContent.trim()).toBe('Classic Rock Bands');
 
     // Ensure the table headers show only the default columns
     const tableHeaders = fixture.debugElement.queryAll(By.css('.estuary-table th'));
@@ -180,6 +182,18 @@ describe('EstuaryTableComponent', () => {
     expect(rowFourLink.tagName).toBe('A');
     expect(rowFourLink.textContent.trim()).toBe('5');
     expect(rowFourLink.href).toBe('https://en.wikipedia.org/wiki/Unknown');
+  }));
+
+  it('should show the title link', fakeAsync(() => {
+    const href = 'https://en.wikipedia.org/wiki/Classic_rock';
+    component.titleLink = href;
+    fixture.detectChanges();
+    // Ensure the title and title link on the page are correct
+    const title = fixture.debugElement.query(By.css('.title')).nativeElement;
+    expect(title.textContent.trim()).toBe('Classic Rock Bands');
+    const titleLink = title.firstElementChild;
+    expect(titleLink.tagName).toBe('A');
+    expect(titleLink.href).toBe(href);
   }));
 
   it('should allow columns to be selected', fakeAsync(() => {

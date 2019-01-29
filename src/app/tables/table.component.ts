@@ -10,6 +10,8 @@ export class EstuaryTableComponent implements OnChanges {
 
   // The title describing the table
   @Input() title: string;
+  // An optional title link
+  @Input() titleLink: string;
   // The array of objects to display in the table
   @Input() items: Array<any>;
   // The columns to show by default when the component is first displayed
