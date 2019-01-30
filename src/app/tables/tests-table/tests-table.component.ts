@@ -13,6 +13,7 @@ export class TestsTableComponent implements OnChanges {
   @Output() error = new EventEmitter<string>();
   formattedResults: Array<any>;
   title: string;
+  titleLink: string;
   defaultColumns: Array<string>;
   defaultSortedColumn: string;
   uidColumn: string;
@@ -39,8 +40,12 @@ export class TestsTableComponent implements OnChanges {
     this.formattedResults = [];
     this.linkColumnMappings = {};
     this.title = `Test Results for ${this.subjectIdentifier}`;
+    this.titleLink = null;
     if (!this.greenwaveDecision) {
       return;
+    }
+    if (this.greenwaveDecision.applicable_policies.filter(v => v.startsWith('osci')).length) {
+      this.titleLink = `https://dashboard.osci.redhat.com/#/artifact/brew-build/nvr/${this.subjectIdentifier}?scratch=false`;
     }
 
     const waivedTestCases = this.greenwaveDecision.waivers

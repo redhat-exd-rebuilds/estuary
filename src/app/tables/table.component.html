@@ -1,5 +1,12 @@
 <div class="estuary-container">
-  <h2 class="title">{{ title }}</h2>
+  <h2 class="title">
+    <ng-container *ngIf="titleLink; else plainTitle">
+      <a [href]="titleLink" target="_blank">{{ title }}</a>
+    </ng-container>
+    <ng-template #plainTitle>
+      {{ title }}
+    </ng-template>
+  </h2>
   <div class="estuary-table-header" *ngIf="items && items.length">
       <!-- Set autoClose to false so that way the dropdown menu doesn't close when a user clicks on a check box -->
       <div class="btn-group estuary-table-header__btn-group" dropdown [autoClose]="false">

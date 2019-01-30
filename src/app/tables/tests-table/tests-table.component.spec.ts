@@ -67,7 +67,7 @@ describe('ArtifactsTableComponent', () => {
     const jenkinsLogURL = 'https://jenkins.domain.local/job/cvp-product-test/1/console';
     // Ensure the title on the page is correct
     const title = fixture.debugElement.query(By.css('.title')).nativeElement;
-    expect(title.textContent).toBe('Test Results for cfme-openshift-app-ui-container-5.9.3.4-1.1533127933');
+    expect(title.textContent.trim()).toBe('Test Results for cfme-openshift-app-ui-container-5.9.3.4-1.1533127933');
 
     // Ensure the table headers show only the default columns
     const tableHeaders = fixture.debugElement.queryAll(By.css('.estuary-table th'));
