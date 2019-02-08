@@ -28,6 +28,9 @@
         <span class="estuary-table-header__columns-text-ending">selected</span>
       </div>
       <button class="estuary-table-header__export-btn" (click)="exportToCsv()">Export CSV</button>
+      <div class="estuary-table-header__columns-text estuary-table-header__num-elements">
+        Showing {{ items.length }} items
+      </div>
   </div>
 
   <div class="estuary-table-responsive" *ngIf="items && items.length">

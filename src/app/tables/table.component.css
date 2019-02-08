@@ -138,6 +138,11 @@
     display: none;
 }
 
+.estuary-table-header__num-elements {
+    /* Don't display the num of elements on mobile */
+    display: none;
+}
+
 .estuary-table td, .estuary-table th {
     border: none;
     padding: 1rem;
@@ -196,6 +201,10 @@
 
     .estuary-table-header__export-btn:focus {
         outline: none;
+    }
+
+    .estuary-table-header__num-elements {
+        display: initial;
     }
 
     .estuary-table {
