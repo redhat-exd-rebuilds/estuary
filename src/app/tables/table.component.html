@@ -7,81 +7,85 @@
       {{ title }}
     </ng-template>
   </h2>
-  <div class="estuary-table-header" *ngIf="items && items.length">
-      <!-- Set autoClose to false so that way the dropdown menu doesn't close when a user clicks on a check box -->
-      <div class="btn-group estuary-table-header__btn-group" dropdown [autoClose]="false">
-        <button type="button" class="btn dropdown-toggle estuary-table-header__dropdown-button" dropdownToggle>
-          Show Columns<i class="fa fa-angle-down"></i>
-        </button>
-        <!-- Create a dropdown menu with all the columns the user can choose to have shown -->
-        <ul *dropdownMenu class="dropdown-menu estuary-table-header__dropdown-menu">
-          <li *ngFor="let column of columns | keyvalue">
-            <!-- The default columns will be checked by default, any changes made by the user will trigger the
-                 setColumnState method to be called, which will store that state change in the columns component property. 
-                 This change will then be reflected by Angular when it reruns the various ngFors in this template. -->
-            <input type="checkbox" [checked]="column.value" (change)="setColumnState(column.key)" /> {{ column.key }}
-          </li>
-        </ul>
+  <div class="estuary-table-container">
+    <div class="estuary-table-header" *ngIf="items && items.length">
+        <!-- Set autoClose to false so that way the dropdown menu doesn't close when a user clicks on a check box -->
+        <div class="btn-group estuary-table-header__btn-group" dropdown [autoClose]="false">
+          <button type="button" class="btn dropdown-toggle estuary-table-header__dropdown-button" dropdownToggle>
+            Show Columns<i class="fa fa-angle-down"></i>
+          </button>
+          <!-- Create a dropdown menu with all the columns the user can choose to have shown -->
+          <ul *dropdownMenu class="dropdown-menu estuary-table-header__dropdown-menu">
+            <li *ngFor="let column of columns | keyvalue">
+              <!-- The default columns will be checked by default, any changes made by the user will trigger the
+                  setColumnState method to be called, which will store that state change in the columns component property.
+                  This change will then be reflected by Angular when it reruns the various ngFors in this template. -->
+              <input type="checkbox" [checked]="column.value" (change)="setColumnState(column.key)" /> {{ column.key }}
+            </li>
+          </ul>
       </div>
-      <div class="estuary-table-header__columns-text">
-        {{ numActiveColumns }} of {{ numColumns }} columns
-        <span class="estuary-table-header__columns-text-ending">selected</span>
+
+        <div class="estuary-table-header__columns-text">
+          {{ numActiveColumns }} of {{ numColumns }} columns
+          <span class="estuary-table-header__columns-text-ending">selected</span>
+        </div>
+        <button class="estuary-table-header__export-btn" (click)="exportToCsv()">Export CSV</button>
+        <div class="estuary-table-header__columns-text estuary-table-header__num-elements">
+          Showing {{ items.length }} items
+        </div>
       </div>
-      <button class="estuary-table-header__export-btn" (click)="exportToCsv()">Export CSV</button>
-  </div>
 
-  <div class="estuary-table-responsive" *ngIf="items && items.length">
-    <div class="estuary-table-wrapper">
-      <table class="table estuary-table">
-        <thead>
-          <tr>
-            <!-- Display a header cell for every active column -->
-            <ng-container *ngFor="let column of columns | keyvalue">
-              <th *ngIf="column.value" (click)="sortTable(column.key)">
-                <!-- Display an arrow if the table is being sorted by this column -->
-                {{ column.key }}<i class="fa estuary-table__sort-icon"
-                    [ngClass]="{'fa-angle-down': sortedBy === column.key, 'fa-angle-up': sortedBy === '-' + column.key}"></i>
-              </th>
-            </ng-container>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Display a table row for every item -->
-          <tr *ngFor="let item of items">
-            <!-- Display all the active columns for each item -->
-            <ng-container *ngFor="let column of columns | keyvalue">
-              <!-- column.value is a boolean determining if the column is selected to be shown by the user -->
-              <td *ngIf="column.value">
-                <!-- Check if the column should be a link -->
-                <ng-container *ngIf="linkColumnMappings &&
-                                     uidColumn &&
-                                     linkColumnMappings[item[uidColumn]] !== undefined &&
-                                     linkColumnMappings[item[uidColumn]][column.key] !== undefined;
-                                     else notLinkColumn">
-                  <a [href]="linkColumnMappings[item[uidColumn]][column.key]" target="_blank">
-                    {{ item[column.key] }}
-                  </a>
-                </ng-container>
+    <div class="estuary-table-responsive" *ngIf="items && items.length">
+        <table class="table estuary-table">
+          <thead>
+            <tr>
+              <!-- Display a header cell for every active column -->
+              <ng-container *ngFor="let column of columns | keyvalue">
+                <th *ngIf="column.value" (click)="sortTable(column.key)">
+                  <!-- Display an arrow if the table is being sorted by this column -->
+                  {{ column.key }}<i class="fa estuary-table__sort-icon"
+                      [ngClass]="{'fa-angle-down': sortedBy === column.key, 'fa-angle-up': sortedBy === '-' + column.key}"></i>
+                </th>
+              </ng-container>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Display a table row for every item -->
+            <tr *ngFor="let item of items">
+              <!-- Display all the active columns for each item -->
+              <ng-container *ngFor="let column of columns | keyvalue">
+                <!-- column.value is a boolean determining if the column is selected to be shown by the user -->
+                <td *ngIf="column.value">
+                  <!-- Check if the column should be a link -->
+                  <ng-container *ngIf="linkColumnMappings &&
+                                      uidColumn &&
+                                      linkColumnMappings[item[uidColumn]] !== undefined &&
+                                      linkColumnMappings[item[uidColumn]][column.key] !== undefined;
+                                      else notLinkColumn">
+                    <a [href]="linkColumnMappings[item[uidColumn]][column.key]" target="_blank">
+                      {{ item[column.key] }}
+                    </a>
+                  </ng-container>
 
-                <ng-template #notLinkColumn>
-                  <!-- If the value is too long, use the TruncateModal component -->
-                  <app-truncate-modal
-                      *ngIf="item[column.key].length > 50; else notTruncatedColumn"
-                      [column]="column.key"
-                      [value]="item[column.key]"
-                      [preformatted]="preformattedColumns && preformattedColumns.includes(column.key)"
-                  ></app-truncate-modal>
+                  <ng-template #notLinkColumn>
+                    <!-- If the value is too long, use the TruncateModal component -->
+                    <app-truncate-modal
+                        *ngIf="item[column.key].length > 50; else notTruncatedColumn"
+                        [column]="column.key"
+                        [value]="item[column.key]"
+                        [preformatted]="preformattedColumns && preformattedColumns.includes(column.key)"
+                    ></app-truncate-modal>
 
-                  <!-- By default, just show the value the way it is -->
-                  <ng-template #notTruncatedColumn>
-                    {{ item[column.key] }}
+                    <!-- By default, just show the value the way it is -->
+                    <ng-template #notTruncatedColumn>
+                      {{ item[column.key] }}
+                    </ng-template>
                   </ng-template>
-                </ng-template>
-              </td>
-            </ng-container>
-          </tr>
-        </tbody>
-      </table>
+                </td>
+              </ng-container>
+            </tr>
+          </tbody>
+        </table>
     </div>
   </div>
 </div>

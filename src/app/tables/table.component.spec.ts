@@ -122,6 +122,10 @@ describe('EstuaryTableComponent', () => {
     const rows = fixture.debugElement.queryAll(By.css('.estuary-table tbody > tr'));
     expect(rows.length).toBe(4);
 
+    // Make sure the number of items corresponds to what we say is shown in the label
+    const numItemsLabel = fixture.debugElement.query(By.css('.estuary-table-header__num-elements')).nativeElement;
+    expect(numItemsLabel.textContent.trim()).toBe('Showing ' + rows.length + ' items');
+
     // Validate the text in row one. It should start with "The Eagles" since that has the first ID
     // and the sorting is by the `ID` column by default.
     const rowOneColumns = rows[0].nativeElement.children;

@@ -5,6 +5,14 @@
     margin-bottom: 2.5rem;
 }
 
+.estuary-table-container {
+    /* Setting this to display as inline-block will cause it to grow with the table */
+    display: inline-block;
+    /* We want the container to only go as large as the container it is inside */
+    max-width: 100%;
+    min-width: 300px;
+}
+
 /* A wrapper around the table for when it gets too wide */
 .estuary-table-responsive {
     overflow-x: auto;
@@ -13,13 +21,6 @@
     border: none;
 }
 
-/* A wrapper around the table to create the section above the table for the "Show Columns" button to go */
-.estuary-table-wrapper {
-    background-color: #ffffff;
-    display: inline-block;
-    padding-top: 8rem;
-    min-width: 350px;
-}
 
 .title {
     font-size: 2rem;
@@ -32,13 +33,15 @@
    div.estuary-table-responsive, otherwise, it will cause a vertical scroll bar to appear
    on short tables when the "Show Columns" button is expanded. */
 .estuary-table-header {
-    /* Make the width 100% minus the padding used by div.estuary-container */
-    width: calc(100% - 3rem);
-    /* Make the position absolute so the header is positioned on top of the padding-top of
-       div.estuary-table-wrapper */
-    position: absolute;
-    margin-left: 2rem;
-    margin-top: 2.4rem;
+    display: flex;
+    background-color: #ffffff;
+    padding: 2rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.estuary-table-header > div:last-child {
+    margin-left: auto;
 }
 
 .estuary-table {
@@ -58,20 +61,13 @@
         margin-bottom: 3rem;
     }
 
-    .estuary-table-header {
-        /* Make the width 100% minus the padding used by div.estuary-container */
-        width: calc(100% - 10rem);
+    .estuary-table-container {
+        min-width: 640px;
     }
 }
 
 
 /* ----- Elements ----- */
-.estuary-table-header__btn-group {
-    /* A small hack to make the button vertically centered with the text on the line */
-    position: relative;
-    top: -3px;
-}
-
 .estuary-table-header__dropdown-button, .open > .estuary-table-header__dropdown-button,
 .estuary-table-header__dropdown-button:active {
     /* Override the colors default to Bootstrap */
@@ -122,7 +118,6 @@
 
 .estuary-table-header__columns-text {
     /* Position this a little below where it normally is so it is centered with the button  */
-    display: inline-block;
     margin-left: 1.5rem;
     color: #8c8d8f;
     font-size: 115%;
@@ -135,6 +130,11 @@
 
 .estuary-table-header__export-btn {
     /* Don't display the export to CSV button on mobile */
+    display: none;
+}
+
+.estuary-table-header__num-elements {
+    /* Don't display the num of elements on mobile */
     display: none;
 }
 
@@ -196,6 +196,10 @@
 
     .estuary-table-header__export-btn:focus {
         outline: none;
+    }
+
+    .estuary-table-header__num-elements {
+        display: initial;
     }
 
     .estuary-table {
