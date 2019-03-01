@@ -19,7 +19,7 @@ import { PropertyDisplayPipe, PropertyValueDisplayPipe } from './pipes/propertyd
 import { NodeTypeDisplayPipe, NodeTypePluralPipe, NodeExternalUrlPipe,
          TruncatePipe, NodeDisplayNamePipe } from './pipes/nodedisplay';
 import { SearchComponent } from './search/search.component';
-import { AlertComponent } from './alert/alert.component';
+import { NotificationComponent } from './notification/notification.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SiblingsComponent } from './story/siblings/siblings.component';
@@ -44,7 +44,7 @@ import { TestResultsComponent } from './story/test-results/test-results.componen
     NodeTypeDisplayPipe,
     NodeTypePluralPipe,
     NodeExternalUrlPipe,
-    AlertComponent,
+    NotificationComponent,
     SpinnerComponent,
     TruncatePipe,
     NavbarComponent,

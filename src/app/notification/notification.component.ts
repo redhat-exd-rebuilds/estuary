@@ -2,9 +2,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
-  selector: 'app-alert',
-  templateUrl: './alert.component.html',
-  styleUrls: ['./alert.component.css'],
+  selector: 'app-notification',
+  templateUrl: './notification.component.html',
+  styleUrls: ['./notification.component.css'],
   animations: [
     trigger('slideInEaseOut', [
       transition(':enter', [
@@ -21,7 +21,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
     ])
   ]
 })
-export class AlertComponent {
+export class NotificationComponent {
 
   @Output() errorMsgChange: EventEmitter<string> = new EventEmitter<string>();
   @Input() errorMsg: string;

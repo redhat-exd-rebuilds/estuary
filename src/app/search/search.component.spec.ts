@@ -8,7 +8,7 @@ import { ToastNotificationModule } from 'patternfly-ng/notification';
 
 import { SearchComponent } from './search.component';
 import { NodeTypeDisplayPipe } from '../pipes/nodedisplay';
-import { AlertComponent } from '../alert/alert.component';
+import { NotificationComponent } from '../notification/notification.component';
 import { PropertyDisplayPipe } from '../pipes/propertydisplay';
 
 
@@ -18,7 +18,7 @@ describe('SearchComponent testing', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-        declarations: [SearchComponent, AlertComponent, NodeTypeDisplayPipe, PropertyDisplayPipe],
+        declarations: [SearchComponent, NotificationComponent, NodeTypeDisplayPipe, PropertyDisplayPipe],
         imports: [FormsModule, ToastNotificationModule, HttpClientTestingModule, RouterTestingModule, NoopAnimationsModule]
     }).compileComponents();
     fixture = TestBed.createComponent(SearchComponent);
@@ -28,8 +28,8 @@ describe('SearchComponent testing', () => {
   it('should display the search with a populated drop-down and correct placeholder text', fakeAsync(() => {
     fixture.detectChanges();
     tick();
-    const alertEl = fixture.debugElement.query(By.css('pfng-toast-notification'));
-    expect(alertEl).toBeNull();
+    const notificationEl = fixture.debugElement.query(By.css('pfng-toast-notification'));
+    expect(notificationEl).toBeNull();
 
     const dropdownEl = fixture.debugElement.query(By.css('select')).nativeElement;
     const dropDownOptions = dropdownEl.children;

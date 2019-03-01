@@ -8,7 +8,7 @@ import { of } from 'rxjs';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
-import { AlertComponent } from './alert/alert.component';
+import { NotificationComponent } from './notification/notification.component';
 import { NodeTypeDisplayPipe, NodeTypePluralPipe, NodeExternalUrlPipe, TruncatePipe,
          NodeDisplayNamePipe } from './pipes/nodedisplay';
 import { PropertyDisplayPipe } from './pipes/propertydisplay';
@@ -48,7 +48,7 @@ describe('AppComponent', () => {
 
     TestBed.configureTestingModule({
       declarations: [
-        AlertComponent,
+        NotificationComponent,
         AppComponent,
         ArtifactRelationshipComponent,
         NavbarComponent,
