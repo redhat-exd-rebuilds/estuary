@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { NotificationService } from '../services/notification.service';
 
 
 @Component({
@@ -12,9 +13,8 @@ export class SearchComponent implements OnDestroy {
   availableResources: Array<any>;
   selectedResource: string;
   selectedUID: string;
-  errorMsg: string;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private notification: NotificationService) {
     // Set the the background image
     document.body.className = 'searchBg';
     this.availableResources = [
@@ -36,7 +36,7 @@ export class SearchComponent implements OnDestroy {
     if (this.selectedResource && this.selectedUID) {
       this.router.navigate(['/', this.selectedResource, this.selectedUID.trim()]);
     } else {
-      this.errorMsg = 'Please enter a search value';
+      this.notification.display('Please enter a search value', 'danger');
     }
   }
 }

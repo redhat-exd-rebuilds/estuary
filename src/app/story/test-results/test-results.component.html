@@ -1,10 +1,5 @@
 <app-spinner [loading]="loading"></app-spinner>
 <app-navbar></app-navbar>
 
-<app-tests-table
-    [greenwaveDecision]="greenwaveDecision"
-    [subjectIdentifier]="subjectIdentifier"
-    (error)="onTableError($event)">
+<app-tests-table [greenwaveDecision]="greenwaveDecision" [subjectIdentifier]="subjectIdentifier">
 </app-tests-table>
-
-<app-notification [(errorMsg)]="errorMsg"></app-notification>

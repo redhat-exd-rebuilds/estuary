@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule,  } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatePipe } from '@angular/common';
@@ -31,6 +31,7 @@ import { EstuaryTableComponent } from './tables/table.component';
 import { TruncateModalComponent } from './tables/truncate-modal/truncate-modal.component';
 import { TestsTableComponent } from './tables/tests-table/tests-table.component';
 import { TestResultsComponent } from './story/test-results/test-results.component';
+import { HTTPErrorHandler } from './interceptors/http-error-handler';
 
 
 @NgModule({
@@ -80,7 +81,12 @@ import { TestResultsComponent } from './story/test-results/test-results.componen
     DatePipe,
     // Use localStorage instead of sessionStorage for storing the OpenID
     // Connect tokens
-    { provide: OAuthStorage, useValue: localStorage }
+    { provide: OAuthStorage, useValue: localStorage },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HTTPErrorHandler,
+      multi: true,
+    }
   ],
   bootstrap: [AppComponent]
 })

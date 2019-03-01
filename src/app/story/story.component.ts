@@ -19,7 +19,6 @@ export class StoryComponent implements OnInit, AfterViewInit, OnDestroy {
   loading: boolean;
   story: StoryAPI;
   selectedNode: any;
-  errorMsg: string;
 
   constructor(private storyService: StoryService, private route: ActivatedRoute,
               private elRef: ElementRef) {
@@ -74,8 +73,7 @@ export class StoryComponent implements OnInit, AfterViewInit, OnDestroy {
         this.story = story;
         this.loading = false;
       },
-      errorResponse => {
-        this.errorMsg = errorResponse.error.message;
+      () => {
         this.loading = false;
       }
     );
@@ -154,9 +152,5 @@ export class StoryComponent implements OnInit, AfterViewInit, OnDestroy {
       // The whole story has been processed, so the connecting lines can now be shown
       jsPlumb.setSuspendDrawing(false, true);
     });
-  }
-
-  onChildError(errorMsg: string) {
-    this.errorMsg = errorMsg;
   }
 }

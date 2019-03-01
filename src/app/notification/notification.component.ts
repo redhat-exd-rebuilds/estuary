@@ -1,5 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { Subscription } from 'rxjs';
+import { Router, NavigationStart } from '@angular/router';
+import { filter } from 'rxjs/operators';
+
+import { NotificationService } from '../services/notification.service';
+import { Notification } from '../models/notification.type';
 
 @Component({
   selector: 'app-notification',
@@ -21,15 +27,45 @@ import { trigger, transition, style, animate } from '@angular/animations';
     ])
   ]
 })
-export class NotificationComponent {
+export class NotificationComponent implements OnInit, OnDestroy {
 
-  @Output() errorMsgChange: EventEmitter<string> = new EventEmitter<string>();
-  @Input() errorMsg: string;
+  /**
+   * The message to display in the toast notification
+   */
+  msg: string;
+  /**
+   * The Patternfly toast notification message type (e.g. 'danger')
+   */
+  msgType: string;
+  private subscription: Subscription;
 
-  constructor() { }
-
-  resetErrorMsg() {
-    this.errorMsg = '';
-    this.errorMsgChange.emit(this.errorMsg);
+  constructor(private notification: NotificationService, private router: Router) {
+    this.router.events.pipe(filter(event => event instanceof NavigationStart)).subscribe(
+      () => {
+        // Close any notifications if they exist when the route changes
+        this.notification.close();
+      }
+    );
   }
+
+  /**
+   * Initialize the component by subscribing to the notifications observable
+   */
+  ngOnInit() {
+    this.subscription = this.notification.notifications
+      .subscribe((notification: Notification) => {
+        this.msg = notification.msg;
+        this.msgType = notification.msgType;
+      });
+  }
+
+  /**
+   * Unsubscribe from the notifications observable when the component is destroyed
+   */
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+
 }

@@ -1,6 +1,6 @@
-<pfng-toast-notification *ngIf="errorMsg" @slideInEaseOut
-  [message]="errorMsg"
+<pfng-toast-notification *ngIf="msg" @slideInEaseOut
+  [message]="msg"
   [showClose]="true"
-  [type]="'danger'"
-  (onCloseSelect)="resetErrorMsg()">
+  [type]="msgType"
+  (onCloseSelect)="notification.close()">
 </pfng-toast-notification>

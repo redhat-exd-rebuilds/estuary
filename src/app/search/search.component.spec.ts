@@ -28,8 +28,6 @@ describe('SearchComponent testing', () => {
   it('should display the search with a populated drop-down and correct placeholder text', fakeAsync(() => {
     fixture.detectChanges();
     tick();
-    const notificationEl = fixture.debugElement.query(By.css('pfng-toast-notification'));
-    expect(notificationEl).toBeNull();
 
     const dropdownEl = fixture.debugElement.query(By.css('select')).nativeElement;
     const dropDownOptions = dropdownEl.children;

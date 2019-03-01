@@ -14,7 +14,6 @@ export class TestResultsComponent implements OnInit {
   loading: boolean;
   greenwaveDecision: GreenwaveDecision;
   subjectIdentifier: string;
-  errorMsg: string;
 
   constructor(private greenwaveService: GreenwaveService, private route: ActivatedRoute) { }
 
@@ -34,17 +33,9 @@ export class TestResultsComponent implements OnInit {
         this.greenwaveDecision = decision;
         this.loading = false;
       },
-      errorResponse => {
-        this.errorMsg = errorResponse.error.message;
-        this.loading = false;
-      },
       () => {
         this.loading = false;
       }
     );
-  }
-
-  onTableError(errorMsg: string): void {
-    this.errorMsg = errorMsg;
   }
 }

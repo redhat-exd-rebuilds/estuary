@@ -4,6 +4,7 @@ import { filter, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
 import { SiblingsService } from '../../services/siblings.service';
+import { NotificationService } from '../../services/notification.service';
 
 
 @Component({
@@ -15,11 +16,10 @@ export class SiblingsComponent implements OnDestroy {
   loading: boolean;
   title: string;
   siblings: Array<any>;
-  errorMsg: string;
   private unsubscribe: Subject<any> = new Subject();
 
   constructor(private siblingsService: SiblingsService, private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute, private notification: NotificationService) {
     this.loading = true;
     this.router.events.pipe(takeUntil(this.unsubscribe),
                             filter((event: RouterEvent) => event instanceof NavigationEnd)).subscribe(() => {
@@ -53,18 +53,13 @@ export class SiblingsComponent implements OnDestroy {
         if (siblings.data.length) {
           this.siblings = siblings.data;
         } else {
-          this.errorMsg = 'There are no siblings associated with this artifact';
+          this.notification.display('There are no siblings associated with this artifact', 'danger');
         }
         this.loading = false;
       },
-      errorResponse => {
-        this.errorMsg = errorResponse.error.message;
+      () => {
         this.loading = false;
       }
     );
-  }
-
-  onTableError(errorMsg: string): void {
-    this.errorMsg = errorMsg;
   }
 }
