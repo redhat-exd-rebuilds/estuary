@@ -14,7 +14,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StoryComponent } from './story.component';
 import { StorysidebarComponent } from './storysidebar/storysidebar.component';
 import { StoryRowComponent } from './storyrow/storyrow.component';
-import { AlertComponent } from '../alert/alert.component';
+import { NotificationComponent } from '../notification/notification.component';
 import { SpinnerComponent } from '../spinner/spinner.component';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { NodeTypeDisplayPipe, NodeTypePluralPipe, NodeExternalUrlPipe,
@@ -42,7 +42,7 @@ describe('StoryComponent testing', () => {
             NodeExternalUrlPipe,
             PropertyDisplayPipe,
             TruncatePipe,
-            AlertComponent,
+            NotificationComponent,
             SpinnerComponent,
             NavbarComponent,
             NodeDisplayNamePipe

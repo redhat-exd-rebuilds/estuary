@@ -10,7 +10,6 @@ export class TestsTableComponent implements OnChanges {
 
   @Input() greenwaveDecision: GreenwaveDecision;
   @Input() subjectIdentifier: string;
-  @Output() error = new EventEmitter<string>();
   formattedResults: Array<any>;
   title: string;
   titleLink: string;
@@ -83,9 +82,5 @@ export class TestsTableComponent implements OnChanges {
       }
 
     }
-  }
-
-  onChildError(errorMsg: string) {
-    this.error.emit(errorMsg);
   }
 }

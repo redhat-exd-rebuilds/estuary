@@ -13,7 +13,6 @@ export class ArtifactsTableComponent implements OnChanges {
 
   @Input() artifacts: Array<any>;
   @Input() title: string;
-  @Output() error = new EventEmitter<string>();
   formattedArtifacts: Array<any>;
   preformattedColumns: Array<string>;
   defaultColumns: Array<string>;
@@ -34,10 +33,6 @@ export class ArtifactsTableComponent implements OnChanges {
         break;
       }
     }
-  }
-
-  onChildError(errorMsg: string) {
-    this.error.emit(errorMsg);
   }
 
   processArtifacts(): void {

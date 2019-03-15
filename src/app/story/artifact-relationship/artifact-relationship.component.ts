@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { RelationshipService } from '../../services/relationship.service';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-artifact-relationship',
@@ -13,9 +14,9 @@ export class ArtifactRelationshipComponent  {
   loading: boolean;
   artifacts: Array<any>;
   title: string;
-  errorMsg: string;
 
-  constructor(private route: ActivatedRoute, private relationshipService: RelationshipService) {
+  constructor(private route: ActivatedRoute, private relationshipService: RelationshipService,
+              private notification: NotificationService) {
     this.artifacts = [];
     this.route.params.subscribe(params => {
       this.getRelatedArtifacts(params['resource'], params['uid'], params['relationship']);
@@ -30,18 +31,13 @@ export class ArtifactRelationshipComponent  {
         if (artifacts.data.length) {
           this.artifacts = artifacts.data;
         } else {
-          this.errorMsg = 'There are no artifacts tied to this relationship';
+          this.notification.display('There are no artifacts tied to this relationship', 'danger');
         }
         this.loading = false;
       },
-      errorResponse => {
-        this.errorMsg = errorResponse.error.message;
+      () => {
         this.loading = false;
       }
     );
-  }
-
-  onTableError(errorMsg: string): void {
-    this.errorMsg = errorMsg;
   }
 }

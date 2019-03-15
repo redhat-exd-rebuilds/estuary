@@ -5,6 +5,7 @@ import { faCheck, faCircle, faExclamation, faTimes, faQuestion, faSpinner } from
 import { StoryComponent } from '../story.component';
 import { GreenwaveService } from '../../services/greenwave.service';
 import { GatingStatus, GreenwaveDecision } from '../../models/greenwave.type';
+import { NotificationService } from '../../services/notification.service';
 
 
 @Component({
@@ -31,7 +32,6 @@ export class StoryRowComponent implements OnChanges, AfterViewInit {
   @Input() forwardSiblings: number;
   @Input() active: boolean;
   @Input() last: boolean;
-  @Output() error = new EventEmitter<string>();
   iconClasses: any;
   backwardSiblingsRouterLink: string;
   forwardSiblingsRouterLink: string;
@@ -44,7 +44,8 @@ export class StoryRowComponent implements OnChanges, AfterViewInit {
   // Font Awesome icons
   faCircle = faCircle;
 
-  constructor(@Host() story: StoryComponent, private greenwave: GreenwaveService) {
+  constructor(@Host() story: StoryComponent, private greenwave: GreenwaveService,
+              private notification: NotificationService) {
     this.story = story;
     this.gatingStatus = {
       icon: null,
@@ -187,7 +188,7 @@ export class StoryRowComponent implements OnChanges, AfterViewInit {
           if (this.greenwave.shouldIgnoreError(error)) {
             this.gatingStatus.loading = false;
           } else {
-            this.error.emit(`Getting the gating decision for "${this.node.display_name}" failed`);
+            this.notification.display(`Getting the gating decision for "${this.node.display_name}" failed`, 'danger');
           }
         },
         () => {

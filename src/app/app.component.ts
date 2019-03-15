@@ -8,7 +8,10 @@ import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
-  template: '<router-outlet (activate)="onActivate()"></router-outlet>',
+  template: `
+    <router-outlet (activate)="onActivate()"></router-outlet>
+    <app-notification></app-notification>
+  `,
 })
 export class AppComponent {
   constructor (private auth: OAuthService, private router: Router) {

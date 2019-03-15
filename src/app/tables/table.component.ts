@@ -1,4 +1,5 @@
 import { Component, OnChanges, Input, Output, EventEmitter } from '@angular/core';
+import { NotificationService } from '../services/notification.service';
 
 
 @Component({
@@ -33,7 +34,6 @@ export class EstuaryTableComponent implements OnChanges {
   // All columns that should be wrapped in "pre" tags when they are shown in
   // a modal when the initial value is truncated
   @Input() preformattedColumns: Array<string>;
-  @Output() error = new EventEmitter<string>();
 
   // This will contain key value pairs, where each key is a column and each value
   // is a boolean determining if the column should be shown
@@ -49,7 +49,7 @@ export class EstuaryTableComponent implements OnChanges {
   // Keeps track of which column to sort by
   sortedBy: string;
 
-  constructor() { }
+  constructor(private notification: NotificationService) { }
 
   ngOnChanges() {
     this.processItems();
@@ -133,7 +133,8 @@ export class EstuaryTableComponent implements OnChanges {
     }
 
     if (activeColumns.length === 0) {
-      this.error.emit('There are no columns selected. Please select at least one columnn and try again.');
+      const msg = 'There are no columns selected. Please select at least one columnn and try again.';
+      this.notification.display(msg, 'danger');
       return;
     }
 
