@@ -10,6 +10,7 @@ export class PropertyDisplayPipe implements PipeTransform {
     if (property === 'id') {
       return property.toUpperCase();
     }
+    property = property.replace('koji', 'brew');
     const rvArray = property.toLowerCase().replace(/_/g, ' ').split(' ');
     for (let i = 0; i < rvArray.length; i++) {
       rvArray[i] = rvArray[i].charAt(0).toUpperCase() + rvArray[i].slice(1);
