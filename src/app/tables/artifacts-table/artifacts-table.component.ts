@@ -99,7 +99,7 @@ export class ArtifactsTableComponent implements OnChanges {
         columns = ['advisory_name', 'assigned_to', 'id', 'security_impact', 'state', 'synopsis'];
         break;
       case ('freshmakerevent'):
-        columns = ['id', 'state_name', 'state_reason', 'triggered_container_builds'];
+        columns = ['id', 'state_name', 'state_reason', 'successful_koji_builds'];
         break;
       case ('distgitrepo'):
         columns = ['commits', 'name', 'namespace'];
