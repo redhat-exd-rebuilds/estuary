@@ -66,6 +66,8 @@ export class NodeExternalUrlPipe implements PipeTransform {
                 return `https://freshmaker.engineering.redhat.com/api/1/events/${node.id}`;
             case('kojitag'):
                 return `https://brewweb.engineering.redhat.com/brew/taginfo?tagID=${node.id}`;
+            case('freshmakerbuild'):
+                return `https://freshmaker.engineering.redhat.com/api/1/builds/${node.id}`;
             default:
                 return '';
         }
