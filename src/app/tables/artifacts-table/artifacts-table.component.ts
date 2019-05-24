@@ -110,6 +110,9 @@ export class ArtifactsTableComponent implements OnChanges {
       case ('kojitag'):
         columns = ['builds', 'id', 'name'];
         break;
+      case ('freshmakerbuild'):
+        columns = ['id', 'name', 'original_nvr', 'rebuilt_nvr'];
+        break;
       default:
         columns = ['id'];
     }
