@@ -22,6 +22,7 @@ import { SearchComponent } from './search/search.component';
 import { NotificationComponent } from './notification/notification.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { RecentsComponent } from './recents/recents.component';
 import { SiblingsComponent } from './story/siblings/siblings.component';
 import { ArtifactsTableComponent } from './tables/artifacts-table/artifacts-table.component';
 import { ArtifactRelationshipComponent } from './story/artifact-relationship/artifact-relationship.component';
@@ -49,6 +50,7 @@ import { HTTPErrorHandler } from './interceptors/http-error-handler';
     SpinnerComponent,
     TruncatePipe,
     NavbarComponent,
+    RecentsComponent,
     SiblingsComponent,
     PropertyValueDisplayPipe,
     ArtifactsTableComponent,
