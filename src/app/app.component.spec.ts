@@ -17,6 +17,7 @@ import { StoryRowComponent } from './story/storyrow/storyrow.component';
 import { StorysidebarComponent } from './story/storysidebar/storysidebar.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { RecentsComponent } from './recents/recents.component';
 import { SiblingsComponent } from './story/siblings/siblings.component';
 import { ArtifactRelationshipComponent } from './story/artifact-relationship/artifact-relationship.component';
 import { TestResultsComponent } from './story/test-results/test-results.component';
@@ -56,6 +57,7 @@ describe('AppComponent', () => {
         NodeTypeDisplayPipe,
         NodeTypePluralPipe,
         PropertyDisplayPipe,
+        RecentsComponent,
         SearchComponent,
         SiblingsComponent,
         SpinnerComponent,

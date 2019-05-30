@@ -6,6 +6,7 @@ import { SiblingsComponent } from './story/siblings/siblings.component';
 import { ArtifactRelationshipComponent } from './story/artifact-relationship/artifact-relationship.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { TestResultsComponent } from './story/test-results/test-results.component';
+import { RecentsComponent } from './recents/recents.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,11 @@ const routes: Routes = [
   {
     path: 'test-results/:resource/:subjectIdentifier',
     component: TestResultsComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'recents',
+    component: RecentsComponent,
     canActivate: [AuthGuardService]
   },
   {
