@@ -1,0 +1,36 @@
+.recent-table-container{
+    padding-left: 4rem;
+    padding-right: 4rem;
+    padding-top: 3rem;
+    margin-bottom: 2.5rem;
+}
+
+.recent-title{
+    font-size: 2.5rem;
+    margin-bottom:2rem;
+}
+
+.recent-table{
+    background-color:white;
+}
+
+.recent-items{
+    font-size:140%;
+}
+
+.recent-item-row{
+    height:8rem;
+}
+
+.data-icon{
+    width:6rem;
+    text-align:center;
+}
+
+.data-type{
+    width:30rem;
+}
+
+.data{
+    vertical-align: middle;
+}
