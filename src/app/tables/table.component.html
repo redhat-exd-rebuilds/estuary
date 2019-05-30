@@ -1,5 +1,5 @@
-<div class="estuary-container">
-  <h2 class="title">
+<div [ngClass]="{'estuary-container': tableSpacing}">
+  <h2 class="table-title" *ngIf="title">
     <ng-container *ngIf="titleLink; else plainTitle">
       <a [href]="titleLink" target="_blank">{{ title }}</a>
     </ng-container>

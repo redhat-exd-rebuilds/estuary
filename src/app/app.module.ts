@@ -7,6 +7,7 @@ import { DatePipe } from '@angular/common';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ToastNotificationModule } from 'patternfly-ng/notification';
 import { OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
 
@@ -22,6 +23,7 @@ import { SearchComponent } from './search/search.component';
 import { NotificationComponent } from './notification/notification.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { RecentsComponent } from './recents/recents.component';
 import { SiblingsComponent } from './story/siblings/siblings.component';
 import { ArtifactsTableComponent } from './tables/artifacts-table/artifacts-table.component';
 import { ArtifactRelationshipComponent } from './story/artifact-relationship/artifact-relationship.component';
@@ -49,6 +51,7 @@ import { HTTPErrorHandler } from './interceptors/http-error-handler';
     SpinnerComponent,
     TruncatePipe,
     NavbarComponent,
+    RecentsComponent,
     SiblingsComponent,
     PropertyValueDisplayPipe,
     ArtifactsTableComponent,
@@ -75,7 +78,8 @@ import { HTTPErrorHandler } from './interceptors/http-error-handler';
         allowedUrls: [environment.api],
         sendAccessToken: true
       }
-    })
+    }),
+    TabsModule.forRoot()
   ],
   providers: [
     DatePipe,

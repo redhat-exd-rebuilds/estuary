@@ -1,0 +1,11 @@
+.recents-container {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+@media (min-width: 992px) {
+    .recents-container {
+        margin-left: 6rem;
+        margin-right: 6rem;
+    }
+}
