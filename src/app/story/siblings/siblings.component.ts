@@ -52,6 +52,7 @@ export class SiblingsComponent implements OnDestroy {
         this.title = siblings.meta.description;
         if (siblings.data.length) {
           this.siblings = siblings.data;
+          console.log(this.siblings);
         } else {
           this.notification.display('There are no siblings associated with this artifact', 'danger');
         }
