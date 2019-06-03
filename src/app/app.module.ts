@@ -32,7 +32,11 @@ import { EstuaryTableComponent } from './tables/table.component';
 import { TruncateModalComponent } from './tables/truncate-modal/truncate-modal.component';
 import { TestsTableComponent } from './tables/tests-table/tests-table.component';
 import { TestResultsComponent } from './story/test-results/test-results.component';
+<<<<<<< HEAD
 import { HTTPErrorHandler } from './interceptors/http-error-handler';
+=======
+import { TabsModule } from 'ngx-bootstrap/tabs';
+>>>>>>> Add recents table to recents endpoint, complete with tab filtering
 
 
 @NgModule({
@@ -77,7 +81,8 @@ import { HTTPErrorHandler } from './interceptors/http-error-handler';
         allowedUrls: [environment.api],
         sendAccessToken: true
       }
-    })
+    }),
+    TabsModule.forRoot()
   ],
   providers: [
     DatePipe,
