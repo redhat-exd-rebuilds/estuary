@@ -1,31 +1,6 @@
 <app-spinner [loading]="loading"></app-spinner>
 <app-navbar></app-navbar>
 
-<!-- <div class="recent-table-container" *ngIf="!loading">
-  <div>
-        <app-table>
-          <thead>
-            <tr>
-              <th scope="col"></th>
-              <th scope="col">Type</th>
-              <th scope="col">ID</th>
-              <th scope="col">Timestamp</th>
-            </tr>
-          </thead>
-          <tbody class="recent-items">
-            <div *ngFor="let type of types">
-              <tr class="recent-item-row" *ngFor="let item of recentsAll[type]">
-                <td class="data data-icon"><i class="fa fa-bug" aria-hidden="true"></i></td>
-                <td class="data data-type">{{ item['type'] }}</td>
-                <td class="data">{{ item['id'] }}</td>
-                <td class="data">Updated at: {{ item['timestamp'] }}</td>
-              </tr>
-            </div>
-          </tbody>
-        </app-table>
-  </div>
-
-</div> -->
 <div class="recent-title">{{ title }}</div>
 <div class="recent-tabs">
   <tabset type="pills">

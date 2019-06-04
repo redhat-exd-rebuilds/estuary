@@ -70,18 +70,19 @@ describe('ArtifactsTableComponent', () => {
 
     // Ensure the table headers show only the default columns
     const tableHeaders = fixture.debugElement.queryAll(By.css('.estuary-table th'));
-    expect(tableHeaders.length).toBe(5);
+    expect(tableHeaders.length).toBe(6);
     const tableHeadersText = tableHeaders.map(v => v.nativeElement.textContent.trim());
     expect(tableHeadersText[0]).toBe('Assignee');
     expect(tableHeadersText[1]).toBe('ID');
-    expect(tableHeadersText[2]).toBe('Reporter');
-    expect(tableHeadersText[3]).toBe('Short Description');
-    expect(tableHeadersText[4]).toBe('Status');
+    expect(tableHeadersText[2]).toBe('Modified Time');
+    expect(tableHeadersText[3]).toBe('Reporter');
+    expect(tableHeadersText[4]).toBe('Short Description');
+    expect(tableHeadersText[5]).toBe('Status');
 
     // Make sure the correct number of columns show as selected and that only 20 columns
     // are available since "Resource Type" and "Display Name" should be excluded
     const activeColumnsText = fixture.debugElement.query(By.css('.estuary-table-header__columns-text')).nativeElement;
-    expect(activeColumnsText.textContent.trim()).toBe('5 of 20 columns selected');
+    expect(activeColumnsText.textContent.trim()).toBe('6 of 20 columns selected');
 
     // Ensure the actual table content is correct. All 2 entries in the `formattedArtifacts` array
     // should be displayed.
@@ -94,9 +95,10 @@ describe('ArtifactsTableComponent', () => {
     expect(idLink.tagName).toBe('A');
     expect(idLink.textContent.trim()).toBe('1566849');
     expect(idLink.href).toBe(`${bzUrl}1566849`);
-    expect(rowOneColumns[2].textContent.trim()).toBe('user1');
-    expect(rowOneColumns[3].textContent.trim()).toBe('CVE-2018-1234 kernel: some error [rhel-7.5.z]');
-    expect(rowOneColumns[4].textContent.trim()).toBe('CLOSED');
+    expect(rowOneColumns[2].textContent.trim()).toBe('June 19, 2018, 09:10:31 UTC');
+    expect(rowOneColumns[3].textContent.trim()).toBe('user1');
+    expect(rowOneColumns[4].textContent.trim()).toBe('CVE-2018-1234 kernel: some error [rhel-7.5.z]');
+    expect(rowOneColumns[5].textContent.trim()).toBe('CLOSED');
 
     const rowTwoColumns = rows[1].nativeElement.children;
     expect(rowTwoColumns[0].textContent.trim()).toBe('user2');
@@ -107,11 +109,12 @@ describe('ArtifactsTableComponent', () => {
     expect(idLink.tagName).toBe('A');
     expect(idLink.textContent.trim()).toBe('1567084');
     expect(idLink.href).toBe(`${bzUrl}1567084`);
-    expect(rowTwoColumns[2].textContent.trim()).toBe('user2');
+    expect(rowTwoColumns[2].textContent.trim()).toBe('June 19, 2018, 07:34:08 UTC');
+    expect(rowTwoColumns[3].textContent.trim()).toBe('user2');
     // The "Short Description" column is too long, so it becomes a link to a modal
-    expect(rowTwoColumns[3].textContent.trim()).toBe('CVE-2018-1235 kernel: some really long error that …');
-    expect(rowTwoColumns[3].firstElementChild.tagName).toBe('APP-TRUNCATE-MODAL');
-    expect(rowTwoColumns[4].textContent.trim()).toBe('CLOSED');
+    expect(rowTwoColumns[4].textContent.trim()).toBe('CVE-2018-1235 kernel: some really long error that …');
+    expect(rowTwoColumns[4].firstElementChild.tagName).toBe('APP-TRUNCATE-MODAL');
+    expect(rowTwoColumns[5].textContent.trim()).toBe('CLOSED');
 
     // Click the dropdown button so that the menu appears
     const dropdownButton = fixture.debugElement.query(
@@ -127,7 +130,7 @@ describe('ArtifactsTableComponent', () => {
       By.css('.estuary-table-header__dropdown-menu')).nativeElement;
       // Expect there to be 20 columns to be able to check
       expect(dropdownMenu.children.length).toBe(20);
-      const expectedActiveColumns = ['Assignee', 'ID', 'Reporter', 'Short Description',  'Status'];
+      const expectedActiveColumns = ['Assignee', 'ID', 'Reporter', 'Short Description',  'Status', 'Modified Time'];
       const expectedColumns = [
         'Assignee', 'Attached Advisories', 'Classification', 'Creation Time', 'ID',
         'Modified Time', 'Priority', 'Product Name', 'Product Version', 'QA Contact',
