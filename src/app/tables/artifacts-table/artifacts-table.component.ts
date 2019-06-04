@@ -84,19 +84,19 @@ export class ArtifactsTableComponent implements OnChanges {
     let columns: Array<string>;
     switch (resource.toLowerCase()) {
       case ('bugzillabug'):
-        columns = ['id', 'assignee', 'reporter', 'short_description', 'status'];
+        columns = ['id', 'modified_time', 'assignee', 'reporter', 'short_description', 'status'];
         break;
       case ('distgitcommit'):
-        columns = ['author', 'hash', 'log_message'];
+        columns = ['author', 'hash', 'commit_date', 'log_message'];
         break;
       case ('kojibuild'):
       case ('containerkojibuild'):
       case ('modulekojibuild'):
-        columns = ['id', 'name', 'owner', 'release', 'version'];
+        columns = ['id', 'completion_time', 'name', 'owner', 'release', 'version'];
         break;
       case ('containeradvisory'):
       case ('advisory'):
-        columns = ['advisory_name', 'assigned_to', 'id', 'security_impact', 'state', 'synopsis'];
+        columns = ['advisory_name', 'update_date', 'assigned_to', 'id', 'security_impact', 'state', 'synopsis'];
         break;
       case ('freshmakerevent'):
         columns = ['id', 'state_name', 'state_reason', 'successful_koji_builds'];

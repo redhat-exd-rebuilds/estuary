@@ -33,6 +33,7 @@ import { TruncateModalComponent } from './tables/truncate-modal/truncate-modal.c
 import { TestsTableComponent } from './tables/tests-table/tests-table.component';
 import { TestResultsComponent } from './story/test-results/test-results.component';
 import { HTTPErrorHandler } from './interceptors/http-error-handler';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 
 @NgModule({
@@ -77,7 +78,8 @@ import { HTTPErrorHandler } from './interceptors/http-error-handler';
         allowedUrls: [environment.api],
         sendAccessToken: true
       }
-    })
+    }),
+    TabsModule.forRoot()
   ],
   providers: [
     DatePipe,
