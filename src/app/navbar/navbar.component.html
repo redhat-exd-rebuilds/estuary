@@ -4,8 +4,11 @@
       <a class="navbar-brand" [routerLink]="['/']">RED HAT <span class="navbar-left__brand">PIPELINE</span></a>
     </div>
     <div class="navbar-header navbar-right">
+      <ng-container>
+          <a href="/recents" class="navbar-right__links">Recent Stories</a>
+      </ng-container>
       <ng-container *ngIf="showLogout">
-          <a href="#" class="navbar-right__logout" (click)="logout($event)">Logout</a>
+          <a href="#" class="navbar-right__links" (click)="logout($event)">Logout</a>
       </ng-container>
       <img class="navbar-right__brand" src="assets/redhat_logo.png" />
     </div>
