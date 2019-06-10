@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit, AfterViewInit, OnDestroy, ElementRef } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { jsPlumbInstance } from 'jsplumb';
+import { finalize } from 'rxjs/operators';
 
 import { StoryService } from '../services/story.service';
 import { StoryAPI } from '../models/story.type';
@@ -67,14 +68,10 @@ export class StoryComponent implements OnInit, AfterViewInit, OnDestroy {
 
   getStory(resource: string, uid: string) {
     this.loading = true;
-    this.storyService.getStory(resource, uid).subscribe(
+    this.storyService.getStory(resource, uid).pipe(finalize(() => this.loading = false)).subscribe(
       story => {
         this.selectedNode = story.data[story.meta.requested_node_index];
         this.story = story;
-        this.loading = false;
-      },
-      () => {
-        this.loading = false;
       }
     );
   }

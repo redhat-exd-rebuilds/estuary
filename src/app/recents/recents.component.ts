@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { finalize } from 'rxjs/operators';
 
 import { RecentsService } from '../services/recents.service';
 
@@ -27,15 +28,11 @@ export class RecentsComponent implements OnInit {
 
   getRecentsAll() {
     // Gets recent artifacts of all types and populates recentsAll
-    this.recentsService.getRecents().subscribe(
+    this.recentsService.getRecents().pipe(finalize(() => this.loading = false)).subscribe(
       recentsAll => {
         this.recentsAll = recentsAll['data'];
         this.meta = recentsAll['metadata'];
         this.types = Object.keys(this.recentsAll);
-      },
-      null,
-      () => {
-        this.loading = false;
       }
     );
   }
