@@ -16,7 +16,8 @@ export const recents = {
                 'status_time': null,
                 'actual_ship_date': null,
                 'release_date': null,
-                'id': '66666'
+                'id': '66666',
+                'resource_type': 'Advisory'
             }
         ],
         'DistGitCommit': [
@@ -24,7 +25,9 @@ export const recents = {
                 'log_message': null,
                 'author_date': null,
                 'hash': '55555',
-                'commit_date': '2017-05-02T11:44:38+00:00'
+                'commit_date': '2017-05-02T11:44:38+00:00',
+                'resource_type': 'DistGitCommit',
+                'repos': [{'name': 'python', 'namespace': 'rpms'}]
             }
         ],
         'FreshmakerEvent': [
@@ -34,7 +37,8 @@ export const recents = {
                 'id': '77777',
                 'state': null,
                 'event_type_id': null,
-                'message_id': null
+                'message_id': null,
+                'resource_type': 'FreshmakerEvent'
             }
         ],
         'KojiBuild': [
@@ -48,7 +52,8 @@ export const recents = {
                 'epoch': null,
                 'version': null,
                 'release': null,
-                'id': '44444'
+                'id': '44444',
+                'resource_type': 'KojiBuild'
             }
         ],
         'BugzillaBug': [
@@ -65,7 +70,8 @@ export const recents = {
                 'priority': null,
                 'short_description': null,
                 'target_milestone': null,
-                'id': '22222'
+                'id': '22222',
+                'resource_type': 'BugzillaBug'
             },
             {
                 'status': null,
@@ -80,7 +86,8 @@ export const recents = {
                 'priority': null,
                 'short_description': null,
                 'target_milestone': null,
-                'id': '33333'
+                'id': '33333',
+                'resource_type': 'BugzillaBug'
             },
             {
                 'status': null,
@@ -95,9 +102,25 @@ export const recents = {
                 'priority': null,
                 'short_description': null,
                 'target_milestone': null,
-                'id': '11111'
+                'id': '11111',
+                'resource_type': 'BugzillaBug'
             }
         ]
     },
-    'metadata': {}
+    'metadata': {
+        'id_dict': {
+            'FreshmakerEvent': 'id',
+            'BugzillaBug': 'id',
+            'DistGitCommit': 'hash',
+            'KojiBuild': 'id',
+            'Advisory': 'id'
+        },
+        'timestamp_dict': {
+            'FreshmakerEvent': 'id',
+            'BugzillaBug': 'modified_time',
+            'DistGitCommit': 'commit_date',
+            'KojiBuild': 'completion_time',
+            'Advisory': 'update_date'
+        }
+    }
 };
