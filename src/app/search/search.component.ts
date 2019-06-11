@@ -39,4 +39,8 @@ export class SearchComponent implements OnDestroy {
       this.notification.display('Please enter a search value', 'danger');
     }
   }
+
+  navigateToRecents() {
+    this.router.navigate(['/recents']);
+  }
 }

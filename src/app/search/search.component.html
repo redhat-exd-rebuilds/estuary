@@ -17,10 +17,14 @@
 
     <input (keyup.enter)="navigateToStory()" [(ngModel)]="selectedUID" class="search-input" type="text" required
         placeholder="Enter an identifier">
-
-    <button (click)="navigateToStory()" id="searchButton" class="btn btn-info btn--lg-rounded" type="button">
-      Show Story
-    </button>
+    <div>
+      <button (click)="navigateToStory()" id="searchButton" class="btn btn-info btn--lg-rounded" type="button">
+        Show Story
+      </button>
+      <button (click)="navigateToRecents()" id="recentsButton" class="btn btn-info btn--lg-rounded" type="button">
+        See Recent Stories
+      </button>
+    </div>
   </div>
 </div>
 

@@ -145,11 +145,11 @@
 }
 
 .btn--lg-rounded {
-    display: block;
     /* Don't show an outline on the element when it is focused */
     outline: 0;
     font-size: 120%;
     margin-top: 3rem;
+    margin-right: 15px;
     /* Make the button bigger and curved */
     border-radius: 2rem;
     padding: 2.5px 22px 2.5px 22px;
