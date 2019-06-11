@@ -1,0 +1,17 @@
+<app-spinner [loading]="loading"></app-spinner>
+<app-navbar></app-navbar>
+
+<div class="recents-container">
+  <h2 class="table-title">Recent Artifacts</h2>
+  <div>
+    <tabset>
+        <tab *ngFor="let type of types" [heading]="type | nodeTypeDisplay" [id]="type">
+          <app-artifacts-table
+            [artifacts]="recentsAll[type]"
+            [tableSpacing]="false"
+            [csvFileName]="csvFileName"
+          ></app-artifacts-table>
+        </tab>
+    </tabset>
+  </div>
+</div>

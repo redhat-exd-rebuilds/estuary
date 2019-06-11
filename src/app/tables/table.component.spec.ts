@@ -102,7 +102,7 @@ describe('EstuaryTableComponent', () => {
 
   it('should show the table', fakeAsync(() => {
     // Ensure the title on the page is correct
-    const title = fixture.debugElement.query(By.css('.title')).nativeElement;
+    const title = fixture.debugElement.query(By.css('.table-title')).nativeElement;
     expect(title.textContent.trim()).toBe('Classic Rock Bands');
 
     // Ensure the table headers show only the default columns
@@ -193,7 +193,7 @@ describe('EstuaryTableComponent', () => {
     component.titleLink = href;
     fixture.detectChanges();
     // Ensure the title and title link on the page are correct
-    const title = fixture.debugElement.query(By.css('.title')).nativeElement;
+    const title = fixture.debugElement.query(By.css('.table-title')).nativeElement;
     expect(title.textContent.trim()).toBe('Classic Rock Bands');
     const titleLink = title.firstElementChild;
     expect(titleLink.tagName).toBe('A');

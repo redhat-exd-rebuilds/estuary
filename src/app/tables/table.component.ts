@@ -13,6 +13,9 @@ export class EstuaryTableComponent implements OnChanges {
   @Input() title: string;
   // An optional title link
   @Input() titleLink: string;
+  // Only necessary if there is no title ; the name of the CSV file is derived from
+  // title name if there is one
+  @Input() csvFileName: string;
   // The array of objects to display in the table
   @Input() items: Array<any>;
   // The columns to show by default when the component is first displayed
@@ -34,6 +37,8 @@ export class EstuaryTableComponent implements OnChanges {
   // All columns that should be wrapped in "pre" tags when they are shown in
   // a modal when the initial value is truncated
   @Input() preformattedColumns: Array<string>;
+  // Optional margin spacing surrounding the table
+  @Input() tableSpacing = true;
 
   // This will contain key value pairs, where each key is a column and each value
   // is a boolean determining if the column should be shown
@@ -165,7 +170,17 @@ export class EstuaryTableComponent implements OnChanges {
     const tempLink = document.createElement('a');
     tempLink.href = 'data:text/csv;charset=utf-8,' + encodeURI(csvContent);
     tempLink.target = '_blank';
-    tempLink.download = this.title.toLowerCase().replace(/ /g, '_') + '.csv';
+    if (this.title) {
+      tempLink.download = this.title.toLowerCase().replace(/ /g, '_') + '.csv';
+    } else if (this.csvFileName) {
+      if (this.csvFileName.endsWith('.csv')) {
+        tempLink.download = this.csvFileName;
+      } else {
+        tempLink.download = this.csvFileName + '.csv';
+      }
+    } else {
+      tempLink.download = 'estuary.csv';
+    }
     tempLink.click();
   }
 }
