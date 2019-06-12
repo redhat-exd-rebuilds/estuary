@@ -1,6 +1,6 @@
 import { Component, OnDestroy, TemplateRef } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute, RouterEvent } from '@angular/router';
-import { filter, takeUntil } from 'rxjs/operators';
+import { filter, takeUntil, finalize } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
 import { SiblingsService } from '../../services/siblings.service';
@@ -47,7 +47,7 @@ export class SiblingsComponent implements OnDestroy {
 
   getSiblings(resource: string, uid: string, backwardRel: boolean, story_type: string) {
     this.loading = true;
-    this.siblingsService.getSiblings(resource, uid, backwardRel, story_type).subscribe(
+    this.siblingsService.getSiblings(resource, uid, backwardRel, story_type).pipe(finalize(() => this.loading = false)).subscribe(
       siblings => {
         this.title = siblings.meta.description;
         if (siblings.data.length) {
@@ -55,10 +55,6 @@ export class SiblingsComponent implements OnDestroy {
         } else {
           this.notification.display('There are no siblings associated with this artifact', 'danger');
         }
-        this.loading = false;
-      },
-      () => {
-        this.loading = false;
       }
     );
   }

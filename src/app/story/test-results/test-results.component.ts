@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { finalize } from 'rxjs/operators';
 
 import { GreenwaveService } from '../../services/greenwave.service';
 import { GreenwaveDecision } from '../../models/greenwave.type';
@@ -28,13 +29,9 @@ export class TestResultsComponent implements OnInit {
     this.loading = true;
     this.greenwaveDecision = null;
 
-    this.greenwaveService.getArtifactDecision(resource, subjectIdentifier).subscribe(
+    this.greenwaveService.getArtifactDecision(resource, subjectIdentifier).pipe(finalize(() => this.loading = false)).subscribe(
       decision => {
         this.greenwaveDecision = decision;
-        this.loading = false;
-      },
-      () => {
-        this.loading = false;
       }
     );
   }
