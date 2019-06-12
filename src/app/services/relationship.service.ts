@@ -12,6 +12,8 @@ export class RelationshipService {
   constructor(private http: HttpClient) { }
 
   getRelatedArtifacts(resource: string, uid: string, relationship: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}relationships/${resource}/${uid}/${relationship}`);
+    const userInput = encodeURIComponent(uid);
+    const url = `${this.apiUrl}relationships/${resource}/${userInput}/${relationship}`;
+    return this.http.get(url);
   }
 }
