@@ -24,7 +24,8 @@ export class StoryService {
       targetResource = `container${targetResource}`;
     }
 
-    let url = `${this.apiUrl}story/${targetResource}/${uid}`;
+    const userInput = encodeURIComponent(uid);
+    let url = `${this.apiUrl}story/${targetResource}/${userInput}`;
     if (fallback.length) {
       url += `?fallback=${fallback[0]}`;
       for (let i = 1; i < fallback.length; i++) {
