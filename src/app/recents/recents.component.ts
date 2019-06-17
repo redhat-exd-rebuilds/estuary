@@ -11,8 +11,8 @@ import { RecentsService } from '../services/recents.service';
 })
 export class RecentsComponent implements OnInit {
 
-  recentsAll: Array<any>; // all recents of every type
-  meta: Array<any>;
+  recentsAll: any; // all recents of every type
+  meta: any;
   types: Array<string>; // types of artifacts
   loading: boolean;
   csvFileName = 'recent_artifacts';
