@@ -19,6 +19,7 @@ import { StorysidebarComponent } from './story/storysidebar/storysidebar.compone
 import { PropertyDisplayPipe, PropertyValueDisplayPipe } from './pipes/propertydisplay';
 import { NodeTypeDisplayPipe, NodeTypePluralPipe, NodeExternalUrlPipe,
          TruncatePipe, NodeDisplayNamePipe } from './pipes/nodedisplay';
+import { TimeDisplayPipe } from './pipes/timedisplay';
 import { SearchComponent } from './search/search.component';
 import { NotificationComponent } from './notification/notification.component';
 import { SpinnerComponent } from './spinner/spinner.component';
@@ -61,6 +62,7 @@ import { HTTPErrorHandler } from './interceptors/http-error-handler';
     TruncateModalComponent,
     TestsTableComponent,
     TestResultsComponent,
+    TimeDisplayPipe,
   ],
   imports: [
     AppRoutingModule,
