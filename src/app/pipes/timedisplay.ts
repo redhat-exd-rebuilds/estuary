@@ -10,7 +10,6 @@ export class TimeDisplayPipe implements PipeTransform {
             const hours = Math.floor(timeInSeconds / 3600);
             timeInSeconds = timeInSeconds % 3600;
             const minutes = Math.floor(timeInSeconds / 60);
-            timeInSeconds = timeInSeconds % 60;
             return `${days} days, ${hours} hours, ${minutes} minutes`;
         } else if (timeInSeconds / 3600 >= 1) {
             const hours = Math.floor(timeInSeconds / 3600);

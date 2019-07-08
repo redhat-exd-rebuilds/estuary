@@ -16,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { StoryComponent } from './story/story.component';
 import { StoryRowComponent } from './story/storyrow/storyrow.component';
 import { StorysidebarComponent } from './story/storysidebar/storysidebar.component';
+import { TotalTimesComponent } from './story/storyrow/totaltimes/totaltimes.component';
 import { PropertyDisplayPipe, PropertyValueDisplayPipe } from './pipes/propertydisplay';
 import { NodeTypeDisplayPipe, NodeTypePluralPipe, NodeExternalUrlPipe,
          TruncatePipe, NodeDisplayNamePipe } from './pipes/nodedisplay';
@@ -43,6 +44,7 @@ import { HTTPErrorHandler } from './interceptors/http-error-handler';
     StoryComponent,
     StoryRowComponent,
     StorysidebarComponent,
+    TotalTimesComponent,
     PropertyDisplayPipe,
     SearchComponent,
     NodeTypeDisplayPipe,

@@ -1,0 +1,18 @@
+<div class="timeline-wrapper">
+    <table class="timeline-properties">
+        <tbody>
+          <tr class="timeline-properties__row">
+            <td class="timeline-properties__row__data">Total lead time:</td>
+            <td class="timeline-properties__row__data">{{ totalLeadTime | timeDisplay }}</td>
+          </tr>
+          <tr class="timeline-properties__row">
+            <td class="timeline-properties__row__data">Total processing time:</td>
+            <td class="timeline-properties__row__data">{{ totalProcessingTime | timeDisplay }}</td>
+          </tr>
+          <tr class="timeline-properties__row">
+            <td class="timeline-properties__row__data">Total wait time:</td>
+            <td class="timeline-properties__row__data">{{ totalWaitTime | timeDisplay }}</td>
+          </tr>
+        </tbody>
+    </table>
+</div>

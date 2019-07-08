@@ -14,11 +14,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StoryComponent } from './story.component';
 import { StorysidebarComponent } from './storysidebar/storysidebar.component';
 import { StoryRowComponent } from './storyrow/storyrow.component';
+import { TotalTimesComponent } from './storyrow/totaltimes/totaltimes.component';
 import { NotificationComponent } from '../notification/notification.component';
 import { SpinnerComponent } from '../spinner/spinner.component';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { NodeTypeDisplayPipe, NodeTypePluralPipe, NodeExternalUrlPipe,
          TruncatePipe, NodeDisplayNamePipe } from '../pipes/nodedisplay';
+import { TimeDisplayPipe } from '../pipes/timedisplay';
 import { PropertyDisplayPipe } from '../pipes/propertydisplay';
 import { StoryService } from '../services/story.service';
 import { bug, story, module_story } from './test.data';
@@ -43,9 +45,11 @@ describe('StoryComponent testing', () => {
             PropertyDisplayPipe,
             TruncatePipe,
             NotificationComponent,
+            TotalTimesComponent,
             SpinnerComponent,
             NavbarComponent,
-            NodeDisplayNamePipe
+            NodeDisplayNamePipe,
+            TimeDisplayPipe,
         ],
         providers: [
             StoryService,
@@ -87,7 +91,7 @@ describe('StoryComponent testing', () => {
     expect(storyRowEls.length).toBe(6);
 
     // Ensure the number of columns in the row
-    expect(storyRowEls[0].nativeElement.children.length).toBe(3);
+    expect(storyRowEls[0].nativeElement.children.length).toBe(4);
     // Ensure the text is correct
     expect(storyRowEls[0].nativeElement.firstElementChild.innerText.trim()).toBe('RHBZ#12345\nDec 10, 2018, 12:01:21 UTC');
     // Ensure the order is correct
@@ -166,7 +170,7 @@ describe('StoryComponent testing', () => {
     expect(storyRowEls.length).toBe(3);
 
     // Ensure the number of columns in the row
-    expect(storyRowEls[0].nativeElement.children.length).toBe(2);
+    expect(storyRowEls[0].nativeElement.children.length).toBe(3);
     // Ensure the text is correct
     expect(storyRowEls[0].nativeElement.firstElementChild.innerText.trim()).toBe('#d11fcbf\nDec 10, 2018, 12:01:21 UTC');
     // Ensure the order is correct

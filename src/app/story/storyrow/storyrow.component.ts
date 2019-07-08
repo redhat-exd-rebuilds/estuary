@@ -31,7 +31,11 @@ export class StoryRowComponent implements OnChanges, AfterViewInit {
   @Input() backwardSiblings: number;
   @Input() forwardSiblings: number;
   @Input() active: boolean;
+  @Input() first: boolean;
   @Input() last: boolean;
+  @Input() totalProcessingTime: number;
+  @Input() totalWaitTime: number;
+  @Input() totalLeadTime: number;
   iconClasses: any;
   backwardSiblingsRouterLink: string;
   forwardSiblingsRouterLink: string;
