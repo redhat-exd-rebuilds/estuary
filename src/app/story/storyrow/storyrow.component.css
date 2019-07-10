@@ -17,7 +17,15 @@
     padding-right: 1.5rem;
     position: relative;
     /* Vertically center the text */
-    top: 5px;
+    top: -8px;
+}
+
+.node-display-name {
+    font-weight: bold;
+}
+
+.node-timestamp {
+    font-size: 1rem;
 }
 
 .node-column {
