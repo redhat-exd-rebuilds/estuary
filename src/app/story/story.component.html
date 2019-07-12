@@ -8,6 +8,7 @@
           [forwardSiblings]="story.meta.story_related_nodes_forward[i]" [first]="first" [last]="last"
           [active]="node === selectedNode" [totalLeadTime]="story.meta.total_lead_time"
           [totalProcessingTime]="story.meta.total_processing_time" [totalWaitTime]="story.meta.total_wait_time"
+          [waitTime]="story.meta.wait_times[i]"
           *ngFor="let node of story.data; let i = index; let last = last; let first = first">
       </app-storyrow>
     </ng-container>

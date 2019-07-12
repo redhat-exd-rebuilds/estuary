@@ -65,7 +65,10 @@ describe('StoryRowComponent testing', () => {
 
     // Verify the text is correct
     const nodeUidColEl = fixture.debugElement.query(By.css('.node-uid-column')).nativeElement;
-    expect(nodeUidColEl.innerText.trim()).toBe('RHBZ#23456\nDec 10, 2018, 12:01:21 UTC');
+    const uidColText = nodeUidColEl.innerText.trim();
+    expect(uidColText).toContain('RHBZ#23456');
+    expect(uidColText).toContain('Dec 10, 2018, 12:01:21');
+    expect(uidColText).toContain('0s');
 
     const nodeEl = fixture.debugElement.query(By.css('.node-column__node')).nativeElement;
     // Verify the artifact details are correct
@@ -80,12 +83,16 @@ describe('StoryRowComponent testing', () => {
     component.backwardSiblings = 3;
     component.forwardSiblings = 5;
     component.active = true;
+    component.waitTime = 10;
     fixture.detectChanges();
     tick();
 
     // Verify the text is correct
     const nodeUidColEl = fixture.debugElement.query(By.css('.node-uid-column')).nativeElement;
-    expect(nodeUidColEl.innerText.trim()).toBe('RHBZ#23456\nDec 10, 2018, 12:01:21 UTC');
+    const uidColText = nodeUidColEl.innerText.trim();
+    expect(uidColText).toContain('RHBZ#23456');
+    expect(uidColText).toContain('Dec 10, 2018, 12:01:21');
+    expect(uidColText).toContain('10s');
 
     const siblingsEl = fixture.debugElement.queryAll(By.css('.node-siblings-column__siblings'));
     const siblingsBackwardEl = siblingsEl[0].nativeElement;
@@ -181,9 +188,9 @@ describe('StoryRowComponent testing', () => {
 
     const totalTimesEl = fixture.debugElement.queryAll(By.css('.timeline-properties__row__data'));
     expect(totalTimesEl[0].nativeElement.textContent).toBe('Total lead time:');
-    expect(totalTimesEl[1].nativeElement.textContent).toBe('1 days, 0 hours, 0 minutes');
+    expect(totalTimesEl[1].nativeElement.textContent).toBe('1 days 0 hours 0 minutes');
     expect(totalTimesEl[2].nativeElement.textContent).toBe('Total processing time:');
-    expect(totalTimesEl[3].nativeElement.textContent).toBe('1 days, 0 hours, 0 minutes');
+    expect(totalTimesEl[3].nativeElement.textContent).toBe('1 days 0 hours 0 minutes');
     expect(totalTimesEl[4].nativeElement.textContent).toBe('Total wait time:');
     expect(totalTimesEl[5].nativeElement.textContent).toBe('0 seconds');
   }));

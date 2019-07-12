@@ -3,26 +3,61 @@ import { PipeTransform, Pipe } from '@angular/core';
 
 @Pipe({name: 'timeDisplay'})
 export class TimeDisplayPipe implements PipeTransform {
-    transform(timeInSeconds: number): string {
-        if (timeInSeconds / 86400 >= 1) {
-            const days = Math.floor(timeInSeconds / 86400);
-            timeInSeconds = timeInSeconds % 86400;
-            const hours = Math.floor(timeInSeconds / 3600);
-            timeInSeconds = timeInSeconds % 3600;
-            const minutes = Math.floor(timeInSeconds / 60);
-            return `${days} days, ${hours} hours, ${minutes} minutes`;
-        } else if (timeInSeconds / 3600 >= 1) {
-            const hours = Math.floor(timeInSeconds / 3600);
-            timeInSeconds = timeInSeconds % 3600;
-            const minutes = Math.floor(timeInSeconds / 60);
-            timeInSeconds = timeInSeconds % 60;
-            return `${hours} hours, ${minutes} minutes, ${timeInSeconds} seconds`;
-        } else if (timeInSeconds / 60 >= 1) {
-            const minutes = Math.floor(timeInSeconds / 60);
-            timeInSeconds = timeInSeconds % 60;
-            return `${minutes} minutes, ${timeInSeconds} seconds`;
-        } else {
-            return `${timeInSeconds} seconds`;
+    transform(timeInSeconds: number, shortened = false): string {
+        if (timeInSeconds === null) {
+            return 'Unavailable';
         }
+
+        let timeInSecondsLeft = timeInSeconds;
+        const days = Math.floor(timeInSecondsLeft / 86400);
+        timeInSecondsLeft = timeInSecondsLeft % 86400;
+        const hours = Math.floor(timeInSecondsLeft / 3600);
+        timeInSecondsLeft = timeInSecondsLeft % 3600;
+        const minutes = Math.floor(timeInSecondsLeft / 60);
+        timeInSecondsLeft = timeInSecondsLeft % 60;
+        const seconds = Math.floor(timeInSecondsLeft);
+
+        // We need to keep a count in case there is 0 of a given unit of time, but one of its
+        // preceding units of time is > 0. For example: 2 days 0 hours 0 minutes.
+        let count = 0;
+        let time = '';
+        if (days > 0) {
+            time = this.transformHelper(time, days, 'days', shortened);
+            count++;
+        }
+        if (hours > 0 || count === 1) {
+            time = this.transformHelper(time, hours, 'hours', shortened);
+            count++;
+        }
+        if (minutes > 0 || count >= 1) {
+            time = this.transformHelper(time, minutes, 'minutes', shortened);
+            count++;
+        }
+        if (days === 0 && seconds > 0 || days === 0 && count >= 1) {
+            time = this.transformHelper(time, seconds, 'seconds', shortened);
+        }
+        if (time === '') {
+            if (shortened) {
+                time = '0s';
+            } else {
+                time = '0 seconds';
+            }
+        }
+
+        return time;
+    }
+
+    transformHelper(time: string, timeValue: number, timeUnit: string, shortened: boolean): string {
+        let newTime = time;
+        if (newTime !== '') {
+            newTime += ' ';
+        }
+        newTime += timeValue;
+        if (shortened === true) {
+            newTime += timeUnit.charAt(0);
+        } else {
+            newTime += ' ' + timeUnit;
+        }
+        return newTime;
     }
 }

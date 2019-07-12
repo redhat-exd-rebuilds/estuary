@@ -5,6 +5,7 @@ import { finalize } from 'rxjs/operators';
 
 import { StoryService } from '../services/story.service';
 import { StoryAPI } from '../models/story.type';
+import { TimeDisplayPipe } from '../pipes/timedisplay';
 
 
 declare var jsPlumb: jsPlumbInstance;

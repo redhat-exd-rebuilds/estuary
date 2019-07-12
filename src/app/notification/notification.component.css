@@ -3,7 +3,8 @@ pfng-toast-notification {
     position: fixed;
     right: 15px;
     top: 70px;
-    z-index: 2;
+    /* Put notification on top of sidebar */
+    z-index: 99;
 }
 
 @media (min-width: 992px) {
