@@ -18,7 +18,7 @@ import { EstuaryTableComponent } from '../tables/table.component';
 import { PropertyDisplayPipe, PropertyValueDisplayPipe } from '../pipes/propertydisplay';
 
 
-fdescribe('RecentsComponent', () => {
+describe('RecentsComponent', () => {
   let fixture: ComponentFixture<RecentsComponent>;
   let recentsService: RecentsService;
 
