@@ -96,7 +96,8 @@ export let story = {
         'short_description': 'Some description',
         'status': 'VERIFIED',
         'target_milestone': 'rc',
-        'votes': 0
+        'votes': 0,
+        'timeline_timestamp': '2018-12-10T12:01:21Z',
     },
     {
       'author_date': '2017-04-26T11:44:38+00:00',
@@ -104,7 +105,8 @@ export let story = {
       'hash': '8a63adb248ba633e200067e1ad6dc61931727bad',
       'log_message': 'Related: #12345 - fix xyz',
       'display_name': 'commit #8a63adb',
-      'resource_type': 'DistGitCommit'
+      'resource_type': 'DistGitCommit',
+      'timeline_timestamp': '2018-12-10T12:01:21Z',
     },
     {
       'completion_time': '2017-04-02T19:39:06+00:00',
@@ -118,7 +120,8 @@ export let story = {
       'resource_type': 'KojiBuild',
       'start_time': '2017-04-02T19:39:06+00:00',
       'state': 1,
-      'version': '1.7.4'
+      'version': '1.7.4',
+      'timeline_timestamp': '2018-12-10T12:01:21Z',
     },
     {
       'actual_ship_date': '2017-08-01T15:43:51+00:00',
@@ -139,7 +142,8 @@ export let story = {
       'synopsis': 'cifs-utils bug fix update',
       'type': 'RHBA',
       'update_date': '2017-08-01T07:16:00+00:00',
-      'updated_at': '2017-08-01T15:43:51+00:00'
+      'updated_at': '2017-08-01T15:43:51+00:00',
+      'timeline_timestamp': '2018-12-10T12:01:21Z',
     },
     {
       'event_type_id': 8,
@@ -150,7 +154,8 @@ export let story = {
       'state': 2,
       'state_name': 'COMPLETE',
       'state_reason': 'All container images have been rebuilt.',
-      'url': '/api/1/events/1180'
+      'url': '/api/1/events/1180',
+      'timeline_timestamp': '2018-12-10T12:01:21Z',
     },
     {
       'completion_time': '2018-05-08T19:17:42+00:00',
@@ -164,7 +169,8 @@ export let story = {
       'display_name': 'rh-perl520-docker-5.20-17.1525804575',
       'start_time': '2018-05-08T18:56:25+00:00',
       'state': 1,
-      'version': '5.20'
+      'version': '5.20',
+      'timeline_timestamp': '2018-12-10T12:01:21Z',
     }
   ],
   'meta': {
@@ -183,7 +189,8 @@ export let module_story = {
       'display_name': 'commit #d11fcbf',
       'hash': 'd11fcbf943086c0d55ce35beacaf10ef1f816c5a',
       'log_message': null,
-      'resource_type': 'DistGitCommit'
+      'resource_type': 'DistGitCommit',
+      'timeline_timestamp': '2018-12-10T12:01:21Z',
     },
     {
       'advisories': [],
@@ -289,7 +296,8 @@ export let module_story = {
           'name': 'module-virt-rhel-20180814005649-9edba152'
         }
       ],
-      'version': '1.38.4'
+      'version': '1.38.4',
+      'timeline_timestamp': '2018-12-10T12:01:21Z',
     },
     {
       'completion_time': '2018-08-22T12:45:27+00:00',
@@ -308,7 +316,8 @@ export let module_story = {
       'resource_type': 'ModuleKojiBuild',
       'start_time': '2018-08-22T11:45:20+00:00',
       'state': 1,
-      'version': 'rhel'
+      'version': 'rhel',
+      'timeline_timestamp': '2018-12-10T12:01:21Z',
     }
   ],
   'meta': {

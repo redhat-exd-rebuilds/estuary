@@ -89,7 +89,7 @@ describe('StoryComponent testing', () => {
     // Ensure the number of columns in the row
     expect(storyRowEls[0].nativeElement.children.length).toBe(3);
     // Ensure the text is correct
-    expect(storyRowEls[0].nativeElement.firstElementChild.innerText.trim()).toBe('RHBZ#12345');
+    expect(storyRowEls[0].nativeElement.firstElementChild.innerText.trim()).toBe('RHBZ#12345\n2018-12-10T12:01:21Z');
     // Ensure the order is correct
     expect(storyRowEls[0].nativeElement.children[1].firstElementChild.id).toBe('js-bugzillabug-node');
     // Ensure the Bugzilla Bug is the active one
@@ -105,7 +105,7 @@ describe('StoryComponent testing', () => {
     // Ensure the number of columns in the row
     expect(storyRowEls[1].nativeElement.children.length).toBe(2);
     // Ensure the text is correct
-    expect(storyRowEls[1].nativeElement.firstElementChild.innerText.trim()).toBe('#8a63adb');
+    expect(storyRowEls[1].nativeElement.firstElementChild.innerText.trim()).toBe('#8a63adb\n2018-12-10T12:01:21Z');
     // Ensure the order is correct
     expect(storyRowEls[1].nativeElement.children[1].firstElementChild.id).toBe('js-distgitcommit-node');
     // Ensure the it is not active
@@ -114,7 +114,7 @@ describe('StoryComponent testing', () => {
     // Ensure the number of columns in the row
     expect(storyRowEls[2].nativeElement.children.length).toBe(2);
     // Ensure the text is correct
-    expect(storyRowEls[2].nativeElement.firstElementChild.innerText.trim()).toBe('slf4j-1.7.4-4.el7_4');
+    expect(storyRowEls[2].nativeElement.firstElementChild.innerText.trim()).toBe('slf4j-1.7.4-4.el7_4\n2018-12-10T12:01:21Z');
     // Ensure the order is correct
     expect(storyRowEls[2].nativeElement.children[1].firstElementChild.id).toBe('js-kojibuild-node');
     // Ensure the it is not active
@@ -123,7 +123,7 @@ describe('StoryComponent testing', () => {
     // Ensure the number of columns in the row
     expect(storyRowEls[3].nativeElement.children.length).toBe(2);
     // Ensure the text is correct
-    expect(storyRowEls[3].nativeElement.firstElementChild.innerText.trim()).toBe('RHBA-2017:2251-02');
+    expect(storyRowEls[3].nativeElement.firstElementChild.innerText.trim()).toBe('RHBA-2017:2251-02\n2018-12-10T12:01:21Z');
     // Ensure the order is correct
     expect(storyRowEls[3].nativeElement.children[1].firstElementChild.id).toBe('js-advisory-node');
     // Ensure the it is not active
@@ -132,7 +132,7 @@ describe('StoryComponent testing', () => {
     // Ensure the number of columns in the row
     expect(storyRowEls[4].nativeElement.children.length).toBe(2);
     // Ensure the text is correct
-    expect(storyRowEls[4].nativeElement.firstElementChild.innerText.trim()).toBe('1180');
+    expect(storyRowEls[4].nativeElement.firstElementChild.innerText.trim()).toBe('1180\n2018-12-10T12:01:21Z');
     // Ensure the order is correct
     expect(storyRowEls[4].nativeElement.children[1].firstElementChild.id).toBe('js-freshmakerevent-node');
     // Ensure the it is not active
@@ -141,7 +141,7 @@ describe('StoryComponent testing', () => {
     // Ensure the number of columns in the row
     expect(storyRowEls[5].nativeElement.children.length).toBe(2);
     // Ensure the text is correct
-    expect(storyRowEls[5].nativeElement.firstElementChild.innerText.trim()).toBe('rh-perl520-docker-5.20-17.1525…');
+    expect(storyRowEls[5].nativeElement.firstElementChild.innerText.trim()).toBe('rh-perl520-docker-5.20-17.1525…\n2018-12-10T12:01:21Z');
     // Ensure the order is correct
     expect(storyRowEls[5].nativeElement.children[1].firstElementChild.id).toBe('js-containerkojibuild-node');
     // Ensure the it is not active
@@ -166,7 +166,7 @@ describe('StoryComponent testing', () => {
     // Ensure the number of columns in the row
     expect(storyRowEls[0].nativeElement.children.length).toBe(2);
     // Ensure the text is correct
-    expect(storyRowEls[0].nativeElement.firstElementChild.innerText.trim()).toBe('#d11fcbf');
+    expect(storyRowEls[0].nativeElement.firstElementChild.innerText.trim()).toBe('#d11fcbf\n2018-12-10T12:01:21Z');
     // Ensure the order is correct
     expect(storyRowEls[0].nativeElement.children[1].firstElementChild.id).toBe('js-distgitcommit-node');
     // Ensure the DistGitCommit is not the active one
@@ -175,7 +175,7 @@ describe('StoryComponent testing', () => {
     // Ensure the number of columns in the row
     expect(storyRowEls[1].nativeElement.children.length).toBe(3);
     // Ensure the text is correct
-    expect(storyRowEls[1].nativeElement.firstElementChild.innerText.trim()).toBe('libguestfs-1.38.4-1.el8+1579+4…');
+    expect(storyRowEls[1].nativeElement.firstElementChild.innerText.trim()).toBe('libguestfs-1.38.4-1.el8+1579+4…\n2018-12-10T12:01:21Z');
     // Ensure the order is correct
     expect(storyRowEls[1].nativeElement.children[1].firstElementChild.id).toBe('js-kojibuild-node');
     // Ensure the Koji Build is the active one
@@ -189,7 +189,7 @@ describe('StoryComponent testing', () => {
     // Ensure the number of columns in the row
     expect(storyRowEls[2].nativeElement.children.length).toBe(2);
     // Ensure the text is correct
-    expect(storyRowEls[2].nativeElement.firstElementChild.innerText.trim()).toBe('virt-rhel-20180822114445.9edba…');
+    expect(storyRowEls[2].nativeElement.firstElementChild.innerText.trim()).toBe('virt-rhel-20180822114445.9edba…\n2018-12-10T12:01:21Z');
     // Ensure the order is correct
     expect(storyRowEls[2].nativeElement.children[1].firstElementChild.id).toBe('js-modulekojibuild-node');
     // Ensure the ModuleKojiBuild is not active
