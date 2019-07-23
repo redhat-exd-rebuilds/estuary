@@ -39,6 +39,8 @@ describe('SearchComponent testing', () => {
     expect(dropDownOptions[2].value).toBe('kojibuild');
     expect(dropDownOptions[3].text).toBe('Commit');
     expect(dropDownOptions[3].value).toBe('distgitcommit');
+    expect(dropDownOptions[4].text).toBe('Freshmaker Event');
+    expect(dropDownOptions[4].value).toBe('freshmakerevent');
 
     component.selectedResource = 'bugzillabug';
     fixture.detectChanges();
