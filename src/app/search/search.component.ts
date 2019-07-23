@@ -21,7 +21,8 @@ export class SearchComponent implements OnDestroy {
       {name: 'advisory', displayName: 'Advisory'},
       {name: 'bugzillabug', displayName: 'Bugzilla Bug'},
       {name: 'kojibuild', displayName: 'Build'},
-      {name: 'distgitcommit', displayName: 'Commit'}
+      {name: 'distgitcommit', displayName: 'Commit'},
+      {name: 'freshmakerevent', displayName: 'Freshmaker Event'},
     ];
     // Default the select element to be the first key
     this.selectedResource = 'advisory';
