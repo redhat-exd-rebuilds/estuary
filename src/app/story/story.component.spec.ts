@@ -133,7 +133,7 @@ describe('StoryComponent testing', () => {
     // Ensure the number of columns in the row
     expect(storyRowEls[4].nativeElement.children.length).toBe(2);
     // Ensure the text is correct
-    expect(storyRowEls[4].nativeElement.firstElementChild.innerText.trim()).toBe('1180\nDec 10, 2018, 12:01:21 UTC');
+    expect(storyRowEls[4].nativeElement.firstElementChild.innerText.trim()).toBe('1180\nNo timestamp available');
     // Ensure the order is correct
     expect(storyRowEls[4].nativeElement.children[1].firstElementChild.id).toBe('js-freshmakerevent-node');
     // Ensure the it is not active
