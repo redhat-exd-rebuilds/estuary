@@ -1,6 +1,8 @@
 <div class="node-uid-column story-row-column">
   <div class="node-display-name">{{ node.display_name | nodeDisplayName | truncate: 30 }}</div>
-  <div class="node-timestamp" *ngIf="node.timeline_timestamp; else noTimestamp">{{ node.timeline_timestamp }}</div>
+  <div class="node-timestamp" *ngIf="node.timeline_timestamp; else noTimestamp">
+    {{ node.timeline_timestamp | date: 'MMM d, y, HH:mm:ss':'+0000' }} UTC
+  </div>
   <ng-template class="node-timestamp" #noTimestamp>No timestamp information available</ng-template>
 </div>
 <div class="node-column story-row-column">
