@@ -3,7 +3,9 @@
   <div class="node-timestamp" *ngIf="node.timeline_timestamp; else noTimestamp">
     {{ node.timeline_timestamp | date: 'MMM d, y, HH:mm:ss':'+0000' }} UTC
   </div>
-  <ng-template class="node-timestamp" #noTimestamp>No timestamp information available</ng-template>
+  <ng-template class="node-timestamp" #noTimestamp>
+    <div class="node-timestamp">No timestamp information available</div>
+  </ng-template>
 </div>
 <div class="node-column story-row-column">
   <!-- `container="body"` is used to attach the tooltip to the body instead of the parent div. This
