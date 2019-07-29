@@ -155,7 +155,7 @@ export let story = {
       'state_name': 'COMPLETE',
       'state_reason': 'All container images have been rebuilt.',
       'url': '/api/1/events/1180',
-      'timeline_timestamp': '2018-12-10T12:01:21Z',
+      'timeline_timestamp': null,
     },
     {
       'completion_time': '2018-05-08T19:17:42+00:00',

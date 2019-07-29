@@ -52,7 +52,7 @@ describe('StoryRowComponent testing', () => {
 
   it('should display single artifact', fakeAsync(() => {
     component.node = bug;
-    component.node.timeline_timestamp = '2018-12-10T12:01:21Z';
+    component.node.timeline_timestamp = 'Dec 10, 2018, 12:01:21 UTC';
     component.forwardSiblings = 0;
     component.backwardSiblings = 0;
     component.active = true;
@@ -61,7 +61,7 @@ describe('StoryRowComponent testing', () => {
 
     // Verify the text is correct
     const nodeUidColEl = fixture.debugElement.query(By.css('.node-uid-column')).nativeElement;
-    expect(nodeUidColEl.innerText.trim()).toBe('RHBZ#23456\n2018-12-10T12:01:21Z');
+    expect(nodeUidColEl.innerText.trim()).toBe('RHBZ#23456\nDec 10, 2018, 12:01:21 UTC');
 
     const nodeEl = fixture.debugElement.query(By.css('.node-column__node')).nativeElement;
     // Verify the artifact details are correct
@@ -81,7 +81,7 @@ describe('StoryRowComponent testing', () => {
 
     // Verify the text is correct
     const nodeUidColEl = fixture.debugElement.query(By.css('.node-uid-column')).nativeElement;
-    expect(nodeUidColEl.innerText.trim()).toBe('RHBZ#23456\n2018-12-10T12:01:21Z');
+    expect(nodeUidColEl.innerText.trim()).toBe('RHBZ#23456\nDec 10, 2018, 12:01:21 UTC');
 
     const siblingsEl = fixture.debugElement.queryAll(By.css('.node-siblings-column__siblings'));
     const siblingsBackwardEl = siblingsEl[0].nativeElement;
