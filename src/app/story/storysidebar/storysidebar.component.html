@@ -1,4 +1,4 @@
-<div class="sidebar" [ngClass]="{'sidebar--open': sidebarOpen, 'sidebar--closed': !sidebarOpen}">
+<div class="sidebar" [@slideInSlideOut]="sidebarOpen ? 'open' : 'closed'" [ngClass]="{'sidebar--open': sidebarOpen, 'sidebar--closed': !sidebarOpen}">
   <div class="sidebar-title">
     <a class="sidebar-title__arrow" href="#" (click)="sidebarOpen = !sidebarOpen; $event.preventDefault()">
       <i [ngClass]="{'fa-angle-double-right': sidebarOpen, 'fa-angle-double-left': !sidebarOpen}"
