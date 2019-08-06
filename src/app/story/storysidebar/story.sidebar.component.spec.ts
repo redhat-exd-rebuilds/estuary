@@ -1,13 +1,14 @@
 import { By } from '@angular/platform-browser';
 import { DatePipe } from '@angular/common';
 import { ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { RouterTestingModule } from '@angular/router/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { StorysidebarComponent } from './storysidebar.component';
 import { NodeExternalUrlPipe, TruncatePipe, NodeDisplayNamePipe } from '../../pipes/nodedisplay';
 import { PropertyDisplayPipe, PropertyValueDisplayPipe } from '../../pipes/propertydisplay';
 import { bug } from '../test.data';
-import { TooltipModule } from 'ngx-bootstrap/tooltip';
-import { RouterTestingModule } from '@angular/router/testing';
 
 
 describe('StorysidebarComponent testing', () => {
@@ -29,7 +30,8 @@ describe('StorysidebarComponent testing', () => {
         ],
         imports: [
           TooltipModule.forRoot(),
-          RouterTestingModule
+          RouterTestingModule,
+          NoopAnimationsModule,
         ]
     }).compileComponents();
   });

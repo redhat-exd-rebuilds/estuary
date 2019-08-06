@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { trigger, transition, style, animate, state } from '@angular/animations';
 
 import { PropertyValueDisplayPipe } from '../../pipes/propertydisplay';
 
@@ -7,7 +8,24 @@ import { PropertyValueDisplayPipe } from '../../pipes/propertydisplay';
 @Component({
   selector: 'app-storysidebar',
   templateUrl: './storysidebar.component.html',
-  styleUrls: ['./storysidebar.component.css']
+  styleUrls: ['./storysidebar.component.css'],
+  animations: [
+    trigger('slideInSlideOut', [
+      state('open',
+        style({
+          maxWidth: '750px',
+          width: '45%'
+        }),
+      ),
+      state('closed',
+        style({
+          width: '25px'
+        }),
+      ),
+      transition('* => open', animate('0.5s ease-out', style({width: '45%', maxWidth: '750px'}))),
+      transition('* => closed', animate('0.3s ease-out', style({width: '25px'}))),
+    ])
+  ]
 })
 export class StorysidebarComponent implements OnInit, OnChanges {
   @Input() node: any;
