@@ -17,7 +17,7 @@ import { PropertyValueDisplayPipe } from '../../pipes/propertydisplay';
           width: '25px'
         }),
       ),
-      transition('closed => open', animate('0.5s ease-out')),
+      transition('closed => open', animate('0.3s ease-out')),
     ])
   ]
 })
