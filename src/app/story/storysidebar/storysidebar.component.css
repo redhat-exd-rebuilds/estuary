@@ -95,6 +95,10 @@
     width: 100%;
 }
 
+.sidebar--closed {
+    width: 25px;
+}
+
 .sidebar--closed > * {
     /* When the sidebar is closed, make the arrow closer to the edge */
     margin-left: 0.75rem;
@@ -103,4 +107,11 @@
 .sidebar--open .sidebar-title i {
     /* Push "Properties" to the right 1rem */
     margin-right: 1rem;
+}
+
+@media (min-width: 992px) {
+    .sidebar--open {
+        width: 45%;
+        max-width: 750px;
+    }
 }

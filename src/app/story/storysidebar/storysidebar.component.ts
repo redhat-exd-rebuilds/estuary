@@ -11,19 +11,13 @@ import { PropertyValueDisplayPipe } from '../../pipes/propertydisplay';
   styleUrls: ['./storysidebar.component.css'],
   animations: [
     trigger('slideInSlideOut', [
-      state('open',
-        style({
-          maxWidth: '750px',
-          width: '45%'
-        }),
-      ),
+      state('open', style({})),
       state('closed',
         style({
           width: '25px'
         }),
       ),
-      transition('* => open', animate('0.5s ease-out', style({width: '45%', maxWidth: '750px'}))),
-      transition('* => closed', animate('0.3s ease-out', style({width: '25px'}))),
+      transition('closed => open', animate('0.3s ease-out')),
     ])
   ]
 })
