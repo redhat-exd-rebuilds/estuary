@@ -19,7 +19,7 @@ export class TestsTableComponent implements OnChanges {
   linkColumnMappings: any;
 
   constructor() {
-    this.defaultColumns = ['ID', 'Logs', 'Status', 'Test Case', 'Waived'];
+    this.defaultColumns = ['ID', 'Logs', 'Status', 'Test Case', 'Waived', 'Impacts the decision'];
     this.defaultSortedColumn = 'ID';
     this.uidColumn = 'ID';
   }
@@ -65,6 +65,8 @@ export class TestsTableComponent implements OnChanges {
           'Test Case': result.testcase.name,
           'Logs': 'No logs available',
           'Waived': waivedTestCases.includes(result.testcase.name) ? 'Yes' : 'No',
+          'Impacts the decision': this.greenwaveDecision.satisfied_requirements.map(
+            function (j) { return j.result_id; }).includes(result.id) ? 'Yes' : 'No',
         };
 
         this.linkColumnMappings[result.id] = {

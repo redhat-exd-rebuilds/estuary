@@ -71,18 +71,19 @@ describe('ArtifactsTableComponent', () => {
 
     // Ensure the table headers show only the default columns
     const tableHeaders = fixture.debugElement.queryAll(By.css('.estuary-table th'));
-    expect(tableHeaders.length).toBe(5);
+    expect(tableHeaders.length).toBe(6);
     const tableHeadersText = tableHeaders.map(v => v.nativeElement.textContent.trim());
     expect(tableHeadersText[0]).toBe('ID');
-    expect(tableHeadersText[1]).toBe('Logs');
-    expect(tableHeadersText[2]).toBe('Status');
-    expect(tableHeadersText[3]).toBe('Test Case');
-    expect(tableHeadersText[4]).toBe('Waived');
+    expect(tableHeadersText[1]).toBe('Impacts the decision');
+    expect(tableHeadersText[2]).toBe('Logs');
+    expect(tableHeadersText[3]).toBe('Status');
+    expect(tableHeadersText[4]).toBe('Test Case');
+    expect(tableHeadersText[5]).toBe('Waived');
 
     // Make sure the correct number of columns show as selected and that only 4 columns
     // are available
     const activeColumnsText = fixture.debugElement.query(By.css('.estuary-table-header__columns-text')).nativeElement;
-    expect(activeColumnsText.textContent.trim()).toBe('5 of 6 columns selected');
+    expect(activeColumnsText.textContent.trim()).toBe('6 of 7 columns selected');
 
     // Ensure the actual table content is correct. All 2 entries in the `formattedResults` array
     // should be displayed.
@@ -95,14 +96,16 @@ describe('ArtifactsTableComponent', () => {
     expect(idLink.textContent.trim()).toBe('6125319');
     expect(idLink.href).toBe(`${resultsDBURL}results/6125319`);
 
-    let logsLink = rowOneColumns[1].children[0];
+    expect(rowOneColumns[1].textContent.trim()).toBe('Yes');
+
+    let logsLink = rowOneColumns[2].children[0];
     expect(logsLink.tagName).toBe('A');
     expect(logsLink.textContent.trim()).toBe('Test Run Logs');
     expect(logsLink.href).toBe(jenkinsLogURL);
 
-    expect(rowOneColumns[2].textContent.trim()).toBe('PASSED');
+    expect(rowOneColumns[3].textContent.trim()).toBe('PASSED');
 
-    let testCaseLink = rowOneColumns[3].children[0];
+    let testCaseLink = rowOneColumns[4].children[0];
     expect(testCaseLink.tagName).toBe('A');
     expect(testCaseLink.textContent.trim()).toBe('rhproduct.default.sanity');
     expect(testCaseLink.href).toBe(`${resultsDBURL}testcases/rhproduct.default.sanity`);
@@ -114,14 +117,16 @@ describe('ArtifactsTableComponent', () => {
     expect(idLink.textContent.trim()).toBe('6125427');
     expect(idLink.href).toBe(`${resultsDBURL}results/6125427`);
 
-    logsLink = rowTwoColumns[1].children[0];
+    expect(rowTwoColumns[1].textContent.trim()).toBe('Yes');
+
+    logsLink = rowTwoColumns[2].children[0];
     expect(logsLink.tagName).toBe('A');
     expect(logsLink.textContent.trim()).toBe('Test Run Logs');
     expect(logsLink.href).toBe(jenkinsLogURL);
 
-    expect(rowTwoColumns[2].textContent.trim()).toBe('INFO');
+    expect(rowTwoColumns[3].textContent.trim()).toBe('INFO');
 
-    testCaseLink = rowTwoColumns[3].children[0];
+    testCaseLink = rowTwoColumns[4].children[0];
     expect(testCaseLink.tagName).toBe('A');
     expect(testCaseLink.textContent.trim()).toBe('rhproduct.default.functional');
     expect(testCaseLink.href).toBe(`${resultsDBURL}testcases/rhproduct.default.functional`);
@@ -139,9 +144,9 @@ describe('ArtifactsTableComponent', () => {
     const dropdownMenu = fixture.debugElement.query(
       By.css('.estuary-table-header__dropdown-menu')).nativeElement;
       // Expect there to be 6 columns to be able to check
-      expect(dropdownMenu.children.length).toBe(6);
-      const expectedActiveColumns = ['ID', 'Logs', 'Status',  'Test Case', 'Waived'];
-      const expectedColumns = ['ID', 'Item', 'Logs', 'Status',  'Test Case', 'Waived'];
+      expect(dropdownMenu.children.length).toBe(7);
+      const expectedActiveColumns = ['ID', 'Impacts the decision', 'Logs', 'Status',  'Test Case', 'Waived'];
+      const expectedColumns = ['ID', 'Impacts the decision', 'Item', 'Logs', 'Status',  'Test Case', 'Waived'];
       for (let i = 0; i < expectedColumns.length; i++) {
         const columnText = dropdownMenu.children[i].textContent.trim();
         expect(dropdownMenu.children[i].textContent.trim()).toBe(expectedColumns[i]);
