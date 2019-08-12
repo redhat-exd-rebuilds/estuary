@@ -27,9 +27,9 @@ describe('TotalTimesComponent', () => {
     fixture.detectChanges();
     const totalTimesEl = fixture.debugElement.queryAll(By.css('.timeline-properties__row__data'));
     expect(totalTimesEl[0].nativeElement.textContent).toBe('Total lead time:');
-    expect(totalTimesEl[1].nativeElement.textContent).toBe('1 days, 0 hours, 0 minutes');
+    expect(totalTimesEl[1].nativeElement.textContent).toBe('1 days 0 hours 0 minutes');
     expect(totalTimesEl[2].nativeElement.textContent).toBe('Total processing time:');
-    expect(totalTimesEl[3].nativeElement.textContent).toBe('1 hours, 0 minutes, 0 seconds');
+    expect(totalTimesEl[3].nativeElement.textContent).toBe('1 hours 0 minutes 0 seconds');
     expect(totalTimesEl[4].nativeElement.textContent).toBe('Total wait time:');
     expect(totalTimesEl[5].nativeElement.textContent).toBe('20 seconds');
   }));

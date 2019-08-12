@@ -11,8 +11,8 @@
     right: 0px;
     /* 100% height minus the navbar height */
     min-height: calc(100% - 50px);
-    /* Have the sidebar be on top of all other elements */
-    z-index: 1;
+    /* Have the sidebar be on top of all other elements except notifications */
+    z-index: 98;
 }
 
 .sidebar-title {

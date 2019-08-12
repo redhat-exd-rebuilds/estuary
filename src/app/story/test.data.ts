@@ -177,7 +177,8 @@ export let story = {
     'requested_node_index': 0,
     'story_related_nodes_backward': [0, 0, 0, 0, 0, 0],
     'story_related_nodes_forward': [1, 0, 0, 0, 0, 0],
-    'story_path': 'container'
+    'story_path': 'container',
+    'wait_times': [111, 2222, 33333, 444444, 5555555]
   }
 };
 
@@ -324,7 +325,8 @@ export let module_story = {
     'requested_node_index': 1,
     'story_related_nodes_backward': [0, 0, 0],
     'story_related_nodes_forward': [0, 17, 0],
-    'story_type': 'module'
+    'story_type': 'module',
+    'wait_times': [111, 2222]
   }
 };
 

@@ -12,6 +12,7 @@ import { NotificationComponent } from './notification/notification.component';
 import { NodeTypeDisplayPipe, NodeTypePluralPipe, NodeExternalUrlPipe, TruncatePipe,
          NodeDisplayNamePipe } from './pipes/nodedisplay';
 import { PropertyDisplayPipe } from './pipes/propertydisplay';
+import { TimeDisplayPipe } from './pipes/timedisplay';
 import { StoryComponent } from './story/story.component';
 import { StoryRowComponent } from './story/storyrow/storyrow.component';
 import { StorysidebarComponent } from './story/storysidebar/storysidebar.component';
@@ -67,6 +68,7 @@ describe('AppComponent', () => {
         TruncatePipe,
         NodeDisplayNamePipe,
         TestResultsComponent,
+        TimeDisplayPipe,
       ],
       imports: [
         AppRoutingModule,

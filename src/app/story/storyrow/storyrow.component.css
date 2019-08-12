@@ -18,14 +18,8 @@
     position: relative;
     /* Vertically center the text */
     top: -8px;
-}
-
-.node-display-name {
-    font-weight: bold;
-}
-
-.node-timestamp {
-    font-size: 1.1rem;
+    /* A width must be set because this class contains bold text that would otherwise shift surrounding elements */
+    width: 15.5rem;
 }
 
 .node-column {
@@ -54,7 +48,17 @@
     position: relative;
 }
 
+.wait-time {
+    position: absolute;
+    right: -2rem;
+    top: 9.3rem;
+}
+
 @media (min-width: 992px) {
+    .node-uid-column {
+        width: 21.5rem;
+    }
+
     .node-siblings-column {
         /* Leave a larger gap between the main node and the siblings when on a tablet or larger */
         padding-left: 2.5rem;
@@ -151,6 +155,36 @@
     top: 0px;
 }
 
+.node-uid-column__display-name {
+    font-weight: bold;
+}
+
+.node-uid-column__timestamp {
+    font-size: 1.1rem;
+}
+
+.node-uid-column__clock-icon {
+    /* We want it to be on top of everything except the sidebar */
+    z-index: 97;
+    right: -4.70rem;
+    bottom: 1.2rem;
+    position: absolute;
+    width: 22px;
+    /* Make space around top and bottom of clock even */
+    padding-bottom: 0.1rem;
+    background-color: #f2f3f2;
+}
+
+.node-uid-column__timestamp__timezone {
+    display: none;
+}
+
+@media (min-width: 992px) {
+    .node-uid-column__timestamp__timezone {
+        display: initial;
+    }
+}
+
 
 /* ----- Modifiers ----- */
 .node-column__node--active, .node-column__node--active:hover  {
@@ -170,4 +204,26 @@
 .node-column__node--active .node-column__node-img {
     /* Hides the shadow effect of node's img while it is being bordered */
     opacity: 0;
+}
+
+.wait-time--active {
+    top: 9.6rem !important;
+}
+
+.node-uid-column__display-name--desktop {
+    display: none;
+}
+
+.node-uid-column__display-name--mobile {
+    display: initial;
+}
+
+@media (min-width: 992px) {
+    .node-uid-column__display-name--desktop {
+        display: initial;
+    }
+
+    .node-uid-column__display-name--mobile {
+        display: none;
+    }
 }
