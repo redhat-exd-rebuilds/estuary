@@ -50,6 +50,10 @@
     margin: 0;
 }
 
+.total-times-column {
+    position: relative;
+}
+
 @media (min-width: 992px) {
     .node-siblings-column {
         /* Leave a larger gap between the main node and the siblings when on a tablet or larger */
@@ -140,6 +144,11 @@
     position: absolute;
     top: 16.5px;
     right: 0px;
+}
+
+.total-time-column__total-times {
+    position: absolute;
+    top: 0px;
 }
 
 

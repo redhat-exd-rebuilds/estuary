@@ -1,0 +1,27 @@
+.timeline-wrapper {
+    display: none;
+}
+
+@media (min-width: 992px) {
+    .timeline-wrapper {
+        display: initial;
+    }
+}
+
+.timeline-properties {
+    margin-right: 1rem;
+    padding-right: 1rem;
+}
+
+.timeline-properties__row {
+    font-size: 1.3rem;
+    word-break: break-all;
+}
+
+.timeline-properties__row__data {
+    vertical-align: top;
+    /* Create some space between the key and the value */
+    padding-right: 1rem;
+    /* Ensure all keys are on their own line */
+    white-space: nowrap;
+}

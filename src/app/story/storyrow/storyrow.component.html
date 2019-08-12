@@ -65,3 +65,11 @@
     </div>
   </div>
 </div>
+<div class="node-siblings-column story-row-column total-times-column" *ngIf="first">
+  <app-totaltimes
+    class="total-time-column__total-times"
+    [totalLeadTime]="totalLeadTime"
+    [totalProcessingTime]="totalProcessingTime"
+    [totalWaitTime]="totalWaitTime">
+  </app-totaltimes>
+</div>

@@ -9,8 +9,10 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { StoryRowComponent } from './storyrow.component';
+import { TotalTimesComponent } from './totaltimes/totaltimes.component';
 import { bug } from '../test.data';
 import { NodeTypeDisplayPipe, NodeTypePluralPipe, TruncatePipe, NodeDisplayNamePipe } from '../../pipes/nodedisplay';
+import { TimeDisplayPipe } from '../../pipes/timedisplay';
 import { StoryComponent } from '../story.component';
 import { GreenwaveService } from '../../services/greenwave.service';
 
@@ -27,7 +29,9 @@ describe('StoryRowComponent testing', () => {
             NodeTypeDisplayPipe,
             NodeTypePluralPipe,
             TruncatePipe,
-            NodeDisplayNamePipe
+            NodeDisplayNamePipe,
+            TotalTimesComponent,
+            TimeDisplayPipe,
         ],
         providers: [
           GreenwaveService,
@@ -161,5 +165,26 @@ describe('StoryRowComponent testing', () => {
     // Verify that the URL to the test results table is correct
     const gatingBadgeLink = gatingBadgeEl.parentElement;
     expect(gatingBadgeLink.href.endsWith('/test-results/containerkojibuild/some-container')).toBe(true);
+  }));
+
+  it('should show timeline statistics when it\'s the first row', fakeAsync(() => {
+    component.node = bug;
+    component.forwardSiblings = 0;
+    component.backwardSiblings = 0;
+    component.active = true;
+    component.first = true;
+    component.totalLeadTime = 86400;
+    component.totalProcessingTime = 86400;
+    component.totalWaitTime = 0;
+    fixture.detectChanges();
+    tick();
+
+    const totalTimesEl = fixture.debugElement.queryAll(By.css('.timeline-properties__row__data'));
+    expect(totalTimesEl[0].nativeElement.textContent).toBe('Total lead time:');
+    expect(totalTimesEl[1].nativeElement.textContent).toBe('1 days, 0 hours, 0 minutes');
+    expect(totalTimesEl[2].nativeElement.textContent).toBe('Total processing time:');
+    expect(totalTimesEl[3].nativeElement.textContent).toBe('1 days, 0 hours, 0 minutes');
+    expect(totalTimesEl[4].nativeElement.textContent).toBe('Total wait time:');
+    expect(totalTimesEl[5].nativeElement.textContent).toBe('0 seconds');
   }));
 });
