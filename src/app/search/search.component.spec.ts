@@ -20,10 +20,7 @@ describe('SearchComponent testing', () => {
         declarations: [SearchComponent, NodeTypeDisplayPipe, PropertyDisplayPipe],
         imports: [
           FormsModule,
-          ToastrModule.forRoot({
-            progressBar: true,
-            closeButton: true,
-          }),
+          ToastrModule.forRoot({}),
           HttpClientTestingModule,
           RouterTestingModule,
           NoopAnimationsModule

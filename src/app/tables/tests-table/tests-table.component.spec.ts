@@ -46,10 +46,7 @@ describe('ArtifactsTableComponent', () => {
       providers: [DatePipe],
       imports: [
         HttpClientTestingModule,
-        ToastrModule.forRoot({
-          progressBar: true,
-          closeButton: true,
-        }),
+        ToastrModule.forRoot({}),
         NoopAnimationsModule,
         BsDropdownModule.forRoot(),
         ModalModule.forRoot()

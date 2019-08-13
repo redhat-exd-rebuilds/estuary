@@ -62,10 +62,7 @@ describe('StoryComponent testing', () => {
             NoopAnimationsModule,
             OAuthModule.forRoot(),
             FontAwesomeModule,
-            ToastrModule.forRoot({
-              progressBar: true,
-              closeButton: true,
-            }),
+            ToastrModule.forRoot({}),
         ]
     }).compileComponents();
   });

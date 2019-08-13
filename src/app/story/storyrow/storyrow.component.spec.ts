@@ -44,10 +44,7 @@ describe('StoryRowComponent testing', () => {
           HttpClientTestingModule,
           FontAwesomeModule,
           NoopAnimationsModule,
-          ToastrModule.forRoot({
-            progressBar: true,
-            closeButton: true,
-          }),
+          ToastrModule.forRoot({}),
         ]
     }).compileComponents();
 

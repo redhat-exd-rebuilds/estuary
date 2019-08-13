@@ -37,7 +37,7 @@ export class SearchComponent implements OnDestroy {
     if (this.selectedResource && this.selectedUID) {
       this.router.navigate(['/', this.selectedResource, this.selectedUID.trim()]);
     } else {
-      this.notification.error('Please enter a search value', '', {progressBar: true});
+      this.notification.error('Please enter a search value');
     }
   }
 

@@ -49,10 +49,7 @@ describe('ArtifactsTableComponent', () => {
         NoopAnimationsModule,
         BsDropdownModule.forRoot(),
         ModalModule.forRoot(),
-        ToastrModule.forRoot({
-          progressBar: true,
-          closeButton: true,
-        }),
+        ToastrModule.forRoot({}),
       ]
     }).compileComponents();
   });

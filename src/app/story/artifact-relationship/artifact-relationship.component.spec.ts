@@ -25,10 +25,7 @@ describe('ArtifactRelationshipComponent', () => {
         HttpClientTestingModule,
         NoopAnimationsModule,
         RouterTestingModule,
-        ToastrModule.forRoot({
-          progressBar: true,
-          closeButton: true,
-        }),
+        ToastrModule.forRoot({}),
       ],
       // This is used to avoid having to import components we don't test here
       schemas: [NO_ERRORS_SCHEMA]

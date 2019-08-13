@@ -50,10 +50,7 @@ describe('EstuaryTableComponent', () => {
       ],
       imports: [
         NoopAnimationsModule,
-        ToastrModule.forRoot({
-          progressBar: true,
-          closeButton: true,
-        }),
+        ToastrModule.forRoot({}),
         ModalModule.forRoot(),
         BsDropdownModule.forRoot(),
       ],

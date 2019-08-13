@@ -32,7 +32,7 @@
     "jsplumb": "~2.10.0",
     "ngx-bootstrap": "~3.3.0",
     "ngx-toastr": "^10.0.4",
-    "patternfly-ng": "^4.5.1",
+    "patternfly": "^3.59.3",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
