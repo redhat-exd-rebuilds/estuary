@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { finalize } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 import { RelationshipService } from '../../services/relationship.service';
-import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-artifact-relationship',
@@ -17,7 +17,7 @@ export class ArtifactRelationshipComponent  {
   title: string;
 
   constructor(private route: ActivatedRoute, private relationshipService: RelationshipService,
-              private notification: NotificationService) {
+              private notification: ToastrService) {
     this.artifacts = [];
     this.route.params.subscribe(params => {
       this.getRelatedArtifacts(params['resource'], params['uid'], params['relationship']);
@@ -32,7 +32,7 @@ export class ArtifactRelationshipComponent  {
         if (artifacts.data.length) {
           this.artifacts = artifacts.data;
         } else {
-          this.notification.display('There are no artifacts tied to this relationship', 'danger');
+          this.notification.warning('There are no artifacts tied to this relationship');
         }
       }
     );

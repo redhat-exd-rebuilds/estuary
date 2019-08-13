@@ -10,7 +10,6 @@ import { environment } from '../environments/environment';
   selector: 'app-root',
   template: `
     <router-outlet (activate)="onActivate()"></router-outlet>
-    <app-notification></app-notification>
   `,
 })
 export class AppComponent {

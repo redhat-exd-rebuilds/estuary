@@ -4,6 +4,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationEnd, Router, ActivatedRoute } from '@angular/router';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { of } from 'rxjs';
+import { ToastrModule } from 'ngx-toastr';
 
 import { SiblingsComponent } from './siblings.component';
 import { SiblingsService } from '../../services/siblings.service';
@@ -41,7 +42,11 @@ describe('SiblingsComponent', () => {
       ],
       imports: [
         HttpClientTestingModule,
-        NoopAnimationsModule
+        NoopAnimationsModule,
+        ToastrModule.forRoot({
+          progressBar: true,
+          closeButton: true,
+        }),
       ],
       // This is used to avoid having to import components we don't test here
       schemas: [NO_ERRORS_SCHEMA]

@@ -6,7 +6,7 @@ import { ComponentFixture, async, TestBed, fakeAsync, tick } from '@angular/core
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
-import { ToastNotificationModule } from 'patternfly-ng/notification';
+import { ToastrModule } from 'ngx-toastr';
 import { of, Subject } from 'rxjs';
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -15,7 +15,6 @@ import { StoryComponent } from './story.component';
 import { StorysidebarComponent } from './storysidebar/storysidebar.component';
 import { StoryRowComponent } from './storyrow/storyrow.component';
 import { TotalTimesComponent } from './storyrow/totaltimes/totaltimes.component';
-import { NotificationComponent } from '../notification/notification.component';
 import { SpinnerComponent } from '../spinner/spinner.component';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { NodeTypeDisplayPipe, NodeTypePluralPipe, NodeExternalUrlPipe,
@@ -44,7 +43,6 @@ describe('StoryComponent testing', () => {
             NodeExternalUrlPipe,
             PropertyDisplayPipe,
             TruncatePipe,
-            NotificationComponent,
             TotalTimesComponent,
             SpinnerComponent,
             NavbarComponent,
@@ -60,11 +58,14 @@ describe('StoryComponent testing', () => {
         imports: [
             RouterTestingModule,
             TooltipModule.forRoot(),
-            ToastNotificationModule,
             HttpClientTestingModule,
             NoopAnimationsModule,
             OAuthModule.forRoot(),
-            FontAwesomeModule
+            FontAwesomeModule,
+            ToastrModule.forRoot({
+              progressBar: true,
+              closeButton: true,
+            }),
         ]
     }).compileComponents();
   });

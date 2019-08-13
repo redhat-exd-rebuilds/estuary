@@ -4,6 +4,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { of } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
+import { ToastrModule } from 'ngx-toastr';
 
 import { ArtifactRelationshipComponent } from './artifact-relationship.component';
 import { RelationshipService } from '../../services/relationship.service';
@@ -23,7 +24,11 @@ describe('ArtifactRelationshipComponent', () => {
       imports: [
         HttpClientTestingModule,
         NoopAnimationsModule,
-        RouterTestingModule
+        RouterTestingModule,
+        ToastrModule.forRoot({
+          progressBar: true,
+          closeButton: true,
+        }),
       ],
       // This is used to avoid having to import components we don't test here
       schemas: [NO_ERRORS_SCHEMA]

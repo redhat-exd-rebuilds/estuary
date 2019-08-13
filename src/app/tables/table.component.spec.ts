@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { By } from '@angular/platform-browser';
-import { ToastNotificationModule } from 'patternfly-ng/notification';
+import { ToastrModule } from 'ngx-toastr';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
@@ -50,7 +50,10 @@ describe('EstuaryTableComponent', () => {
       ],
       imports: [
         NoopAnimationsModule,
-        ToastNotificationModule,
+        ToastrModule.forRoot({
+          progressBar: true,
+          closeButton: true,
+        }),
         ModalModule.forRoot(),
         BsDropdownModule.forRoot(),
       ],

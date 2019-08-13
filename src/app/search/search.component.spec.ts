@@ -4,11 +4,10 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ComponentFixture, async, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ToastNotificationModule } from 'patternfly-ng/notification';
+import { ToastrModule } from 'ngx-toastr';
 
 import { SearchComponent } from './search.component';
 import { NodeTypeDisplayPipe } from '../pipes/nodedisplay';
-import { NotificationComponent } from '../notification/notification.component';
 import { PropertyDisplayPipe } from '../pipes/propertydisplay';
 
 
@@ -18,8 +17,17 @@ describe('SearchComponent testing', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-        declarations: [SearchComponent, NotificationComponent, NodeTypeDisplayPipe, PropertyDisplayPipe],
-        imports: [FormsModule, ToastNotificationModule, HttpClientTestingModule, RouterTestingModule, NoopAnimationsModule]
+        declarations: [SearchComponent, NodeTypeDisplayPipe, PropertyDisplayPipe],
+        imports: [
+          FormsModule,
+          ToastrModule.forRoot({
+            progressBar: true,
+            closeButton: true,
+          }),
+          HttpClientTestingModule,
+          RouterTestingModule,
+          NoopAnimationsModule
+        ]
     }).compileComponents();
     fixture = TestBed.createComponent(SearchComponent);
     component = fixture.componentInstance;
