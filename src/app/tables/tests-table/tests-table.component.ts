@@ -74,7 +74,7 @@ export class TestsTableComponent implements OnChanges {
 
         if (result.data.log) {
           formattedResult['Logs'] = 'Test Run Logs';
-          this.linkColumnMappings[result.id]['Logs'] = result.data.log;
+          this.linkColumnMappings[result.id]['Logs'] = result.ref_url;
         }
 
         this.formattedResults.push(formattedResult);
