@@ -1,11 +1,14 @@
 import { Component, HostListener, OnInit, AfterViewInit, OnDestroy, ElementRef } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 import { jsPlumbInstance } from 'jsplumb';
 import { finalize } from 'rxjs/operators';
 
 import { StoryService } from '../services/story.service';
 import { StoryAPI } from '../models/story.type';
 import { TimeDisplayPipe } from '../pipes/timedisplay';
+import { PropertyValueDisplayPipe } from '../pipes/propertydisplay';
+import { NodeDisplayNamePipe } from '../pipes/nodedisplay';
 
 
 declare var jsPlumb: jsPlumbInstance;
@@ -23,7 +26,7 @@ export class StoryComponent implements OnInit, AfterViewInit, OnDestroy {
   selectedNode: any;
 
   constructor(private storyService: StoryService, private route: ActivatedRoute,
-              private elRef: ElementRef) {
+              private elRef: ElementRef, private titleService: Title) {
     this.loading = true;
   }
 
@@ -73,6 +76,9 @@ export class StoryComponent implements OnInit, AfterViewInit, OnDestroy {
       story => {
         this.selectedNode = story.data[story.meta.requested_node_index];
         this.story = story;
+        const nodeDisplayNamePipe = new NodeDisplayNamePipe();
+        const titleDisplay = nodeDisplayNamePipe.transform(this.selectedNode.display_name);
+        this.titleService.setTitle(titleDisplay);
       }
     );
   }
