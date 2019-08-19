@@ -64,7 +64,7 @@ describe('ArtifactsTableComponent', () => {
 
   it('should show the test results from a Greenwave decision', fakeAsync(() => {
     const resultsDBURL = 'https://resultsdb.domain.local/api/v2.0/';
-    const jenkinsLogURL = 'https://jenkins.domain.local/job/cvp-product-test/1/console';
+    const jenkinsLogURL = 'https://jenkins.domain.local/job/cvp-product-test/1/';
     // Ensure the title on the page is correct
     const title = fixture.debugElement.query(By.css('.table-title')).nativeElement;
     expect(title.textContent.trim()).toBe('Test Results for cfme-openshift-app-ui-container-5.9.3.4-1.1533127933');
