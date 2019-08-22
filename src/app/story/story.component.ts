@@ -77,7 +77,7 @@ export class StoryComponent implements OnInit, AfterViewInit, OnDestroy {
         this.selectedNode = story.data[story.meta.requested_node_index];
         this.story = story;
         const nodeDisplayNamePipe = new NodeDisplayNamePipe();
-        const titleDisplay = nodeDisplayNamePipe.transform(this.selectedNode.display_name);
+        const titleDisplay = nodeDisplayNamePipe.transform(this.selectedNode.display_name) + ' - Estuary';
         this.titleService.setTitle(titleDisplay);
       }
     );
