@@ -1,11 +1,11 @@
 import { Component, AfterViewInit, Input, Host, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { faCheck, faCircle, faExclamation, faTimes, faQuestion, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { ToastrService } from 'ngx-toastr';
 
 import { StoryComponent } from '../story.component';
 import { GreenwaveService } from '../../services/greenwave.service';
 import { GatingStatus, GreenwaveDecision } from '../../models/greenwave.type';
-import { NotificationService } from '../../services/notification.service';
 
 
 @Component({
@@ -50,7 +50,7 @@ export class StoryRowComponent implements OnChanges, AfterViewInit {
   faCircle = faCircle;
 
   constructor(@Host() story: StoryComponent, private greenwave: GreenwaveService,
-              private notification: NotificationService) {
+              private notification: ToastrService) {
     this.story = story;
     this.gatingStatus = {
       icon: null,
@@ -193,7 +193,7 @@ export class StoryRowComponent implements OnChanges, AfterViewInit {
           if (this.greenwave.shouldIgnoreError(error)) {
             this.gatingStatus.loading = false;
           } else {
-            this.notification.display(`Getting the gating decision for "${this.node.display_name}" failed`, 'danger');
+            this.notification.error(`Getting the gating decision for "${this.node.display_name}" failed`);
           }
         },
         () => {

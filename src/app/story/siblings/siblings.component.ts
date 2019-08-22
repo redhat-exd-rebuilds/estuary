@@ -2,9 +2,9 @@ import { Component, OnDestroy, TemplateRef } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute, RouterEvent } from '@angular/router';
 import { filter, takeUntil, finalize } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 import { SiblingsService } from '../../services/siblings.service';
-import { NotificationService } from '../../services/notification.service';
 
 
 @Component({
@@ -19,7 +19,7 @@ export class SiblingsComponent implements OnDestroy {
   private unsubscribe: Subject<any> = new Subject();
 
   constructor(private siblingsService: SiblingsService, private router: Router,
-              private route: ActivatedRoute, private notification: NotificationService) {
+              private route: ActivatedRoute, private notification: ToastrService) {
     this.loading = true;
     this.router.events.pipe(takeUntil(this.unsubscribe),
                             filter((event: RouterEvent) => event instanceof NavigationEnd)).subscribe(() => {
@@ -53,7 +53,7 @@ export class SiblingsComponent implements OnDestroy {
         if (siblings.data.length) {
           this.siblings = siblings.data;
         } else {
-          this.notification.display('There are no siblings associated with this artifact', 'danger');
+          this.notification.warning('There are no siblings associated with this artifact');
         }
       }
     );

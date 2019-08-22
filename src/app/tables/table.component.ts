@@ -1,5 +1,5 @@
 import { Component, OnChanges, Input, Output, EventEmitter } from '@angular/core';
-import { NotificationService } from '../services/notification.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -54,7 +54,7 @@ export class EstuaryTableComponent implements OnChanges {
   // Keeps track of which column to sort by
   sortedBy: string;
 
-  constructor(private notification: NotificationService) { }
+  constructor(private notification: ToastrService) { }
 
   ngOnChanges() {
     this.processItems();
@@ -139,7 +139,7 @@ export class EstuaryTableComponent implements OnChanges {
 
     if (activeColumns.length === 0) {
       const msg = 'There are no columns selected. Please select at least one columnn and try again.';
-      this.notification.display(msg, 'danger');
+      this.notification.error(msg);
       return;
     }
 

@@ -21,10 +21,10 @@
               "src/favicon.ico"
             ],
             "styles": [
+              "node_modules/ngx-toastr/toastr.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/patternfly/dist/css/patternfly.min.css",
               "node_modules/patternfly/dist/css/patternfly-additions.min.css",
-              "node_modules/patternfly-ng/dist/css/patternfly-ng.min.css",
               "node_modules/jsplumb/css/jsplumbtoolkit-defaults.css",
               "src/styles.css"
             ],
@@ -80,10 +80,10 @@
               "node_modules/jsplumb/dist/js/jsplumb.min.js"
             ],
             "styles": [
+              "node_modules/ngx-toastr/toastr.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/patternfly/dist/css/patternfly.min.css",
               "node_modules/patternfly/dist/css/patternfly-additions.min.css",
-              "node_modules/patternfly-ng/dist/css/patternfly-ng.min.css",
               "node_modules/jsplumb/css/jsplumbtoolkit-defaults.css",
               "src/styles.css"
             ],

@@ -7,6 +7,7 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { of } from 'rxjs';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { StoryRowComponent } from './storyrow.component';
 import { TotalTimesComponent } from './totaltimes/totaltimes.component';
@@ -43,6 +44,7 @@ describe('StoryRowComponent testing', () => {
           HttpClientTestingModule,
           FontAwesomeModule,
           NoopAnimationsModule,
+          ToastrModule.forRoot({}),
         ]
     }).compileComponents();
 

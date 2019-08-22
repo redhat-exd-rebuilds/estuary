@@ -3,6 +3,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { jsPlumbInstance } from 'jsplumb';
 import { finalize } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 import { StoryService } from '../services/story.service';
 import { StoryAPI } from '../models/story.type';
@@ -24,9 +25,11 @@ export class StoryComponent implements OnInit, AfterViewInit, OnDestroy {
   loading: boolean;
   story: StoryAPI;
   selectedNode: any;
+  processingTimeFlag: boolean;
 
   constructor(private storyService: StoryService, private route: ActivatedRoute,
-              private elRef: ElementRef, private titleService: Title) {
+              private elRef: ElementRef, private titleService: Title,
+              private notification: ToastrService) {
     this.loading = true;
   }
 
@@ -79,6 +82,12 @@ export class StoryComponent implements OnInit, AfterViewInit, OnDestroy {
         const nodeDisplayNamePipe = new NodeDisplayNamePipe();
         const titleDisplay = nodeDisplayNamePipe.transform(this.selectedNode.display_name) + ' - Estuary';
         this.titleService.setTitle(titleDisplay);
+        this.processingTimeFlag = story.meta.processing_time_flag;
+        if (this.processingTimeFlag === true) {
+          this.notification.warning(
+            'There wasn\'t enough information to accurately calculate the processing time'
+          );
+        }
       }
     );
   }

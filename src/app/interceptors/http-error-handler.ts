@@ -1,6 +1,6 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { NotificationService } from '../services/notification.service';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
@@ -14,7 +14,7 @@ export class HTTPErrorHandler implements HttpInterceptor {
 
   readonly apiUrl: string = environment.api;
 
-  constructor(private notification: NotificationService) { }
+  constructor(private notification: ToastrService) { }
 
   /**
    * Intercept the HTTP request and display a toast notification on API errors
@@ -50,6 +50,6 @@ export class HTTPErrorHandler implements HttpInterceptor {
       errorDisplayMsg = error.error.message;
     }
 
-    this.notification.display(errorDisplayMsg, 'danger');
+    this.notification.error(errorDisplayMsg);
   }
 }

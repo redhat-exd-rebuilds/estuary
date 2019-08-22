@@ -8,6 +8,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { ToastrModule } from 'ngx-toastr';
 
 import { RecentsComponent } from './recents.component';
 import { RecentsService } from '../services/recents.service';
@@ -42,7 +43,8 @@ describe('RecentsComponent', () => {
         TabsModule.forRoot(),
         HttpClientTestingModule,
         NoopAnimationsModule,
-        BsDropdownModule.forRoot()
+        BsDropdownModule.forRoot(),
+        ToastrModule.forRoot({}),
       ],
       // This is used to avoid having to import components we don't test here
       schemas: [NO_ERRORS_SCHEMA]

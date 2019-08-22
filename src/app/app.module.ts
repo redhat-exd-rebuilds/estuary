@@ -8,8 +8,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-import { ToastNotificationModule } from 'patternfly-ng/notification';
 import { OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -22,7 +22,6 @@ import { NodeTypeDisplayPipe, NodeTypePluralPipe, NodeExternalUrlPipe,
          TruncatePipe, NodeDisplayNamePipe } from './pipes/nodedisplay';
 import { TimeDisplayPipe } from './pipes/timedisplay';
 import { SearchComponent } from './search/search.component';
-import { NotificationComponent } from './notification/notification.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RecentsComponent } from './recents/recents.component';
@@ -50,7 +49,6 @@ import { HTTPErrorHandler } from './interceptors/http-error-handler';
     NodeTypeDisplayPipe,
     NodeTypePluralPipe,
     NodeExternalUrlPipe,
-    NotificationComponent,
     SpinnerComponent,
     TruncatePipe,
     NavbarComponent,
@@ -72,7 +70,6 @@ import { HTTPErrorHandler } from './interceptors/http-error-handler';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    ToastNotificationModule,
     TooltipModule.forRoot(),
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
@@ -83,7 +80,11 @@ import { HTTPErrorHandler } from './interceptors/http-error-handler';
         sendAccessToken: true
       }
     }),
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    ToastrModule.forRoot({
+      progressBar: true,
+      closeButton: true,
+    }),
   ],
   providers: [
     DatePipe,

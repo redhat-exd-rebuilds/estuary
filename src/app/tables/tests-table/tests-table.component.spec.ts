@@ -4,7 +4,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { By } from '@angular/platform-browser';
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ToastNotificationModule } from 'patternfly-ng/notification';
+import { ToastrModule } from 'ngx-toastr';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
@@ -46,7 +46,7 @@ describe('ArtifactsTableComponent', () => {
       providers: [DatePipe],
       imports: [
         HttpClientTestingModule,
-        ToastNotificationModule,
+        ToastrModule.forRoot({}),
         NoopAnimationsModule,
         BsDropdownModule.forRoot(),
         ModalModule.forRoot()
