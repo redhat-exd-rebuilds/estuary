@@ -74,7 +74,7 @@ describe('ArtifactsTableComponent', () => {
     expect(tableHeaders.length).toBe(6);
     const tableHeadersText = tableHeaders.map(v => v.nativeElement.textContent.trim());
     expect(tableHeadersText[0]).toBe('ID');
-    expect(tableHeadersText[1]).toBe('Impacts the decision');
+    expect(tableHeadersText[1]).toBe('Impacts the Decision');
     expect(tableHeadersText[2]).toBe('Logs');
     expect(tableHeadersText[3]).toBe('Status');
     expect(tableHeadersText[4]).toBe('Test Case');
@@ -145,8 +145,8 @@ describe('ArtifactsTableComponent', () => {
       By.css('.estuary-table-header__dropdown-menu')).nativeElement;
       // Expect there to be 6 columns to be able to check
       expect(dropdownMenu.children.length).toBe(7);
-      const expectedActiveColumns = ['ID', 'Impacts the decision', 'Logs', 'Status',  'Test Case', 'Waived'];
-      const expectedColumns = ['ID', 'Impacts the decision', 'Item', 'Logs', 'Status',  'Test Case', 'Waived'];
+      const expectedActiveColumns = ['ID', 'Impacts the Decision', 'Logs', 'Status',  'Test Case', 'Waived'];
+      const expectedColumns = ['ID', 'Impacts the Decision', 'Item', 'Logs', 'Status',  'Test Case', 'Waived'];
       for (let i = 0; i < expectedColumns.length; i++) {
         const columnText = dropdownMenu.children[i].textContent.trim();
         expect(dropdownMenu.children[i].textContent.trim()).toBe(expectedColumns[i]);
