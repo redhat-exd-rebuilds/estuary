@@ -1,5 +1,5 @@
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { By } from '@angular/platform-browser';
+import { By, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Params } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { ComponentFixture, async, TestBed, fakeAsync, tick } from '@angular/core/testing';
@@ -55,7 +55,8 @@ describe('StoryComponent testing', () => {
             StoryService,
             DatePipe,
             {provide: ActivatedRoute, useValue: {params: routeParams}},
-            GreenwaveService
+            GreenwaveService,
+            Title,
         ],
         imports: [
             RouterTestingModule,
@@ -85,6 +86,9 @@ describe('StoryComponent testing', () => {
     routeParams.next({'resource': 'bugzillabug', 'uid': '12345'});
     fixture.detectChanges();
     tick();
+
+    const storyTitle = TestBed.get(Title);
+    expect(storyTitle.getTitle()).toBe('RHBZ#12345 - Estuary');
 
     const storyRowEls = fixture.debugElement.queryAll(By.css('app-storyrow'));
     // Ensure we get the expected rows
@@ -180,6 +184,9 @@ describe('StoryComponent testing', () => {
     routeParams.next({'resource': 'kojibuild', 'uid': '750095'});
     fixture.detectChanges();
     tick();
+
+    const storyTitle = TestBed.get(Title);
+    expect(storyTitle.getTitle()).toBe('libguestfs-1.38.4-1.el8+1579+44551958 - Estuary');
 
     const storyRowEls = fixture.debugElement.queryAll(By.css('app-storyrow'));
     // Ensure we get the expected rows
