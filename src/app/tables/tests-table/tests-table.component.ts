@@ -55,6 +55,7 @@ export class TestsTableComponent implements OnChanges {
       return new Date(a.submit_time) > new Date(b.submit_time) ? -1 : (new Date(b.submit_time) > new Date(a.submit_time) ? 1 : 0);
     });
     const processedTestCases = [];
+    const satisfied_requirements = this.greenwaveDecision.satisfied_requirements.map((j) => j.result_id);
     for (const result of sortedResults) {
       /* showing only the last result */
       if (!processedTestCases.includes(result.testcase.name)) {
@@ -65,8 +66,7 @@ export class TestsTableComponent implements OnChanges {
           'Test Case': result.testcase.name,
           'Logs': 'No logs available',
           'Waived': waivedTestCases.includes(result.testcase.name) ? 'Yes' : 'No',
-          'Impacts the decision': this.greenwaveDecision.satisfied_requirements.map(
-            function (j) { return j.result_id; }).includes(result.id) ? 'Yes' : 'No',
+          'Impacts the decision': satisfied_requirements.includes(result.id) ? 'Yes' : 'No',
         };
 
         this.linkColumnMappings[result.id] = {
