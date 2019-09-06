@@ -1,5 +1,5 @@
 <div class="node-uid-column story-row-column">
-  <div class="node-uid-column__display-name node-uid-column__display-name--desktop">{{ node.display_name | nodeDisplayName | truncate: 30 }}</div>
+  <div class="node-uid-column__display-name node-uid-column__display-name--desktop">{{ node.display_name | nodeDisplayName | truncate: 25 }}</div>
   <div class="node-uid-column__display-name node-uid-column__display-name--mobile">{{ node.display_name | nodeDisplayName | truncate: 15 }}</div>
   <div class="node-uid-column__timestamp" *ngIf="node.timeline_timestamp; else noTimestamp">
     {{ node.timeline_timestamp | date: 'MMM d, y, HH:mm:ss':'+0000' }} <span class="node-uid-column__timestamp__timezone">UTC</span>
