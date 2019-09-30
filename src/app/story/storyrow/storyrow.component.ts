@@ -153,7 +153,7 @@ export class StoryRowComponent implements OnChanges, AfterViewInit {
     };
 
     const subjectIdentifier = this.greenwave.getSubjectIdentifier(this.node);
-    this.greenwave.getArtifactDecision(this.node.resource_type, subjectIdentifier)
+    this.greenwave.getArtifactDecision(this.node, subjectIdentifier)
       .subscribe(
         (decision: GreenwaveDecision) => {
           const statusName = this.greenwave.getStatusName(decision);

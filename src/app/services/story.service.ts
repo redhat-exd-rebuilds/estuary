@@ -34,4 +34,9 @@ export class StoryService {
     }
     return this.http.get(url);
   }
+
+  getArtifact(resource_type, uid): Observable<any> {
+    const url = `${this.apiUrl}${resource_type}/${uid}`;
+    return this.http.get(url);
+  }
 }
