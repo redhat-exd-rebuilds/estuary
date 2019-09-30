@@ -597,3 +597,20 @@ export const greenwaveDecision: GreenwaveDecision = {
   'unsatisfied_requirements': [],
   'waivers': []
 };
+
+export const containerBuild = {
+  'completion_time': '2018-05-08T19:17:42+00:00',
+  'creation_time': '2018-05-08T19:17:44.180482+00:00',
+  'epoch': null,
+  'id': '123456',
+  'name': 'cfme-openshift-app-ui-container',
+  'operator': true,
+  'original_nvr': null,
+  'release': '1.1533127933',
+  'resource_type': 'ContainerKojiBuild',
+  'display_name': 'cfme-openshift-app-ui-container-5.9.3.4-1.1533127933',
+  'start_time': '2018-05-08T18:56:25+00:00',
+  'state': 1,
+  'version': '5.9.3.4',
+  'timeline_timestamp': '2018-12-10T12:01:21Z',
+};

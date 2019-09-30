@@ -69,15 +69,36 @@ export class GreenwaveService {
     return this.http.post<GreenwaveDecision>(`${this.greenwaveURL}decision`, body, options);
   }
 
-  getArtifactDecision(resource: string, subjectIdentifier: string, verbose = true): Observable<any> {
+  /**
+   * Get the Greenwave decision of a given artifact.
+   *
+   * @param {string|object} resource An artifact type, or artifact object. The object is
+   *   needed for container builds.
+   * @param {string} subjectIdentifier The subject identifier of the artifact used in Greenwave.
+   * @return {Observable<any>} An observable of the Greenwave decision.
+   */
+  getArtifactDecision(resource: any, subjectIdentifier: string): Observable<any> {
     let decisionContext: string;
     let productVersion: string;
     let subjectType = 'koji_build';
+    let resourceType: string;
+    let isOperator = false;
 
-    switch (resource.toLowerCase()) {
+    if (typeof resource === 'string') {
+      resourceType = resource;
+    } else {
+      resourceType = resource.resource_type;
+      isOperator = resource.operator;
+    }
+
+    switch (resourceType.toLowerCase()) {
       case('containerkojibuild'):
       case('containerbuild'):
-        decisionContext = 'cvp_default';
+        if (isOperator) {
+          decisionContext = 'cvp_redhat_operator_default';
+        } else {
+          decisionContext = 'cvp_default';
+        }
         productVersion = 'cvp';
         break;
       case('kojibuild'):
@@ -100,7 +121,7 @@ export class GreenwaveService {
         return emptyObservable;
     }
 
-    return this.getDecision(subjectIdentifier, decisionContext, productVersion, subjectType, verbose);
+    return this.getDecision(subjectIdentifier, decisionContext, productVersion, subjectType, true);
   }
 
   getStatusName(decision: GreenwaveDecision): string {
