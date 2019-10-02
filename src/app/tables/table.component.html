@@ -16,12 +16,14 @@
           </button>
           <!-- Create a dropdown menu with all the columns the user can choose to have shown -->
           <ul *dropdownMenu class="dropdown-menu estuary-table-header__dropdown-menu">
-            <li *ngFor="let column of columns | keyvalue">
-              <!-- The default columns will be checked by default, any changes made by the user will trigger the
-                  setColumnState method to be called, which will store that state change in the columns component property.
-                  This change will then be reflected by Angular when it reruns the various ngFors in this template. -->
-              <input type="checkbox" [checked]="column.value" (change)="setColumnState(column.key)" /> {{ column.key }}
-            </li>
+            <ng-container *ngFor="let column of columns | keyvalue: sortColumns">
+              <li *ngIf="column.key !== sideColumnName">
+                <!-- The default columns will be checked by default, any changes made by the user will trigger the
+                    setColumnState method to be called, which will store that state change in the columns component property.
+                    This change will then be reflected by Angular when it reruns the various ngFors in this template. -->
+                <input type="checkbox" [checked]="column.value" (change)="setColumnState(column.key)" /> {{ column.key }}
+              </li>
+            </ng-container>
           </ul>
       </div>
 
@@ -40,12 +42,18 @@
           <thead>
             <tr>
               <!-- Display a header cell for every active column -->
-              <ng-container *ngFor="let column of columns | keyvalue">
-                <th *ngIf="column.value" (click)="sortTable(column.key)">
-                  <!-- Display an arrow if the table is being sorted by this column -->
-                  {{ column.key }}<i class="fa estuary-table__sort-icon"
-                      [ngClass]="{'fa-angle-down': sortedBy === column.key, 'fa-angle-up': sortedBy === '-' + column.key}"></i>
-                </th>
+              <ng-container *ngFor="let column of columns | keyvalue: sortColumns">
+                <ng-container *ngIf="column.key !== sideColumnName; else sideColumn">
+                  <th *ngIf="column.value" (click)="sortTable(column.key)">
+                    <!-- Display an arrow if the table is being sorted by this column -->
+                    {{ column.key }}<i class="fa estuary-table__sort-icon"
+                        [ngClass]="{'fa-angle-down': sortedBy === column.key, 'fa-angle-up': sortedBy === '-' + column.key}"></i>
+                  </th>
+                </ng-container>
+                <ng-template #sideColumn>
+                  <!-- Display an empty header above the side column -->
+                  <th></th>
+                </ng-template>
               </ng-container>
             </tr>
           </thead>
@@ -53,7 +61,7 @@
             <!-- Display a table row for every item -->
             <tr *ngFor="let item of items">
               <!-- Display all the active columns for each item -->
-              <ng-container *ngFor="let column of columns | keyvalue">
+              <ng-container *ngFor="let column of columns | keyvalue: sortColumns">
                 <!-- column.value is a boolean determining if the column is selected to be shown by the user -->
                 <td *ngIf="column.value">
                   <!-- Check if the column should be a link -->

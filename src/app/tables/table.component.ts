@@ -1,5 +1,6 @@
 import { Component, OnChanges, Input, Output, EventEmitter } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { KeyValue } from '@angular/common';
 
 
 @Component({
@@ -39,6 +40,9 @@ export class EstuaryTableComponent implements OnChanges {
   @Input() preformattedColumns: Array<string>;
   // Optional margin spacing surrounding the table
   @Input() tableSpacing = true;
+  // Name of a special column always shown on the right side of the table that cannot
+  // be deactivated. It has no header and is not included on the CSV when exported.
+  @Input() sideColumnName: string;
 
   // This will contain key value pairs, where each key is a column and each value
   // is a boolean determining if the column should be shown
@@ -78,6 +82,13 @@ export class EstuaryTableComponent implements OnChanges {
       } else {
         this.columns[column] = false;
       }
+    }
+
+    if (this.sideColumnName) {
+      this.columns[this.sideColumnName] = true;
+      // We do not want to count the side column in the count for total number of
+      // columns, so we can subtract it here.
+      this.numColumns -= 1;
     }
 
     if (this.defaultSortedColumn) {
@@ -182,5 +193,16 @@ export class EstuaryTableComponent implements OnChanges {
       tempLink.download = 'estuary.csv';
     }
     tempLink.click();
+  }
+
+  sortColumns = (colA: KeyValue<string, string>, colB: KeyValue<string, string>): number => {
+    // If the column is the side column, then we want to make sure it is last.
+    if (colA.key === this.sideColumnName) {
+      return 1;
+    } else if (colB.key === this.sideColumnName) {
+      return -1;
+    } else {
+      return (colA.key < colB.key) ? -1 : (colA.key > colB.key) ? 1 : 0;
+    }
   }
 }
