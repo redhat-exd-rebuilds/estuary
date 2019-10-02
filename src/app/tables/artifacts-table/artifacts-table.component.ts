@@ -58,7 +58,7 @@ export class ArtifactsTableComponent implements OnChanges {
     const propValDisplayPipe = new PropertyValueDisplayPipe(this.datePipe);
     const externalUrlPipe = new NodeExternalUrlPipe();
     this.formattedArtifacts = this.artifacts.map(artifact => {
-      const formattedArtifact = {};
+      const formattedArtifact = {'See Story': 'See Story'};
       for (const [key, value] of Object.entries(artifact)) {
         // Exclude these columns since they are implementation details
         if (!['resource_type', 'display_name'].includes(key)) {
@@ -70,12 +70,14 @@ export class ArtifactsTableComponent implements OnChanges {
       // Add a link mapping in the form of:
       // {
       //   734506: {
-      //     ID: 'https://koji.domain.local/koji/buildinfo?buildID=734506'
+      //     ID: 'https://koji.domain.local/koji/buildinfo?buildID=734506',
+      //     See Story: 'https://pipeline.domain.local/kojibuild/734506'
       //   }
       //   ...
       // }
       this.linkColumnMappings[formattedArtifact[this.uidColumn]] = {
-        [this.uidColumn]: externalUrlPipe.transform(artifact)
+        [this.uidColumn]: externalUrlPipe.transform(artifact),
+        'See Story': this.getNodeStoryUrl(artifact)
       };
 
       return formattedArtifact;
@@ -120,5 +122,16 @@ export class ArtifactsTableComponent implements OnChanges {
     }
     const propDisplayPipe = new PropertyDisplayPipe();
     return columns.map(v => propDisplayPipe.transform(v));
+  }
+
+  getNodeStoryUrl(node: any) {
+    const resourceType = node.resource_type.toLowerCase();
+    let identifier;
+    if (resourceType === 'distgitcommit') {
+        identifier = node.hash;
+    } else {
+        identifier = node.id;
+    }
+    return `/${resourceType}/${identifier}`;
   }
 }

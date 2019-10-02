@@ -70,7 +70,7 @@ describe('ArtifactsTableComponent', () => {
 
     // Ensure the table headers show only the default columns
     const tableHeaders = fixture.debugElement.queryAll(By.css('.estuary-table th'));
-    expect(tableHeaders.length).toBe(6);
+    expect(tableHeaders.length).toBe(7);
     const tableHeadersText = tableHeaders.map(v => v.nativeElement.textContent.trim());
     expect(tableHeadersText[0]).toBe('Assignee');
     expect(tableHeadersText[1]).toBe('ID');
@@ -99,6 +99,8 @@ describe('ArtifactsTableComponent', () => {
     expect(rowOneColumns[3].textContent.trim()).toBe('user1');
     expect(rowOneColumns[4].textContent.trim()).toBe('CVE-2018-1234 kernel: some error [rhel-7.5.z]');
     expect(rowOneColumns[5].textContent.trim()).toBe('CLOSED');
+    expect(rowOneColumns[6].textContent.trim()).toBe('See Story');
+    expect(rowOneColumns[6].children[0].href).toContain('/bugzillabug/1566849');
 
     const rowTwoColumns = rows[1].nativeElement.children;
     expect(rowTwoColumns[0].textContent.trim()).toBe('user2');
@@ -115,6 +117,8 @@ describe('ArtifactsTableComponent', () => {
     expect(rowTwoColumns[4].textContent.trim()).toBe('CVE-2018-1235 kernel: some really long error that …');
     expect(rowTwoColumns[4].firstElementChild.tagName).toBe('APP-TRUNCATE-MODAL');
     expect(rowTwoColumns[5].textContent.trim()).toBe('CLOSED');
+    expect(rowTwoColumns[6].textContent.trim()).toBe('See Story');
+    expect(rowTwoColumns[6].children[0].href).toContain('/bugzillabug/1567084');
 
     // Click the dropdown button so that the menu appears
     const dropdownButton = fixture.debugElement.query(
