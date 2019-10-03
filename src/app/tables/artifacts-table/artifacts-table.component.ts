@@ -113,7 +113,7 @@ export class ArtifactsTableComponent implements OnChanges {
         columns = ['builds', 'id', 'name'];
         break;
       case ('freshmakerbuild'):
-        columns = ['id', 'name', 'original_nvr', 'rebuilt_nvr'];
+        columns = ['id', 'name', 'original_nvr', 'rebuilt_nvr', 'state_name', 'state_reason'];
         break;
       default:
         columns = ['id'];
