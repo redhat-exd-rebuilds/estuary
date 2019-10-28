@@ -35,6 +35,15 @@ export class EstuaryTableComponent implements OnChanges {
   //   ...
   // }
   @Input() linkColumnMappings: any;
+  // A mapping of the item UID to an object with the keys as column names and values
+  // as the corresponding text to show as a tooltip. For example:
+  // {
+  //   1: {
+  //     Waived: 'The test was faulty'
+  //   }
+  //   ...
+  // }
+  @Input() tooltipColumnMappings: any;
   // All columns that should be wrapped in "pre" tags when they are shown in
   // a modal when the initial value is truncated
   @Input() preformattedColumns: Array<string>;

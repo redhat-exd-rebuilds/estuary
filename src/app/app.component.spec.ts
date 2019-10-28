@@ -12,6 +12,7 @@ import { NodeTypeDisplayPipe, NodeTypePluralPipe, NodeExternalUrlPipe, TruncateP
          NodeDisplayNamePipe } from './pipes/nodedisplay';
 import { PropertyDisplayPipe } from './pipes/propertydisplay';
 import { TimeDisplayPipe } from './pipes/timedisplay';
+import { TableColumnPipe } from './pipes/tablecolumn';
 import { StoryComponent } from './story/story.component';
 import { StoryRowComponent } from './story/storyrow/storyrow.component';
 import { StorysidebarComponent } from './story/storysidebar/storysidebar.component';
@@ -67,6 +68,7 @@ describe('AppComponent', () => {
         NodeDisplayNamePipe,
         TestResultsComponent,
         TimeDisplayPipe,
+        TableColumnPipe,
       ],
       imports: [
         AppRoutingModule,

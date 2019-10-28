@@ -504,28 +504,28 @@ export const relationships = {
 
 export const greenwaveDecision: GreenwaveDecision = {
   'applicable_policies': [
-    'cvp-default'
+    'osci_compose_modules'
   ],
   'policies_satisfied': true,
   'results': [
     {
       'data': {
         'item': [
-          'cfme-openshift-app-ui-container-5.9.3.4-1.1533127933'
+          'python36-3.6-8010020190626162728.a920e634'
         ],
         'log': [
-          'https://jenkins.domain.local/job/cvp-product-test/1/console'
+          'https://jenkins.domain.local/job/ci-openstack-mbs/452/console'
         ],
       },
       'groups': [
-        'f79f00c2-e0be-4782-8613-7d1b7fa7b6d6'
+        '8a8aac63-7d57-4fdc-987a-bc47d8e036a7'
       ],
-      'href': 'https://resultsdb.domain.local/api/v2.0/results/6125427',
-      'id': 6125427,
+      'href': 'https://resultsdb.domain.local/api/v2.0/results/7504236',
+      'id': 7504236,
       'note': '',
-      'outcome': 'INFO',
+      'outcome': 'FAILED',
       'ref_url': 'https://jenkins.domain.local/job/cvp-product-test/1/',
-      'submit_time': '2018-08-01T19:07:05.442807',
+      'submit_time': '2019-06-26T16:56:01.750240',
       'testcase': {
         'href': 'https://resultsdb.domain.local/api/v2.0/testcases/rhproduct.default.functional',
         'name': 'rhproduct.default.functional',
@@ -535,21 +535,21 @@ export const greenwaveDecision: GreenwaveDecision = {
     {
       'data': {
         'item': [
-          'cfme-openshift-app-ui-container-5.9.3.4-1.1533127933'
+          'python36-3.6-8010020190626162728.a920e634'
         ],
         'log': [
-          'https://jenkins.domain.local/job/cvp-product-test/1/console'
+          'https://jenkins.domain.local/job/ci-openstack-mbs/120/console'
         ],
       },
       'groups': [
-        'b6d8bbeb-a7ea-4bc3-b062-25eb8f404b2e'
+        '7e03a6b6-6341-4826-ac35-9293bc4c851d'
       ],
-      'href': 'https://resultsdb.domain.local/api/v2.0/results/6125318',
-      'id': 6125318,
+      'href': 'https://resultsdb.domain.local/api/v2.0/results/7504231',
+      'id': 7504231,
       'note': '',
       'outcome': 'PASSED',
       'ref_url': 'https://jenkins.domain.local/job/cvp-product-test/1/',
-      'submit_time': '2018-08-01T19:03:49.074767',
+      'submit_time': '2019-06-26T16:56:01.750240',
       'testcase': {
         'href': 'https://resultsdb.domain.local/api/v2.0/testcases/rhproduct.default.sanity',
         'name': 'rhproduct.default.sanity',
@@ -559,21 +559,21 @@ export const greenwaveDecision: GreenwaveDecision = {
     {
       'data': {
         'item': [
-          'cfme-openshift-app-ui-container-5.9.3.4-1.1533127933'
+          'python36-3.6-8010020190626162728.a920e634'
         ],
         'log': [
-          'https://jenkins.domain.local/job/cvp-product-test/1/console'
+          'https://jenkins.domain.local/job/ci-openstack-mbs/2244/console'
         ],
       },
       'groups': [
-        'b6d8bbeb-a7ea-4bc3-b062-25eb8f404b2e'
+        'ab1280d8-8c6f-4272-b6e2-d9a31f42e27b'
       ],
-      'href': 'https://resultsdb.domain.local/api/v2.0/results/6125319',
-      'id': 6125319,
+      'href': 'https://resultsdb.domain.local/api/v2.0/results/7504227',
+      'id': 7504227,
       'note': '',
-      'outcome': 'PASSED',
+      'outcome': 'INFO',
       'ref_url': 'https://jenkins.domain.local/job/cvp-product-test/1/',
-      'submit_time': '2018-08-01T19:04:49.074767',
+      'submit_time': '2019-06-26T16:56:01.750240',
       'testcase': {
         'href': 'https://resultsdb.domain.local/api/v2.0/testcases/rhproduct.default.sanity',
         'name': 'rhproduct.default.sanity',
@@ -583,19 +583,28 @@ export const greenwaveDecision: GreenwaveDecision = {
   ],
   'satisfied_requirements': [
     {
-      'result_id': 6125319,
+      'result_id': 7504236,
       'testcase': 'rhproduct.default.sanity',
       'type': 'test-result-passed'
     },
     {
-      'result_id': 6125427,
+      'result_id': 7504231,
       'testcase': 'rhproduct.default.functional',
       'type': 'test-result-passed'
     }
   ],
   'summary': 'All required tests passed',
   'unsatisfied_requirements': [],
-  'waivers': []
+  'waivers': [
+    {
+      'comment': 'This is due to the dependency not being in the compose yet',
+      'id': 16549,
+      'product_version': 'rhel-8',
+      'subject_identifier': 'python36-3.6-8010020190626162728.a920e634',
+      'testcase': 'rhproduct.default.sanity',
+      'waived': true,
+    }
+  ]
 };
 
 export const containerBuild = {

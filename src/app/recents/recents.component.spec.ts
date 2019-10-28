@@ -1,6 +1,7 @@
 import { fakeAsync, ComponentFixture, TestBed, tick } from '@angular/core/testing';
 import { DatePipe } from '@angular/common';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { of } from 'rxjs';
 import { NavigationEnd } from '@angular/router';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
@@ -14,6 +15,7 @@ import { RecentsComponent } from './recents.component';
 import { RecentsService } from '../services/recents.service';
 import { recents } from './test.data';
 import { NodeTypeDisplayPipe, NodeExternalUrlPipe, TruncatePipe } from '../pipes/nodedisplay';
+import { TableColumnPipe } from '../pipes/tablecolumn';
 import { ArtifactsTableComponent } from '../tables/artifacts-table/artifacts-table.component';
 import { EstuaryTableComponent } from '../tables/table.component';
 import { PropertyDisplayPipe, PropertyValueDisplayPipe } from '../pipes/propertydisplay';
@@ -33,6 +35,7 @@ describe('RecentsComponent', () => {
         PropertyDisplayPipe,
         PropertyValueDisplayPipe,
         RecentsComponent,
+        TableColumnPipe,
         TruncatePipe
       ],
       providers: [
@@ -45,6 +48,7 @@ describe('RecentsComponent', () => {
         NoopAnimationsModule,
         BsDropdownModule.forRoot(),
         ToastrModule.forRoot({}),
+        TooltipModule.forRoot(),
       ],
       // This is used to avoid having to import components we don't test here
       schemas: [NO_ERRORS_SCHEMA]
