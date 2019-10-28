@@ -6,6 +6,7 @@ import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testin
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ToastrModule } from 'ngx-toastr';
 
 import { ArtifactsTableComponent } from './artifacts-table.component';
@@ -13,6 +14,7 @@ import { EstuaryTableComponent } from '../table.component';
 import { TruncateModalComponent } from '../truncate-modal/truncate-modal.component';
 import { NodeExternalUrlPipe, TruncatePipe } from '../../pipes/nodedisplay';
 import { PropertyDisplayPipe, PropertyValueDisplayPipe } from '../../pipes/propertydisplay';
+import { TableColumnPipe } from '../../pipes/tablecolumn';
 import { siblings } from '../../story/test.data';
 
 
@@ -40,6 +42,7 @@ describe('ArtifactsTableComponent', () => {
         NodeExternalUrlPipe,
         PropertyDisplayPipe,
         PropertyValueDisplayPipe,
+        TableColumnPipe,
         TruncatePipe,
         TruncateModalComponent,
       ],
@@ -50,6 +53,7 @@ describe('ArtifactsTableComponent', () => {
         BsDropdownModule.forRoot(),
         ModalModule.forRoot(),
         ToastrModule.forRoot({}),
+        TooltipModule.forRoot(),
       ]
     }).compileComponents();
   });

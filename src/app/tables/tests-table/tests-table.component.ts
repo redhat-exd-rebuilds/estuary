@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { GreenwaveDecision } from '../../models/greenwave.type';
+import { environment } from '../../../environments/environment';
 
 
 @Component({
@@ -17,6 +18,7 @@ export class TestsTableComponent implements OnChanges {
   defaultSortedColumn: string;
   uidColumn: string;
   linkColumnMappings: any;
+  tooltipColumnMappings: any;
 
   constructor() {
     this.defaultColumns = ['ID', 'Logs', 'Status', 'Test Case', 'Waived', 'Impacts the Decision'];
@@ -38,6 +40,7 @@ export class TestsTableComponent implements OnChanges {
   processDecision() {
     this.formattedResults = [];
     this.linkColumnMappings = {};
+    this.tooltipColumnMappings = {};
     this.title = `Test Results for ${this.subjectIdentifier}`;
     this.titleLink = null;
     if (!this.greenwaveDecision) {
@@ -77,6 +80,16 @@ export class TestsTableComponent implements OnChanges {
         if (result.data.log) {
           formattedResult['Logs'] = 'Test Run Logs';
           this.linkColumnMappings[result.id]['Logs'] = result.ref_url;
+        }
+
+        if (result.testcase.name) {
+          for (const waiver of this.greenwaveDecision.waivers) {
+            if (waiver.testcase === result.testcase.name) {
+              const url = environment.waiverDbAPI + waiver.id;
+              this.linkColumnMappings[result.id]['Waived'] = url;
+              this.tooltipColumnMappings[result.id] = {Waived: waiver.comment};
+            }
+          }
         }
 
         this.formattedResults.push(formattedResult);

@@ -7,12 +7,14 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ToastrModule } from 'ngx-toastr';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 import { TestsTableComponent } from './tests-table.component';
 import { EstuaryTableComponent } from '../table.component';
 import { TruncateModalComponent } from '../truncate-modal/truncate-modal.component';
 import { GreenwaveDecision } from '../../models/greenwave.type';
 import { TruncatePipe } from '../../pipes/nodedisplay';
+import { TableColumnPipe } from '../../pipes/tablecolumn';
 import { greenwaveDecision as greenwaveDecisionTestData } from '../../story/test.data';
 
 
@@ -40,6 +42,7 @@ describe('ArtifactsTableComponent', () => {
         TestHostComponent,
         TestsTableComponent,
         EstuaryTableComponent,
+        TableColumnPipe,
         TruncatePipe,
         TruncateModalComponent,
       ],
@@ -49,7 +52,8 @@ describe('ArtifactsTableComponent', () => {
         ToastrModule.forRoot({}),
         NoopAnimationsModule,
         BsDropdownModule.forRoot(),
-        ModalModule.forRoot()
+        ModalModule.forRoot(),
+        TooltipModule.forRoot(),
       ]
     }).compileComponents();
   });
@@ -58,16 +62,17 @@ describe('ArtifactsTableComponent', () => {
     fixture = TestBed.createComponent(TestHostComponent);
     component = fixture.componentInstance;
     component.greenwaveDecision = greenwaveDecisionTestData;
-      component.subjectIdentifier = 'cfme-openshift-app-ui-container-5.9.3.4-1.1533127933';
+      component.subjectIdentifier = 'python36-3.6-8010020190626162728.a920e634';
     fixture.detectChanges();
   });
 
   it('should show the test results from a Greenwave decision', fakeAsync(() => {
     const resultsDBURL = 'https://resultsdb.domain.local/api/v2.0/';
+    const waiverDBURL = 'https://waiverdb.domain.local/api/v1.0/';
     const jenkinsLogURL = 'https://jenkins.domain.local/job/cvp-product-test/1/';
     // Ensure the title on the page is correct
     const title = fixture.debugElement.query(By.css('.table-title')).nativeElement;
-    expect(title.textContent.trim()).toBe('Test Results for cfme-openshift-app-ui-container-5.9.3.4-1.1533127933');
+    expect(title.textContent.trim()).toBe('Test Results for python36-3.6-8010020190626162728.a920e634');
 
     // Ensure the table headers show only the default columns
     const tableHeaders = fixture.debugElement.queryAll(By.css('.estuary-table th'));
@@ -93,8 +98,8 @@ describe('ArtifactsTableComponent', () => {
 
     let idLink = rowOneColumns[0].children[0];
     expect(idLink.tagName).toBe('A');
-    expect(idLink.textContent.trim()).toBe('6125319');
-    expect(idLink.href).toBe(`${resultsDBURL}results/6125319`);
+    expect(idLink.textContent.trim()).toBe('7504231');
+    expect(idLink.href).toBe(`${resultsDBURL}results/7504231`);
 
     expect(rowOneColumns[1].textContent.trim()).toBe('Yes');
 
@@ -110,12 +115,15 @@ describe('ArtifactsTableComponent', () => {
     expect(testCaseLink.textContent.trim()).toBe('rhproduct.default.sanity');
     expect(testCaseLink.href).toBe(`${resultsDBURL}testcases/rhproduct.default.sanity`);
 
+    const waivedLink = rowOneColumns[5].children[0];
+    expect(waivedLink.textContent.trim()).toBe('Yes');
+    expect(waivedLink.href).toContain('16549');
 
     const rowTwoColumns = rows[1].nativeElement.children;
     idLink = rowTwoColumns[0].children[0];
     expect(idLink.tagName).toBe('A');
-    expect(idLink.textContent.trim()).toBe('6125427');
-    expect(idLink.href).toBe(`${resultsDBURL}results/6125427`);
+    expect(idLink.textContent.trim()).toBe('7504236');
+    expect(idLink.href).toBe(`${resultsDBURL}results/7504236`);
 
     expect(rowTwoColumns[1].textContent.trim()).toBe('Yes');
 
@@ -124,7 +132,7 @@ describe('ArtifactsTableComponent', () => {
     expect(logsLink.textContent.trim()).toBe('Test Run Logs');
     expect(logsLink.href).toBe(jenkinsLogURL);
 
-    expect(rowTwoColumns[3].textContent.trim()).toBe('INFO');
+    expect(rowTwoColumns[3].textContent.trim()).toBe('FAILED');
 
     testCaseLink = rowTwoColumns[4].children[0];
     expect(testCaseLink.tagName).toBe('A');

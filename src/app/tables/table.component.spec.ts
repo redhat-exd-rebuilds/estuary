@@ -5,10 +5,12 @@ import { By } from '@angular/platform-browser';
 import { ToastrModule } from 'ngx-toastr';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 import { EstuaryTableComponent } from './table.component';
 import { TruncateModalComponent } from './truncate-modal/truncate-modal.component';
 import { TruncatePipe } from '../pipes/nodedisplay';
+import { TableColumnPipe } from '../pipes/tablecolumn';
 
 
 describe('EstuaryTableComponent', () => {
@@ -45,6 +47,7 @@ describe('EstuaryTableComponent', () => {
       declarations: [
         TestHostComponent,
         EstuaryTableComponent,
+        TableColumnPipe,
         TruncateModalComponent,
         TruncatePipe,
       ],
@@ -53,6 +56,7 @@ describe('EstuaryTableComponent', () => {
         ToastrModule.forRoot({}),
         ModalModule.forRoot(),
         BsDropdownModule.forRoot(),
+        TooltipModule.forRoot(),
       ],
     })
     .compileComponents();
