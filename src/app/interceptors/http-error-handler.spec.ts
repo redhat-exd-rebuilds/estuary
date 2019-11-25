@@ -50,4 +50,17 @@ describe(`AuthHttpInterceptor`, () => {
     expect(mockNotificationError).toHaveBeenCalledTimes(1);
     expect(mockNotificationError).toHaveBeenCalledWith('some error');
   });
+
+  it('should send a notification if the connection fails', () => {
+    const mockNotificationError = spyOn(notification, 'error');
+    // Start an HTTP request
+    httpClient.get(environment.api).subscribe(() => {}, () => {});
+    const req = httpTestingController.expectOne(environment.api);
+    // End the request with a connection error
+    req.flush(null, { status: 0, statusText: 'Unknown Error' });
+    // Verify that the toast notification would have been displayed
+    expect(mockNotificationError).toHaveBeenCalledTimes(1);
+    const errorMsg: string = mockNotificationError.calls.argsFor(0)[0];
+    expect(errorMsg.startsWith('The API server could not be reached.')).toBe(true);
+  });
 });

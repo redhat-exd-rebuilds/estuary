@@ -40,9 +40,11 @@ export class HTTPErrorHandler implements HttpInterceptor {
    */
   displayError(error: HttpErrorResponse) {
     let errorDisplayMsg: string;
-    if (error.error instanceof ErrorEvent) {
+    if (error.error instanceof ErrorEvent || error.status === 0) {
       // Communication with the backend failed
-      errorDisplayMsg = 'The API server could not be reached. Please try again.';
+      errorDisplayMsg = 'The API server could not be reached. Please try again. ' +
+                        'If this continues, it might be due to your system not trusting ' +
+                        'the CA that signed the API\'s SSL certificate.';
     } else {
       // This means the backend returned an unsuccessful response code.
       // Since we know the backend will be returning JSON with the message key
