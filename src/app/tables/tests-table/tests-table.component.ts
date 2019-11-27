@@ -85,7 +85,7 @@ export class TestsTableComponent implements OnChanges {
         if (result.testcase.name) {
           for (const waiver of this.greenwaveDecision.waivers) {
             if (waiver.testcase === result.testcase.name) {
-              const url = environment.waiverDbAPI + waiver.id;
+              const url = `${environment.waiverDbAPI}waivers/${waiver.id}`;
               this.linkColumnMappings[result.id]['Waived'] = url;
               this.tooltipColumnMappings[result.id] = {Waived: waiver.comment};
             }
