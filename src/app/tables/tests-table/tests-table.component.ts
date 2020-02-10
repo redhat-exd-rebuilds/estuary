@@ -21,7 +21,8 @@ export class TestsTableComponent implements OnChanges {
   tooltipColumnMappings: any;
 
   constructor() {
-    this.defaultColumns = ['ID', 'Logs', 'Status', 'Test Case', 'Waived', 'Impacts the Decision'];
+    this.defaultColumns = ['ID', 'Logs', 'Status', 'Test Case', 'Waived', 'Impacts the Decision',
+                           'Summary'];
     this.defaultSortedColumn = 'ID';
     this.uidColumn = 'ID';
   }
@@ -70,6 +71,7 @@ export class TestsTableComponent implements OnChanges {
           'Logs': 'No logs available',
           'Waived': waivedTestCases.includes(result.testcase.name) ? 'Yes' : 'No',
           'Impacts the Decision': satisfied_requirements.includes(result.id) ? 'Yes' : 'No',
+          'Summary': this.greenwaveDecision.summary,
         };
 
         this.linkColumnMappings[result.id] = {

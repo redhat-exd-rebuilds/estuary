@@ -76,19 +76,20 @@ describe('ArtifactsTableComponent', () => {
 
     // Ensure the table headers show only the default columns
     const tableHeaders = fixture.debugElement.queryAll(By.css('.estuary-table th'));
-    expect(tableHeaders.length).toBe(6);
+    expect(tableHeaders.length).toBe(7);
     const tableHeadersText = tableHeaders.map(v => v.nativeElement.textContent.trim());
     expect(tableHeadersText[0]).toBe('ID');
     expect(tableHeadersText[1]).toBe('Impacts the Decision');
     expect(tableHeadersText[2]).toBe('Logs');
     expect(tableHeadersText[3]).toBe('Status');
-    expect(tableHeadersText[4]).toBe('Test Case');
-    expect(tableHeadersText[5]).toBe('Waived');
+    expect(tableHeadersText[4]).toBe('Summary');
+    expect(tableHeadersText[5]).toBe('Test Case');
+    expect(tableHeadersText[6]).toBe('Waived');
 
     // Make sure the correct number of columns show as selected and that only 4 columns
     // are available
     const activeColumnsText = fixture.debugElement.query(By.css('.estuary-table-header__columns-text')).nativeElement;
-    expect(activeColumnsText.textContent.trim()).toBe('6 of 7 columns selected');
+    expect(activeColumnsText.textContent.trim()).toBe('7 of 8 columns selected');
 
     // Ensure the actual table content is correct. All 2 entries in the `formattedResults` array
     // should be displayed.
@@ -110,12 +111,15 @@ describe('ArtifactsTableComponent', () => {
 
     expect(rowOneColumns[3].textContent.trim()).toBe('PASSED');
 
-    let testCaseLink = rowOneColumns[4].children[0];
+    let decisionSummary = rowOneColumns[4].children[0];
+    expect(decisionSummary.textContent.trim()).toBe('All required tests passed');
+
+    let testCaseLink = rowOneColumns[5].children[0];
     expect(testCaseLink.tagName).toBe('A');
     expect(testCaseLink.textContent.trim()).toBe('rhproduct.default.sanity');
     expect(testCaseLink.href).toBe(`${resultsDBURL}testcases/rhproduct.default.sanity`);
 
-    const waivedLink = rowOneColumns[5].children[0];
+    const waivedLink = rowOneColumns[6].children[0];
     expect(waivedLink.textContent.trim()).toBe('Yes');
     expect(waivedLink.href).toContain('16549');
 
@@ -134,7 +138,10 @@ describe('ArtifactsTableComponent', () => {
 
     expect(rowTwoColumns[3].textContent.trim()).toBe('FAILED');
 
-    testCaseLink = rowTwoColumns[4].children[0];
+    decisionSummary = rowTwoColumns[4].children[0];
+    expect(decisionSummary.textContent.trim()).toBe('All required tests passed');
+
+    testCaseLink = rowTwoColumns[5].children[0];
     expect(testCaseLink.tagName).toBe('A');
     expect(testCaseLink.textContent.trim()).toBe('rhproduct.default.functional');
     expect(testCaseLink.href).toBe(`${resultsDBURL}testcases/rhproduct.default.functional`);
@@ -152,9 +159,9 @@ describe('ArtifactsTableComponent', () => {
     const dropdownMenu = fixture.debugElement.query(
       By.css('.estuary-table-header__dropdown-menu')).nativeElement;
       // Expect there to be 6 columns to be able to check
-      expect(dropdownMenu.children.length).toBe(7);
-      const expectedActiveColumns = ['ID', 'Impacts the Decision', 'Logs', 'Status',  'Test Case', 'Waived'];
-      const expectedColumns = ['ID', 'Impacts the Decision', 'Item', 'Logs', 'Status',  'Test Case', 'Waived'];
+      expect(dropdownMenu.children.length).toBe(8);
+      const expectedActiveColumns = ['ID', 'Impacts the Decision', 'Logs', 'Status', 'Summary', 'Test Case', 'Waived'];
+      const expectedColumns = ['ID', 'Impacts the Decision', 'Item', 'Logs', 'Status', 'Summary', 'Test Case', 'Waived'];
       for (let i = 0; i < expectedColumns.length; i++) {
         const columnText = dropdownMenu.children[i].textContent.trim();
         expect(dropdownMenu.children[i].textContent.trim()).toBe(expectedColumns[i]);
