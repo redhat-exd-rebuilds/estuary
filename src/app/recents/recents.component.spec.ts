@@ -16,6 +16,7 @@ import { RecentsService } from '../services/recents.service';
 import { recents } from './test.data';
 import { NodeTypeDisplayPipe, NodeExternalUrlPipe, TruncatePipe } from '../pipes/nodedisplay';
 import { TableColumnPipe } from '../pipes/tablecolumn';
+import { LinkColumnTypePipe } from '../pipes/linkcolumntype';
 import { ArtifactsTableComponent } from '../tables/artifacts-table/artifacts-table.component';
 import { EstuaryTableComponent } from '../tables/table.component';
 import { PropertyDisplayPipe, PropertyValueDisplayPipe } from '../pipes/propertydisplay';
@@ -30,6 +31,7 @@ describe('RecentsComponent', () => {
       declarations: [
         ArtifactsTableComponent,
         EstuaryTableComponent,
+        LinkColumnTypePipe,
         NodeTypeDisplayPipe,
         NodeExternalUrlPipe,
         PropertyDisplayPipe,

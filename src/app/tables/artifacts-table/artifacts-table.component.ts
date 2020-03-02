@@ -71,14 +71,24 @@ export class ArtifactsTableComponent implements OnChanges {
       // {
       //   734506: {
       //     ID: 'https://koji.domain.local/koji/buildinfo?buildID=734506',
-      //     See Story: 'https://pipeline.domain.local/kojibuild/734506'
+      //     See Story: 'https://pipeline.domain.local/kojibuild/734506',
       //   }
       //   ...
       // }
       this.linkColumnMappings[formattedArtifact[this.uidColumn]] = {
         [this.uidColumn]: externalUrlPipe.transform(artifact),
-        'See Story': this.getNodeStoryUrl(artifact)
+        'See Story': this.getNodeStoryUrl(artifact),
       };
+
+      // If there are associated advisories, we can add links to those as well.
+      if (artifact.advisories && artifact.advisories.length) {
+        const urls = {};
+        artifact.advisories.forEach(advisory => {
+          const url = externalUrlPipe.transform(advisory);
+          urls[advisory.advisory_name] = url;
+        });
+        this.linkColumnMappings[formattedArtifact[this.uidColumn]]['Advisories'] = urls;
+      }
 
       return formattedArtifact;
     });
@@ -96,7 +106,7 @@ export class ArtifactsTableComponent implements OnChanges {
       case ('kojibuild'):
       case ('containerkojibuild'):
       case ('modulekojibuild'):
-        columns = ['id', 'completion_time', 'name', 'owner', 'release', 'version'];
+        columns = ['advisories', 'id', 'completion_time', 'name', 'owner', 'release', 'version'];
         break;
       case ('containeradvisory'):
       case ('advisory'):

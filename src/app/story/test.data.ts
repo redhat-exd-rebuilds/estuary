@@ -478,6 +478,226 @@ export let siblings = {
   }
 };
 
+export let siblingsBuild = {
+  'data': [
+    {
+      'advisories': [
+        {
+          'actual_ship_date': '2018-05-08T18:32:03+00:00',
+          'advisory_name': 'RHSA-2018:1111-07',
+          'content_types': [
+            'rpm'
+          ],
+          'created_at': '2018-04-16T12:03:55+00:00',
+          'id': '33491',
+          'issue_date': '2018-05-08T17:15:15+00:00',
+          'product_name': 'Red Hat Enterprise Linux',
+          'product_short_name': 'RHEL',
+          'release_date': '2018-05-08T00:00:00+00:00',
+          'resource_type': 'Advisory',
+          'security_impact': 'Important',
+          'security_sla': '2018-04-04T00:00:00+00:00',
+          'state': 'SHIPPED_LIVE',
+          'status_time': '2018-05-09T17:35:52+00:00',
+          'synopsis': 'Important: kernel security,bug fix,and enhancement update',
+          'type': null,
+          'update_date': '2018-05-09T15:32:44+00:00',
+          'updated_at': '2018-05-09T17:35:52+00:00'
+        },
+        {
+          'actual_ship_date': '2018-05-08T18:32:03+00:00',
+          'advisory_name': 'RHSA-2018:2222-07',
+          'content_types': [
+            'rpm'
+          ],
+          'created_at': '2018-04-16T12:03:55+00:00',
+          'id': '33492',
+          'issue_date': '2018-05-08T17:15:15+00:00',
+          'product_name': 'Red Hat Enterprise Linux',
+          'product_short_name': 'RHEL',
+          'release_date': '2018-05-08T00:00:00+00:00',
+          'resource_type': 'Advisory',
+          'security_impact': 'Important',
+          'security_sla': '2018-04-04T00:00:00+00:00',
+          'state': 'SHIPPED_LIVE',
+          'status_time': '2018-05-09T17:35:52+00:00',
+          'synopsis': 'Important: kernel security,bug fix,and enhancement update',
+          'type': null,
+          'update_date': '2018-05-09T15:32:44+00:00',
+          'updated_at': '2018-05-09T17:35:52+00:00'
+        }
+      ],
+      'commit': {
+        'author_date': '2018-11-02T15:33:45Z',
+        'commit_date': '2018-11-02T15:33:45Z',
+        'display_name': 'commit #6e81871',
+        'hash': '6e8187175def9d9afb8cb3cd93916e32bf42f8bb',
+        'log_message': 'Bump for 13z3 rebuild\n\nResolves: rhbz#1641165\n',
+        'resource_type': 'DistGitCommit'
+      },
+     'completion_time': '2018-11-30T02:55:47Z',
+     'creation_time': '2018-11-30T02:55:50Z',
+     'display_name': 'openstack-13.0-67.1543534138',
+     'epoch': null,
+     'extra': {},
+     'id': '806970',
+     'module_builds': [
+
+     ],
+     'name': 'openstack-container',
+     'operator': false,
+     'original_nvr': 'openstack-13.0-67',
+     'owner': {
+        'display_name': 'freshmaker',
+        'email': 'freshmaker@redhat.com',
+        'name': null,
+        'resource_type': 'User',
+        'username': 'freshmaker'
+     },
+     'release': '67.1543534138',
+     'resource_type': 'ContainerKojiBuild',
+     'start_time': '2018-11-30T02:33:14Z',
+     'state': 1,
+     'tags': [
+        {
+           'display_name': 'RHBA-2018:3810-released',
+           'id': '56290',
+           'name': 'RHBA-2018:3810-released',
+           'resource_type': 'KojiTag'
+        },
+        {
+           'display_name': 'rhos-13.0-rhel-7-container-released',
+           'id': '11982',
+           'name': 'rhos-13.0-rhel-7-container-released',
+           'resource_type': 'KojiTag'
+        }
+     ],
+     'triggered_by_freshmaker_event': {
+        'display_name': 'Freshmaker event 3171',
+        'event_type_id': 8,
+        'id': '3171',
+        'message_id': 'ID:messaging.redhat.com-39911-1543520580542-9:9795:0:0:1.RHSA-2018:3738-02',
+        'resource_type': 'FreshmakerEvent',
+        'state': 2,
+        'state_name': 'COMPLETE',
+        'state_reason': '11 of 186 container image(s) failed to rebuild.',
+        'time_created': '2018-11-29T22:33:07Z',
+        'time_done': null
+     },
+     'version': '13.0',
+  },
+  {
+    'advisories': [
+      {
+        'actual_ship_date': '2018-05-08T18:32:03+00:00',
+        'advisory_name': 'RHSA-2018:1234-07',
+        'content_types': [
+          'rpm'
+        ],
+        'created_at': '2018-04-16T12:03:55+00:00',
+        'id': '33481',
+        'issue_date': '2018-05-08T17:15:15+00:00',
+        'product_name': 'Red Hat Enterprise Linux',
+        'product_short_name': 'RHEL',
+        'release_date': '2018-05-08T00:00:00+00:00',
+        'resource_type': 'Advisory',
+        'security_impact': 'Important',
+        'security_sla': '2018-04-04T00:00:00+00:00',
+        'state': 'SHIPPED_LIVE',
+        'status_time': '2018-05-09T17:35:52+00:00',
+        'synopsis': 'Important: kernel security,bug fix,and enhancement update',
+        'type': null,
+        'update_date': '2018-05-09T15:32:44+00:00',
+        'updated_at': '2018-05-09T17:35:52+00:00'
+      },
+      {
+        'actual_ship_date': '2018-05-08T18:32:03+00:00',
+        'advisory_name': 'RHSA-2018:1235-07',
+        'content_types': [
+          'rpm'
+        ],
+        'created_at': '2018-04-16T12:03:55+00:00',
+        'id': '33482',
+        'issue_date': '2018-05-08T17:15:15+00:00',
+        'product_name': 'Red Hat Enterprise Linux',
+        'product_short_name': 'RHEL',
+        'release_date': '2018-05-08T00:00:00+00:00',
+        'resource_type': 'Advisory',
+        'security_impact': 'Important',
+        'security_sla': '2018-04-04T00:00:00+00:00',
+        'state': 'SHIPPED_LIVE',
+        'status_time': '2018-05-09T17:35:52+00:00',
+        'synopsis': 'Important: kernel security,bug fix,and enhancement update',
+        'type': null,
+        'update_date': '2018-05-09T15:32:44+00:00',
+        'updated_at': '2018-05-09T17:35:52+00:00'
+      }
+    ],
+    'commit': {
+      'author_date': '2018-11-02T15:33:45Z',
+      'commit_date': '2018-11-02T15:33:45Z',
+      'display_name': 'commit #6e81871',
+      'hash': '6e8187175def9d9afb8cb3cd93916e32bf42f8bb',
+      'log_message': 'Bump for 13z3 rebuild\n\nResolves: rhbz#1641165\n',
+      'resource_type': 'DistGitCommit'
+    },
+   'completion_time': '2018-11-30T02:55:47Z',
+   'creation_time': '2018-11-30T02:55:50Z',
+   'display_name': 'openstack-13.0-67.1543534138',
+   'epoch': null,
+   'extra': {},
+   'id': '806971',
+   'module_builds': [
+
+   ],
+   'name': 'openstack-container',
+   'operator': false,
+   'original_nvr': 'openstack-13.0-67',
+   'owner': {
+      'display_name': 'freshmaker',
+      'email': 'freshmaker@redhat.com',
+      'name': null,
+      'resource_type': 'User',
+      'username': 'freshmaker'
+   },
+   'release': '67.1543534138',
+   'resource_type': 'ContainerKojiBuild',
+   'start_time': '2018-11-30T02:33:14Z',
+   'state': 1,
+   'tags': [
+      {
+         'display_name': 'RHBA-2018:3810-released',
+         'id': '56290',
+         'name': 'RHBA-2018:3810-released',
+         'resource_type': 'KojiTag'
+      },
+      {
+         'display_name': 'rhos-13.0-rhel-7-container-released',
+         'id': '11982',
+         'name': 'rhos-13.0-rhel-7-container-released',
+         'resource_type': 'KojiTag'
+      }
+   ],
+   'triggered_by_freshmaker_event': {
+      'display_name': 'Freshmaker event 3171',
+      'event_type_id': 8,
+      'id': '3171',
+      'message_id': 'ID:messaging.redhat.com-39911-1543520580542-9:9795:0:0:1.RHSA-2018:3738-02',
+      'resource_type': 'FreshmakerEvent',
+      'state': 2,
+      'state_name': 'COMPLETE',
+      'state_reason': '11 of 186 container image(s) failed to rebuild.',
+      'time_created': '2018-11-29T22:33:07Z',
+      'time_done': null
+   },
+   'version': '13.0',
+  }
+  ],
+  'meta': {
+    'description': 'Container builds triggered by Freshmaker event 3171'
+  }
+};
+
 export const relationships = {
   'data': [
     {

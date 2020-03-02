@@ -11,6 +11,7 @@ import { EstuaryTableComponent } from './table.component';
 import { TruncateModalComponent } from './truncate-modal/truncate-modal.component';
 import { TruncatePipe } from '../pipes/nodedisplay';
 import { TableColumnPipe } from '../pipes/tablecolumn';
+import { LinkColumnTypePipe } from '../pipes/linkcolumntype';
 
 
 describe('EstuaryTableComponent', () => {
@@ -47,6 +48,7 @@ describe('EstuaryTableComponent', () => {
       declarations: [
         TestHostComponent,
         EstuaryTableComponent,
+        LinkColumnTypePipe,
         TableColumnPipe,
         TruncateModalComponent,
         TruncatePipe,

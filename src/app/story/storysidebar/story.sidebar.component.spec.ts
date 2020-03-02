@@ -81,7 +81,7 @@ describe('StorysidebarComponent testing', () => {
     expect(sidebarPropertiesEl.children[9].children[0].textContent).toBe('QA Contact');
     expect(sidebarPropertiesEl.children[9].children[1].textContent.trim()).toBe('user2');
     expect(sidebarPropertiesEl.children[10].children[0].textContent).toBe('Related By Commits');
-    expect(sidebarPropertiesEl.children[10].children[1].textContent.trim()).toBe('0');
+    expect(sidebarPropertiesEl.children[10].children[1].textContent.trim()).toBe('--');
     expect(sidebarPropertiesEl.children[11].children[0].textContent).toBe('Reporter');
     expect(sidebarPropertiesEl.children[11].children[1].textContent.trim()).toBe('user3');
     expect(sidebarPropertiesEl.children[12].children[0].textContent).toBe('Resolution');
@@ -90,7 +90,7 @@ describe('StorysidebarComponent testing', () => {
     expect(sidebarPropertiesEl.children[13].children[1].children[0].tagName).toBe('A');
     expect(sidebarPropertiesEl.children[13].children[1].textContent.trim()).toBe('1');
     expect(sidebarPropertiesEl.children[14].children[0].textContent).toBe('Reverted By Commits');
-    expect(sidebarPropertiesEl.children[14].children[1].textContent.trim()).toBe('0');
+    expect(sidebarPropertiesEl.children[14].children[1].textContent.trim()).toBe('--');
     expect(sidebarPropertiesEl.children[15].children[0].textContent).toBe('Severity');
     expect(sidebarPropertiesEl.children[15].children[1].textContent.trim()).toBe('high');
     expect(sidebarPropertiesEl.children[16].children[0].textContent).toBe('Short Description');
