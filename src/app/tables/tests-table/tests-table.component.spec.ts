@@ -15,6 +15,7 @@ import { TruncateModalComponent } from '../truncate-modal/truncate-modal.compone
 import { GreenwaveDecision } from '../../models/greenwave.type';
 import { TruncatePipe } from '../../pipes/nodedisplay';
 import { TableColumnPipe } from '../../pipes/tablecolumn';
+import { LinkColumnTypePipe } from '../../pipes/linkcolumntype';
 import { greenwaveDecision as greenwaveDecisionTestData } from '../../story/test.data';
 
 
@@ -42,6 +43,7 @@ describe('ArtifactsTableComponent', () => {
         TestHostComponent,
         TestsTableComponent,
         EstuaryTableComponent,
+        LinkColumnTypePipe,
         TableColumnPipe,
         TruncatePipe,
         TruncateModalComponent,

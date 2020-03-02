@@ -30,7 +30,11 @@ export class EstuaryTableComponent implements OnChanges {
   // as the corresponding link. For example:
   // {
   //   734506: {
-  //     ID: 'https://koji.domain.local/koji/buildinfo?buildID=734506'
+  //     ID: 'https://koji.domain.local/koji/buildinfo?buildID=734506',
+  //     Advisories: {
+  //         'RHSA-123': 'https://domain.local/something/123',
+  //         'RHSA-124': 'https://domain.local/something/124',
+  //     }
   //   }
   //   ...
   // }
@@ -214,4 +218,5 @@ export class EstuaryTableComponent implements OnChanges {
       return (colA.key < colB.key) ? -1 : (colA.key > colB.key) ? 1 : 0;
     }
   }
+
 }

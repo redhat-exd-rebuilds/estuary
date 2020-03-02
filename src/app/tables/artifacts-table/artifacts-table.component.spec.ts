@@ -15,7 +15,8 @@ import { TruncateModalComponent } from '../truncate-modal/truncate-modal.compone
 import { NodeExternalUrlPipe, TruncatePipe } from '../../pipes/nodedisplay';
 import { PropertyDisplayPipe, PropertyValueDisplayPipe } from '../../pipes/propertydisplay';
 import { TableColumnPipe } from '../../pipes/tablecolumn';
-import { siblings } from '../../story/test.data';
+import { LinkColumnTypePipe } from '../../pipes/linkcolumntype';
+import { siblings, siblingsBuild } from '../../story/test.data';
 
 
 describe('ArtifactsTableComponent', () => {
@@ -39,6 +40,7 @@ describe('ArtifactsTableComponent', () => {
         TestHostComponent,
         ArtifactsTableComponent,
         EstuaryTableComponent,
+        LinkColumnTypePipe,
         NodeExternalUrlPipe,
         PropertyDisplayPipe,
         PropertyValueDisplayPipe,
@@ -61,12 +63,13 @@ describe('ArtifactsTableComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TestHostComponent);
     component = fixture.componentInstance;
-    component.artifacts = siblings.data;
-    component.title = siblings.meta.description;
     fixture.detectChanges();
   });
 
   it('should show the siblings of RHBZ#1566849', fakeAsync(() => {
+    component.artifacts = siblings.data;
+    component.title = siblings.meta.description;
+    fixture.detectChanges();
     const bzUrl = 'https://bugzilla.redhat.com/show_bug.cgi?id=';
     // Ensure the title on the page is correct
     const title = fixture.debugElement.query(By.css('.table-title')).nativeElement;
@@ -152,5 +155,52 @@ describe('ArtifactsTableComponent', () => {
         const expectedChecked = expectedActiveColumns.includes(columnText);
         expect(dropdownMenu.children[i].children[0].checked).toBe(expectedChecked);
       }
+  }));
+
+  it('should show the siblings of event 3171', fakeAsync(() => {
+    component.artifacts = siblingsBuild.data;
+    component.title = siblingsBuild.meta.description;
+    fixture.detectChanges();
+    const errataUrl = 'http://errata.engineering.redhat.com/advisory/';
+    // Ensure the title on the page is correct
+    const title = fixture.debugElement.query(By.css('.table-title')).nativeElement;
+    expect(title.textContent.trim()).toBe('Container builds triggered by Freshmaker event 3171');
+
+    // Ensure the table headers show only the default columns
+    const tableHeaders = fixture.debugElement.queryAll(By.css('.estuary-table th'));
+    expect(tableHeaders.length).toBe(8);
+    const tableHeadersText = tableHeaders.map(v => v.nativeElement.textContent.trim());
+    expect(tableHeadersText[0]).toBe('Advisories');
+
+    const activeColumnsText = fixture.debugElement.query(By.css('.estuary-table-header__columns-text')).nativeElement;
+    expect(activeColumnsText.textContent.trim()).toBe('7 of 18 columns selected');
+
+    // Ensure the actual table content is correct.
+    const rows = fixture.debugElement.queryAll(By.css('.estuary-table tbody > tr'));
+    expect(rows.length).toBe(2);
+    const rowOneColumns = rows[0].nativeElement.children;
+    expect(rowOneColumns[0].textContent.trim()).toBe('RHSA-2018:1111-07  RHSA-2018:2222-07');
+    // Test that each advisory has its own correct link
+    let idLink = rowOneColumns[0].children[0];
+    expect(idLink.tagName).toBe('A');
+    expect(idLink.textContent.trim()).toBe('RHSA-2018:1111-07');
+    expect(idLink.href).toBe(`${errataUrl}33491`);
+    idLink = rowOneColumns[0].children[1];
+    expect(idLink.tagName).toBe('A');
+    expect(idLink.textContent.trim()).toBe('RHSA-2018:2222-07');
+    expect(idLink.href).toBe(`${errataUrl}33492`);
+
+    const rowTwoColumns = rows[1].nativeElement.children;
+    expect(rowTwoColumns[0].textContent.trim()).toBe('RHSA-2018:1234-07  RHSA-2018:1235-07');
+    // Test that each advisory has its own correct link
+    idLink = rowTwoColumns[0].children[0];
+    expect(idLink.tagName).toBe('A');
+    expect(idLink.textContent.trim()).toBe('RHSA-2018:1234-07');
+    expect(idLink.href).toBe(`${errataUrl}33481`);
+    idLink = rowTwoColumns[0].children[1];
+    expect(idLink.tagName).toBe('A');
+    expect(idLink.textContent.trim()).toBe('RHSA-2018:1235-07');
+    expect(idLink.href).toBe(`${errataUrl}33482`);
+
   }));
 });

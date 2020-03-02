@@ -22,6 +22,7 @@ import { NodeTypeDisplayPipe, NodeTypePluralPipe, NodeExternalUrlPipe,
          TruncatePipe, NodeDisplayNamePipe } from './pipes/nodedisplay';
 import { TimeDisplayPipe } from './pipes/timedisplay';
 import { TableColumnPipe } from './pipes/tablecolumn';
+import { LinkColumnTypePipe } from './pipes/linkcolumntype';
 import { SearchComponent } from './search/search.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -65,6 +66,7 @@ import { HTTPErrorHandler } from './interceptors/http-error-handler';
     TestResultsComponent,
     TimeDisplayPipe,
     TableColumnPipe,
+    LinkColumnTypePipe,
   ],
   imports: [
     AppRoutingModule,

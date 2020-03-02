@@ -39,8 +39,11 @@ export class PropertyValueDisplayPipe implements PipeTransform {
       // is one, we can list out its names rather than just a number.
       if (value.length !== 0 && value[0].advisory_name) {
         return value.map(x => x.advisory_name).join(', ');
-      } else {
+      } else if (value.length !== 0) {
         return value.length.toString();
+      } else {
+        // If there is no value, '--' displays better than '0'.
+        return '--';
       }
     } else if (value instanceof Object) {
       // Only display objects' name or username properties

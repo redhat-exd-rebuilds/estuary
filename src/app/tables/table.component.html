@@ -65,32 +65,42 @@
                 <!-- column.value is a boolean determining if the column is selected to be shown by the user -->
                 <td *ngIf="column.value">
                   <!-- Check if the column should be a link -->
-                  <ng-container *ngIf="item[uidColumn] | tableColumn:uidColumn:column.key:linkColumnMappings;
-                                      else notLinkColumn">
-                    <a [href]="linkColumnMappings[item[uidColumn]][column.key]"
-                      tooltip="{{ item[uidColumn] | tableColumn:uidColumn:column.key:tooltipColumnMappings }}"
-                      [adaptivePosition]="false" target="_blank">
-                      {{ item[column.key] }}
-                    </a>
-                  </ng-container>
-
-                  <ng-template #notLinkColumn>
-                    <!-- If the value is too long, use the TruncateModal component -->
-                    <app-truncate-modal
-                        *ngIf="item[column.key].length > 50; else notTruncatedColumn"
-                        [column]="column.key"
-                        [value]="item[column.key]"
-                        [preformatted]="preformattedColumns && preformattedColumns.includes(column.key)"
-                    ></app-truncate-modal>
-
-                    <!-- By default, just show the value the way it is -->
-                    <ng-template #notTruncatedColumn>
-                      <span tooltip="{{ item[uidColumn] | tableColumn:uidColumn:column.key:tooltipColumnMappings }}"
-                            [adaptivePosition]="false">
+                  <ng-container [ngSwitch]="item[uidColumn] | tableColumn:uidColumn:column.key:linkColumnMappings | linkColumnType">
+                    <!-- If the column mapping is still an object, and thus has multiple links, we need to break it down further -->
+                    <ng-container *ngSwitchCase="'multiple'">
+                      <ng-container *ngFor="let linkItem of linkColumnMappings[item[uidColumn]][column.key] | keyvalue">
+                        <a [href]="linkItem.value" target="_blank">
+                          {{ linkItem.key }}
+                        </a>
+                      </ng-container>
+                    </ng-container>
+                    <!-- Most links will be assigned as normal, with a single link -->
+                    <ng-container *ngSwitchCase="'single'">
+                      <a [href]="linkColumnMappings[item[uidColumn]][column.key]"
+                        tooltip="{{ item[uidColumn] | tableColumn:uidColumn:column.key:tooltipColumnMappings }}"
+                        [adaptivePosition]="false" target="_blank">
                         {{ item[column.key] }}
-                      </span>
-                    </ng-template>
-                  </ng-template>
+                      </a>
+                    </ng-container>
+                    <!-- When there is no link, we can just enter the text -->
+                    <ng-container *ngSwitchDefault>
+                      <!-- If the value is too long, use the TruncateModal component -->
+                      <app-truncate-modal
+                          *ngIf="item[column.key].length > 50; else notTruncatedColumn"
+                          [column]="column.key"
+                          [value]="item[column.key]"
+                          [preformatted]="preformattedColumns && preformattedColumns.includes(column.key)"
+                      ></app-truncate-modal>
+
+                      <!-- By default, just show the value the way it is -->
+                      <ng-template #notTruncatedColumn>
+                        <span tooltip="{{ item[uidColumn] | tableColumn:uidColumn:column.key:tooltipColumnMappings }}"
+                          [adaptivePosition]="false">
+                          {{ item[column.key] }}
+                        </span>
+                      </ng-template>
+                    </ng-container>
+                  </ng-container>
                 </td>
               </ng-container>
             </tr>
