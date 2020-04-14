@@ -26,6 +26,7 @@
     "@fortawesome/angular-fontawesome": "^0.3.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.8",
     "@fortawesome/free-solid-svg-icons": "^5.5.0",
+    "@reactivex/rxjs": "git+https://github.com/ReactiveX/rxjs.git#6.5.5",
     "angular-oauth2-oidc": "^8.0.4",
     "bootstrap": "^3.3.7",
     "core-js": "^2.5.4",
@@ -33,7 +34,7 @@
     "ngx-bootstrap": "~5.3.2",
     "ngx-toastr": "^10.0.4",
     "patternfly": "^3.59.3",
-    "rxjs": "~6.5.3",
+    "rxjs": "github:ReactiveX/rxjs#dfa239d41b97504312fa95e13f4d593d95b49c4b",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
   },
