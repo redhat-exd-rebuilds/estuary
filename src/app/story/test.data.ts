@@ -112,7 +112,6 @@ export let story = {
       'completion_time': '2017-04-02T19:39:06+00:00',
       'creation_time': '2017-04-02T19:39:06+00:00',
       'epoch': '0',
-      'extra': null,
       'id': '2345',
       'name': 'slf4j',
       'release': '4.el7_4',
@@ -205,7 +204,6 @@ export let module_story = {
       'creation_time': '2018-08-14T01:31:15.583303+00:00',
       'display_name': 'libguestfs-1.38.4-1.el8+1579+44551958',
       'epoch': '1',
-      'extra': {'source': {'original_url': 'git://pkgs.devel.redhat.com/rpms/libguestfs?#d11fcbf943086c0d55ce35beacaf10ef1f816c5a'}},
       'id': '750095',
       'module_builds': [
         {
@@ -306,7 +304,6 @@ export let module_story = {
       'creation_time': '2018-08-22T12:45:34.855569+00:00',
       'display_name': 'virt-rhel-20180822114445.9edba152',
       'epoch': null,
-      'extra': 'some data',
       'id': '755647',
       'mbs_id': 1667,
       'module_name': 'virt',
@@ -539,7 +536,6 @@ export let siblingsBuild = {
      'creation_time': '2018-11-30T02:55:50Z',
      'display_name': 'openstack-13.0-67.1543534138',
      'epoch': null,
-     'extra': {},
      'id': '806970',
      'module_builds': [
 
@@ -645,7 +641,6 @@ export let siblingsBuild = {
    'creation_time': '2018-11-30T02:55:50Z',
    'display_name': 'openstack-13.0-67.1543534138',
    'epoch': null,
-   'extra': {},
    'id': '806971',
    'module_builds': [
 
