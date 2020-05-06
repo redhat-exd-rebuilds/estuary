@@ -173,7 +173,7 @@ describe('ArtifactsTableComponent', () => {
     expect(tableHeadersText[0]).toBe('Advisories');
 
     const activeColumnsText = fixture.debugElement.query(By.css('.estuary-table-header__columns-text')).nativeElement;
-    expect(activeColumnsText.textContent.trim()).toBe('7 of 18 columns selected');
+    expect(activeColumnsText.textContent.trim()).toBe('7 of 17 columns selected');
 
     // Ensure the actual table content is correct.
     const rows = fixture.debugElement.queryAll(By.css('.estuary-table tbody > tr'));

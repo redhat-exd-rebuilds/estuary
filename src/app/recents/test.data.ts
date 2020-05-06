@@ -44,7 +44,6 @@ export const recents = {
         'KojiBuild': [
             {
                 'name': null,
-                'extra': null,
                 'start_time': null,
                 'creation_time': null,
                 'state': null,
