@@ -66,7 +66,6 @@ describe('StoryService testing', () => {
             'short_description': 'some description',
             'status': 'CLOSED',
             'target_milestone': 'rc',
-            'votes': 0
           },
           {
             'author_date': '2018-03-19T15:11:35+00:00',

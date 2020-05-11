@@ -58,7 +58,6 @@ export const recents = {
         'BugzillaBug': [
             {
                 'status': null,
-                'votes': null,
                 'severity': null,
                 'classification': null,
                 'resolution': null,
@@ -74,7 +73,6 @@ export const recents = {
             },
             {
                 'status': null,
-                'votes': null,
                 'severity': null,
                 'classification': null,
                 'resolution': null,
@@ -90,7 +88,6 @@ export const recents = {
             },
             {
                 'status': null,
-                'votes': null,
                 'severity': null,
                 'classification': null,
                 'resolution': null,
