@@ -7,7 +7,6 @@ export const recents = {
                 'issue_date': null,
                 'created_at': null,
                 'state': null,
-                'product_short_name': null,
                 'product_name': null,
                 'security_sla': null,
                 'synopsis': null,
