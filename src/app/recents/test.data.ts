@@ -33,7 +33,6 @@ export const recents = {
                 'state_reason': null,
                 'state_name': null,
                 'id': '77777',
-                'state': null,
                 'event_type_id': null,
                 'resource_type': 'FreshmakerEvent'
             }
