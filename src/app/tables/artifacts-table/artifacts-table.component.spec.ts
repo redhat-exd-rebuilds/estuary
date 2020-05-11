@@ -89,7 +89,7 @@ describe('ArtifactsTableComponent', () => {
     // Make sure the correct number of columns show as selected and that only 20 columns
     // are available since "Resource Type" and "Display Name" should be excluded
     const activeColumnsText = fixture.debugElement.query(By.css('.estuary-table-header__columns-text')).nativeElement;
-    expect(activeColumnsText.textContent.trim()).toBe('6 of 20 columns selected');
+    expect(activeColumnsText.textContent.trim()).toBe('6 of 18 columns selected');
 
     // Ensure the actual table content is correct. All 2 entries in the `formattedArtifacts` array
     // should be displayed.
@@ -140,14 +140,14 @@ describe('ArtifactsTableComponent', () => {
     const dropdownMenu = fixture.debugElement.query(
       By.css('.estuary-table-header__dropdown-menu')).nativeElement;
       // Expect there to be 20 columns to be able to check
-      expect(dropdownMenu.children.length).toBe(20);
+      expect(dropdownMenu.children.length).toBe(18);
       const expectedActiveColumns = ['Assignee', 'ID', 'Reporter', 'Short Description',  'Status', 'Modified Time'];
       const expectedColumns = [
-        'Assignee', 'Attached Advisories', 'Classification', 'Creation Time', 'ID',
+        'Assignee', 'Attached Advisories', 'Creation Time', 'ID',
         'Modified Time', 'Priority', 'Product Name', 'Product Version', 'QA Contact',
         'Related By Commits', 'Reporter', 'Resolution', 'Resolved By Commits',
         'Reverted By Commits', 'Severity', 'Short Description', 'Status',
-        'Target Milestone', 'Votes'
+        'Target Milestone'
       ];
       for (let i = 0; i < expectedColumns.length; i++) {
         const columnText = dropdownMenu.children[i].textContent.trim();
@@ -173,7 +173,7 @@ describe('ArtifactsTableComponent', () => {
     expect(tableHeadersText[0]).toBe('Advisories');
 
     const activeColumnsText = fixture.debugElement.query(By.css('.estuary-table-header__columns-text')).nativeElement;
-    expect(activeColumnsText.textContent.trim()).toBe('7 of 17 columns selected');
+    expect(activeColumnsText.textContent.trim()).toBe('7 of 16 columns selected');
 
     // Ensure the actual table content is correct.
     const rows = fixture.debugElement.queryAll(By.css('.estuary-table tbody > tr'));

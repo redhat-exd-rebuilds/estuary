@@ -12,7 +12,7 @@ import { relationships } from '../test.data';
 
 
 describe('ArtifactRelationshipComponent', () => {
-  let fixture: ComponentFixture<ArtifactRelationshipComponent>;
+
   let relationshipService: RelationshipService;
 
   beforeEach(() => {
