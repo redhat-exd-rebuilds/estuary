@@ -33,7 +33,6 @@ describe('StoryService testing', () => {
               'username': 'user'
             },
             'attached_advisories': [],
-            'classification': 'Red Hat',
             'creation_time': '2018-03-05T20:29:03+00:00',
             'id': '12345',
             'modified_time': '2018-03-26T15:53:52+00:00',

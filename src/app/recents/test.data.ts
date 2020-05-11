@@ -59,7 +59,6 @@ export const recents = {
             {
                 'status': null,
                 'severity': null,
-                'classification': null,
                 'resolution': null,
                 'product_version': null,
                 'creation_time': null,
@@ -74,7 +73,6 @@ export const recents = {
             {
                 'status': null,
                 'severity': null,
-                'classification': null,
                 'resolution': null,
                 'product_version': null,
                 'creation_time': null,
@@ -89,7 +87,6 @@ export const recents = {
             {
                 'status': null,
                 'severity': null,
-                'classification': null,
                 'resolution': null,
                 'product_version': null,
                 'creation_time': null,

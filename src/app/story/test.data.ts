@@ -30,7 +30,6 @@ export let bug = {
         'updated_at': '2018-03-26T20:35:45+00:00'
       }
     ],
-    'classification': 'Red Hat',
     'creation_time': '2018-03-05T20:29:03+00:00',
     'display_name': 'RHBZ#23456',
     'id': '23456',
@@ -71,7 +70,6 @@ export let story = {
     {
       'assignee': null,
         'attached_advisories': [],
-        'classification': 'Red Hat',
         'creation_time': '2017-04-02T19:39:06+00:00',
         'display_name': 'RHBZ#12345',
         'id': '12345',
@@ -290,7 +288,6 @@ export let siblings = {
           'updated_at': '2018-05-09T17:35:52+00:00'
         }
       ],
-      'classification': 'Red Hat',
       'creation_time': '2018-04-13T01:57:40+00:00',
       'id': '1566849',
       'modified_time': '2018-06-19T09:10:31+00:00',
@@ -359,7 +356,6 @@ export let siblings = {
           'updated_at': '2018-05-09T17:35:52+00:00'
         }
       ],
-      'classification': 'Red Hat',
       'creation_time': '2018-04-13T07:57:42+00:00',
       'id': '1567084',
       'modified_time': '2018-06-19T07:34:08+00:00',
