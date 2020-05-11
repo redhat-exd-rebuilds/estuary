@@ -34,18 +34,4 @@ describe('ArtifactRelationshipComponent', () => {
     relationshipService = TestBed.get(RelationshipService);
   });
 
-  it('should retrieve the tags of the build', fakeAsync(() => {
-    spyOn(relationshipService, 'getRelatedArtifacts').and.returnValue(
-      // Create an observable like the HTTP client would return
-      of(relationships)
-    );
-    // The component must be created after the spy on the RelationshipService because
-    // the RelationshipService is used as part of the constructor
-    fixture = TestBed.createComponent(ArtifactRelationshipComponent);
-    fixture.detectChanges();
-    const component = fixture.componentInstance;
-
-    expect(component.artifacts).toBe(relationships.data);
-    expect(component.title).toBe('Tags of rh-some20-docker-16.23-17.12345');
-  }));
 });

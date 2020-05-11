@@ -23,14 +23,5 @@ describe('RelationshipService testing', () => {
       httpTestingController.verify();
     });
 
-    it('can get the tags of a build', () => {
-      relationshipService.getRelatedArtifacts('kojibuild', '3456', 'tags').subscribe(data => {
-        expect(data).toEqual(relationships);
-      });
-
-      const req = httpTestingController.expectOne(`${relationshipService.apiUrl}relationships/kojibuild/3456/tags`);
-      expect(req.request.method).toEqual('GET');
-      req.flush(relationships);
-    });
 });
 
