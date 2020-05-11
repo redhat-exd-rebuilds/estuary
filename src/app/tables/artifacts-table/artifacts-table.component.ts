@@ -118,9 +118,6 @@ export class ArtifactsTableComponent implements OnChanges {
       case ('distgitrepo'):
         columns = ['commits', 'name', 'namespace'];
         break;
-      case ('distgitbranch'):
-        columns = ['repos', 'repo_name', 'repo_namespace'];
-        break;
       case ('freshmakerbuild'):
         columns = ['id', 'name', 'original_nvr', 'rebuilt_nvr', 'state_name', 'state_reason'];
         break;
