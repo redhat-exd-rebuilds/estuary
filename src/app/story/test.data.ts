@@ -137,7 +137,6 @@ export let story = {
     {
       'event_type_id': 8,
       'id': '1180',
-      'message_id': 'ID:messaging-devops-broker01.test',
       'display_name': 'Freshmaker event 1180',
       'resource_type': 'FreshmakerEvent',
       'state': 2,
@@ -462,7 +461,6 @@ export let siblingsBuild = {
         'display_name': 'Freshmaker event 3171',
         'event_type_id': 8,
         'id': '3171',
-        'message_id': 'ID:messaging.redhat.com-39911-1543520580542-9:9795:0:0:1.RHSA-2018:3738-02',
         'resource_type': 'FreshmakerEvent',
         'state': 2,
         'state_name': 'COMPLETE',
@@ -545,7 +543,6 @@ export let siblingsBuild = {
       'display_name': 'Freshmaker event 3171',
       'event_type_id': 8,
       'id': '3171',
-      'message_id': 'ID:messaging.redhat.com-39911-1543520580542-9:9795:0:0:1.RHSA-2018:3738-02',
       'resource_type': 'FreshmakerEvent',
       'state': 2,
       'state_name': 'COMPLETE',
