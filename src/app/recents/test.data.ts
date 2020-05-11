@@ -9,7 +9,6 @@ export const recents = {
                 'state': null,
                 'product_short_name': null,
                 'product_name': null,
-                'content_types': null,
                 'security_sla': null,
                 'synopsis': null,
                 'security_impact': null,
