@@ -229,72 +229,6 @@ export let module_story = {
       'resource_type': 'KojiBuild',
       'start_time': '2018-08-14T01:31:15.583303+00:00',
       'state': 1,
-      'tags': [
-        {
-          'id': '17224',
-          'name': 'module-virt-rhel-20180822114445-9edba152-build'
-        },
-        {
-          'id': '17223',
-          'name': 'module-virt-rhel-20180822114445-9edba152'
-        },
-        {
-          'id': '17210',
-          'name': 'module-virt-rhel-20180821132937-9edba152-build'
-        },
-        {
-          'id': '17209',
-          'name': 'module-virt-rhel-20180821132937-9edba152'
-        },
-        {
-          'id': '17177',
-          'name': 'module-virt-rhel-20180817161005-9edba152-build'
-        },
-        {
-          'id': '17176',
-          'name': 'module-virt-rhel-20180817161005-9edba152'
-        },
-        {
-          'id': '17153',
-          'name': 'module-virt-rhel-20180816163147-9edba152-build'
-        },
-        {
-          'id': '17152',
-          'name': 'module-virt-rhel-20180816163147-9edba152'
-        },
-        {
-          'id': '17112',
-          'name': 'module-virt-rhel-20180816084153-9edba152-build'
-        },
-        {
-          'id': '17111',
-          'name': 'module-virt-rhel-20180816084153-9edba152'
-        },
-        {
-          'id': '17109',
-          'name': 'module-virt-rhel-20180816080957-9edba152-build'
-        },
-        {
-          'id': '17108',
-          'name': 'module-virt-rhel-20180816080957-9edba152'
-        },
-        {
-          'id': '17025',
-          'name': 'module-virt-rhel-20180814142623-9edba152-build'
-        },
-        {
-          'id': '17024',
-          'name': 'module-virt-rhel-20180814142623-9edba152'
-        },
-        {
-          'id': '16991',
-          'name': 'module-virt-rhel-20180814005649-9edba152-build'
-        },
-        {
-          'id': '16990',
-          'name': 'module-virt-rhel-20180814005649-9edba152'
-        }
-      ],
       'version': '1.38.4',
       'timeline_timestamp': '2018-12-10T12:01:21Z',
     },
@@ -554,20 +488,6 @@ export let siblingsBuild = {
      'resource_type': 'ContainerKojiBuild',
      'start_time': '2018-11-30T02:33:14Z',
      'state': 1,
-     'tags': [
-        {
-           'display_name': 'RHBA-2018:3810-released',
-           'id': '56290',
-           'name': 'RHBA-2018:3810-released',
-           'resource_type': 'KojiTag'
-        },
-        {
-           'display_name': 'rhos-13.0-rhel-7-container-released',
-           'id': '11982',
-           'name': 'rhos-13.0-rhel-7-container-released',
-           'resource_type': 'KojiTag'
-        }
-     ],
      'triggered_by_freshmaker_event': {
         'display_name': 'Freshmaker event 3171',
         'event_type_id': 8,
@@ -659,20 +579,6 @@ export let siblingsBuild = {
    'resource_type': 'ContainerKojiBuild',
    'start_time': '2018-11-30T02:33:14Z',
    'state': 1,
-   'tags': [
-      {
-         'display_name': 'RHBA-2018:3810-released',
-         'id': '56290',
-         'name': 'RHBA-2018:3810-released',
-         'resource_type': 'KojiTag'
-      },
-      {
-         'display_name': 'rhos-13.0-rhel-7-container-released',
-         'id': '11982',
-         'name': 'rhos-13.0-rhel-7-container-released',
-         'resource_type': 'KojiTag'
-      }
-   ],
    'triggered_by_freshmaker_event': {
       'display_name': 'Freshmaker event 3171',
       'event_type_id': 8,
