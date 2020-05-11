@@ -11,9 +11,6 @@ export let bug = {
       {
         'actual_ship_date': '2018-03-26T20:05:43+00:00',
         'advisory_name': 'RHSA-2018:1234-01',
-        'content_types': [
-          'docker'
-        ],
         'created_at': '2018-03-20T14:11:06+00:00',
         'id': '123456',
         'issue_date': '2018-03-26T18:50:38+00:00',
@@ -121,7 +118,6 @@ export let story = {
     {
       'actual_ship_date': '2017-08-01T15:43:51+00:00',
       'advisory_name': 'RHBA-2017:2251-02',
-      'content_types': ['docker'],
       'created_at': '2017-04-03T14:47:23+00:00',
       'id': '27825',
       'issue_date': '2017-08-01T05:59:34+00:00',
@@ -269,9 +265,6 @@ export let siblings = {
         {
           'actual_ship_date': '2018-05-08T18:32:03+00:00',
           'advisory_name': 'RHSA-2018:1234-07',
-          'content_types': [
-            'rpm'
-          ],
           'created_at': '2018-04-16T12:03:55+00:00',
           'id': '33491',
           'issue_date': '2018-05-08T17:15:15+00:00',
@@ -337,9 +330,6 @@ export let siblings = {
         {
           'actual_ship_date': '2018-05-08T18:32:03+00:00',
           'advisory_name': 'RHSA-2018:1318-07',
-          'content_types': [
-            'rpm'
-          ],
           'created_at': '2018-04-16T12:03:55+00:00',
           'id': '33491',
           'issue_date': '2018-05-08T17:15:15+00:00',
@@ -408,9 +398,6 @@ export let siblingsBuild = {
         {
           'actual_ship_date': '2018-05-08T18:32:03+00:00',
           'advisory_name': 'RHSA-2018:1111-07',
-          'content_types': [
-            'rpm'
-          ],
           'created_at': '2018-04-16T12:03:55+00:00',
           'id': '33491',
           'issue_date': '2018-05-08T17:15:15+00:00',
@@ -430,9 +417,6 @@ export let siblingsBuild = {
         {
           'actual_ship_date': '2018-05-08T18:32:03+00:00',
           'advisory_name': 'RHSA-2018:2222-07',
-          'content_types': [
-            'rpm'
-          ],
           'created_at': '2018-04-16T12:03:55+00:00',
           'id': '33492',
           'issue_date': '2018-05-08T17:15:15+00:00',
@@ -499,9 +483,6 @@ export let siblingsBuild = {
       {
         'actual_ship_date': '2018-05-08T18:32:03+00:00',
         'advisory_name': 'RHSA-2018:1234-07',
-        'content_types': [
-          'rpm'
-        ],
         'created_at': '2018-04-16T12:03:55+00:00',
         'id': '33481',
         'issue_date': '2018-05-08T17:15:15+00:00',
@@ -521,9 +502,6 @@ export let siblingsBuild = {
       {
         'actual_ship_date': '2018-05-08T18:32:03+00:00',
         'advisory_name': 'RHSA-2018:1235-07',
-        'content_types': [
-          'rpm'
-        ],
         'created_at': '2018-04-16T12:03:55+00:00',
         'id': '33482',
         'issue_date': '2018-05-08T17:15:15+00:00',
