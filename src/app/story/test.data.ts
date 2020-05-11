@@ -135,7 +135,6 @@ export let story = {
       'timeline_timestamp': '2018-12-10T12:01:21Z',
     },
     {
-      'event_type_id': 8,
       'id': '1180',
       'display_name': 'Freshmaker event 1180',
       'resource_type': 'FreshmakerEvent',
@@ -458,7 +457,6 @@ export let siblingsBuild = {
      'state': 1,
      'triggered_by_freshmaker_event': {
         'display_name': 'Freshmaker event 3171',
-        'event_type_id': 8,
         'id': '3171',
         'resource_type': 'FreshmakerEvent',
         'state_name': 'COMPLETE',
@@ -539,7 +537,6 @@ export let siblingsBuild = {
    'state': 1,
    'triggered_by_freshmaker_event': {
       'display_name': 'Freshmaker event 3171',
-      'event_type_id': 8,
       'id': '3171',
       'resource_type': 'FreshmakerEvent',
       'state_name': 'COMPLETE',
