@@ -555,24 +555,38 @@ export let siblingsBuild = {
 export const relationships = {
   'data': [
     {
-      'builds': [],
-      'display_name': 'rhscl-12345-candidate',
-      'id': '1234',
-      'module_builds': null,
-      'name': 'rhscl-12345-candidate',
-      'resource_type': 'KojiTag'
+       'creation_time': '2018-04-23T07:10:16Z',
+       'display_name': 'RHBZ#1570537',
+       'id': '1570537',
+       'modified_time': '2019-02-26T20:28:01Z',
+       'priority': 'urgent',
+       'product_name': 'Red Hat Enterprise Linux 7',
+       'product_version': '7.5',
+       'resolution': 'ERRATA',
+       'resource_type': 'BugzillaBug',
+       'severity': 'urgent',
+       'short_description': 'Some stuff here',
+       'status': 'CLOSED',
+       'target_milestone': 'rc',
     },
     {
-      'builds': [],
-      'display_name': 'rhscl-23456-candidate',
-      'id': '2345',
-      'module_builds': null,
-      'name': 'rhscl-23456-candidate',
-      'resource_type': 'KojiTag'
+       'creation_time': '2018-04-20T03:52:17Z',
+       'display_name': 'RHBZ#1569878',
+       'id': '1569878',
+       'modified_time': '2018-06-04T10:46:52Z',
+       'priority': 'high',
+       'product_name': 'Red Hat Enterprise Linux 7',
+       'product_version': '7.5',
+       'resolution': 'ERRATA',
+       'resource_type': 'BugzillaBug',
+       'severity': 'high',
+       'short_description': 'Some stuff here',
+       'status': 'CLOSED',
+       'target_milestone': 'rc',
     },
   ],
   'meta': {
-    'description': 'Tags of rh-some20-docker-16.23-17.12345'
+    'description': 'Attached bugs of RHSA-2018:1318-07',
   }
 };
 

@@ -12,7 +12,7 @@ import { relationships } from '../test.data';
 
 
 describe('ArtifactRelationshipComponent', () => {
-
+  let fixture: ComponentFixture<ArtifactRelationshipComponent>;
   let relationshipService: RelationshipService;
 
   beforeEach(() => {
@@ -33,5 +33,20 @@ describe('ArtifactRelationshipComponent', () => {
 
     relationshipService = TestBed.get(RelationshipService);
   });
+
+  it('should retrieve the attached bugs of the advisory', fakeAsync(() => {
+    spyOn(relationshipService, 'getRelatedArtifacts').and.returnValue(
+      // Create an observable like the HTTP client would return
+      of(relationships)
+    );
+    // The component must be created after the spy on the RelationshipService because
+    // the RelationshipService is used as part of the constructor
+    fixture = TestBed.createComponent(ArtifactRelationshipComponent);
+    fixture.detectChanges();
+    const component = fixture.componentInstance;
+
+    expect(component.artifacts).toBe(relationships.data);
+    expect(component.title).toBe('Attached bugs of RHSA-2018:1318-07');
+  }));
 
 });
