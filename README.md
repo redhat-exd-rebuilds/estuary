@@ -4,13 +4,17 @@ Visualizes the story an artifact takes in the Red Hat build to release pipeline.
 
 ## Development
 
-To setup a development environment, make sure you have `npm` installed.
+### Prerequisites
 
-Once npm is installed:
-* Run `npm install` to install the dev and production dependencies
-* Run `ng serve --open` to start the development server that uses your local
-  [Estuary API](https://github.com/release-engineering/estuary-api).
-* Once the development server is up, your browser will open up to `http://localhost:4200/`
+The versions listed below are the one which were tested and work. Other versions
+can work as well.
+
+* Install docker version 20.10.5
+* Install docker-compose version 1.28.5
+
+To setup a local development environment:
+
+* Invoke the command: ```make up```
 
 ## Run the Unit Tests
 
