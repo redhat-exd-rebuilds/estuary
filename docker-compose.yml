@@ -1,0 +1,9 @@
+version: '3.3'
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+    container_name: frontend
+    ports:
+      - 4200:4200
