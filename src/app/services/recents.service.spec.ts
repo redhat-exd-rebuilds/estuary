@@ -16,8 +16,8 @@ describe('RecentsService testing', () => {
         providers: [RecentsService]
       });
 
-      httpTestingController = TestBed.get(HttpTestingController);
-      recentsService = TestBed.get(RecentsService);
+      httpTestingController = TestBed.inject(HttpTestingController);
+      recentsService = TestBed.inject(RecentsService);
     });
 
     afterEach(() => {

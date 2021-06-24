@@ -71,7 +71,7 @@ describe('StoryComponent testing', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(StoryComponent);
     component = fixture.componentInstance;
-    storyService = TestBed.get(StoryService);
+    storyService = TestBed.inject(StoryService);
   });
 
   it('should show a story of Bugzilla bug 12345', fakeAsync(() => {
@@ -85,7 +85,7 @@ describe('StoryComponent testing', () => {
     fixture.detectChanges();
     tick();
 
-    const storyTitle = TestBed.get(Title);
+    const storyTitle = TestBed.inject(Title);
     expect(storyTitle.getTitle()).toBe('RHBZ#12345 - Estuary');
 
     const storyRowEls = fixture.debugElement.queryAll(By.css('app-storyrow'));
@@ -183,7 +183,7 @@ describe('StoryComponent testing', () => {
     fixture.detectChanges();
     tick();
 
-    const storyTitle = TestBed.get(Title);
+    const storyTitle = TestBed.inject(Title);
     expect(storyTitle.getTitle()).toBe('libguestfs-1.38.4-1.el8+1579+44551958 - Estuary');
 
     const storyRowEls = fixture.debugElement.queryAll(By.css('app-storyrow'));

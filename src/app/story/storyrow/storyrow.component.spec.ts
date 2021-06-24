@@ -48,7 +48,7 @@ describe('StoryRowComponent testing', () => {
         ]
     }).compileComponents();
 
-    greenwaveService = TestBed.get(GreenwaveService);
+    greenwaveService = TestBed.inject(GreenwaveService);
   });
 
   beforeEach(() => {
@@ -57,7 +57,10 @@ describe('StoryRowComponent testing', () => {
   });
 
   it('should display single artifact', fakeAsync(() => {
-    component.node = bug;
+    // Copy the test bug before modifying it
+    const testBug = {};
+    Object.assign(testBug, bug);
+    component.node = testBug;
     component.node.timeline_timestamp = 'Dec 10, 2018, 12:01:21 UTC';
     component.forwardSiblings = 0;
     component.backwardSiblings = 0;
@@ -81,7 +84,11 @@ describe('StoryRowComponent testing', () => {
   }));
 
   it('should display multiple artifacts', fakeAsync(() => {
-    component.node = bug;
+    // Copy the test bug before modifying it
+    const testBug = {};
+    Object.assign(testBug, bug);
+    component.node = testBug;
+    component.node.timeline_timestamp = 'Dec 10, 2018, 12:01:21 UTC';
     component.backwardSiblings = 3;
     component.forwardSiblings = 5;
     component.active = true;

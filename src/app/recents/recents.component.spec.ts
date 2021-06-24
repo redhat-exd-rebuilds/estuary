@@ -55,7 +55,7 @@ describe('RecentsComponent', () => {
       // This is used to avoid having to import components we don't test here
       schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
-    recentsService = TestBed.get(RecentsService);
+    recentsService = TestBed.inject(RecentsService);
   });
 
   it('should retrieve the 5 most recent advisories', fakeAsync(() => {

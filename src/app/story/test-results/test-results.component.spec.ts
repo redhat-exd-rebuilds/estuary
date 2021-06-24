@@ -36,8 +36,8 @@ describe('TestResultsComponent', () => {
       schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
 
-    greenwaveService = TestBed.get(GreenwaveService);
-    storyService = TestBed.get(StoryService);
+    greenwaveService = TestBed.inject(GreenwaveService);
+    storyService = TestBed.inject(StoryService);
   });
 
   it('should get the artifact from the API for a container build', fakeAsync(() => {
