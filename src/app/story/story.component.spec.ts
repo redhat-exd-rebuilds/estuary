@@ -2,7 +2,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { By, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Params } from '@angular/router';
 import { DatePipe } from '@angular/common';
-import { ComponentFixture, async, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';

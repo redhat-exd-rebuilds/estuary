@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, tick, fakeAsync, waitForAsync } from '@angular/core/testing';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { By } from '@angular/platform-browser';
 
@@ -12,7 +12,7 @@ describe('TruncateModalComponent', () => {
   const summary = 'CVE-2018-1235 kernel: some really long error that is hard to ' +
                   'fix and causes problems [rhel-7.5.z]';
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ TruncateModalComponent, TruncatePipe ],
       imports: [ ModalModule.forRoot() ],

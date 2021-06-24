@@ -1,6 +1,6 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { APP_BASE_HREF } from '@angular/common';
-import { async, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { BrowserModule } from '@angular/platform-browser';
 import { OAuthModule, OAuthService } from 'angular-oauth2-oidc';
 import { of } from 'rxjs';
@@ -43,7 +43,7 @@ class MockOAuthService {
 describe('AppComponent', () => {
   let authService: MockOAuthService;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     environment.enableAuth = true;
     authService = new MockOAuthService();
     authService.validToken = true;
