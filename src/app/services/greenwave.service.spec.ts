@@ -16,8 +16,8 @@ describe('GreenwaveService testing', () => {
       providers: [GreenwaveService]
     });
 
-    httpTestingController = TestBed.get(HttpTestingController);
-    greenwaveService = TestBed.get(GreenwaveService);
+    httpTestingController = TestBed.inject(HttpTestingController);
+    greenwaveService = TestBed.inject(GreenwaveService);
 
     greenwaveDecision = {
       applicable_policies: [],

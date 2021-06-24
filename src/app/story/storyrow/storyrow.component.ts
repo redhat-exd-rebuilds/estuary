@@ -49,7 +49,7 @@ export class StoryRowComponent implements OnChanges, AfterViewInit {
   // Font Awesome icons
   faCircle = faCircle;
 
-  constructor(@Host() story: StoryComponent, private greenwave: GreenwaveService,
+  constructor(story: StoryComponent, private greenwave: GreenwaveService,
               private notification: ToastrService) {
     this.story = story;
     this.gatingStatus = {

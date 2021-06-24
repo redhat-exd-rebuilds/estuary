@@ -49,7 +49,7 @@ describe('SiblingsComponent', () => {
       schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
 
-    siblingsService = TestBed.get(SiblingsService);
+    siblingsService = TestBed.inject(SiblingsService);
   });
 
   it('should retrieve the siblings of RHBZ#1566849', fakeAsync(() => {

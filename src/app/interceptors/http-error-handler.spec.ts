@@ -27,9 +27,9 @@ describe(`AuthHttpInterceptor`, () => {
       ],
     });
 
-    httpClient = TestBed.get(HttpClient);
-    httpTestingController = TestBed.get(HttpTestingController);
-    notification = TestBed.get(ToastrService);
+    httpClient = TestBed.inject(HttpClient);
+    httpTestingController = TestBed.inject(HttpTestingController);
+    notification = TestBed.inject(ToastrService);
   });
 
   afterEach(() => {

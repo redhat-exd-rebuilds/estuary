@@ -58,7 +58,7 @@ describe('StorysidebarComponent testing', () => {
     const titleEl = fixture.debugElement.query(By.css('.sidebar__external-system-link > h2')).nativeElement;
     expect(titleEl.textContent).toBe('RHBZ#23456');
     const sidebarPropertiesEl = fixture.debugElement.query(By.css('.sidebar-properties > tbody')).nativeElement;
-    expect(sidebarPropertiesEl.children.length).toBe(19);
+    expect(sidebarPropertiesEl.children.length).toBe(18);
     expect(sidebarPropertiesEl.children[0].children[0].textContent).toBe('Assignee');
     expect(sidebarPropertiesEl.children[0].children[1].textContent.trim()).toBe('user1');
     expect(sidebarPropertiesEl.children[1].children[0].textContent).toBe('Attached Advisories');

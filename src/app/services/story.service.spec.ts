@@ -15,8 +15,8 @@ describe('StoryService testing', () => {
         providers: [StoryService]
       });
 
-      httpTestingController = TestBed.get(HttpTestingController);
-      storyService = TestBed.get(StoryService);
+      httpTestingController = TestBed.inject(HttpTestingController);
+      storyService = TestBed.inject(StoryService);
     });
 
     afterEach(() => {

@@ -31,7 +31,7 @@ describe('ArtifactRelationshipComponent', () => {
       schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
 
-    relationshipService = TestBed.get(RelationshipService);
+    relationshipService = TestBed.inject(RelationshipService);
   });
 
   it('should retrieve the attached bugs of the advisory', fakeAsync(() => {

@@ -31,7 +31,7 @@ describe('AuthGuardService testing', () => {
       ]
     });
 
-    authGuardService = TestBed.get(AuthGuardService);
+    authGuardService = TestBed.inject(AuthGuardService);
   });
 
   afterEach(() => {

@@ -15,8 +15,8 @@ describe('RelationshipService testing', () => {
         providers: [RelationshipService]
       });
 
-      httpTestingController = TestBed.get(HttpTestingController);
-      relationshipService = TestBed.get(RelationshipService);
+      httpTestingController = TestBed.inject(HttpTestingController);
+      relationshipService = TestBed.inject(RelationshipService);
     });
 
     afterEach(() => {
