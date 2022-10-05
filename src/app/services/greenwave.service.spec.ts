@@ -43,7 +43,7 @@ describe('GreenwaveService testing', () => {
       'waivers': []
     };
 
-    greenwaveService.getDecision('some-continaer', 'cvp_default', 'cvp', 'koji_build').subscribe(data => {
+    greenwaveService.getDecision('some-container', 'cvp_default', 'cvp', 'redhat-container-image').subscribe(data => {
         expect(data).toEqual(testData);
     });
 
@@ -55,7 +55,7 @@ describe('GreenwaveService testing', () => {
   it('getArtifactDecision calls getDecision correctly with a ContainerKojiBuild', () => {
     spyOn(greenwaveService, 'getDecision');
     greenwaveService.getArtifactDecision('containerkojibuild', 'some-nvr');
-    expect(greenwaveService.getDecision).toHaveBeenCalledWith('some-nvr', 'cvp_default', 'cvp', 'koji_build', true);
+    expect(greenwaveService.getDecision).toHaveBeenCalledWith('some-nvr', 'cvp_default', 'cvp', 'redhat-container-image', true);
   });
 
   it('getArtifactDecision calls getDecision correctly with a KojiBuild', () => {

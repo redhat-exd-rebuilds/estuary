@@ -100,6 +100,7 @@ export class GreenwaveService {
           decisionContext = 'cvp_default';
         }
         productVersion = 'cvp';
+        subjectType = 'redhat-container-image';
         break;
       case('kojibuild'):
       case('build'):
